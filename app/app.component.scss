@@ -1,0 +1,4168 @@
+// kware start edit -- issue.7.6.001
+
+// @import '../../node_modules/viewerjs/dist/viewer.css';
+::ng-deep .video-js {
+    width: inherit !important;
+    height: 650px;
+}
+
+::ng-deep html[dir="rtl"] .video-js * {
+    direction: rtl;
+}
+
+::ng-deep html[dir="rtl"] .cui-img-cont-float {
+    transform: scale(-1) !important;
+}
+
+::ng-deep html[dir="rtl"] .cui-ctl {
+    transform: scale(-1) !important;
+}
+
+
+@font-face {
+    font-family: cufi;
+    src: url(../assets/fonts/Droid.Arabic.Kufi.ttf) format("opentype");
+}
+
+// change direction of body to rtl and use kufi font in arabic interface
+::ng-deep html[dir="rtl"] body {
+    text-align: right;
+    font-family: cufi;
+}
+
+// margin close sign in header modal to left of export , new or edit  (community , collection , item ) in arabic interface
+::ng-deep html[dir="rtl"] .modal-header {
+    .close {
+        margin: -1rem auto -1rem -1rem;
+    }
+}
+
+// align text to right in .dropdown in DSpace in arabic interface
+::ng-deep html[dir="rtl"] .dropdown-menu {
+    text-align: right !important;
+    // transform: translate(-1px, 27px) !important;
+    // min-width: 26rem !important;
+
+}
+
+// dropdown-menu of language switcher menue in arabic interface
+::ng-deep html[dir="rtl"] ds-lang-switch>div>.dropdown-menu {
+    transform: translate(10px, 27px) !important;
+}
+
+// dropdown-menu of helper meue in arabic interface
+::ng-deep html[dir="rtl"] ds-help-links>div>.dropdown-menu {
+    transform: translate(10px, 27px) !important;
+}
+
+// dropdown-menu of auth menue in arabic interface
+::ng-deep html[dir="rtl"] ds-auth-nav-menu>ul>li>div>.dropdown-menu {
+    transform: translate(10px, 27px) !important;
+}
+
+// search input in navbar  to open ltr in RTL (ds-search-navbar component)
+::ng-deep html[dir="rtl"] .dropdown-menu-right {
+    left: 0;
+    right: auto;
+}
+
+::ng-deep html[dir="rtl"] ds-dynamic-form-array>div>div>div {
+    margin-right: calc(-2.3 * var(--bs-spacer)) !important;
+    margin-left: calc(-0.5 * var(--bs-spacer)) !important;
+    padding-left: calc(0.5 * var(--bs-spacer)) !important;
+    padding-right: unset !important;
+}
+
+// // saved icon in submission form footer
+// ::ng-deep html[dir="rtl"] ds-submission-form-footer {
+//   .d-flex {
+//     display: -webkit-box !important;
+//   }
+// }
+
+::ng-deep html[dir="rtl"] .ml-2,
+.mx-2 {
+    margin-right: 0.5rem !important;
+    margin-left: unset !important;
+
+}
+
+
+::ng-deep .ml-2,
+.mx-2 {
+
+    display: flex;
+    gap: 7px;
+}
+
+::ng-deep html[dir="rtl"] .pl-4,
+.px-4 {
+    padding-right: 1.5rem !important;
+}
+
+// alert , notification content in (ds-alrt ,ds-notification component) RTL
+::ng-deep html[dir="rtl"] .alert-dismissible {
+    padding-left: 4rem !important;
+    padding-right: 1rem !important;
+}
+
+// alert , notification close sign in (ds-alrt ,ds-notification component) RTL
+::ng-deep html[dir="rtl"] .alert-dismissible .close {
+    left: 0 !important;
+    right: unset !important;
+}
+
+// invalid input
+::ng-deep html[dir="rtl"] .form-control.is-invalid {
+    padding-left: calc(1.5em + 0.75rem) !important;
+    padding-right: unset !important;
+    background-position: center left calc(0.375em + 0.1875rem) !important;
+}
+
+// sidebar modification in RTL
+::ng-deep html[dir="rtl"] ds-base-admin-sidebar {
+    left: auto;
+
+    nav {
+
+        ol,
+        ul,
+        dl {
+            padding-right: 0 !important;
+        }
+
+        >div {
+            & #sidebar-top-level-items-container {
+                overflow-x: hidden !important;
+            }
+        }
+
+        &.inactive ::ng-deep .sidebar-collapsible {
+            margin-right: calc(-1 * var(--ds-sidebar-items-width));
+
+            .fa-pull-right {
+                float: unset !important;
+            }
+        }
+
+        .fa,
+        .fas {
+            transform: scaleX(-1);
+        }
+
+        .fa-pull-right {
+            float: left;
+        }
+
+        [transform="rotate(0deg)"] .fas,
+        .fa-chevron-right {
+            transform: scaleX(-1) !important;
+            // transform: rotate(90deg) !important;
+        }
+    }
+
+    .d-flex {
+        display: -webkit-box !important;
+    }
+
+    .navbar-nav {
+        .sidebar-section {
+            .sidebar-collapsible {
+                padding-right: unset !important;
+                padding-left: var(--bs-spacer) !important;
+            }
+        }
+    }
+}
+
+//end sidebar modification
+
+// align buttons at left side of page
+::ng-deep html[dir="rtl"] .ml-auto,
+.mx-auto {
+    margin-right: auto !important;
+    margin-left: unset !important;
+}
+
+// align buttons at left side of page
+::ng-deep html[dir="rtl"] .mr-auto,
+.mx-auto {
+    margin-left: auto !important;
+    margin-right: unset !important;
+}
+
+// dropdown-menu of collections in submission form page
+::ng-deep html[dir="rtl"] ds-dynamic-scrollable-dropdown {
+    .dropdown-menu {
+        transform: translate(-1px, 35px) !important;
+    }
+
+    i {
+        left: 0 !important;
+        right: unset !important;
+    }
+}
+
+// Add more btn  in submission-form page
+::ng-deep html[dir="rtl"] ds-submission-form-section-add {
+    .btn-outline-primary {
+        float: left !important;
+    }
+}
+
+// align btns at left of page
+::ng-deep html[dir="rtl"] .float-right {
+    float: left !important;
+}
+
+// align btns at right of page
+::ng-deep html[dir="rtl"] .float-left {
+    float: right !important;
+}
+
+// change dierction of font awesome icons direction
+::ng-deep html[dir="rtl"] .fas {
+    transform: scaleX(-1) !important;
+}
+
+// change dierction of help icons direction
+::ng-deep html[dir="rtl"] .fa-question-circle {
+    transform: rotateY(180deg) !important;
+}
+
+// align footer text at center of page
+::ng-deep html[dir="rtl"] ds-footer {
+    footer {
+        .text-lg-start {
+            text-align: center !important;
+        }
+    }
+}
+
+// change borders of buttons content icons like remove , edit, ... in RTL
+::ng-deep html[dir="rtl"] .input-group>.input-group-append>.btn,
+.input-group>.input-group-append>.input-group-text,
+.input-group>.input-group-prepend:not(:first-child)>.btn,
+.input-group>.input-group-prepend:not(:first-child)>.input-group-text,
+.input-group>.input-group-prepend:first-child>.btn:not(:first-child),
+.input-group>.input-group-prepend:first-child>.input-group-text:not(:first-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+// change borders of buttons content icons like remove , edit, ... in RTL
+::ng-deep html[dir="rtl"] .input-group>.input-group-prepend>.btn,
+.input-group>.input-group-prepend>.input-group-text,
+.input-group>.input-group-append:not(:last-child)>.btn,
+.input-group>.input-group-append:not(:last-child)>.input-group-text,
+.input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle),
+.input-group>.input-group-append:last-child>.input-group-text:not(:last-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+// change borders of buttons content icons like remove , edit, ... in RTL and make icon at center
+::ng-deep html[dir="rtl"] .btn-group>.btn:not(:first-child),
+.btn-group>.btn-group:not(:first-child)>.btn {
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    margin-right: -1px;
+    margin-left: unset;
+}
+
+// change borders of buttons content icons like remove , edit, ... in RTL
+::ng-deep html[dir="rtl"] .btn-group>.btn:not(:last-child):not(.dropdown-toggle),
+.btn-group>.btn-group:not(:last-child)>.btn {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+// change borders of buttons content icons like remove , edit, ... in RTL
+::ng-deep html[dir="rtl"] .input-group>.form-control:not(:last-child),
+.input-group>.custom-select:not(:last-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-right: -1px !important;
+}
+
+// change borders of buttons content icons like remove , edit, ... in RTL
+::ng-deep html[dir="rtl"] .list-group-horizontal .list-group-item:first-child {
+    border-top-right-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+    border-bottom-left-radius: 0 !important;
+    border-top-left-radius: 0 !important;
+}
+
+// change borders of buttons content icons like remove , edit, ... in RTL
+::ng-deep html[dir="rtl"] .list-group-horizontal .list-group-item:last-child {
+    margin-left: 0;
+    margin-right: -1px !important;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: 0.25rem;
+    border-bottom-right-radius: 0;
+}
+
+// space between Add btn and save ,discard btn in edit-metadat page
+::ng-deep html[dir="rtl"] {
+    ds-item-metadata {
+        .button-row .btn {
+            margin-left: calc(0.5 * var(--bs-spacer));
+        }
+
+        .button-row .btn:last-child {
+            margin-left: 0;
+        }
+    }
+}
+
+::ng-deep html[dir="rtl"] .list-unstyled {
+    padding-right: 0;
+}
+
+// general css
+::ng-deep {
+    body {
+        color: #530a86 !important;
+
+
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #530a86 !important;
+        border-color: #530a86 !important;
+    }
+
+    .input-group>.form-control {
+        border: 1px solid #530a86;
+    }
+
+    .dropdown-menu>.dropdown-item {
+        color: #530a86;
+        background-color: transparent;
+
+        &.active {
+            color: #fff;
+            text-decoration: none;
+            background-color: #530a86;
+        }
+    }
+
+    ds-navbar>nav.navbar {
+        border-bottom: 5px #530a86 solid !important;
+    }
+
+    .page-item.active .page-link {
+        background-color: #530a86 !important;
+        border-color: #530a86 !important;
+    }
+
+    form>a {
+        color: #530a86 !important;
+        text-decoration: none;
+        background-color: transparent;
+    }
+
+    ds-community-list-element>a {
+        color: #530a86 !important;
+        text-decoration: none;
+        background-color: transparent;
+    }
+
+    ds-item-search-result-list-element>ds-truncatable>div>a {
+        color: #530a86 !important;
+        text-decoration: none;
+        background-color: transparent;
+    }
+
+    .clamp-default-1>.content {
+        position: inherit !important;
+
+        &:after {
+            position: inherit !important;
+        }
+    }
+
+    .clamp-default-3>.content {
+        position: inherit !important;
+
+        &:after {
+            position: inherit !important;
+        }
+    }
+
+    .badge-info {
+        background-color: lighten(#530a86, 15%) !important;
+    }
+
+    .btn-outline-primary {
+        color: lighten(#530a86, 15%) !important;
+
+        &:hover {
+            color: #fff !important;
+        }
+    }
+
+    .btn-outline-primary.disabled,
+    .btn-outline-primary:disabled {
+        &:hover {
+            color: #530a86 !important;
+        }
+    }
+
+    .navbar-nav {
+        padding-right: 0;
+    }
+
+    ds-collection-grid-element .card {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            transform: scale(1.04);
+
+            .user-buttons .btn {
+                visibility: visible;
+
+            }
+        }
+
+        transition: .5s;
+    }
+
+    ds-community-grid-element .card {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            transform: scale(1.04);
+
+            .user-buttons .btn {
+                visibility: visible;
+
+            }
+        }
+
+        transition: .5s;
+    }
+
+    ds-person-search-result-grid-element .card {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            transform: scale(1.04);
+
+            .user-buttons .btn {
+                visibility: visible;
+
+            }
+        }
+
+        transition: .5s;
+    }
+
+    ::ng-deep div.card {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+
+            .user-buttons .btn {
+                visibility: visible !important;
+
+            }
+        }
+
+        transition: .5s;
+    }
+
+    ::ng-deep ds-org-unit-search-result-grid-element .card {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            transform: scale(1.04);
+
+            .user-buttons .btn {
+                visibility: visible;
+
+            }
+        }
+
+        transition: .5s;
+    }
+
+    ds-collection-grid-element .card {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            transform: scale(1.04);
+
+            .user-buttons .btn {
+                visibility: visible;
+
+            }
+        }
+
+        transition: .5s;
+    }
+
+
+    ds-community-grid-element .card {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            transform: scale(1.04);
+
+            .user-buttons .btn {
+                visibility: visible;
+
+            }
+        }
+
+        transition: .5s;
+    }
+
+    ds-sub-org-unit-search-result-grid-element .card {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            transform: scale(1.04);
+
+            .user-buttons .btn {
+                visibility: visible;
+
+            }
+        }
+
+        transition: .5s;
+    }
+
+    ds-item-search-result-grid-element .card {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            transform: scale(1.04);
+
+            .user-buttons .btn {
+                visibility: visible;
+
+            }
+        }
+
+        transition: .5s;
+    }
+
+    ds-collection-search-result-grid-element .card {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            transform: scale(1.04)
+        }
+
+        transition: .5s;
+    }
+
+    ds-community-search-result-grid-element .card {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            transform: scale(1.04)
+        }
+
+        transition: .5s;
+    }
+
+
+    ds-item-search-result-grid-element .card {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            transform: scale(1.04)
+        }
+
+        transition: .5s;
+    }
+
+    ds-dynamic-scrollable-dropdown {
+        input {
+            background-color: #fff !important;
+        }
+    }
+}
+
+// end general css
+
+// metadata icons (edit,remove,undo) in edit-metadata page
+::ng-deep html[dir="rtl"] ds-item-metadata {
+    .fas {
+        transform: scaleX(1) !important;
+    }
+}
+
+// arrow in community-list page
+::ng-deep html[dir="rtl"] ds-community-list {
+    .fa-chevron-right {
+        transform: scaleX(-1) !important;
+    }
+}
+
+// check-circle icon direction  in successful alert
+::ng-deep html[dir="rtl"] .fa-check-circle {
+    transform: scaleX(1) !important;
+}
+
+// responsive dropdown-menu of helper
+@media (max-width: 450px) {
+    ::ng-deep html[dir="rtl"] ds-help-links>div>.dropdown-menu {
+        transform: translate(-60px, 27px) !important;
+    }
+}
+
+// align alert in RTL
+::ng-deep html[dir="rtl"] .alert {
+    text-align: right !important;
+}
+
+// dropdown-menu in submission-form page
+::ng-deep html[dir="rtl"] ds-submission-form-collection {
+    #collectionControlsDropdownMenu {
+        // transform: translate(-160px,38px) !important;
+        right: 65px !important;
+        min-width: 26rem !important;
+    }
+}
+
+// space between label and checkbox in ds-dynamic-form-control-container component
+::ng-deep html[dir="rtl"] ds-dynamic-form-control-container label>span {
+    margin-right: 20px !important;
+}
+
+// space between brosew all and search form in Add sub-group , Epeople
+::ng-deep html[dir="rtl"] ds-subgroups-list .float-right {
+    margin-right: 30px !important;
+}
+
+// hidden selected (collection ,communty) in edit , new (collection,item) in modal
+::ng-deep html[dir="rtl"] .clamp-primary-1 .content::after {
+    position: inherit !important;
+}
+
+// to align list of chars (A-Z,أ-ى) with other elemnts of browse by pages
+::ng-deep html[dir="rtl"] ds-starts-with-text {
+    .list-inline {
+        margin-right: -49px !important;
+    }
+}
+
+// remove btn borders in edit metadata page
+::ng-deep html[dir="rtl"] ds-edit-in-place-field {
+    .btn-outline-danger {
+        border-top-right-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+    }
+}
+
+// space between modal-footer elements
+::ng-deep html[dir="rtl"] .modal-footer> :not(:first-child) {
+    margin-right: 0.75rem;
+}
+
+::ng-deep html[dir="rtl"] ds-search-facet-option>label>span {
+    margin-right: 0 !important;
+}
+
+// make space between btns in ds-groups-registry  component
+::ng-deep html[dir="rtl"] ds-groups-registry .btn-secondary {
+    margin-right: 20px !important;
+}
+
+// make space between btns in ds-members-list  component
+::ng-deep html[dir="rtl"] ds-members-list .btn-secondary {
+    margin-right: 20px !important;
+}
+
+// space between search form and browse all btn in EPeople page
+::ng-deep html[dir="rtl"] ds-members-list .input-group {
+    margin-right: 15px !important;
+}
+
+::ng-deep html[dir="rtl"] .mr-3,
+.mx-3 {
+    margin-right: 0rem !important;
+}
+
+// back to results arrow direction
+::ng-deep html[dir="rtl"] ds-search-sidebar .fa-arrow-right {
+    transform: scale(1) !important;
+}
+
+// align dropdown-menu with checkbox in adding relation page at left
+::ng-deep html[dir="rtl"] ds-dynamic-lookup-relation-search-tab .position-absolute {
+    right: 85% !important;
+}
+
+::ng-deep html[dir="rtl"] ds-dynamic-lookup-relation-search-tab ds-item-search-result-list-element ds-type-badge .badge-info {
+    margin-right: 20px !important;
+}
+
+// badge-info label and item info start from same point in add relation page
+::ng-deep html[dir="rtl"] ds-dynamic-lookup-relation-search-tab ds-item-search-result-list-element ds-truncatable .truncate {
+    margin-right: 20px !important;
+}
+
+// make space between btns in ds-dynamic-lookup-relation-modal component
+::ng-deep html[dir="rtl"] ds-dynamic-lookup-relation-modal .btn-outline-secondary {
+    margin-left: 6px !important;
+}
+
+// make space between btns in ds-item-relationships component
+::ng-deep html[dir="rtl"] ds-item-relationships .top .btn-danger {
+    margin-left: 6px !important;
+}
+
+// make space between btns in ds-item-bitstreams component
+::ng-deep html[dir="rtl"] ds-item-bitstreams .top .btn-primary {
+    margin-left: 6px !important;
+}
+
+// make space between btns in ds-collection-select component
+::ng-deep html[dir="rtl"] ds-collection-select .collection-cancel {
+    margin-left: 6px !important;
+}
+
+// make point  (•) at center between breadcrumb-items
+::ng-deep html[dir="rtl"] ds-breadcrumbs .breadcrumb-item+.breadcrumb-item::before {
+    margin-left: 12px !important;
+}
+
+// make space between label and check-box
+::ng-deep html[dir="rtl"] .form-check-label {
+    margin-right: 20px !important;
+}
+
+//  make space between date-picker value and counter in Edit resource policy component
+::ng-deep html[dir="rtl"] ngb-datepicker-navigation-select>.custom-select {
+    padding: 0 1.2rem !important;
+}
+
+// make space between btns in ds-edit-community component
+::ng-deep html[dir="rtl"] ds-edit-community button .float-right {
+    margin-left: 10px !important;
+}
+
+// make space between btns in ds-email-request-copy  component
+::ng-deep html[dir="rtl"] ds-email-request-copy {
+    .btn.btn-outline-secondary.mr-1 {
+        margin-left: 10px !important;
+    }
+}
+
+// make space between btns in ds-resource-policies component
+::ng-deep html[dir="rtl"] ds-resource-policies {
+    .btn.btn-success.float-right {
+        margin-left: 10px !important;
+    }
+}
+
+// rotate check box sign at adding relation window in relationship item page
+::ng-deep html[dir="rtl"] ds-dynamic-lookup-relation-search-tab {
+    .input-group-prepend {
+        transform: scale(-1) !important;
+    }
+}
+
+// ::ng-deep html[dir="rtl"] ds-dynamic-lookup-relation-search-tab {
+//   .ng-star-inserted {
+//     transform: scale(-1) !important;
+//   }
+// }
+
+/** start handle cookies */
+::ng-deep html[dir="rtl"] .klaro .cookie-modal .cm-modal .hide {
+    left: 20px !important;
+    right: unset !important;
+}
+
+::ng-deep html[dir="rtl"] .klaro .cookie-notice p {
+    text-align: right !important;
+}
+
+::ng-deep html[dir="rtl"] .klaro .cookie-modal h1 {
+    text-align: right !important;
+}
+
+::ng-deep html[dir="rtl"] .klaro .cookie-modal p {
+    text-align: right;
+}
+
+::ng-deep html[dir="rtl"] .klaro .cookie-modal .cm-modal .cm-footer .cm-powered-by {
+    text-align: left;
+    padding-right: unset;
+}
+
+::ng-deep html[dir="rtl"] .klaro .cookie-modal li {
+    text-align: right !important;
+}
+
+::ng-deep html[dir="rtl"] .klaro .cookie-modal .cm-list-label .cm-switch {
+    left: unset !important;
+    right: 0 !important;
+}
+
+::ng-deep html[dir="rtl"] .klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-purpose {
+    padding-left: unset !important;
+    padding-right: 60px !important;
+}
+
+::ng-deep html[dir="rtl"] .klaro .cookie-modal .cm-modal .cm-header h1.title {
+    padding-right: unset;
+}
+
+::ng-deep html[dir="rtl"] .klaro .cookie-modal .cm-modal .cm-body ul.cm-purposes li.cm-service {
+    padding-right: 60px !important;
+    padding-left: unset !important;
+}
+
+/** end handle cookies */
+
+// Search pagination start btn
+::ng-deep html[dir="rtl"] .page-item:last-child .page-link {
+    border-top-left-radius: 0.25rem !important;
+    border-bottom-left-radius: 0.25rem !important;
+    border-top-right-radius: 0rem !important;
+    border-bottom-right-radius: 0rem !important;
+}
+
+// Search pagination end btn
+::ng-deep html[dir="rtl"] .page-item:first-child .page-link {
+    border-top-right-radius: 0.25rem !important;
+    border-bottom-right-radius: 0.25rem !important;
+    border-top-left-radius: 0rem !important;
+    border-bottom-left-radius: 0rem !important;
+}
+
+// browse all btn in policy page
+::ng-deep html[dir="rtl"] ds-group-search-box {
+    .btn-secondary {
+
+        margin-right: 20px !important;
+
+    }
+
+}
+
+
+// cookies msg
+::ng-deep html[dir="ltr"] .klaro .cookie-notice {
+
+    left: 20px !important;
+
+}
+
+// date-picker inputs in submission form
+::ng-deep html[dir="rtl"] ds-number-picker .mr-3 {
+    margin-right: 1rem !important;
+}
+
+
+
+
+//author authoraity-index circle
+::ng-deep html[dir="rtl"] ds-dynamic-onebox .right-addon .far,
+.right-addon .fas,
+.right-addon i {
+    left: 0;
+}
+
+
+::ng-deep html[dir="rtl"] ds-dynamic-form-control-container .right-addon .far,
+.right-addon .fas,
+.right-addon i {
+    left: 0 !important;
+}
+
+// footer list
+::ng-deep html[dir="rtl"] ds-footer .bottom-footer {
+    ul {
+        margin-top: 10px;
+    }
+}
+
+
+
+// card count in grid view at mobile view
+
+::ng-deep html[dir="rtl"] ds-top-level-community-list {
+    @media (max-width:480) {
+        .row {
+            display: grid;
+        }
+
+    }
+}
+
+
+
+// size of card body
+::ng-deep ds-community-grid-element {
+
+    p {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        height: 70px;
+    }
+
+    h4 {
+        height: 80px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+    }
+}
+
+
+::ng-deep ds-collection-grid-element {
+    p {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        height: 70px;
+    }
+
+    h4 {
+        height: 80px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+
+    }
+
+}
+
+
+// orcid search circle in author input
+::ng-deep html[dir="rtl"] ds-dynamic-lookup .col i {
+    margin-left: 10px !important;
+}
+
+
+// pagination control panel
+
+::ng-deep html[dir="rtl"] ds-pagination {
+
+    #paginationControlsDropdownMenu {
+        transform: translate(1px, 38px) !important;
+    }
+
+    // @media (max-width:980px) {
+    //   #paginationControlsDropdownMenu{
+    //     transform: translate(1px, 38px) !important;
+    //   }
+
+    // }
+
+}
+
+
+// checkbox submission-form license
+::ng-deep html[dir="rtl"] dynamic-ng-bootstrap-checkbox {
+
+    .custom-control-label::before,
+    .custom-control-label::after {
+        left: 140px !important;
+        top: 10px;
+    }
+
+
+}
+
+//  pagination in recent submission
+
+::ng-deep ds-recent-item-list {
+
+    .pagination-info,
+    #paginationControls,
+    .pagination {
+        visibility: hidden;
+        opacity: 0;
+        display: none;
+    }
+}
+
+::ng-deep html[dir="rtl"] ds-starts-with-text ul {
+    width: 690px;
+}
+
+
+::ng-deep ds-starts-with-text ul {
+    width: 620px;
+}
+
+
+::ng-deep .card:hover {
+    border: #530a86 1.5px solid;
+}
+
+
+
+
+
+::ng-deep .keys-info {
+    width: 100%;
+    margin-bottom: 15px !important;
+
+
+    span {
+        background-color: #fff !important;
+        white-space: -webkit-nowrap !important;
+    }
+
+    a {
+        color: #207698;
+        font-size: 12px;
+        font-weight: 800;
+
+    }
+}
+
+//show count results
+::ng-deep ds-pagination .col-auto {
+    margin-bottom: 30px;
+}
+
+//pagination
+::ng-deep ds-pagination .pagination {
+
+    margin-top: 30px;
+}
+
+
+
+
+// ::ng-deep ds-base-root main {
+//     margin-top: 85px !important;
+// }
+
+
+
+::ng-deep html[dir="ltr"] {
+    .atss-left {
+
+        right: 0;
+        float: right;
+        left: auto;
+    }
+
+
+}
+
+
+
+
+
+
+::ng-deep html[dir="rtl"] .at4-follow {
+    left: 0 !important;
+    right: auto !important;
+
+}
+
+
+
+
+
+
+// share icons
+
+::ng-deep html[dir="ltr"] {
+    .slideInLeft {
+        animation-name: slideInRight !important;
+    }
+
+    .slideOutLeft {
+        animation-name: slideOutRight !important;
+    }
+
+    #at4-soc {
+        transform: scale(-1);
+        right: 0 !important;
+        left: auto !important;
+    }
+
+    .at4-share .at-left {
+        transform: scale(-1) !important;
+    }
+
+    .at-right {
+        transform: scale(-1) !important;
+    }
+
+    .atss .at-share-btn,
+    .atss a {
+        float: right !important;
+    }
+
+}
+
+
+
+
+::ng-deep html[dir="rtl"] {
+    div.at4-arrow {
+        text-align: right !important;
+    }
+
+    .at4-share .at-left {
+        margin-right: 27px;
+    }
+}
+
+
+
+
+
+
+// follow icons
+::ng-deep .at4-follow-container {
+    display: flex !important;
+    flex-direction: column !important;
+
+}
+
+::ng-deep html[dir="ltr"] {
+    .at4-follow-container {
+        margin-right: -20px !important;
+
+    }
+
+    .at4-follow .at4-follow-inner .at4-follow-close-control div {
+        transform: scale(1) !important;
+    }
+}
+
+::ng-deep html[dir="rtl"] {
+    .at4-follow-container {
+        margin-left: 0px !important;
+
+    }
+
+
+    .at-follow-btn {
+        margin: 0 27px 5px 0 !important;
+    }
+
+    #at4-foc {
+        left: 0 !important;
+        right: auto;
+    }
+
+    .slideOutRight {
+        animation-name: slideOutLeft;
+    }
+
+    .slideInRight {
+        animation-name: slideInLeft;
+    }
+
+
+    .at-follow-open-control div.at4-arrow.at-left {
+        transform: scale(-1) !important;
+    }
+
+    .at4-follow .at4-follow-inner .at4-follow-close-control div {
+
+        transform: scale(-1) !important;
+    }
+
+
+
+}
+
+
+// image slider btns
+
+::ng-deep html[dir="rtl"] {
+    .carousel-control-next {
+        left: 0 !important;
+        right: auto !important;
+        transform: scale(-1);
+    }
+
+
+    .carousel-control-prev {
+
+        left: auto !important;
+        right: 0 !important;
+        transform: scale(-1);
+    }
+
+}
+
+::ng-deep html[dir="rtl"] ds-item-search-result-grid-element {
+
+    .share-options {
+        bottom: 90%;
+    }
+
+}
+
+
+::ng-deep html[dir="ltr"] ds-item-search-result-grid-element {
+
+    .share-options {
+        bottom: 90%;
+    }
+
+}
+
+
+::ng-deep .wadgets {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    //   gap: 90px;
+    width: 100%;
+    max-width: 1250px;
+    z-index: 1;
+    position: relative;
+}
+
+
+
+
+::ng-deep html[dir="rtl"] ds-collection-search-result-grid-element .share-btn {
+    right: -70px;
+}
+
+
+::ng-deep html[dir="rtl"] ds-community-search-result-grid-element .share-btn {
+    right: -70px;
+}
+
+
+::ng-deep html[dir="rtl"] ds-search-results ds-item-search-result-grid-element .share-btn {
+    right: -70px;
+}
+
+
+
+::ng-deep html[dir="ltr"] ds-collection-search-result-grid-element .share-btn {
+    left: -64px;
+}
+
+
+::ng-deep html[dir="ltr"] ds-community-search-result-grid-element .share-btn {
+    left: -64px;
+}
+
+
+::ng-deep html[dir="ltr"] ds-search-results ds-item-search-result-grid-element .share-btn {
+    left: -64px;
+}
+
+
+// relationship results in modal
+::ng-deep html[dir="rtl"] ds-object-list {
+
+    .mb-4 {
+        gap: 18px;
+    }
+}
+
+
+//pop-up in relationship-entity
+::ng-deep html[dir="rtl"] {
+
+    form::before {
+
+        left: 0 !important;
+        right: auto !important;
+
+    }
+
+}
+
+// date-picker slider in RTL
+::ng-deep html[dir="rtl"] ds-search-range-filter {
+    .noUi-handle {
+        left: -9px !important;
+
+    }
+}
+
+
+::ng-deep ds-dynamic-lookup-relation-search-tab {
+    .add-filter .form-control {
+        width: 61px !important;
+    }
+
+}
+
+
+::ng-deep .label_dage {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+
+    justify-items: center;
+
+    // span{
+    //   padding: 5px !important;
+    // }
+
+}
+
+
+::ng-deep html[dir="rtl"] .fa-check {
+    transform: scaleX(1) !important;
+}
+
+
+::ng-deep html[dir="rtl"] ds-publication {
+    .ngx-gallery-image {
+        background-position: right !important;
+    }
+}
+
+::ng-deep html[dir="ltr"] ds-publication {
+    .ngx-gallery-image {
+        background-position: left !important;
+    }
+}
+
+
+::ng-deep html[dir="rtl"] ds-dynamic-onebox {
+    .fa-circle {
+        left: 0 !important;
+        right: auto !important;
+    }
+}
+
+
+
+::ng-deep .space-children-mr {
+    display: flex;
+    gap: 7px;
+}
+
+
+::ng-deep html[dir="rtl"] #paginationControls {
+    margin-right: 7px !important;
+}
+
+
+::ng-deep html[dir="ltr"] ds-edit-item-page {
+    .btn-outline-secondary {
+
+        margin-right: 7px !important;
+
+    }
+}
+
+
+::ng-deep html[dir="rtl"] ds-profile-page-researcher-form {
+    .btn-danger {
+        margin-right: 7px !important;
+    }
+}
+
+
+::ng-deep html[dir="rtl"] ds-orcid-auth {
+    .btn-primary {
+        margin-left: 7px !important;
+    }
+}
+
+
+::ng-deep html[dir="ltr"] ds-orcid-auth .btn-primary {
+    margin-right: 7px !important;
+}
+
+
+::ng-deep ds-orcid-sync-setting {
+    .ml-2 {
+        display: inline !important;
+    }
+}
+
+
+::ng-deep ds-breadcrumbs {
+    li .text-truncate {
+        white-space: unset !important;
+    }
+}
+
+// ::ng-deep .thumbnail{
+//   border: 1px  solid;
+// }
+
+::ng-deep ds-recent-item-list {
+    .my-4:nth-child(2n+1) {
+        background-color: #f8f9fa;
+
+    }
+}
+
+
+
+
+
+// ::ng-deep ds-viewable-collection {
+//   .row:nth-child(n+1){
+//     background-color: #EEE;
+// }
+// }
+
+
+
+::ng-deep {
+
+
+
+
+
+    .attribution {
+        color: #530a86;
+        text-decoration: none;
+    }
+
+    .mr-auto,
+    .mx-auto {
+        margin-right: auto !important;
+    }
+
+
+    .attribution>span {
+        white-space: nowrap;
+    }
+
+    .align-items-center {
+        -ms-flex-align: center !important;
+        align-items: center !important;
+    }
+
+    .d-inline-flex {
+        display: -ms-inline-flexbox !important;
+        display: inline-flex !important;
+    }
+
+
+    .attribution .license {
+        display: inline-block;
+        margin-right: 0.25rem;
+    }
+
+    .attribution .license,
+    .attribution.is-external-link::after,
+    [class^=icon-],
+    [class*=" icon-"],
+    .badge .close,
+    .btn-link.multilingual-dropdown::after,
+    .content-card .is-external-link .card-title::after {
+        font-family: "icomoon";
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        vertical-align: middle;
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .rights-statement-button:hover {
+        color: #680da8;
+    }
+
+    .rights-statement-button {
+
+        color: #680da8;
+        background: #f1f1ee;
+        // color: #fff;
+        // background: #530a86;
+        border-radius: 0.25rem;
+        padding: 0.38rem 0.625rem;
+        font-size: .875rem;
+        transition: .3s ease-in-out;
+        overflow: hidden;
+    }
+
+
+
+    .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+    }
+}
+
+
+
+
+::ng-deep .ngx-gallery-active {
+    top: 80px !important;
+    height: 92% !important;
+
+}
+
+
+::ng-deep html[dir="rtl"] {
+
+    .media-viewer .change-gallery .ngx-gallery ngx-gallery-preview.ngx-gallery-active {
+        right: auto !important;
+        left: 0 !important;
+        width: calc(100% - 53px);
+    }
+
+    .ngx-gallery-preview-icons {
+        float: left !important;
+        margin-left: 25px !important;
+    }
+
+
+
+}
+
+
+
+::ng-deep html[dir="rtl"] .ngx-gallery-arrow-right {
+    .ngx-gallery-arrow {
+        right: auto !important;
+        left: 10px !important;
+        transform: scale(-1) !important;
+    }
+}
+
+::ng-deep html[dir="rtl"] .ngx-gallery-arrow-left {
+    .ngx-gallery-arrow {
+        left: auto !important;
+        right: 10px !important;
+        transform: scale(-1) !important;
+    }
+}
+
+
+::ng-deep .pdfbtn {
+    color: #530a86 !important;
+    cursor: pointer;
+
+}
+
+::ng-deep .pdfbtn:hover {
+
+    text-decoration: underline !important;
+    color: #7c10c9;
+
+}
+
+// ::ng-deep html[dir="ltr"] .pdfbtn{
+//   margin-left: 10px;
+// }
+::ng-deep html[dir="ltr"] .cui-ctl-iconContainer14 {
+    transform: scale(-1) !important;
+}
+
+
+//mohamed-edit
+::ng-deep {
+    @media screen and (min-width: 770px) {
+        .desktop-mode {
+            position: relative !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+        .mobile-mode {
+            position: absolute !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+        }
+
+
+    }
+
+    .desktop-mode {
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .mobile-mode {
+        position: relative;
+        opacity: 1;
+        visibility: visible;
+    }
+
+
+    @media screen and (min-width: 450px) {
+        .mobile-mode .video-js {
+            height: 390px !important;
+        }
+
+        .mobile-mode .media-viewer {
+            height: 390px !important;
+        }
+    }
+
+    .mobile-mode .viewer-toolbar-filename {
+        white-space: nowrap;
+        overflow: hidden;
+    }
+}
+
+
+::ng-deep ds-chips .float-left {
+    height: 250px !important;
+}
+
+@media screen and (max-width:768px) {
+    // ::ng-deep ds-root main {
+    //     margin-top: 125px !important;
+
+    // }
+
+    //  ::ng-deep .container{
+    //   overflow-x: hidden !important;
+    //  }
+
+}
+
+::ng-deep ds-search-navbar {
+    @media screen and (max-width: 550px) {
+        form>input {
+            margin-top: 30px !important;
+            margin-right: 10px !important;
+            max-width: 210px;
+        }
+
+        .dropdown-menu-right {
+            left: 0 !important;
+            right: 0 !important;
+        }
+
+    }
+}
+
+
+::ng-deep {
+    @media screen and (max-width: 650px) {
+
+        .ribbon-1 {
+            transform: translate(0) rotate(0) !important;
+            width: 100%;
+            text-align: center !important;
+
+        }
+    }
+}
+
+
+
+::ng-deep ds-search-facet-option {
+    label {
+        gap: 5px !important;
+    }
+}
+
+
+// orcid image
+
+::ng-deep ds-metadata-values {
+    a {
+        img {
+            width: 25px !important;
+        }
+    }
+
+}
+
+::ng-deep html[dir="rtl"] ds-metadata-values {
+    a {
+        img {
+            margin-right: 3px;
+        }
+    }
+}
+
+
+
+::ng-deep html[dir="ltr"] ds-metadata-values {
+    a {
+        img {
+            margin-left: 3px;
+            margin-top: -5px;
+        }
+    }
+}
+
+
+::ng-deep {
+    @media screen and (max-width: 780px) {
+        .ngx-gallery-preview-top {
+            top: 40px !important;
+        }
+    }
+}
+
+::ng-deep html[dir="rtl"] ds-vocabulary-treeview label {
+    gap: 7px !important;
+}
+
+::ng-deep html[dir="rtl"] ds-vocabulary-treeview {
+    .btn-outline-primary {
+        border-top-left-radius: 0 !important;
+        border-bottom-left-radius: 0 !important;
+    }
+
+    .btn .btn-outline-secondary {
+        border-top-left-radius: 5px !important;
+        border-bottom-left-radius: 5px !important;
+    }
+}
+
+::ng-deep .archived-items-lead {
+    background-color: #680da8 !important;
+    color: #FFF !important;
+}
+
+// kware end edit -- issue.7.6.001
+// kware end edit -- issue.7.6.001
+
+::ng-deep ds-item-list-element {
+
+    ds-truncatable-part {
+        .clamp-default-3 .content {
+            text-align: justify !important;
+            text-justify: inter-word !important;
+        }
+
+        .dont-break-out {
+            text-align: justify !important;
+            text-justify: inter-word !important;
+        }
+
+    }
+
+}
+
+::ng-deep ds-metadata-values {
+    .dont-break-out p {
+        text-align: justify !important;
+        text-justify: inter-word !important;
+    }
+}
+
+::ng-deep ds-top-section {
+
+    .pagination-info,
+    #paginationControls,
+    .pagination {
+        visibility: hidden;
+        opacity: 0;
+        display: none;
+    }
+}
+
+::ng-deep ds-navbar ul {
+    li {
+        margin-block: auto !important;
+    }
+}
+
+::ng-deep ngb-carousel {
+    ol {
+        top: 270px !important;
+    }
+}
+
+// ::ng-deep html[dir="rtl"]{
+//   .carousel-item-next:not(.carousel-item-left),
+//   .active.carousel-item-right {
+//     transform: translateX(-100%);
+//   }
+//   .carousel-item-prev:not(.carousel-item-right),
+//   .active.carousel-item-left {
+//     transform: translateX(100%);
+//   }
+
+//   .carousel-control-next{
+//     left: auto !important;
+//     right: 0 !important;
+//   }
+//   .carousel-control-prev{
+//     left: 0 !important;
+//     right: auto !important;
+
+
+//   }
+//   .carousel-control-next-icon{
+//     transform: scale(-1) !important;
+//   }
+//   .carousel-control-prev-icon{
+//     transform: scale(-1) !important;
+//   }
+//   // .carousel-indicators{
+//   //   transform: scale(-1) !important;
+//   // }
+// }
+
+::ng-deep html[dir="rtl"] {
+
+    .carousel-item-next:not(.carousel-item-left),
+    .active.carousel-item-right {
+        transform: translateX(-100%);
+    }
+
+    .carousel-item-prev:not(.carousel-item-right),
+    .active.carousel-item-left {
+        transform: translateX(100%);
+    }
+
+    .carousel-control-next {
+        left: 0 !important;
+        right: auto !important;
+    }
+
+    .carousel-control-prev {
+        left: auto !important;
+        right: 0 !important;
+
+
+    }
+
+    // .carousel-control-next-icon{
+    //   transform: scale(-1) !important;
+    // }
+    // .carousel-control-prev-icon{
+    //   transform: scale(-1) !important;
+    // }
+    // .carousel-indicators{
+    //   transform: scale(-1) !important;
+    // }
+}
+
+// ::ng-deep ds-home-page{
+//   ds-search-form {
+//     input{
+//       height: 47px !important;
+//     }
+//   }
+// }
+::ng-deep {
+    ds-search-form {
+        input {
+            height: 47px !important;
+        }
+    }
+
+    ds-starts-with-text {
+        input {
+            height: 47px !important;
+        }
+    }
+
+    ds-starts-with-date {
+
+        input,
+        select {
+            height: 47px !important;
+        }
+    }
+}
+
+::ng-deep ds-top-section {
+
+    ds-item-search-result-grid-element {
+        ds-truncatable-part {
+            .clamp-default-3 .content {
+                max-height: 1.3rem;
+            }
+        }
+    }
+
+    .keys-info {
+        position: absolute;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    // ds-thumbnail img{
+    //   scale: 1.7 !important;
+    // }
+
+}
+
+
+::ng-deep ds-item-search-result-grid-element {
+    .card-body {
+        padding: 0.5rem !important;
+    }
+
+}
+
+::ng-deep {
+
+    h2,
+    .h2 {
+        font-size: 1.5rem !important;
+    }
+}
+
+
+::ng-deep html[dir="ltr"] {
+    // .label_dage span{
+    //   padding: 2.5px !important;
+
+    // }
+
+
+    // ds-top-section .label_dage{
+    //   gap: 0px !important;
+    //   display: initial !important;
+    // }
+
+    ds-access-status-badge .pl-1,
+    .px-1 {
+        padding-left: 0rem !important;
+    }
+}
+
+::ng-deep html[dir="rtl"] {
+    .btn-floating {
+        float: left;
+    }
+}
+
+
+::ng-deep html[dir="ltr"] {
+    .btn-floating {
+        float: right;
+    }
+}
+
+
+::ng-deep {
+    .scrollTop:hover {
+        background-color: #920fed;
+        filter: drop-shadow(3px 0px 6px #920fed);
+    }
+
+    ds-base-admin-sidebar .sidebar-section-wrapper {
+        border-bottom: 1px solid #FFF;
+        //  background-color: #FFF;
+
+    }
+
+    //   #sidebar-top-level-items-container > .sidebar-fixed-element-wrapper{
+    //     border-bottom: 1px solid #FFF;
+    //     // background-color: #FFF;
+
+    // }
+    //   #sidebar-top-level-items-container > .sidebar-section-wrapper  {
+    //     border-bottom: 1px solid #FFF;
+    //     // background-color: #FFF;
+
+    // }
+}
+
+
+::ng-deep html[dir="rtl"] {
+    ds-collection-source {
+        .space-children-mr {
+            display: block;
+        }
+
+        .btn-primary {
+            margin-right: 10px;
+        }
+
+        .btn-primary {
+            margin-right: 10px;
+        }
+
+        .btn-secondary {
+            margin-left: 0px !important;
+            margin-right: 0px;
+        }
+    }
+}
+
+
+::ng-deep html[dir="ltr"] {
+    ds-collection-source {
+        .space-children-mr {
+            display: block;
+        }
+
+        .btn-primary {
+            margin-left: 10px;
+        }
+
+        .btn-primary {
+            margin-left: 10px;
+        }
+
+        .btn-secondary {
+            margin-right: 0px !important;
+            margin-left: 0px;
+        }
+    }
+}
+
+
+
+.nav-item.nav-link.d-flex.flex-row.flex-nowrap:hover {
+    background-color: #530a86;
+}
+
+.sidebar-section.ng-trigger.ng-trigger-bgColor:hover {
+    background-color: #530a86 !important;
+}
+
+::ng-deep ds-base-admin-sidebar {
+
+    .navbar-dark .navbar-nav .nav-link:hover,
+    .navbar-dark .navbar-nav .nav-link:focus {
+        background-color: #530a86 !important;
+
+        ds-onclick-menu-item a {
+            background-color: #530a86 !important;
+        }
+
+        ds-link-menu-item a {
+            background-color: #530a86 !important;
+        }
+    }
+
+
+}
+
+::ng-deep ds-search-form {
+    .btn-primary {
+        background-color: #530a86 !important;
+        border-color: #530a86 !important;
+    }
+}
+
+// ::ng-deep{
+//   ds-search-navbar form > input{
+//     margin-top: 0 !important;
+//   }
+// }
+
+@media (max-width: 768px) {
+    ::ng-deep {
+        ds-search-navbar form>input {
+            margin-top: 0 !important;
+        }
+
+
+    }
+
+}
+
+::ng-deep {
+    .nav-item.nav-link:hover {
+        background-color: #eee;
+    }
+
+    ds-expandable-navbar-section .dropdown-toggle:focus,
+    ds-expandable-navbar-section .dropdown-toggle:active {
+        position: relative;
+        z-index: 1000;
+        margin-top: 2px;
+        border: 2px solid #eee;
+        border-bottom: none;
+        background-color: white;
+    }
+
+    // ds-expandable-navbar-section  .dropdown-menu{
+    //   top: 0px;
+    //   left: 0px;
+    //   will-change: transform;
+    //   box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 6px 0px !important;
+    //   z-index: 99;
+    //   position: absolute;
+    //   // transform: translate(-82px, 44px) !important;
+    //   border-radius: 5px;
+    //   border: 2px solid #eee;
+    // }
+}
+
+::ng-deep html[dir="ltr"] {
+    ds-expandable-navbar-section .dropdown-menu {
+        // transform: translate(2px, 44px) !important;
+
+    }
+}
+
+
+
+
+
+::ng-deep {
+    .scrolledY .nav-item.nav-link:hover {
+        background-color: #b3a27ab0;
+    }
+
+    .scrolledY .dropdown-toggle:active,
+    .scrolledY .dropdown-toggle:focus {
+        position: relative;
+        z-index: 10000 !important;
+        // margin-top: 4px !important;
+        border: 2px solid #b4b1b1 !important;
+        border-bottom: none !important;
+        background-color: #530a86 !important;
+    }
+
+    .scrolledY .dropdown-menu {
+        top: 0px;
+        left: 0px;
+        will-change: transform;
+        //  box-shadow: rgba(0, 0, 0, 0.3) 0px 2px 6px 0px !important;
+        z-index: 999 !important;
+        position: absolute;
+        // transform: translate(-85px, 44px) !important;
+        border-radius: 5px;
+        border: 2px solid #b4b1b1 !important;
+    }
+}
+
+::ng-deep html[dir="ltr"] {
+    .scrolledY .dropdown-menu {
+        transform: translate(0px, 44px) !important;
+
+    }
+}
+
+::ng-deep html[dir="rtl"] ds-item-search-result-list-element-submission {
+    .row .pl-3 {
+        padding-right: 10rem !important;
+    }
+}
+
+::ng-deep ds-home-news {
+    ds-themed-search-form {
+        .scope-button {
+            background-color: #495057 !important;
+            border-color: #495057 !important;
+            color: #fff;
+        }
+    }
+}
+
+
+
+::ng-deep ds-browse-categories {
+
+    .pagination-info,
+    ds-rss,
+    .pagination,
+    #paginationControls {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+    }
+
+    .browse-category-link-circle-selected {
+        background-color: #530a86 !important;
+        border-radius: 50%;
+        border: 1px solid #530a86 !important;
+    }
+
+    .browse-category-link-circle {
+        border: 1px solid #530a86 !important;
+    }
+
+    .browse-category-link-selected {
+        background-color: #530a86 !important;
+        border-color: #530a86 !important;
+        color: #FFF !important;
+    }
+
+    .browse-category-link-selected a {
+        color: #FFF !important;
+    }
+}
+
+::ng-deep ds-root {
+    .container {
+        max-width: 1540px !important;
+        justify-content: center;
+
+    }
+
+}
+
+::ng-deep ds-breadcrumbs {
+    .container {
+        justify-content: flex-start;
+    }
+}
+
+// ::ng-deep  ds-home-page{
+//   .container {
+//     max-width: 1540px !important;
+//     justify-content: center !important;
+//     align-items: center !important;
+// }
+
+// }
+
+::ng-deep ds-themed-home-news {
+    .container {
+        max-width: 1140px !important;
+    }
+
+}
+
+
+::ng-deep {
+    @media (min-width: 1200px) {
+        .col-lg-4 {
+            flex: 0 0 0 0 33.33333333% !important;
+            max-width: 19.53333333% !important;
+        }
+
+        ds-base-search {
+            .col-lg-4 {
+                flex: 0 0 0 0 33.33333333% !important;
+                max-width: 24.5333333% !important;
+            }
+        }
+
+        ds-browse-by-metadata ds-base-search-results {
+            .col-lg-4 {
+                flex: 0 0 0 0 33.33333333% !important;
+                max-width: 24.5333333% !important;
+            }
+        }
+    }
+
+}
+
+// ::ng-deep ds-home-page{
+//   @media (min-width: 992px){
+//     .col-lg-4 {
+//       flex: 0 0 0 0 33.33333333% !important;
+//       max-width: 19.33333333% !important;
+//     } 
+//   }
+
+// }
+::ng-deep ds-item-search-result-grid-element .card-title {
+    font-size: 1.2rem !important;
+}
+
+//  ::ng-deep{
+//   div.container ds-browse-categories div.card-columns.row {
+//     justify-content: center;
+// }
+//  }
+
+::ng-deep {
+    div.container div.card-columns.row {
+        justify-content: center;
+    }
+}
+
+::ng-deep ds-listable-object-component-loader {
+    .viewButton {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+    }
+}
+
+::ng-deep {
+    .card-container {
+        background-color: transparent !important;
+    }
+}
+
+
+
+::ng-deep {
+    ds-listable-object-component-loader .card {
+        ds-view-statistics .d-block {
+            display: flex !important;
+            justify-content: end;
+            margin: 0 0.75rem;
+        }
+    }
+
+    .card.ng-tns-c128-15.ng-trigger.ng-trigger-focusShadow {
+        border-radius: 15px !important;
+        background-color: whitesmoke !important;
+    }
+
+    ds-listable-object-component-loader div.card {
+        border-radius: 15px;
+        background-color: whitesmoke;
+    }
+
+    .card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 1px solid rgba(0, 0, 0, .125);
+        border-radius: .25rem;
+    }
+
+    .card-element {
+        border-radius: 25px;
+    }
+
+    .thumbnail.ng-star-inserted {
+        border: 1px solid whitesmoke;
+        border-radius: 25px !important;
+    }
+
+    div.card div.thumbnail>.thumbnail-content {
+        height: 290px !important;
+        width: 90% !important;
+        display: block !important;
+        min-width: 90% !important;
+        min-height: 100% !important;
+        margin: auto;
+        margin-top: .75rem;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+
+    .d-block {
+        display: flex;
+        justify-content: end;
+        margin: 0 0.75rem;
+    }
+
+    .item-abstract.card-text {
+        color: #7d858c;
+        font-size: 0.8rem;
+    }
+
+
+    ds-listable-object-component-loader .card-title {
+        font-size: 1rem !important;
+        line-height: 1.6rem;
+        margin-bottom: 0;
+    }
+
+    .card-container .thumbnail-content {
+        height: 290px !important;
+        width: 90% !important;
+        display: block !important;
+        min-width: 90% !important;
+        min-height: 100% !important;
+        margin: auto;
+        margin-top: .75rem !important;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+
+    .badge.ng-star-inserted {
+        border-radius: 15px;
+    }
+
+    .keys-info .badge-info {
+        background-color: transparent !important;
+    }
+
+    .keys-info span {
+        background-color: transparent !important;
+    }
+
+    .browse-category-link,
+    .browse-category-link-selected {
+        border-radius: 15px;
+    }
+
+    .browse-category-btn {
+        border-radius: 5px;
+    }
+
+
+    .clamp-default-3.h4 .content {
+        max-height: 4.6rem;
+    }
+
+
+}
+
+
+::ng-deep {
+
+    //   .badge.ng-star-inserted {
+    //     border-radius: 15px;
+    //     padding: 0.4rem 0.5rem;
+    //     min-width: 3.3rem;
+    //     background-color: rgb(178, 161, 121) !important;
+    //     color: #fff;
+    //     margin-bottom: -2px;
+    // } 
+    .label_dage span {
+        // padding: 0.4rem 0.5rem !important;
+        border-radius: 15px;
+    }
+
+    .badge-secondary {
+        background-color: #495057;
+    }
+
+
+    // .card .badge {
+    //   display: inline-block;
+    //   padding: .6em .5em;
+    //   font-size: 75%;
+    //   font-weight: 700;
+    //   line-height: 1;
+    //   text-align: center;
+    //   white-space: nowrap;
+    //   vertical-align: baseline;
+    //   border-radius: 15px;
+    //   transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    //   min-width: 3.3rem;
+    // }
+
+
+    .card .badge {
+        display: inline-block;
+        // padding: .6em .5em;
+        font-size: 75%;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: 15px;
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        // min-width: 3.3rem;
+    }
+
+    ds-listable-object-component-loader .card-title {
+        line-height: 1.4rem;
+        margin-bottom: 0;
+        margin-top: 0.3rem;
+    }
+
+    .card-text:last-child {
+        font-size: 0.85rem;
+    }
+
+    .clamp-default-3.h4 .content {
+
+        margin-top: 0.5rem;
+    }
+
+    .clamp-default-3.h4 .content {
+        margin-top: 0.5rem;
+    }
+
+    ds-listable-object-component-loader .card ds-view-statistics .d-block {
+        justify-content: end;
+        margin: 0.5rem .75rem;
+    }
+
+    .clamp-default-3 .content {
+        max-height: 4rem;
+        font-size: .9rem !important;
+
+    }
+}
+
+
+::ng-deep html[dir="rtl"] {
+    .fixed-height {
+        position: relative;
+        height: 330px !important;
+    }
+
+    .fixed-bottom-content {
+        position: absolute;
+        bottom: .5rem;
+        width: 100%;
+    }
+
+    ::ng-deep ds-top-section {
+        .fixed-height {
+            position: relative;
+            height: 300px !important;
+        }
+
+        .fixed-bottom {
+            position: absolute;
+            bottom: .5rem;
+            width: 100%;
+        }
+    }
+}
+
+::ng-deep html[dir="ltr"] {
+    .fixed-height {
+        position: relative;
+        height: 360px !important;
+    }
+
+    .fixed-bottom-content {
+        position: absolute;
+        bottom: .5rem;
+        width: 100%;
+    }
+
+
+    ::ng-deep ds-top-section {
+        .fixed-height {
+            position: relative;
+            height: 300px !important;
+        }
+
+        .fixed-bottom {
+            position: absolute;
+            bottom: .5rem;
+            width: 100%;
+        }
+    }
+
+}
+
+::ng-deep {
+    .card .clamp-default-3 .content {
+        max-height: 4rem;
+        font-size: .9rem !important;
+
+    }
+
+    .card .clamp-default-3.h4 .content {
+        max-height: 4.6rem;
+    }
+
+    .card .keys-info a {
+        font-weight: normal !important;
+    }
+
+    .card .expandButton {
+        font-size: .9rem !important;
+    }
+}
+
+
+::ng-deep html[dir="rtl"] {
+    .date-float {
+        position: relative;
+        left: 20px;
+    }
+}
+
+::ng-deep html[dir="ltr"] {
+    .date-float {
+        position: relative;
+        right: 20px;
+    }
+}
+
+::ng-deep html[dir="rtl"] {
+    .loadMore {
+        margin-left: 25px;
+    }
+}
+
+::ng-deep html[dir="ltr"] {
+    .loadMore {
+        margin-right: 25px;
+    }
+}
+
+
+::ng-deep {
+    .clamp-default-3 .content:after {
+        background: none !important;
+    }
+}
+
+
+::ng-deep .browse-category-link-selected .badge-secondary {
+    color: #530a86 !important;
+    background-color: #FFF !important;
+
+}
+
+::ng-deep {
+    .card .card-title {
+        font-weight: bold;
+    }
+
+    .card .badge {
+        font-weight: 500;
+    }
+
+}
+
+
+
+::ng-deep {
+    .scroll {
+        display: block;
+        padding: 5px;
+        margin-top: 5px;
+        width: 100%;
+        height: 100px;
+        overflow-y: scroll;
+    }
+
+    .card {
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #530a86;
+            border-radius: 10px;
+        }
+    }
+
+    // ds-item-search-result-grid-element{
+    //   .collapseButton{
+    //   visibility: hidden;
+    //   position: absolute;
+    //   }
+    //   .expandButton{
+    //     visibility: hidden;
+    //     position: absolute;
+    //   }
+    // }
+
+}
+
+
+::ng-deep {
+    ds-listable-object-component-loader .card {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            transform: scale(1.04)
+        }
+
+        transition: .5s;
+    }
+}
+
+
+::ng-deep .card:hover {
+    border: #530a86 1.5px solid;
+}
+
+::ng-deep {
+    .card small {
+        background-color: rgb(106, 163, 213) !important;
+    }
+
+    ds-listable-object-component-loader small {
+        background-color: rgb(106, 163, 213) !important;
+    }
+}
+
+::ng-deep {
+    .card small {
+        background-color: transparent !important;
+        color: #6c757d !important;
+    }
+
+}
+
+
+
+::ng-deep html[dir="rtl"] {
+    ds-browse-categories ds-sub-org-unit-search-result-grid-element {
+
+        .fixed-height {
+            position: relative;
+            height: 350px !important;
+        }
+
+        .fixed-bottom-content {
+            position: absolute;
+            bottom: .5rem;
+            width: 100%;
+        }
+    }
+
+
+}
+
+::ng-deep html[dir="ltr"] {
+    ds-browse-categories ds-sub-org-unit-search-result-grid-element {
+        .fixed-height {
+            position: relative;
+            height: 360px !important;
+        }
+
+        .fixed-bottom-content {
+            position: absolute;
+            bottom: .5rem;
+            width: 100%;
+        }
+    }
+
+
+
+
+}
+
+::ng-deep {
+    ds-search-filters .d-block {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+// ::ng-deep html[dir="ltr"] {
+//   ds-footer img {
+//     margin-right: -30px !important;
+//   }
+// }
+
+::ng-deep html[dir="rtl"] {
+    .recent-head {
+        margin-right: 30px;
+    }
+}
+
+::ng-deep html[dir="ltr"] {
+    .recent-head {
+        margin-left: 30px;
+    }
+}
+
+.badge-info {
+    background-color: lighten(#530a86, 15%) !important;
+}
+
+
+::ng-deep .browse-category-link-selected .badge-secondary {
+    color: #530a86 !important;
+    background-color: #FFF !important;
+
+}
+
+::ng-deep {
+    .card .card-title {
+        font-weight: bold;
+    }
+
+    .card .badge {
+        font-weight: 500;
+    }
+
+}
+
+
+
+::ng-deep {
+    .scroll {
+        display: block;
+        padding: 5px;
+        margin-top: 5px;
+        width: 100%;
+        height: 100px;
+        overflow-y: scroll;
+    }
+
+    .card {
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #530a86;
+            border-radius: 10px;
+        }
+    }
+
+    // ds-item-search-result-grid-element{
+    //   .collapseButton{
+    //   visibility: hidden;
+    //   position: absolute;
+    //   }
+    //   .expandButton{
+    //     visibility: hidden;
+    //     position: absolute;
+    //   }
+    // }
+
+}
+
+
+::ng-deep {
+    ds-listable-object-component-loader .card {
+        box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+
+        &:hover {
+            transform: scale(1.04)
+        }
+
+        transition: .5s;
+    }
+}
+
+
+::ng-deep .card:hover {
+    border: #530a86 1.5px solid;
+}
+
+::ng-deep {
+    .card small {
+        background-color: rgb(106, 163, 213) !important;
+    }
+
+    ds-listable-object-component-loader small {
+        background-color: rgb(106, 163, 213) !important;
+    }
+}
+
+::ng-deep {
+    .card small {
+        background-color: transparent !important;
+        color: #6c757d !important;
+    }
+
+}
+
+
+
+
+::ng-deep html[dir="rtl"] {
+
+    ds-collection-page ds-sub-org-unit-search-result-grid-element {
+        .fixed-height {
+            position: relative;
+            height: 350px !important;
+        }
+
+        .fixed-bottom-content {
+            position: absolute;
+            bottom: .5rem;
+            width: 100%;
+        }
+
+    }
+
+    ds-browse-categories ds-sub-org-unit-search-result-grid-element {
+
+        .fixed-height {
+            position: relative;
+            height: 350px !important;
+        }
+
+        .fixed-bottom-content {
+            position: absolute;
+            bottom: .5rem;
+            width: 100%;
+        }
+    }
+
+
+}
+
+::ng-deep html[dir="ltr"] {
+    ds-browse-categories ds-sub-org-unit-search-result-grid-element {
+        .fixed-height {
+            position: relative;
+            height: 360px !important;
+        }
+
+        .fixed-bottom-content {
+            position: absolute;
+            bottom: .5rem;
+            width: 100%;
+        }
+    }
+
+    ds-collection-page ds-sub-org-unit-search-result-grid-element {
+        .fixed-height {
+            position: relative;
+            height: 360px !important;
+        }
+
+        .fixed-bottom-content {
+            position: absolute;
+            bottom: .5rem;
+            width: 100%;
+        }
+    }
+
+
+
+}
+
+::ng-deep {
+    ds-search-filters .d-block {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+}
+
+// ::ng-deep html[dir="ltr"] {
+//   ds-footer img {
+//     margin-right: -30px !important;
+//   }
+// }
+
+::ng-deep html[dir="rtl"] {
+    .recent-head {
+        margin-right: 30px;
+    }
+}
+
+::ng-deep html[dir="ltr"] {
+    .recent-head {
+        margin-left: 30px;
+    }
+}
+
+::ng-deep {
+    .clamp-default-2.h4 .content:after {
+        background: none !important;
+    }
+
+    .clamp-default-2.h4 .content {
+        max-height: 3.2rem;
+    }
+
+    .card_text_abstract {
+        display: -webkit-box;
+        -webkit-line-clamp: 6;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .card {
+        .collapseButton {
+            visibility: hidden;
+            position: absolute;
+        }
+
+        .expandButton {
+            visibility: hidden;
+            position: absolute;
+        }
+    }
+
+    // ds-sub-org-unit-search-result-grid-element{
+    //   .card_text_abstract {
+    //     -webkit-line-clamp: 5;
+
+    //   }
+    // }
+    // ds-org-unit-search-result-grid-element{
+    //   .card_text_abstract {
+    //     -webkit-line-clamp: 5;
+
+    //   }
+    // }
+}
+
+
+::ng-deep {
+    .clamp-default-2 .content:after {
+        background: none !important;
+    }
+
+    .clamp-default-1 .content:after {
+        background: none !important;
+    }
+
+    .clamp-default-3 .content:after {
+        background: none !important;
+    }
+
+    @media (min-width:340px) and (max-width:573px) {
+        ds-top-section .row {
+            display: block !important;
+        }
+    }
+}
+
+::ng-deep html[dir="ltr"] {
+    .category-link .badge {
+        transition: none;
+        border: 1px solid #530a86;
+        font-size: 0.85rem !important;
+    }
+
+    .category-link {
+        color: var(--text-color);
+        font-weight: 700;
+        font-size: 1.1rem !important;
+        cursor: pointer;
+        text-align: center;
+    }
+
+    .category-link-selected {
+        font-size: 1.1rem !important;
+        text-align: center;
+    }
+}
+
+
+::ng-deep html[dir="rtl"] {
+    ds-process-overview .mr-2 {
+        margin-left: 0.5rem !important;
+    }
+
+    ds-process-detail-field .mr-2 {
+        margin-left: 0.5rem !important;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    ::ng-deep ds-search-navbar form>input {
+        margin-top: 30px !important;
+        margin-right: 10px !important;
+        max-width: 210px;
+    }
+
+    ::ng-deep ds-search-navbar .dropdown-menu-right {
+        left: 0 !important;
+        right: 0 !important;
+    }
+
+}
+
+
+
+@media screen and (max-width: 520px) {
+    ::ng-deep ds-search-form input {
+        width: 50% !important;
+        border-top-right-radius: 0.25rem !important;
+        border-bottom-right-radius: 0.25rem !important;
+        margin-top: 7px;
+    }
+
+    ::ng-deep ds-search-form .input-group-prepend {
+        width: 50%;
+
+    }
+
+    ::ng-deep ds-search-form button {
+        width: 100% !important;
+        max-width: 100% !important;
+
+    }
+
+    ::ng-deep ds-search-form span {
+        margin-top: 7px;
+    }
+
+    ::ng-deep ds-search-form select {
+        border-right: 1px solid !important;
+        width: 50% !important;
+        margin-right: -1px !important;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 0.25rem;
+        border-bottom-left-radius: 0.25rem;
+        margin-left: -1px;
+        position: relative;
+        flex: 1 1 auto;
+        width: 1%;
+        min-width: 0;
+        margin-bottom: 0;
+        display: block;
+        width: 100%;
+        height: 47px;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        // color: #495057;
+        // background-color: #fff;
+        // background-clip: padding-box;
+        // border: 1px solid #ced4da;
+        // border-radius: 0.25rem;
+        // box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+        // transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+}
+
+::ng-deep html[dir="rtl"] {
+    ds-dynamic-scrollable-dropdown input {
+        padding-right: 5px !important
+    }
+}
+
+::ng-deep html[dir="rtl"] {
+    ds-access-control-form-container .mr-3 {
+        margin-left: 20px !important
+    }
+}
+
+
+// ::ng-deep {
+//   .dropdown-menu{
+//     z-index:  100000000000000000 !important;
+//   }
+
+//   nav{
+//     -webkit-transform: translate3d(0,0,1px) !important;
+//     transform: translate3d(0,0,1px)!important;
+//   }
+// }
+
+
+@media screen and (max-width: 755px) {
+    ::ng-deep {
+        .dropdown-menu {
+            z-index: 100000000000000000 !important;
+        }
+    }
+}
+
+::ng-deep ds-tabbed-related-entities-search {
+    ds-page-with-sidebar .container {
+        overflow-x: hidden !important;
+    }
+
+    .mt-4 {
+        overflow-x: hidden !important;
+    }
+}
+
+
+
+::ng-deep .modal {
+    -webkit-transform: translate3d(0, 0, 3px) !important;
+    transform: translate3d(0, 0, 3px) !important;
+    z-index: 100000000000000000000000000000000000000000000 !important;
+}
+
+
+
+::ng-deep {
+    @media screen and (min-width: 876px) {
+        .d-m-block {
+            display: block !important;
+        }
+
+        .d-m-none {
+            display: none !important;
+        }
+    }
+}
+
+::ng-deep html[dir="rtl"] ngb-datepicker-navigation {
+    button {
+        transform: scale(-1);
+    }
+
+    .ngb-dp-navigation-select {
+
+        flex: 1 1 12rem !important;
+    }
+}
+
+
+// ::ng-deep html[dir="rtl"] ngb-datepicker-month{
+//   direction: ltr !important;
+
+// }
+
+// ::ng-deep html[dir="rtl"] ngb-datepicker{
+//   .ngb-dp-months{
+//     direction: ltr !important;
+//   }
+// }
+
+::ng-deep html[dir="rtl"] {
+
+    .ngb-dp-day,
+    .ngb-dp-weekday,
+    .ngb-dp-week-number {
+        width: 3.4rem;
+    }
+
+    .form-control {
+        padding-bottom: 0 !important;
+    }
+}
+
+::ng-deep {
+    .ngx-gallery-image-size-contain[_ngcontent-dspace-angular-c410] .ngx-gallery-image[_ngcontent-dspace-angular-c410] {
+        background-size: cover !important;
+    }
+
+    ds-listable-object-component-loader {
+        .col-9 {
+            overflow: hidden !important;
+        }
+    }
+
+    @media screen and (max-width: 755px) {
+
+
+
+        // ds-home-page{
+        //   .container{
+        //     overflow-x: hidden !important;
+        //    }
+        // }
+        ds-footer {
+            .container {
+                overflow-x: hidden !important;
+            }
+        }
+
+        ds-browse-categories {
+            .container {
+                overflow-x: visible !important;
+            }
+        }
+    }
+
+
+
+}
+
+// ::ng-deep ds-help-links .dropdown-menu {
+//   -webkit-transform: translate3d(0,0,4px) !important;
+//   transform: translate3d(0,0,4px)!important;  
+//   z-index: 10000000000000000000000000000 !important;
+// }
+
+// ::ng-deep ds-header .ribbon-1{
+//   position: absolute !important;
+//   visibility: hidden !important;
+//   display: none !important;
+// }
+
+
+// ::ng-deep html[dir="rtl"] {
+//   select{
+//     -webkit-appearance: none !important;  /*For Chrome*/  
+//      -moz-appearance: none;/*For Mozilla*/    
+//      appearance: none;   
+//      direction: rtl;
+//   }
+//   .selectDropDown{
+//     -webkit-appearance: none !important;  /*For Chrome*/  
+//      -moz-appearance: none;/*For Mozilla*/    
+//      appearance: none;   
+//      direction: rtl;
+//   }
+// }
+
+::ng-deep {
+    ds-metadata-representation-loader {
+        a {
+            color: #207698 !important;
+        }
+    }
+
+    .card h4 {
+        color: #530a86 !important;
+    }
+
+    .item-list-title {
+        color: #530a86 !important;
+    }
+
+    ds-base-admin-sidebar {
+        z-index: 99999 !important;
+    }
+
+    ds-navbar {
+        .navbar-nav {
+            justify-content: center !important;
+        }
+    }
+}
+
+::ng-deep html[dir="rtl"] ds-vocabulary-treeview {
+    .input-group>.input-group-append>.btn {
+        border-radius: 0 !important;
+    }
+}
+
+
+::ng-deep ds-item-versions {
+
+    div.card-columns.row {
+        flex-direction: row-reverse;
+    }
+}
+
+::ng-deep ds-item-page {
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+}
+
+::ng-deep {
+    #metrics {
+        overflow: hidden !important;
+    }
+
+}
+
+
+
+
+::ng-deep {
+    .author-flex {
+        display: flex !important;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-right: -15px;
+        margin-left: -15px;
+        justify-content: flex-start !important;
+    }
+
+
+}
+
+
+
+::ng-deep ds-item-page {
+    small {
+        background-color: transparent !important;
+        color: #000 !important;
+        font-size: 14px !important;
+    }
+
+    .simple-view-badge .badge {
+        display: inline-block;
+        // padding: .6em .5em;
+        font-size: 75%;
+        font-weight: 700;
+        line-height: 1;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: 15px;
+        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+        margin: 0 0.5em 0 0 !important;
+        min-width: 3em !important;
+        padding: 0.4em 0.833em !important;
+        text-align: center !important;
+        border: 0 solid transparent !important;
+        border-radius: 0.28571429rem !important;
+        // min-width: 3.3rem;
+    }
+}
+
+
+::ng-deep {
+    ds-listable-object-component-loader {
+        .card-body {
+            padding: .5rem !important;
+        }
+    }
+}
+
+
+
+::ng-deep ds-user-menu {
+    a:active {
+        color: #fff !important;
+    }
+}
+
+
+::ng-deep html[dir="rtl"] {
+    .ror-img {
+        margin-bottom: -20px !important;
+    }
+
+    .orcid-img {
+        margin-bottom: -20px !important;
+    }
+
+    ngb-modal-window {
+        #delete-confirm {
+            margin-right: 20px !important;
+        }
+    }
+}
+
+::ng-deep html[dir="rtl"] ds-notifications-board {
+    .notifications-wrapper.right {
+        right: 50px !important;
+    }
+
+}
+
+
+::ng-deep {
+    #dc_subject_errors {
+        .d-block {
+            margin: 0 !important;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+::ng-deep html[dir="ltr"] ds-item-files-menu {
+    .fa-angle-left {
+        transform: scale(-1) !important;
+    }
+
+    .fa-angle-right {
+        transform: scale(-1) !important;
+    }
+}
+
+
+
+::ng-deep html[dir="rtl"] ds-metadata-field-selector {
+    .dropdown-menu {
+        transform: translate(70px, 0px);
+
+    }
+}
+
+::ng-deep ds-metadata-field-selector {
+    .dropdown-list .d-block {
+        margin: 0 !important;
+    }
+}
+
+
+
+::ng-deep html[dir="ltr"] ds-base-admin-sidebar {
+    .fa-angle-double-right {
+        transform: scale(1) !important;
+    }
+
+    .fa-angle-double-left {
+        transform: scale(1) !important;
+    }
+}
+
+
+
+
+
+::ng-deep ds-listable-object-component-loader {
+    .card-body {
+        padding: 0.5rem !important;
+    }
+}
+
+
+::ng-deep html[dir="rtl"] ds-dynamic-onebox {
+    input {
+        padding-right: 10px !important;
+    }
+
+}
+
+
+::ng-deep html[dir="rtl"] ds-search-filter {
+    h5 {
+        text-align: right;
+    }
+}
+
+
+::ng-deep html[dir="ltr"] ds-search-filter {
+    h5 {
+        text-align: left;
+    }
+}
+
+::ng-deep html[dir="rtl"] ds-search-form {
+    .form-control {
+        padding-bottom: 0.4rem !important;
+    }
+}
+
+
+
+
+
+
+::ng-deep ds-person-search-result-list-submission-element {
+    ds-person-input-suggestions {
+        .dropdown-menu {
+            position: relative;
+        }
+
+        .d-block:hover {
+            margin: 0;
+        }
+    }
+}
+
+
+
+
+// ::ng-deep {
+
+//   ds-dynamic-lookup-relation-modal  .modal-body{
+//     height: 80vh;
+//     overflow-y: auto;
+// }
+
+// .modal-open .modal{
+//   overflow-y: hidden !important;
+// }
+// }
+
+
+::ng-deep html[dir="rtl"] ds-dynamic-lookup-relation-search-tab {
+
+    .input-group-text input {
+        transform: scale(-1);
+    }
+
+}
+
+::ng-deep {
+    @media screen and (min-width: 768px) {
+        ds-dynamic-lookup-relation-search-tab {
+            ds-item-search-result-list-element .img-fluid {
+
+                height: auto !important;
+                min-height: auto !important;
+
+            }
+        }
+    }
+}
+
+
+
+
+::ng-deep {
+    ds-home-news {
+        ds-help-search {
+            .px-1 {
+                color: #fff !important;
+            }
+        }
+    }
+}
+
+
+// ::ng-deep html[dir="rtl"]{
+//   ds-home-news{
+//     ds-help-search{
+//       .help-info .dropdown-menu {
+//         transform: translate(12px, 39px) !important;
+//     }
+//     }
+//   }
+// }
+
+@media (min-width: 768px) {
+    ::ng-deep html[dir="rtl"] {
+        ds-home-news {
+            ds-help-search {
+                .help-info .dropdown-menu {
+                    transform: translate(12px, 39px) !important;
+                }
+            }
+        }
+    }
+}
+
+
+::ng-deep html[dir="rtl"] .doiIcon {
+    margin-right: 5px;
+}
+
+::ng-deep html[dir="ltr"] .doiIcon {
+    margin-left: 5px;
+}
+
+
+
+
+
+::ng-deep ds-listable-object-component-loader .author-section {
+    .simple-view-element-header {
+        position: absolute !important;
+        visibility: hidden !important;
+    }
+
+    ds-metadata-representation-loader {
+
+        a {
+            color: #530a86 !important;
+        }
+    }
+
+    img {
+        width: 1rem !important;
+        margin-right: 0px !important;
+    }
+
+
+}
+
+
+::ng-deep ds-listable-object-component-loader .publisher-section {
+    .simple-view-element-header {
+        position: absolute !important;
+        visibility: hidden !important;
+    }
+
+    ds-metadata-representation-loader {
+
+        a {
+            color: #530a86 !important;
+        }
+    }
+
+    img {
+        width: 1.6rem !important;
+        margin-right: 3px !important;
+    }
+
+
+}
+
+
+
+::ng-deep ds-listable-object-component-loader .publisher-section-entity {
+    .simple-view-element-header {
+        position: absolute !important;
+        visibility: hidden !important;
+    }
+
+    ds-metadata-representation-loader {
+
+        a {
+            color: #2666ab !important;
+        }
+    }
+
+    img {
+        width: 1.6rem !important;
+        margin-right: 3px !important;
+    }
+
+
+}
+
+
+
+
+::ng-deep ds-listable-object-component-loader .publisher-section-admin {
+    .simple-view-element-header {
+        position: absolute !important;
+        visibility: hidden !important;
+    }
+
+    ds-metadata-representation-loader {
+
+        a {
+            color: #530a86 !important;
+            font-size: 15px;
+            // font-weight: 600;
+        }
+    }
+
+    img {
+        width: 1.6rem !important;
+        margin-right: 3px !important;
+    }
+
+
+}
+
+::ng-deep ds-base-expandable-navbar-section {
+    .desktop-mode .nav-link .ds-menu-item {
+        display: inline !important;
+
+    }
+
+    .desktop-mode .dropdown-toggle {
+        margin-top: 1.2rem;
+    }
+}
+
+
+::ng-deep {
+    ds-kware-pdf-viewer {
+        ds-viewer-wrapper .viewer-container {
+            overflow-y: hidden !important;
+        }
+    }
+}
+
+
+
+
+@media screen and (max-width:768px) {
+    ::ng-deep ds-simple-view-statistics {
+        .ui.statistics {
+            margin: 1em -1em -1em !important;
+        }
+
+    }
+
+}
+
+::ng-deep ds-journal-issue-search-result-list-element {
+    .clamp-default-3 .content {
+        max-height: 1.2rem !important;
+    }
+
+    .clamp-default-2 .content {
+        max-height: 1.2rem !important;
+    }
+}
+
+
+::ng-deep ds-item-page-cc-license-field {
+    h5 {
+        position: absolute;
+        visibility: hidden;
+    }
+
+    #cc-name {
+        position: absolute;
+        visibility: hidden;
+    }
+}
+
+
+::ng-deep html[dir="rtl"] ngb-datepicker-navigation {
+    button {
+        transform: scale(-1);
+    }
+
+    .ngb-dp-navigation-select {
+
+        flex: 1 1 12rem !important;
+    }
+}
+
+::ng-deep html[dir="rtl"] ngb-datepicker-navigation-select>.custom-select {
+    padding: 0 1.46rem !important;
+}
+
+::ng-deep ds-plain-text-metadata-list-element {
+    span {
+        color: #530a86;
+    }
+
+    a {
+        color: #530a86;
+    }
+}
+
+::ng-deep {
+    ds-report-filtered-collections {
+        ds-filters {
+            @media screen and (min-width:768px) {
+                .form-check-input {
+                    position: relative;
+                }
+            }
+
+        }
+    }
+}
+
+@media (max-width: 540px) {
+    ::ng-deep html[dir="rtl"] ds-help-links>div>.dropdown-menu {
+        transform: translate(-100px, 27px) !important;
+    }
+
+    ::ng-deep html[dir="ltr"] ds-help-links>div>.dropdown-menu {
+        transform: translate(-140px, 24px) !important;
+
+    }
+
+}
+
+@media (min-width: 768px) {
+    ::ng-deep html[dir="rtl"] .scrolledY {
+        ds-base-expandable-navbar-section {
+            .dropdown-menu {
+                transform: translate(-69px, 59px) !important;
+                border: 2px solid #b4b1b1 !important
+            }
+        }
+
+    }
+
+
+    ::ng-deep html[dir="ltr"] .scrolledY {
+        ds-base-expandable-navbar-section {
+            .dropdown-menu {
+                transform: translate(0px, 59px) !important;
+                border: 2px solid #b4b1b1 !important
+            }
+        }
+
+    }
+
+    ::ng-deep html[dir="rtl"] {
+        ds-base-expandable-navbar-section {
+            // .dropdown-menu {
+            //     border: 2px solid #eee !important;
+            //     transform: translate(-69px, 59px) !important;
+            //     z-index: 100 !important;
+            // }
+        }
+
+    }
+
+
+    ::ng-deep html[dir="ltr"] {
+        ds-base-expandable-navbar-section {
+            // .dropdown-menu {
+            //     border: 2px solid #eee !important;
+            //     transform: translate(0px, 59px) !important;
+            //     z-index: 100 !important;
+            // }
+        }
+
+    }
+
+    ::ng-deep html[dir="rtl"] {
+        ds-base-auth-nav-menu {
+            .dropdown-menu {
+
+                transform: translate(1px, 27px) !important;
+
+            }
+        }
+
+    }
+
+
+    ::ng-deep html[dir="ltr"] .scrolledY {
+        ds-base-auth-nav-menu {
+            .dropdown-menu {
+
+                transform: translate(-270px, 23px) !important;
+
+            }
+        }
+
+    }
+
+
+    ::ng-deep html[dir="ltr"] .scrolledY {
+        ds-help-links {
+            .dropdown-menu {
+
+                transform: translate(-196px, 24px) !important;
+
+            }
+        }
+
+    }
+
+
+}
+
+@media (max-width: 650px) {
+    ::ng-deep {
+
+        html,
+        body {
+            overflow-x: hidden;
+        }
+    }
+}
+
+
+// @media (max-width: 650px){
+//   ::ng-deep{
+//     ds-search-page{
+//   overflow-x: clip !important;
+// }
+//   }
+// }
+::ng-deep html[dir="rtl"] ds-dynamic-list {
+    .custom-control-label::before {
+        right: 0 !important;
+    }
+}
+
+::ng-deep ds-dynamic-list .form-row>[class*=col-] {
+    display: flex !important;
+}
+
+::ng-deep html[dir="ltr"] ds-dynamic-list .form-row>[class*=col-] {
+    gap: 30px !important;
+}
+
+
+::ng-deep ds-orgunit-category {
+    .browse-category-content {
+        max-width: 840px !important;
+    }
+
+}
+
+::ng-deep ds-place-category {
+    .browse-category-content {
+        max-width: 840px !important;
+    }
+
+}
+
+::ng-deep ds-event-category {
+    .browse-category-content {
+        max-width: 840px !important;
+    }
+
+}
+
+::ng-deep ds-journal-category {
+    .browse-category-content {
+        max-width: 840px !important;
+    }
+
+}
+
+::ng-deep html[dir="rtl"] ds-dynamic-lookup-relation-modal {
+    ds-help-search {
+        .help-info .dropdown-menu {
+            transform: translate(65px, 39px) !important;
+        }
+
+        .tooltip-arrow {
+            left: 10% !important;
+
+        }
+    }
+}
+
+
+::ng-deep html[dir="ltr"] ds-dynamic-lookup-relation-modal {
+    ds-help-search {
+        .help-info .dropdown-menu {
+            transform: translate(-210px, 39px) !important;
+        }
+
+        .tooltip-arrow {
+            left: 90% !important;
+
+        }
+    }
+}
+
+::ng-deep {
+
+    ds-kware-citation .modal-body {
+        height: 75vh;
+        overflow-y: auto;
+    }
+
+
+}
+
+
+::ng-deep html[dir="rtl"] ds-admin-notify-logs-result {
+    ds-search-filter .text-left {
+        text-align: right !important;
+    }
+}
+
+::ng-deep html[dir="rtl"] {
+
+    ds-tabbed-related-entities-search {
+        .help-info .dropdown-menu {
+            transform: translate(85px, 39px) !important;
+        }
+
+        .tooltip-arrow-left {
+            left: 22% !important;
+        }
+    }
+}
+
+
+
+::ng-deep html[dir="ltr"] {
+
+    ds-tabbed-related-entities-search {
+        .help-info .dropdown-menu {
+            transform: translate(-180px, 39px) !important;
+        }
+
+        .tooltip-arrow-left {
+            left: 78% !important;
+        }
+    }
+}
+
+
+::ng-deep html[dir="rtl"] {
+
+    ds-submission-import-external-searchbar {
+        .input-group-append {
+            .dropdown-toggle {
+                border-right: 0;
+                border-left: 0;
+                border-radius: inherit;
+            }
+        }
+    }
+
+}
+
+
+
+::ng-deep html[dir="rtl"] {
+
+    ds-authorized-collection-selector {
+        .form-group {
+            margin-top: 8px;
+        }
+
+    }
+
+    ds-dso-selector {
+        .form-group {
+            margin-top: 8px;
+        }
+
+
+    }
+
+    ds-search-filter {
+        .facet-filter {
+            .text-left {
+                text-align: right !important;
+            }
+        }
+    }
+
+    ds-submission-import-external-searchbar {
+
+        .input-group-append[_ngcontent-dspace-angular-c3069331389]:last-child>.btn[_ngcontent-dspace-angular-c3069331389]:not(:last-child):not(.dropdown-toggle) {
+            border-radius: 0.25rem 0 0 0.25rem;
+        }
+
+        .input-group>.input-group-append>.btn-primary {
+
+            border-top-left-radius: 5px;
+            border-bottom-left-radius: 5px;
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+
+        }
+
+
+
+
+        .input-group>.input-group-append>.dropdown-toggle {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-right: 0;
+        }
+    }
+
+}
+
+
+::ng-deep ds-header {
+    .fa-circle-info {
+        margin-top: 3px;
+        font-size: 1.25em;
+    }
+
+    .fa-question-circle {
+        margin-top: 3px;
+        font-size: 1.25em;
+    }
+
+    .fa-search {
+        margin-top: 3px;
+        font-size: 1.25em;
+    }
+}
+
+
+::ng-deep ds-dynamic-lookup-relation-search-tab {
+    #search-content {
+        .input-group {
+            flex-wrap: nowrap;
+        }
+    }
+}
+
+
+::ng-deep html[dir="rtl"] {
+    .citation-img {
+        margin-top: -4px;
+        margin-right: -2px;
+    }
+
+
+    .comcol-header {
+        margin-right: 0 !important;
+    }
+
+    .dso-edit-menu-dropdown {
+        transform: translate(125px, 0px);
+    }
+
+    ds-base-search-form {
+        .scope-button {
+            border-top-right-radius: 5px !important;
+            border-bottom-right-radius: 5px !important;
+            border-top-left-radius: 0 !important;
+            border-bottom-left-radius: 0 !important;
+        }
+
+        .search-button {
+            border-top-left-radius: 5px !important;
+            border-bottom-left-radius: 5px !important;
+            border-top-right-radius: 0 !important;
+            border-bottom-right-radius: 0 !important;
+
+        }
+    }
+
+
+
+}
+
+::ng-deep html[dir="ltr"] {
+    .citation-img {
+        margin-top: -4px;
+        margin-left: -2px;
+    }
+
+}

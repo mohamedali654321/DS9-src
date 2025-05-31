@@ -1,0 +1,271 @@
+<ds-results-back-button
+  *ngIf="showBackButton$ | async"
+  [back]="back"
+></ds-results-back-button>
+<!-- <ds-kware-navigate-items [item]="object" [collectionId]="collectionId"></ds-kware-navigate-items> -->
+
+<div class="d-flex flex-row">
+  <ds-item-page-title-field [item]="object" class="me-auto">
+  </ds-item-page-title-field>
+  <ds-dso-edit-menu></ds-dso-edit-menu>
+</div>
+<!-- <div class="row">
+  <div class="col-xs-12 col-md-3">
+    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
+    </div>
+    </div> -->
+
+<div class="row">
+  <div class="col-xs-12 col-md-4">
+    <!-- <ng-container *ngIf="!mediaViewer.image">
+      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+        <ds-thumbnail
+          [thumbnail]="object?.thumbnail | async"
+          [defaultImage]="'assets/images/series.webp'"
+          [alt]="'thumbnail.series.alt'"
+          [placeholder]="'thumbnail.series.placeholder'"
+        >
+        </ds-thumbnail>
+      </ds-metadata-field-wrapper>
+    </ng-container>
+    <ng-container *ngIf="mediaViewer.image">
+      <ds-media-viewer [item]="object"></ds-media-viewer>
+    </ng-container> -->
+
+    <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+      <ds-thumbnail
+        [thumbnail]="object?.thumbnail | async"
+        [defaultImage]="'assets/images/series.webp'"
+        [alt]="'thumbnail.series.alt'"
+        [placeholder]="'thumbnail.series.placeholder'"
+      >
+      </ds-thumbnail>
+    </ds-metadata-field-wrapper>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['series.identifier']"
+      [label]="'series.page.identifier'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.date.issued']"
+      [label]="'item.page.date'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.publisher']"
+      [label]="'publication.page.publisher'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.publisher.country']"
+      [label]="'series.page.country'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.telephone']"
+      [label]="'place.page.telephone'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.website']"
+      [label]="'event.page.profile'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.linkedIn']"
+      [label]="'person.page.linkedIn'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.facebook']"
+      [label]="'person.page.facebook'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.twitter']"
+      [label]="'person.page.twitter'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.youtube']"
+      [label]="'series.page.youtube'"
+    >
+    </ds-generic-item-page-field>
+  </div>
+  <div class="col-xs-12 col-md-8">
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.description']"
+      [label]="'orgunit.page.description'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.description.sub-property']"
+      [label]="'orgunit.page.sub-property'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['series.type']"
+      [label]="'item.page.type'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['series.alternateName']"
+      [label]="'series.page.nameAlternative'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.language.iso']"
+      [label]="'item.page.language'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.subject']"
+      [separator]="','"
+      [label]="'item.page.subject'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isOrgUnitOfSeries'"
+      [label]="'relationships.isOrgUnitOf' | translate"
+    >
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isAdministrationOfSeries'"
+      [label]="'relationships.isAdministrationOf' | translate"
+    >
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isPlaceOfSeries'"
+      [label]="'relationships.isPlaceOf' | translate"
+    >
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isSiteOfSeries'"
+      [label]="'relationships.isSiteOf' | translate"
+    >
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isEventOfSeries'"
+      [label]="'relationships.isEventOf' | translate"
+    >
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isActivityOfSeries'"
+      [label]="'relationships.isActivityOf' | translate"
+    >
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isEraOfSeries'"
+      [label]="'relationships.isEraOf' | translate"
+    >
+    </ds-related-items>
+
+    <div>
+      <a
+        class="btn btn-outline-primary"
+        [routerLink]="[itemPageRoute + '/full']"
+      >
+        {{ "item.page.link.full" | translate }}
+      </a>
+    </div>
+  </div>
+  <!-- <div class="mt-5 w-100">
+    <ds-tabbed-related-entities-search
+      [item]="object"
+      [relationTypes]="[
+        {
+          label: 'isPublicationOfSeries',
+          filter: 'isSeriesOfPublication',
+          configuration: 'default-relationships'
+        },
+        {
+          label: 'isPersonOfSeries',
+          filter: 'isSeriesOfPerson',
+          configuration: 'person-relationships'
+        },
+        {
+          label: 'isAdministrationOfSeries',
+          filter: 'isSeriesOfAdministration',
+          configuration: 'administration-relationships'
+        },
+        {
+          label: 'isOrgUnitOfSeries',
+          filter: 'isSeriesOfOrgUnit',
+          configuration: 'orgunit-relationships'
+        },
+        {
+          label: 'isPlaceOfSeries',
+          filter: 'isSeriesOfPlace',
+          configuration: 'place-relationships'
+        },
+        {
+          label: 'isSiteOfSeries',
+          filter: 'isSeriesOfSite',
+          configuration: 'site-relationships'
+        },
+        {
+          label: 'isEventOfSeries',
+          filter: 'isSeriesOfEvent',
+          configuration: 'event-relationships'
+        },
+        {
+          label: 'isActivityOfSeries',
+          filter: 'isSeriesOfActivity',
+          configuration: 'activity-relationships'
+        },
+
+        {
+          label: 'isEraOfSeries',
+          filter: 'isSeriesOfEra',
+          configuration: 'era-relationships'
+        }
+      ]"
+    >
+    </ds-tabbed-related-entities-search>
+  </div> -->
+</div>

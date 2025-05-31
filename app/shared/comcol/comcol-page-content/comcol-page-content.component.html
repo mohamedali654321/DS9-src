@@ -1,0 +1,13 @@
+@if (content) {
+  <div class="content-with-optional-title mb-2">
+    @if (title) {
+      <h2>{{ title | translate }}</h2>
+    }
+    @if (hasInnerHtml) {
+      <div [innerHtml]="content | kwareTranslate"></div>
+    }
+    @if (!hasInnerHtml) {
+      <div>{{content | kwareTranslate}}</div>
+    }
+  </div>
+}

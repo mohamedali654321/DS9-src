@@ -1,0 +1,23 @@
+<ng-template #descTemplate>
+  <span class="text-muted">
+      <span class="item-list-job-title">
+        <span [innerHTML]="mdRepresentation.firstMetadataValue(['dc.description']) | kwareTranslate"></span>
+      </span>
+  </span>
+</ng-template>
+<ds-truncatable [id]="mdRepresentation.id">
+  <a [routerLink]="[itemPageRoute]"
+     [innerHTML]="dsoNameService.getName(mdRepresentation)| kwareTranslate"
+     [ngbTooltip]="mdRepresentation.allMetadata(['dc.description']).length > 0  && isPublication? (descTemplate | kwareTranslate) : null"></a>
+      <a *ngIf="mdRepresentation.hasMetadata('organization.identifier.ror')" href="{{mdRepresentation.firstMetadataValue('organization.identifier.ror')}}"><img style="width: 30px;margin-right: 10px;" _ngcontent-dspace-angular-c659="" placement="top" alt="orcid-logo" src="assets/images/ror-icon.svg" class="orcid-icon ng-star-inserted"></a>
+
+     <div *ngIf="mdRepresentation.allMetadata(['organization.legalName.old']).length > 0">
+      <span class="text-muted" style="font-size: 15px;font-weight: 600;" [innerHtml]="(mdRepresentation.firstMetadataValue('organization.legalName.old') | kwareTranslate) + ' ' +('suborgunit-previous-label' | translate)"></span>
+
+    </div>
+
+     <div *ngIf="mdRepresentation.allMetadata(['dc.relation.college']).length > 0 && isOrgUnit === false">
+      <span style="color: #2666ab!important ;font-size: 15px;font-weight: 600;" [innerHtml]="mdRepresentation.firstMetadataValue('dc.relation.college') | kwareTranslate"></span>
+
+    </div>
+</ds-truncatable>

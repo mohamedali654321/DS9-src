@@ -1,0 +1,15 @@
+<div class="d-flex flex-row">
+  @if (linkType !== linkTypes.None) {
+    <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null" [routerLink]="[]" [queryParams]="queryParams$ | async" [queryParamsHandling]="'merge'" class="lead" role="link" tabindex="0">
+  {{isEntity? (getEntity(object.value) | translate):(isRights? (getRights(object.value ) | translate : {default: object.value | kwareTranslate | translate}): ((isAuthor | async) === true ?  (convertComma(((object.value?.split(",")[0] | kwareTranslate) + ',' +  (object.value?.split(",")[1] | kwareTranslate))) | translate | kwareTranslate):(object.value | translate | kwareTranslate)))}}
+
+    </a>
+  }
+  @if (linkType === linkTypes.None) {
+    <span class="lead">
+     {{isEntity? (getEntity(object.value) | translate):(isRights? (getRights(object.value ) | translate : {default: object.value | kwareTranslate | translate}): ((isAuthor | async) === true  ?  (convertComma(((object.value?.split(",")[0] | kwareTranslate) + ',' +  (object.value?.split(",")[1] | kwareTranslate))) | translate | kwareTranslate):(object.value | translate | kwareTranslate)))}}
+    </span>
+  }
+  <span class="pe-2">&nbsp;</span>
+  <span class="badge rounded-pill bg-secondary align-self-center ps-2 pe-2">{{object.count}}</span>
+</div>

@@ -1,0 +1,179 @@
+<ds-results-back-button
+  *ngIf="showBackButton$ | async"
+  [back]="back"
+></ds-results-back-button>
+<!-- <ds-kware-navigate-items [item]="object" [collectionId]="collectionId"></ds-kware-navigate-items> -->
+
+<div class="d-flex flex-row">
+  <ds-item-page-title-field [item]="object" class="mr-auto">
+  </ds-item-page-title-field>
+</div>
+
+<div class="row">
+  <div class="col-xs-12 col-md-4">
+    <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+      <ds-thumbnail
+        [thumbnail]="object?.thumbnail | async"
+        [alt]="'thumbnail.series.alt'"
+        [placeholder]="'thumbnail.series.placeholder'"
+      >
+      </ds-thumbnail>
+    </ds-metadata-field-wrapper>
+
+    <!-- <ng-container *ngIf="!(mediaViewer.image || mediaViewer.video)">
+        <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+          <ds-thumbnail [thumbnail]="object?.thumbnail | async"></ds-thumbnail>
+        </ds-metadata-field-wrapper>
+      </ng-container>
+      <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
+        <ds-media-viewer [item]="object"></ds-media-viewer>
+      </div> -->
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.deway']"
+      [label]="'item.page.deway'"
+    >
+    </ds-generic-item-page-field>
+  </div>
+  <div class="col-xs-12 col-md-8">
+    <ds-metadata-representation-list
+      class="ds-item-page-mixed-author-field"
+      [parentItem]="object"
+      [itemType]="'Subject'"
+      [metadataFields]="['subject.broader']"
+      [label]="'subject.page.broader' | translate"
+    >
+    </ds-metadata-representation-list>
+
+    <ds-metadata-representation-list
+      class="ds-item-page-mixed-author-field"
+      [parentItem]="object"
+      [itemType]="'Subject'"
+      [metadataFields]="['subject.narrower']"
+      [label]="'subject.page.narrower' | translate"
+    >
+    </ds-metadata-representation-list>
+
+    <ds-metadata-representation-list
+      *ngIf="
+        object.hasMetadata('subject.related') === true &&
+        object.hasMetadata('subject.relating') === true
+      "
+      class="ds-item-page-mixed-author-field"
+      [parentItem]="object"
+      [itemType]="'Subject'"
+      [metadataFields]="['subject.related', 'subject.relating']"
+      [label]="'subject.page.related' | translate"
+    >
+    </ds-metadata-representation-list>
+
+    <ds-metadata-representation-list
+      *ngIf="
+        object.hasMetadata('subject.related') === true &&
+        object.hasMetadata('subject.relating') === false
+      "
+      class="ds-item-page-mixed-author-field"
+      [parentItem]="object"
+      [itemType]="'Subject'"
+      [metadataFields]="['subject.related']"
+      [label]="'subject.page.relating' | translate"
+    >
+    </ds-metadata-representation-list>
+
+    <ds-metadata-representation-list
+      *ngIf="
+        object.hasMetadata('subject.related') === false &&
+        object.hasMetadata('subject.relating') === true
+      "
+      class="ds-item-page-mixed-author-field"
+      [parentItem]="object"
+      [itemType]="'Subject'"
+      [metadataFields]="['subject.relating']"
+      [label]="'subject.page.relating' | translate"
+    >
+    </ds-metadata-representation-list>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['subject.type']"
+      [label]="'item.page.subjecttype'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['subject.heading.name']"
+      [label]="'subject.page.headingName'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['subject.note']"
+      [label]="'item.page.note'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.subject']"
+      [label]="'item.page.identifierSubject'"
+    >
+    </ds-generic-item-page-field>
+
+    <!-- <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isBroaderSubjectOf'"
+      [label]="'relationships.isBroaderSubjectOf' | translate">
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isNarrowerSubjectOf'"
+      [label]="'relationships.isNarrowerSubjectOf' | translate">
+    </ds-related-items>
+
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isSubjectRelatedTo'"
+      [label]="'relationships.isSubjectRelatedTo' | translate">
+    </ds-related-items>
+
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isSubjectRelatingTo'"
+      [label]="'relationships.isSubjectRelatingTo' | translate">
+    </ds-related-items> -->
+
+    <ds-item-page-uri-field
+      [item]="object"
+      [fields]="['dc.identifier.uri']"
+      [label]="'item.page.uri'"
+    >
+    </ds-item-page-uri-field>
+    <ds-item-page-collections [item]="object"></ds-item-page-collections>
+
+    <div>
+      <a
+        class="btn btn-outline-primary"
+        [routerLink]="[itemPageRoute + '/full']"
+      >
+        {{ "item.page.link.full" | translate }}
+      </a>
+    </div>
+  </div>
+  <!-- <div class="mt-5 w-100">
+      <ds-tabbed-related-entities-search  [item]="object"
+                                          [relationTypes]="[
+                                        {
+                                            label: 'isPublicationOfSubject',
+                                            filter: 'isSubjectOfPublication',
+                                            configuration: 'default-relationships'
+                                          }
+                                          ]">
+      </ds-tabbed-related-entities-search>
+    </div> -->
+</div>
