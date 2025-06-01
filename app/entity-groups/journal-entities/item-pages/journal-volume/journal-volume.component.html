@@ -42,4 +42,20 @@
       </a>
     </div>
   </div>
+   <div class="mt-5 w-100">
+    <ds-tabbed-related-entities-search  [item]="object"
+                                        [relationTypes]="[
+                                          {
+                                          label: 'isIssueOfJournalVolume',
+                                          filter: 'isJournalVolumeOfIssue',
+                                          configuration: 'journalIssue-relationships'
+                                        },
+                                        {
+                                          label: 'isJournalOfVolume',
+                                          filter: 'isVolumeOfJournal',
+                                          configuration: 'journal-relationships'
+                                        },
+                                        ]">
+    </ds-tabbed-related-entities-search>
+  </div>
 </div>

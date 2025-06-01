@@ -14,8 +14,8 @@
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail
         [thumbnail]="object?.thumbnail | async"
-        [alt]="'thumbnail.series.alt'"
-        [placeholder]="'thumbnail.series.placeholder'"
+        [alt]="'thumbnail.subject.alt'"
+        [placeholder]="'thumbnail.subject.placeholder'"
       >
       </ds-thumbnail>
     </ds-metadata-field-wrapper>
@@ -165,7 +165,7 @@
       </a>
     </div>
   </div>
-  <!-- <div class="mt-5 w-100">
+  <div class="mt-5 w-100">
       <ds-tabbed-related-entities-search  [item]="object"
                                           [relationTypes]="[
                                         {
@@ -175,5 +175,5 @@
                                           }
                                           ]">
       </ds-tabbed-related-entities-search>
-    </div> -->
+    </div>
 </div>

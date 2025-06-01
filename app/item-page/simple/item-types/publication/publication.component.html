@@ -829,4 +829,68 @@
     </div>
     
   </div>
+
+    <div class="mt-5 w-100">
+    <ds-tabbed-related-entities-search
+      [item]="object"
+      [relationTypes]="[
+       {
+          label: 'isPublicationLinkedTo',
+          filter: 'isPublicationLinkedTo',
+          configuration: 'default-relationships'
+        },
+        {
+          label: 'isPublicationLinkingTo',
+          filter: 'isPublicationLinkingTo',
+          configuration: 'default-relationships'
+        },
+        {
+          label: 'isJournalIssueOfPublication',
+          filter: 'isPublicationOfJournalIssue',
+          configuration: 'journalIssue-relationships'
+        },
+        {
+          label: 'isAdministrationOfPublication',
+          filter: 'isPublicationOfAdministration',
+          configuration: 'administration-relationships'
+        },
+        {
+          label: 'isOrgUnitOfPublication',
+          filter: 'isPublicationOfOrgUnit',
+          configuration: 'orgunit-relationships'
+        },
+        {
+          label: 'isPlaceOfPublication',
+          filter: 'isPublicationOfPlace',
+          configuration: 'place-relationships'
+        },
+        {
+          label: 'isSiteOfPublication',
+          filter: 'isPublicationOfSite',
+          configuration: 'site-relationships'
+        },
+        {
+          label: 'isEventOfPublication',
+          filter: 'isPublicationOfEvent',
+          configuration: 'event-relationships'
+        },
+        {
+          label: 'isActivityOfPublication',
+          filter: 'isPublicationOfActivity',
+          configuration: 'activity-relationships'
+        },
+        {
+          label: 'isEraOfPublication',
+          filter: 'isPublicationOfEra',
+          configuration: 'era-relationships'
+        },
+        {
+          label: 'isProjectOfPublication',
+          filter: 'isPublicationOfProject',
+          configuration: 'project-relationships'
+        }
+      ]"
+    >
+    </ds-tabbed-related-entities-search>
+  </div>
 </div>

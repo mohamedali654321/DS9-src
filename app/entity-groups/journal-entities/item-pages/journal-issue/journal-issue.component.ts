@@ -13,6 +13,7 @@ import { MetadataFieldWrapperComponent } from '../../../../shared/metadata-field
 import { listableObjectComponent } from '../../../../shared/object-collection/shared/listable-object/listable-object.decorator';
 import { ThemedResultsBackButtonComponent } from '../../../../shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../thumbnail/themed-thumbnail.component';
+import { TabbedRelatedEntitiesSearchComponent } from "../../../../item-page/simple/related-entities/tabbed-related-entities-search/tabbed-related-entities-search.component";
 
 @listableObjectComponent('JournalIssue', ViewMode.StandalonePage)
 @Component({
@@ -31,7 +32,8 @@ import { ThemedThumbnailComponent } from '../../../../thumbnail/themed-thumbnail
     ThemedResultsBackButtonComponent,
     ThemedThumbnailComponent,
     TranslateModule,
-  ],
+    TabbedRelatedEntitiesSearchComponent
+],
 })
 /**
  * The component for displaying metadata and relations of an item of the type Journal Issue

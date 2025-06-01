@@ -266,4 +266,61 @@
     </a>
   </div>
 </div>
+ <div class="mt-5 w-100">
+    <ds-tabbed-related-entities-search  [item]="object"
+    [relationTypes]="[
+       {
+      label: 'isPublicationOfProject',
+      filter: 'isProjectOfPublication',
+      configuration: 'default-relationships'
+    },
+      {
+      label: 'isPersonOfProject',
+      filter: 'isProjectOfPerson',
+      configuration: 'person-relationships'
+    },
+    {
+      label: 'isAdministrationOfProject',
+      filter: 'isProjectOfAdministration',
+      configuration: 'administration-relationships'
+    },
+    {
+      label: 'isOrgUnitOfProject',
+      filter: 'isProjectOfOrgUnit',
+      configuration: 'orgunit-relationships'
+    },
+    {
+      label: 'isPlaceOfProject',
+      filter: 'isProjectOfPlace',
+      configuration: 'place-relationships'
+    },
+    {
+      label: 'isSiteOfProject',
+      filter: 'isProjectOfSite',
+      configuration: 'site-relationships'
+    },
+     {
+      label: 'isEventOfProject',
+      filter: 'isProjectOfEvent',
+      configuration: 'event-relationships'
+    },
+    {
+      label: 'isActivityOfProject',
+      filter: 'isProjectOfActivity',
+      configuration: 'activity-relationships'
+    },
+   
+    {
+      label: 'isSeriesOfProject',
+      filter: 'isProjectOfSeries',
+      configuration: 'series-relationships'
+    },
+    {
+      label: 'isEraOfProject',
+      filter: 'isProjectOfEra',
+      configuration: 'era-relationships'
+    },
+    ]">
+</ds-tabbed-related-entities-search>
+  </div>
 </div>

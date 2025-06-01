@@ -75,4 +75,20 @@
       </a>
     </div>
   </div>
+    <div class="mt-5 w-100">
+    <ds-tabbed-related-entities-search  [item]="object"
+                                        [relationTypes]="[
+                                          {
+                                          label: 'isPublicationOfJournalIssue',
+                                          filter: 'isJournalIssueOfPublication',
+                                          configuration: 'default-relationships'
+                                        },
+                                        {
+                                          label: 'isJournalVolumeOfIssue',
+                                          filter: 'isIssueOfJournalVolume',
+                                          configuration: 'volume-relationships'
+                                        },
+                                        ]">
+    </ds-tabbed-related-entities-search>
+  </div>
 </div>

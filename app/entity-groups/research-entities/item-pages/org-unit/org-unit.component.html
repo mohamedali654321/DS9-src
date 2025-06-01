@@ -1,5 +1,5 @@
 @if (showBackButton$ | async) {
-  <ds-results-back-button [back]="back"></ds-results-back-button>
+<ds-results-back-button [back]="back"></ds-results-back-button>
 }
 <div class="d-flex flex-row">
   <ds-item-page-title-field [item]="object" class="me-auto">
@@ -9,14 +9,15 @@
 <div class="row">
   <div class="col-xs-12 col-md-4">
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-      <ds-thumbnail [thumbnail]="object?.thumbnail | async"
+      <ds-thumbnail
+        [thumbnail]="object?.thumbnail | async"
         [defaultImage]="'assets/images/orgunit-placeholder.svg'"
         [alt]="'thumbnail.orgunit.alt'"
         [placeholder]="'thumbnail.orgunit.placeholder'"
-        >
+      >
       </ds-thumbnail>
     </ds-metadata-field-wrapper>
-  <ds-generic-item-page-field
+    <ds-generic-item-page-field
       [item]="object"
       [fields]="['dc.identifier']"
       [label]="'orgunit.page.id'"
@@ -125,9 +126,9 @@
       [item]="object"
       [label]="'orgunit.page.ror'"
       [urlRegex]="'(.*)ror.org'"
-      >
+    >
     </ds-item-page-img-field>
- <ds-generic-item-page-field
+    <ds-generic-item-page-field
       [item]="object"
       [fields]="['dc.description']"
       [label]="'orgunit.page.description'"
@@ -269,23 +270,82 @@
     >
     </ds-related-items>
     <div>
-      <a class="btn btn-outline-primary" [routerLink]="[itemPageRoute + '/full']" role="button" tabindex="0">
-        {{"item.page.link.full" | translate}}
+      <a
+        class="btn btn-outline-primary"
+        [routerLink]="[itemPageRoute + '/full']"
+        role="button"
+        tabindex="0"
+      >
+        {{ "item.page.link.full" | translate }}
       </a>
     </div>
   </div>
-  <div class="mt-5 w-100 px-0">
-    <ds-tabbed-related-entities-search  [item]="object"
-                                        [relationTypes]="[{
-                                          label: 'isOrgUnitOfPerson',
-                                          filter: 'isOrgUnitOfPerson',
-                                          configuration: 'person-relationships'
-                                        },
-                                        {
-                                          label: 'isOrgUnitOfProject',
-                                          filter: 'isOrgUnitOfProject',
-                                          configuration: 'project-relationships'
-                                        }]">
+  <div class="mt-5 w-100">
+    <ds-tabbed-related-entities-search
+      [item]="object"
+      [relationTypes]="[
+        {
+          label: 'isPublicationOfOrgUnit',
+          filter: 'isPublisherOfPublication',
+          configuration: 'default-relationships'
+        },
+        {
+          label: 'isPersonOfOrgUnit',
+          filter: 'isOrgUnitOfPerson',
+          configuration: 'person-relationships'
+        },
+        {
+          label: 'isParentOrgUnitOf',
+          filter: 'isParentOrgUnitOf',
+          configuration: 'default-relationships'
+        },
+        {
+          label: 'isChildOrgUnitOf',
+          filter: 'isChildOrgUnitOf',
+          configuration: 'default-relationships'
+        },
+        {
+          label: 'isAdministrationOfOrgUnit',
+          filter: 'isOrgUnitOfAdministration',
+          configuration: 'administration-relationships'
+        },
+        {
+          label: 'isJournalOfPublisher',
+          filter: 'isOrgUnitOfJournal',
+          configuration: 'journal-relationships'
+        },
+        {
+          label: 'isPlaceOfOrgUnit',
+          filter: 'isOrgUnitOfPlace',
+          configuration: 'place-relationships'
+        },
+        {
+          label: 'isSiteOfOrgUnit',
+          filter: 'isOrgUnitOfSite',
+          configuration: 'site-relationships'
+        },
+        {
+          label: 'isEventOfOrgUnit',
+          filter: 'isOrgUnitOfEvent',
+          configuration: 'event-relationships'
+        },
+        {
+          label: 'isActivityOfOrgUnit',
+          filter: 'isOrgUnitOfActivity',
+          configuration: 'activity-relationships'
+        },
+        {
+          label: 'isEraOfOrgUnit',
+          filter: 'isOrgUnitOfEra',
+          configuration: 'era-relationships'
+        },
+        {
+          label: 'isProjectOfOrgUnit',
+          filter: 'isOrgUnitOfProject',
+          configuration: 'project-relationships'
+        }
+      ]"
+    >
     </ds-tabbed-related-entities-search>
   </div>
 </div>

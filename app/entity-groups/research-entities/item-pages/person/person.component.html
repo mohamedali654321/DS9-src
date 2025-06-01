@@ -320,17 +320,55 @@
       </a>
     </div>
   </div>
-  <div class="mt-5 w-100 px-0">
-    <ds-tabbed-related-entities-search
-      [item]="object"
-      [relationTypes]="[
-        {
-          label: 'isAuthorOfPublication',
-          filter: 'isAuthorOfPublication',
-          configuration: 'default-relationships'
-        }
-      ]"
-    >
+  <div class="mt-5 w-100">
+    <ds-tabbed-related-entities-search  [item]="object"
+                                        [relationTypes]="[{
+                                          label: 'isPublicationOfAuthor',
+                                          filter: 'isAuthorOfPublication',
+                                          configuration: 'default-relationships'
+                                          },
+                                          {
+                                          label: 'isAdministrationOfPerson',
+                                          filter: 'isPersonOfAdministration',
+                                          configuration: 'administration-relationships'
+                                          },
+                                          {
+                                          label: 'isOrgUnitOfPerson',
+                                          filter: 'isPersonOfOrgUnit',
+                                          configuration: 'orgunit-relationships'
+                                          },
+                                          {
+                                          label: 'isPlaceOfPerson',
+                                          filter: 'isPersonOfPlace',
+                                          configuration: 'place-relationships'
+                                          },
+                                          {
+                                          label: 'isSiteOfPerson',
+                                          filter: 'isPersonOfSite',
+                                          configuration: 'site-relationships'
+                                          },
+                                          {
+                                          label: 'isEventOfPerson',
+                                          filter: 'isPersonOfEvent',
+                                          configuration: 'event-relationships'
+                                          },
+                                          {
+                                          label: 'isActivityOfPerson',
+                                          filter: 'isPersonOfActivity',
+                                          configuration: 'activity-relationships'
+                                          },
+                                          {
+                                          label: 'isEraOfPerson',
+                                          filter: 'isPersonOfEra',
+                                          configuration: 'era-relationships'
+                                          },
+                                          { 
+                                          label: 'isProjectOfPerson',
+                                          filter: 'isPersonOfProject',
+                                          configuration: 'project-relationships'
+                                          }
+                                       
+                                          ]">
     </ds-tabbed-related-entities-search>
   </div>
 </div>
