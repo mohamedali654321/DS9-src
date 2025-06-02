@@ -1,6 +1,6 @@
 :host {
   #main-site-header {
-    min-height: var(--ds-header-height);
+    // min-height: var(--ds-header-height);
 
     @include media-breakpoint-up(md) {
       height: var(--ds-header-height);
@@ -24,5 +24,265 @@
       color: var(--ds-header-icon-color-hover);
     }
   }
+
+
+
+::ng-deep header a {
+  color: #530a86 ;
+}
+
+
+@media (min-width: 768px) {
+
+
+  ::ng-deep .scrolledY {
+
+    // background-color: #530a86 !important;
+    transition: all .4s ease-in-out;
+    height: 67px !important;
+    position: fixed !important;
+    transition: all .4s ease-in-out;
+    width: 100%;
+    z-index: 999;
+
+    .navbar-nav {
+      // background-color: #530a86 !important;
+    }
+
+    .fa-circle-info {
+      color: #fff;
+    }
+
+    .navbar-nav {
+
+      ::ng-deep a.nav-link {
+        color: #FFF !important;
+
+        &:hover,
+        &:focus {
+          color: #FFF !important;
+        }
+      }
+    }
+
+    ::ng-deep header a {
+      color: #FFF !important;
+    }
+
+     img {
+      display: block;
+      // position: absolute;
+      top: 15px !important;
+      filter: brightness(0) invert(1);
+      width: 55px !important; //NU-edit
+      //  height: 80px; //NU-edit
+
+
+
+
+    }
+
+
+    ul li a {
+      color: #530a86!important;
+    }
+
+    ds-link-menu-item .nav-item {
+      color: #FFF !important;
+    }
+
+    .submit-icon {
+      color: #FFF !important;
+    }
+
+
+    .dropdown-toggle {
+      color: #FFF !important;
+    }
+
+    .dropdown-toggle:hover,
+    .dropdown-togglefocus {
+      color: #FFF !important;
+    }
+
+    .lang-switcher-btn {
+      color: #FFF !important;
+    }
+    ds-log-in-container a{
+      color: #530a86 !important;
+    }
+
+    ds-expandable-navbar-section ul {
+      background-color: #530a86 !important;
+
+      a {
+        color: #FFF !important;
+      }
+    }
+
+   ::ng-deep html[dir="ltr"]{
+
+   }
+
+   ::ng-deep html[dir="rtl"]{
+    ds-base-expandable-navbar-section {
+      .dropdown-menu{
+        transform: translate(-69px, 59px) !important;
+      }
+    }
+
+   }
+
+    a,
+    .ms-link:visited {
+      color: #FFF;
+      text-decoration: none;
+    }
+
+    a {
+      color: #FFF !important;
+      text-decoration: none;
+    }
+
+    a {
+      background-color: transparent;
+    }
+
+    a:visited {
+      color: #FFF;
+      text-decoration: none;
+    }
+
+    img {
+      // display: block;
+      // position: absolute;
+      // top: 10px !important;
+      filter: brightness(0) invert(1);
+      // width: 55px !important; //NU-edit
+      //  height: 80px; //NU-edit
+
+
+
+
+    }
+
+  }
+
+}
+
+
+
+
+@media (max-width: 650px){
+  ::ng-deep .scrolledY {
+    margin-top: 1rem;
+  }
+}
+@media (max-width: 768px) {
+
+
+    ::ng-deep ds-link-menu-item a {
+      color: #530a86 !important;
+    }
+    ::ng-deep  a {
+      color: #530a86 ;
+    }
+    #main-site-header-container{
+      min-height: 120px;
+    }
+    .flex-wrap{
+      flex-wrap: nowrap !important;
+    }
+  
+    ::ng-deep .scrolledY {
+      // margin-top: 1rem;
+      // background-color: #530a86 !important;
+      // transition: all .4s ease-in-out;
+      // height: 67px !important;
+      // position: fixed !important;
+      // transition: all .4s ease-in-out;
+      // width: 100%;
+      // z-index: 999;
+
+      .fa-circle-info {
+        color: #fff;
+      }
+  
+      .navbar-nav {
+  
+        ::ng-deep a.nav-link {
+          color: #FFF !important;
+  
+          &:hover,
+          &:focus {
+            color: #FFF !important;
+          }
+        }
+      }
+  
+      ::ng-deep header a {
+        color: #FFF !important;
+      }
+      ds-link-menu-item .nav-item {
+        color: #FFF !important;
+      }
+  
+      .submit-icon {
+        color: #FFF !important;
+      }
+  
+      #navbar-toggler{
+        color: #FFF !important;
+      }
+
+      ds-base-auth-nav-menu a{
+        color: #FFF !important;
+      }
+
+      #navbar-toggler:hover,
+      .dropdown-togglefocus {
+        color: #FFF !important;
+      }
+      .dropdown-toggle {
+        color: #FFF !important;
+      }
+  
+      .dropdown-toggle:hover,
+      .dropdown-togglefocus {
+        color: #FFF !important;
+      }
+  
+      .lang-switcher-btn {
+        color: #FFF !important;
+      }
+
+      #main-site-header-container{
+        min-height: 100px;
+      }
+  
+      #mobile-navbar-wrapper{
+        background-color: #530a86 !important;
+      }
+  
+       img {
+        display: block;
+        // position: absolute;
+        top: 15px !important;
+        filter: brightness(0) invert(1);
+        width: 55px !important; //NU-edit
+        //  height: 80px; //NU-edit
+  
+  
+  
+  
+      }
+  
+  
+  
+    }
+  
+
+
+}
 
 }

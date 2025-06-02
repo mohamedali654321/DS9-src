@@ -1,4 +1,4 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgClass, NgIf, NgStyle } from '@angular/common';
 import {
   Component,
   OnInit,
@@ -35,11 +35,15 @@ import { ImpersonateNavbarComponent } from '../../../../app/shared/impersonate-n
     ThemedNavbarComponent,
     ThemedSearchNavbarComponent,
     TranslateModule,
+    NgStyle,
+    NgClass,
+    NgIf
+
   ],
 })
 export class HeaderComponent extends BaseComponent implements OnInit {
   public isNavBarCollapsed$: Observable<boolean>;
-
+ lang: boolean = this.localeService.getCurrentLanguageCode() === 'ar' ? true : false; //kware-edit
   ngOnInit() {
     super.ngOnInit();
     this.isNavBarCollapsed$ = this.menuService.isMenuCollapsed(this.menuID);

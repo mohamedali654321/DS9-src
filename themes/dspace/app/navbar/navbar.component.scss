@@ -1,3 +1,58 @@
 :host {
 
+    @media (max-width: 768px) {
+
+
+        ::ng-deep ds-link-menu-item a {
+          color: #530a86 !important;
+        }
+        ::ng-deep  a {
+          color: #530a86 ;
+        }
+        #main-site-header-container{
+          min-height: 120px;
+        }
+        .flex-wrap{
+          flex-wrap: nowrap !important;
+        }
+      
+        ::ng-deep .scrolledY {
+          
+          // background-color: #530a86 !important;
+          // transition: all .4s ease-in-out;
+          // height: 67px !important;
+          // position: fixed !important;
+          // transition: all .4s ease-in-out;
+          // width: 100%;
+          // z-index: 999;
+    
+          #main-site-header-container{
+            min-height: 90px;
+          }
+      
+          #mobile-navbar-wrapper{
+            background-color: #530a86 !important;
+          }
+      
+           img {
+            display: block;
+            // position: absolute;
+            top: 15px !important;
+            filter: brightness(0) invert(1);
+            width: 55px !important; //NU-edit
+            //  height: 80px; //NU-edit
+      
+      
+      
+      
+          }
+      
+      
+      
+        }
+      
+    
+    
+    }
+
 }

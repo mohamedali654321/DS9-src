@@ -63,7 +63,7 @@
 // search input in navbar  to open ltr in RTL (ds-search-navbar component)
 ::ng-deep html[dir="rtl"] .dropdown-menu-right {
     left: 0;
-    right: auto;
+    right: auto !important;
 }
 
 ::ng-deep html[dir="rtl"] ds-dynamic-form-array>div>div>div {
@@ -1049,9 +1049,9 @@
 
 
 
-// ::ng-deep ds-base-root main {
-//     margin-top: 85px !important;
-// }
+::ng-deep ds-base-root main {
+    margin-top: 85px !important;
+}
 
 
 
@@ -1635,10 +1635,10 @@
 }
 
 @media screen and (max-width:768px) {
-    // ::ng-deep ds-root main {
-    //     margin-top: 125px !important;
+    ::ng-deep ds-root main {
+        margin-top: 125px !important;
 
-    // }
+    }
 
     //  ::ng-deep .container{
     //   overflow-x: hidden !important;
@@ -3812,7 +3812,7 @@
     ::ng-deep html[dir="rtl"] .scrolledY {
         ds-base-expandable-navbar-section {
             .dropdown-menu {
-                transform: translate(-69px, 59px) !important;
+                 transform: translate(0px, 59px) !important;
                 border: 2px solid #b4b1b1 !important
             }
         }
@@ -3832,11 +3832,11 @@
 
     ::ng-deep html[dir="rtl"] {
         ds-base-expandable-navbar-section {
-            // .dropdown-menu {
-            //     border: 2px solid #eee !important;
-            //     transform: translate(-69px, 59px) !important;
-            //     z-index: 100 !important;
-            // }
+            .dropdown-menu {
+                border: 2px solid #eee !important;
+                transform: translate(0px, 59px) !important;
+                z-index: 100 !important;
+            }
         }
 
     }
@@ -3844,11 +3844,11 @@
 
     ::ng-deep html[dir="ltr"] {
         ds-base-expandable-navbar-section {
-            // .dropdown-menu {
-            //     border: 2px solid #eee !important;
-            //     transform: translate(0px, 59px) !important;
-            //     z-index: 100 !important;
-            // }
+            .dropdown-menu {
+                border: 2px solid #eee !important;
+                transform: translate(0px, 59px) !important;
+                z-index: 100 !important;
+            }
         }
 
     }
@@ -3857,7 +3857,7 @@
         ds-base-auth-nav-menu {
             .dropdown-menu {
 
-                transform: translate(1px, 27px) !important;
+                transform: translate(280px, 33px) !important;
 
             }
         }
@@ -4044,23 +4044,23 @@
 ::ng-deep html[dir="rtl"] {
 
     ds-authorized-collection-selector {
-        .form-group {
+        .form-group{
             margin-top: 8px;
         }
+    
+    }
+
+    ds-dso-selector{
+        .form-group{
+            margin-top: 8px;
+        }
+    
 
     }
 
-    ds-dso-selector {
-        .form-group {
-            margin-top: 8px;
-        }
-
-
-    }
-
-    ds-search-filter {
-        .facet-filter {
-            .text-left {
+    ds-search-filter{
+        .facet-filter{
+            .text-left{
                 text-align: right !important;
             }
         }
@@ -4096,32 +4096,47 @@
 }
 
 
-::ng-deep ds-header {
-    .fa-circle-info {
+::ng-deep ds-header{
+    .fa-circle-info{
         margin-top: 3px;
-        font-size: 1.25em;
+        font-size:1.25em;
     }
 
-    .fa-question-circle {
+    .fa-question-circle{
         margin-top: 3px;
-        font-size: 1.25em;
+        font-size:1.25em;
     }
-
-    .fa-search {
+    .fa-search{
         margin-top: 3px;
-        font-size: 1.25em;
+        font-size:1.25em;
     }
 }
 
 
-::ng-deep ds-dynamic-lookup-relation-search-tab {
-    #search-content {
-        .input-group {
+::ng-deep ds-dynamic-lookup-relation-search-tab{
+    #search-content{
+        .input-group{
             flex-wrap: nowrap;
         }
     }
-}
+    }
+    
 
+    ::ng-deep html[dir="rtl"]{
+        .citation-img{
+            margin-top:-4px;
+            margin-right:-2px ;
+        }
+        
+        }
+        
+        ::ng-deep html[dir="ltr"]{
+        .citation-img{
+            margin-top:-4px;
+            margin-left:-2px;
+        }
+            
+        }
 
 ::ng-deep html[dir="rtl"] {
     .citation-img {

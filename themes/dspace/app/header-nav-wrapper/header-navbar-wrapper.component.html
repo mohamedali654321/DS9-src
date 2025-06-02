@@ -1,3 +1,12 @@
+@if (lang) {
+<div style="z-index: 9999;"  class="ribbon-1 left">{{'nav.demo.site' | translate}}</div>
+}
+@if (!lang) {
+<div style="z-index: 9999;" *ngIf="!lang" class="ribbon-1 right">{{'nav.demo.site' | translate}}</div>
+
+}
+<!-- <div style="z-index: 9999;" *ngIf="lang" class="ribbon-1 left">{{'nav.demo.site' | translate}}</div>
+<div style="z-index: 9999;" *ngIf="!lang" class="ribbon-1 right">{{'nav.demo.site' | translate}}</div> -->
 <div id="header-navbar-wrapper"><!-- [class.open]="!(isNavBarCollapsed$ | async)" -->
   <ds-header></ds-header>
   <!-- Collapsible navbar (mobile only) -->

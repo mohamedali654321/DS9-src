@@ -1,7 +1,13 @@
 :host {
-  --ds-header-navbar-border-bottom-style: solid var(--ds-header-navbar-border-bottom-height) var(--ds-header-navbar-border-bottom-color);
+  --ds-header-navbar-border-bottom-style: 5px #530a86 solid!important;
   --ds-expandable-navbar-border-top-style: solid var(--ds-expandable-navbar-border-top-height) var(--ds-expandable-navbar-border-top-color);
   --ds-expandable-navbar-height: calc(100vh - var(--ds-header-height));
+
+  #header-navbar-wrapper {
+    position: fixed !important;
+    width: 100%;
+    z-index: 999;
+  }
 
   div#header-navbar-wrapper {
     // The header-navbar-wrapper should not have a z-index, otherwise it would cover the media viewer despite its higher z-index
@@ -28,6 +34,7 @@
 
   ::ng-deep {
     .ds-menu-item, .ds-menu-toggler-wrapper {
+      white-space: nowrap;
       text-decoration: none;
     }
 
@@ -45,10 +52,10 @@
           // define here the style for top-level navbar menu items
           padding: var(--ds-navbar-item-vertical-padding) var(--ds-navbar-item-horizontal-padding);
         }
-        .ds-menu-item, .ds-menu-toggler-wrapper {
-          color: var(--ds-navbar-link-color) !important;
+        .ds-menu-toggler-wrapper {
+          color: var(--ds-navbar-link-color) ;
           &:hover, &:focus {
-            color: var(--ds-navbar-link-color-hover) !important;
+            color: var(--ds-navbar-link-color-hover) ;
           }
         }
 
@@ -77,4 +84,60 @@
 
     }
   }
+
+
+   
+.ribbon-1 {
+  color: #fff !important;
+  position: fixed;
+  background: red !important;
+  box-shadow: 0 0 0 999px red !important;
+  clip-path: inset(0 -100%);
+}
+.left {
+  inset: 0 auto auto 0;
+  transform-origin: 100% 0;
+  transform: translate(-29.3%) rotate(-45deg);
+}
+.right {
+  inset: 0 0 auto auto;
+  transform-origin: 0 0;
+  transform: translate(29.3%) rotate(45deg);
+}
+
+.ribbon-2 {
+  --f: 10px; /* control the folded part*/
+  --r: 15px; /* control the ribbon shape */
+  --t: 10px; /* the top offset */
+  
+  position: absolute;
+  inset: var(--t) calc(-1*var(--f)) auto auto;
+  padding: 0 10px var(--f) calc(10px + var(--r));
+  clip-path: 
+    polygon(0 0,100% 0,100% calc(100% - var(--f)),calc(100% - var(--f)) 100%,
+      calc(100% - var(--f)) calc(100% - var(--f)),0 calc(100% - var(--f)),
+      var(--r) calc(50% - var(--f)/2));
+  background: #BD1550;
+  box-shadow: 0 calc(-1*var(--f)) 0 inset #0005;
+}
+
+@media (max-width: 768px){
+ ::ng-deep .scrolledY{
+    div#mobile-navbar-wrapper {
+      width: 100%;
+      background-color: rgb(83, 10, 134) !important;
+  
+      a{
+        color: #fff !important;
+      }
+
+      .dropdown-menu{
+        background-color: rgb(83, 10, 134) !important;
+        position: relative !important;
+      }
+ 
+  }
+  }
+
+}
 }

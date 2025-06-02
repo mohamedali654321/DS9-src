@@ -24,4 +24,6 @@ import { slideMobileNav } from '../../../../app/shared/animations/slide';
   animations: [slideMobileNav],
 })
 export class HeaderNavbarWrapperComponent extends BaseComponent {
+lang: boolean = this.localeService.getCurrentLanguageCode() === 'ar' ? true : false; //kware-edit
+
 }
