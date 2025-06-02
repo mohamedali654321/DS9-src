@@ -108,10 +108,11 @@ export class RelatedItemsComponent
     } else {
       this.placeholderFontClass = "hide-placeholder-text";
     }
-    this.getRelationshipsCounterByFilter(this.relationType).subscribe((res) => {
+
+    super.ngOnInit();
+        this.getRelationshipsCounterByFilter(this.relationType).subscribe((res) => {
       this.RelationshipsCounter.next(res.payload.totalElements);
     });
-    super.ngOnInit();
   }
 
   /**

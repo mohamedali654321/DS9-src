@@ -16,6 +16,7 @@ import { listableObjectComponent } from '../../../../../../../app/shared/object-
 import { ThemedResultsBackButtonComponent } from '../../../../../../../app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 import { ThemedMetadataRepresentationListComponent } from 'src/app/item-page/simple/metadata-representation-list/themed-metadata-representation-list.component';
+import { ThemedMediaViewerComponent } from 'src/app/item-page/media-viewer/themed-media-viewer.component';
 
 @listableObjectComponent('Journal', ViewMode.StandalonePage, Context.Any, 'custom')
 @Component({
@@ -37,7 +38,8 @@ import { ThemedMetadataRepresentationListComponent } from 'src/app/item-page/sim
     ThemedResultsBackButtonComponent,
     ThemedThumbnailComponent,
     TranslateModule,
-    ThemedMetadataRepresentationListComponent
+    ThemedMetadataRepresentationListComponent,
+    ThemedMediaViewerComponent
   ],
 })
 export class JournalComponent extends BaseComponent {

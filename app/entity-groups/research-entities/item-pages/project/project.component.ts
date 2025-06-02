@@ -15,6 +15,7 @@ import { listableObjectComponent } from '../../../../shared/object-collection/sh
 import { ThemedResultsBackButtonComponent } from '../../../../shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../thumbnail/themed-thumbnail.component';
 import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/related-entities/tabbed-related-entities-search/tabbed-related-entities-search.component';
+import { ThemedMediaViewerComponent } from "../../../../item-page/media-viewer/themed-media-viewer.component";
 
 @listableObjectComponent('Project', ViewMode.StandalonePage)
 @Component({
@@ -34,8 +35,9 @@ import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/r
     ThemedResultsBackButtonComponent,
     ThemedThumbnailComponent,
     TranslateModule,
-     TabbedRelatedEntitiesSearchComponent,
-  ],
+    TabbedRelatedEntitiesSearchComponent,
+    ThemedMediaViewerComponent
+],
 })
 /**
  * The component for displaying metadata and relations of an item of the type Project

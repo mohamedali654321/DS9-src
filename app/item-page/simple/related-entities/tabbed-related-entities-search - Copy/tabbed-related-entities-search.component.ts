@@ -14,7 +14,6 @@ import { PaginatedList } from "src/app/core/data/paginated-list.model";
 import { RemoteData } from "src/app/core/data/remote-data";
 import { FindListOptions } from "src/app/core/data/find-list-options.model";
 import { getFirstSucceededRemoteDataPayload } from "src/app/core/shared/operators";
-import { hasValue } from "src/app/shared/empty.util";
 
 @Component({
   selector: "ds-tabbed-related-entities-search",
@@ -151,19 +150,6 @@ export class TabbedRelatedEntitiesSearchComponent implements OnInit {
         !md.key?.includes("latestForDiscovery")
       );
     }).length;
-  }
-
-  updateUrl(event: any, filter: string) {
-    if (hasValue(filter)) {
-      this.route.data.subscribe((res) => {
-        res.breadcrumb.url;
-        window.history.replaceState(
-          {},
-          "",
-          `${res.breadcrumb.url}?tab=${filter}`
-        );
-      });
-    }
   }
 
   /**

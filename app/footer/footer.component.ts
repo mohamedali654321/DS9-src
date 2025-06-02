@@ -1,6 +1,7 @@
 import {
   AsyncPipe,
   DatePipe,
+  NgIf,
 } from '@angular/common';
 import {
   Component,
@@ -35,6 +36,7 @@ import { hasValue } from '../shared/empty.util';
     DatePipe,
     RouterLink,
     TranslateModule,
+    NgIf
   ],
 })
 export class FooterComponent implements OnInit {

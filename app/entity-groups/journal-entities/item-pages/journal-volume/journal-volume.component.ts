@@ -14,6 +14,7 @@ import { listableObjectComponent } from '../../../../shared/object-collection/sh
 import { ThemedResultsBackButtonComponent } from '../../../../shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../thumbnail/themed-thumbnail.component';
 import { TabbedRelatedEntitiesSearchComponent } from "../../../../item-page/simple/related-entities/tabbed-related-entities-search/tabbed-related-entities-search.component";
+import { ThemedMediaViewerComponent } from "../../../../item-page/media-viewer/themed-media-viewer.component";
 
 @listableObjectComponent('JournalVolume', ViewMode.StandalonePage)
 @Component({
@@ -32,7 +33,8 @@ import { TabbedRelatedEntitiesSearchComponent } from "../../../../item-page/simp
     ThemedResultsBackButtonComponent,
     ThemedThumbnailComponent,
     TranslateModule,
-    TabbedRelatedEntitiesSearchComponent
+    TabbedRelatedEntitiesSearchComponent,
+    ThemedMediaViewerComponent
 ],
 })
 /**

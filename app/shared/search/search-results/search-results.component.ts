@@ -1,44 +1,30 @@
-import { AsyncPipe } from '@angular/common';
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-} from '@angular/core';
-import { RouterLink } from '@angular/router';
-import { TranslateModule } from '@ngx-translate/core';
-import { NgxSkeletonLoaderModule } from 'ngx-skeleton-loader';
-import {
-  BehaviorSubject,
-  Observable,
-} from 'rxjs';
+import { AsyncPipe, NgIf } from "@angular/common";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { RouterLink } from "@angular/router";
+import { TranslateModule } from "@ngx-translate/core";
+import { NgxSkeletonLoaderModule } from "ngx-skeleton-loader";
+import { BehaviorSubject, Observable } from "rxjs";
 
-import { SortOptions } from '../../../core/cache/models/sort-options.model';
-import { PaginatedList } from '../../../core/data/paginated-list.model';
-import { RemoteData } from '../../../core/data/remote-data';
-import { Context } from '../../../core/shared/context.model';
-import { DSpaceObject } from '../../../core/shared/dspace-object.model';
-import { SearchService } from '../../../core/shared/search/search.service';
-import { SearchConfigurationService } from '../../../core/shared/search/search-configuration.service';
-import { ViewMode } from '../../../core/shared/view-mode.model';
-import {
-  fadeIn,
-  fadeInOut,
-} from '../../animations/fade';
-import {
-  hasNoValue,
-  isNotEmpty,
-} from '../../empty.util';
-import { ErrorComponent } from '../../error/error.component';
-import { CollectionElementLinkType } from '../../object-collection/collection-element-link.type';
-import { ObjectCollectionComponent } from '../../object-collection/object-collection.component';
-import { ListableObject } from '../../object-collection/shared/listable-object.model';
-import { AppliedFilter } from '../models/applied-filter.model';
-import { PaginatedSearchOptions } from '../models/paginated-search-options.model';
-import { SearchFilter } from '../models/search-filter.model';
-import { SearchResult } from '../models/search-result.model';
-import { SearchExportCsvComponent } from '../search-export-csv/search-export-csv.component';
-import { SearchResultsSkeletonComponent } from './search-results-skeleton/search-results-skeleton.component';
+import { SortOptions } from "../../../core/cache/models/sort-options.model";
+import { PaginatedList } from "../../../core/data/paginated-list.model";
+import { RemoteData } from "../../../core/data/remote-data";
+import { Context } from "../../../core/shared/context.model";
+import { DSpaceObject } from "../../../core/shared/dspace-object.model";
+import { SearchService } from "../../../core/shared/search/search.service";
+import { SearchConfigurationService } from "../../../core/shared/search/search-configuration.service";
+import { ViewMode } from "../../../core/shared/view-mode.model";
+import { fadeIn, fadeInOut } from "../../animations/fade";
+import { hasNoValue, isNotEmpty } from "../../empty.util";
+import { ErrorComponent } from "../../error/error.component";
+import { CollectionElementLinkType } from "../../object-collection/collection-element-link.type";
+import { ObjectCollectionComponent } from "../../object-collection/object-collection.component";
+import { ListableObject } from "../../object-collection/shared/listable-object.model";
+import { AppliedFilter } from "../models/applied-filter.model";
+import { PaginatedSearchOptions } from "../models/paginated-search-options.model";
+import { SearchFilter } from "../models/search-filter.model";
+import { SearchResult } from "../models/search-result.model";
+import { SearchExportCsvComponent } from "../search-export-csv/search-export-csv.component";
+import { SearchResultsSkeletonComponent } from "./search-results-skeleton/search-results-skeleton.component";
 
 export interface SelectionConfig {
   repeatable: boolean;
@@ -46,13 +32,10 @@ export interface SelectionConfig {
 }
 
 @Component({
-  selector: 'ds-base-search-results',
-  templateUrl: './search-results.component.html',
-  styleUrls: ['./search-results.component.scss'],
-  animations: [
-    fadeIn,
-    fadeInOut,
-  ],
+  selector: "ds-base-search-results",
+  templateUrl: "./search-results.component.html",
+  styleUrls: ["./search-results.component.scss"],
+  animations: [fadeIn, fadeInOut],
   standalone: true,
   imports: [
     AsyncPipe,
@@ -63,6 +46,7 @@ export interface SelectionConfig {
     SearchExportCsvComponent,
     SearchResultsSkeletonComponent,
     TranslateModule,
+    NgIf,
   ],
 })
 
@@ -144,36 +128,86 @@ export class SearchResultsComponent {
    */
   @Input() selectionConfig: SelectionConfig = null;
 
+  @Input() fixedFilterQuery: string;
+
   /**
    * Emit when one of the listed object has changed.
    */
   @Output() contentChange = new EventEmitter<any>();
 
-  @Output() deselectObject: EventEmitter<ListableObject> = new EventEmitter<ListableObject>();
+  @Output() deselectObject: EventEmitter<ListableObject> =
+    new EventEmitter<ListableObject>();
 
-  @Output() selectObject: EventEmitter<ListableObject> = new EventEmitter<ListableObject>();
+  @Output() selectObject: EventEmitter<ListableObject> =
+    new EventEmitter<ListableObject>();
+
+  isEntityPage: boolean;
+  currentConfig: string;
 
   constructor(
     protected searchConfigService: SearchConfigurationService,
-    protected searchService: SearchService,
+    protected searchService: SearchService
   ) {
     this.activeFilters$ = this.searchConfigService.getCurrentFilters();
     this.appliedFilters$ = this.searchService.appliedFilters$;
+    this.isEntityPage = document.URL.includes("/entities/") ? true : false;
+  }
+
+  ngOnInit(): void {
+    if (
+      this.isEntityPage === true &&
+      this.configuration === "default-relationships"
+    ) {
+      if (this.fixedFilterQuery.includes("Link")) {
+        this.currentConfig = `${this.fixedFilterQuery
+          ?.split("Link")[0]
+          ?.split("is")[1]
+          ?.toLowerCase()}-relationships`;
+      } else if (this.fixedFilterQuery.includes("Child")) {
+        this.currentConfig = `${this.fixedFilterQuery
+          ?.split("=")[0]
+          ?.split("Of")[0]
+          ?.split("Child")[1]
+          ?.toLowerCase()}-relationships`;
+      } else if (this.fixedFilterQuery.includes("Parent")) {
+        this.currentConfig = `${this.fixedFilterQuery
+          ?.split("=")[0]
+          ?.split("Of")[0]
+          ?.split("Parent")[1]
+          ?.toLowerCase()}-relationships`;
+      } else {
+        this.currentConfig = `${this.fixedFilterQuery
+          ?.split("=")[0]
+          ?.split("Of")[1]
+          ?.toLowerCase()}-relationships`;
+      }
+    }
   }
 
   /**
    * Check if search results are loading
    */
   isLoading(): boolean {
-    return !this.showError() && (hasNoValue(this.searchResults) || hasNoValue(this.searchResults.payload) || this.searchResults.isLoading);
+    return (
+      !this.showError() &&
+      (hasNoValue(this.searchResults) ||
+        hasNoValue(this.searchResults.payload) ||
+        this.searchResults.isLoading)
+    );
   }
 
   showError(): boolean {
-    return this.searchResults?.hasFailed && (!this.searchResults?.errorMessage || this.searchResults?.statusCode !== 400);
+    return (
+      this.searchResults?.hasFailed &&
+      (!this.searchResults?.errorMessage ||
+        this.searchResults?.statusCode !== 400)
+    );
   }
 
   errorMessageLabel(): string {
-    return (this.searchResults?.statusCode  === 422) ? 'error.invalid-search-query' : 'error.search-results';
+    return this.searchResults?.statusCode === 422
+      ? "error.invalid-search-query"
+      : "error.search-results";
   }
 
   /**
@@ -182,7 +216,10 @@ export class SearchResultsComponent {
   surroundStringWithQuotes(input: string): string {
     let result = input;
 
-    if (isNotEmpty(result) && !(result.startsWith('\"') && result.endsWith('\"'))) {
+    if (
+      isNotEmpty(result) &&
+      !(result.startsWith('"') && result.endsWith('"'))
+    ) {
       result = `"${result}"`;
     }
 

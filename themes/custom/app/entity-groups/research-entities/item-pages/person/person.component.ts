@@ -15,6 +15,7 @@ import { Context } from '../../../../../../../app/core/shared/context.model';
 import { ViewMode } from '../../../../../../../app/core/shared/view-mode.model';
 import { PersonComponent as BaseComponent } from '../../../../../../../app/entity-groups/research-entities/item-pages/person/person.component';
 import { listableObjectComponent } from '../../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
+import { ThemedMediaViewerComponent } from 'src/app/item-page/media-viewer/themed-media-viewer.component';
 
 @listableObjectComponent('Person', ViewMode.StandalonePage, Context.Any, 'custom')
 @Component({
@@ -36,7 +37,8 @@ import { listableObjectComponent } from '../../../../../../../app/shared/object-
     ThemedResultsBackButtonComponent,
     ThemedThumbnailComponent,
     TranslateModule,
-    NgIf
+    NgIf,
+    ThemedMediaViewerComponent
   ],
 })
 export class PersonComponent extends BaseComponent {

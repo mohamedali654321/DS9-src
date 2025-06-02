@@ -2,15 +2,24 @@
 <ds-results-back-button [back]="back"></ds-results-back-button>
 }
 <div class="d-flex flex-row">
-  <ds-item-page-title-field [item]="object" class="me-auto">
+  <ds-item-page-title-field [item]="object" class="mr-auto">
   </ds-item-page-title-field>
   <ds-dso-edit-menu></ds-dso-edit-menu>
 </div>
 <div class="row">
   <div class="col-xs-12 col-md-4">
+    @if (!(mediaViewer.image || mediaViewer.video)) {
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail [thumbnail]="object?.thumbnail | async"></ds-thumbnail>
     </ds-metadata-field-wrapper>
+    } @if (mediaViewer.image || mediaViewer.video) {
+    <div class="mb-2">
+      <ds-media-viewer [item]="object"></ds-media-viewer>
+    </div>
+    }
+    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+      <ds-thumbnail [thumbnail]="object?.thumbnail | async"></ds-thumbnail>
+    </ds-metadata-field-wrapper> -->
     <!-- <ds-generic-item-page-field class="item-page-fields" [item]="object"
       [fields]="['creativeworkseries.issn']"
       [label]="'journal.page.issn'">
@@ -105,6 +114,15 @@
     >
     </ds-metadata-representation-list>
 
+        <ds-metadata-representation-list
+      class="ds-item-page-mixed-author-field"
+      [parentItem]="object"
+      [itemType]="'OrgUnit'"
+      [metadataFields]="['organization.legalName']"
+      [label]="'relationships.isAdministrationOfJournal' | translate"
+    >
+    </ds-metadata-representation-list>
+
     <ds-generic-item-page-field
       class="item-page-fields"
       [item]="object"
@@ -130,7 +148,7 @@
     >
     </ds-generic-item-page-field>
 
-    <ds-related-items
+    <!-- <ds-related-items
       [parentItem]="object"
       [relationType]="'isVolumeOfJournal'"
       [label]="'relationships.isVolumeOf' | translate"
@@ -149,7 +167,7 @@
       [relationType]="'isOrgUnitOfJournal'"
       [label]="'relationships.isAdministrationOfJournal' | translate"
     >
-    </ds-related-items>
+    </ds-related-items> -->
     <!-- <ds-related-items
       [parentItem]="object"
       [relationType]="'isVolumeOfJournal'"
@@ -171,24 +189,26 @@
     </div>
   </div>
   <div class="mt-5 w-100 px-0">
-    <ds-tabbed-related-entities-search  [item]="object"
-                                        [relationTypes]="[
-                                          {
-                                          label: 'isPublicationOfJournal',
-                                          filter: 'isJournalOfPublication',
-                                          configuration: 'default-relationships'
-                                        },
-                                        {
-                                          label: 'isAdministrationOfJournal',
-                                          filter: 'isJournalOfAdministration',
-                                          configuration: 'administration-relationships'
-                                        },
-                                        {
-                                          label: 'isVolumeOfJournal',
-                                          filter: 'isJournalOfVolume',
-                                          configuration: 'volume-relationships'
-                                        },
-                                        ]">
+    <ds-tabbed-related-entities-search
+      [item]="object"
+      [relationTypes]="[
+        {
+          label: 'isPublicationOfJournal',
+          filter: 'isJournalOfPublication',
+          configuration: 'default-relationships'
+        },
+        {
+          label: 'isAdministrationOfJournal',
+          filter: 'isJournalOfAdministration',
+          configuration: 'administration-relationships'
+        },
+        {
+          label: 'isVolumeOfJournal',
+          filter: 'isJournalOfVolume',
+          configuration: 'volume-relationships'
+        }
+      ]"
+    >
     </ds-tabbed-related-entities-search>
   </div>
 </div>

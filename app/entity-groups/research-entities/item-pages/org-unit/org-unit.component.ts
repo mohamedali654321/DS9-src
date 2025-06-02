@@ -16,6 +16,7 @@ import { listableObjectComponent } from '../../../../shared/object-collection/sh
 import { ThemedResultsBackButtonComponent } from '../../../../shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../thumbnail/themed-thumbnail.component';
 import { ThemedMetadataRepresentationListComponent } from 'src/app/item-page/simple/metadata-representation-list/themed-metadata-representation-list.component';
+import { ThemedMediaViewerComponent } from "../../../../item-page/media-viewer/themed-media-viewer.component";
 
 @listableObjectComponent('OrgUnit', ViewMode.StandalonePage)
 @Component({
@@ -37,7 +38,8 @@ import { ThemedMetadataRepresentationListComponent } from 'src/app/item-page/sim
     ThemedThumbnailComponent,
     TranslateModule,
     ThemedMetadataRepresentationListComponent,
-  ],
+    ThemedMediaViewerComponent
+],
 })
 /**
  * The component for displaying metadata and relations of an item of the type Organisation Unit

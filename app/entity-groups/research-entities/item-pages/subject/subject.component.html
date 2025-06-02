@@ -11,14 +11,29 @@
 
 <div class="row">
   <div class="col-xs-12 col-md-4">
-    <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail
         [thumbnail]="object?.thumbnail | async"
         [alt]="'thumbnail.subject.alt'"
         [placeholder]="'thumbnail.subject.placeholder'"
       >
       </ds-thumbnail>
+    </ds-metadata-field-wrapper> -->
+    @if (!(mediaViewer.image || mediaViewer.video)) {
+    <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+      <ds-thumbnail
+        [thumbnail]="object?.thumbnail | async"
+        [defaultImage]="'assets/images/series-placehplder.svg'"
+        [alt]="'thumbnail.subject.alt'"
+        [placeholder]="'thumbnail.subject.placeholder'"
+      >
+      </ds-thumbnail>
     </ds-metadata-field-wrapper>
+    } @if (mediaViewer.image || mediaViewer.video) {
+    <div class="mb-2">
+      <ds-media-viewer [item]="object"></ds-media-viewer>
+    </div>
+    }
 
     <!-- <ng-container *ngIf="!(mediaViewer.image || mediaViewer.video)">
         <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
@@ -166,14 +181,16 @@
     </div>
   </div>
   <div class="mt-5 w-100">
-      <ds-tabbed-related-entities-search  [item]="object"
-                                          [relationTypes]="[
-                                        {
-                                            label: 'isPublicationOfSubject',
-                                            filter: 'isSubjectOfPublication',
-                                            configuration: 'default-relationships'
-                                          }
-                                          ]">
-      </ds-tabbed-related-entities-search>
-    </div>
+    <ds-tabbed-related-entities-search
+      [item]="object"
+      [relationTypes]="[
+        {
+          label: 'isPublicationOfSubject',
+          filter: 'isSubjectOfPublication',
+          configuration: 'default-relationships'
+        }
+      ]"
+    >
+    </ds-tabbed-related-entities-search>
+  </div>
 </div>

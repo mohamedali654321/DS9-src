@@ -5,7 +5,7 @@
 <!-- <ds-kware-navigate-items [item]="object" [collectionId]="collectionId"></ds-kware-navigate-items> -->
 
 <div class="d-flex flex-row">
-  <ds-item-page-title-field [item]="object" class="me-auto">
+  <ds-item-page-title-field [item]="object" class="mr-auto">
   </ds-item-page-title-field>
   <ds-dso-edit-menu></ds-dso-edit-menu>
 </div>
@@ -32,6 +32,17 @@
       <ds-media-viewer [item]="object"></ds-media-viewer>
     </ng-container> -->
 
+    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+      <ds-thumbnail
+        [thumbnail]="object?.thumbnail | async"
+        [defaultImage]="'assets/images/series.webp'"
+        [alt]="'thumbnail.series.alt'"
+        [placeholder]="'thumbnail.series.placeholder'"
+      >
+      </ds-thumbnail>
+    </ds-metadata-field-wrapper> -->
+
+    @if (!(mediaViewer.image || mediaViewer.video)) {
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail
         [thumbnail]="object?.thumbnail | async"
@@ -41,6 +52,11 @@
       >
       </ds-thumbnail>
     </ds-metadata-field-wrapper>
+    } @if (mediaViewer.image || mediaViewer.video) {
+    <div class="mb-2">
+      <ds-media-viewer [item]="object"></ds-media-viewer>
+    </div>
+    }
 
     <ds-generic-item-page-field
       [item]="object"
@@ -156,7 +172,7 @@
     >
     </ds-generic-item-page-field>
 
-    <ds-related-items
+    <!-- <ds-related-items
       [parentItem]="object"
       [relationType]="'isOrgUnitOfSeries'"
       [label]="'relationships.isOrgUnitOf' | translate"
@@ -203,7 +219,7 @@
       [relationType]="'isEraOfSeries'"
       [label]="'relationships.isEraOf' | translate"
     >
-    </ds-related-items>
+    </ds-related-items> -->
 
     <div>
       <a

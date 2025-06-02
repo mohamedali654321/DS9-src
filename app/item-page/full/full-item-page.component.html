@@ -8,7 +8,7 @@
           @if (!item.isWithdrawn || (isAdmin$|async)) {
             <div class="full-item-info">
               <div class="d-flex flex-row">
-                <ds-item-page-title-field class="me-auto" [item]="item"></ds-item-page-title-field>
+                <ds-item-page-title-field class="mr-auto" [item]="item"></ds-item-page-title-field>
                 <ds-dso-edit-menu></ds-dso-edit-menu>
               </div>
               @if (!fromSubmissionObject) {
@@ -25,7 +25,7 @@
                       @for (mdValue of mdEntry.value; track mdValue) {
                         <tr>
                           <td>{{mdEntry.key}}</td>
-                          <td>{{mdEntry.key.includes('.contributor.')? (((mdValue.value?.split(",")[0] | kwareTranslate) + ',' +  (mdValue.value?.split(",")[1] | kwareTranslate))| KwareCommaConvert)?.split(' null')[0]?.split(',undefined')[0]?.split('،undefined')[0] : mdValue.value?.split(' null')[0] | kwareTranslate}}</td>
+                          <td>{{mdEntry.key.includes('.contributor.') || mdEntry.key.includes('.editor')? (((mdValue.value?.split(",")[0] | kwareTranslate) + ',' +  (mdValue.value?.split(",")[1] | kwareTranslate))| KwareCommaConvert)?.split(' null')[0]?.split(',undefined')[0]?.split('،undefined')[0] : mdValue.value?.split(' null')[0] | kwareTranslate}}</td>
                           <td>{{mdValue.language}}</td>
                         </tr>
                       }

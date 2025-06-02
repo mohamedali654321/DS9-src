@@ -4123,6 +4123,8 @@
     
 
     ::ng-deep html[dir="rtl"]{
+
+      
         .citation-img{
             margin-top:-4px;
             margin-right:-2px ;
@@ -4150,8 +4152,10 @@
     }
 
     .dso-edit-menu-dropdown {
-        transform: translate(125px, 0px);
+        transform: translate(230px, 0px);
     }
+
+
 
     ds-base-search-form {
         .scope-button {

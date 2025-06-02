@@ -49,6 +49,7 @@
         [searchResults]="resultsRD$ | async"
         [searchConfig]="searchOptions$ | async"
         [configuration]="(currentConfiguration$ | async)"
+        [fixedFilterQuery]="fixedFilterQuery"
         [disableHeader]="!searchEnabled"
         [linkType]="linkType"
         [context]="(currentContext$ | async)"

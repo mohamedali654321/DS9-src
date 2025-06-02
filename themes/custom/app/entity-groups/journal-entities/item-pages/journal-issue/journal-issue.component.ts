@@ -15,6 +15,7 @@ import { listableObjectComponent } from '../../../../../../../app/shared/object-
 import { ThemedResultsBackButtonComponent } from '../../../../../../../app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/related-entities/tabbed-related-entities-search/tabbed-related-entities-search.component';
+import { ThemedMediaViewerComponent } from 'src/app/item-page/media-viewer/themed-media-viewer.component';
 
 @listableObjectComponent('JournalIssue', ViewMode.StandalonePage, Context.Any, 'custom')
 @Component({
@@ -35,7 +36,8 @@ import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/r
     ThemedResultsBackButtonComponent,
     ThemedThumbnailComponent,
     TranslateModule,
-    TabbedRelatedEntitiesSearchComponent
+    TabbedRelatedEntitiesSearchComponent,
+    ThemedMediaViewerComponent
   ],
 })
 export class JournalIssueComponent extends BaseComponent {

@@ -1,8 +1,8 @@
 @if ((newRelationships | async).length > 1) {
-  <ul ngbNav #tabs="ngbNav" [destroyOnHide]="true" [activeId]="activeTab$ | async"  class="nav-tabs" role="tablist">
+  <ul ngbNav #tabs="ngbNav" [destroyOnHide]="true" [activeId]="activeTab$ | async" (navChange)="onTabChange($event)" class="nav-tabs" role="tablist">
     @for (relationType of (newRelationships | async); track relationType) {
       <li [ngbNavItem]="relationType.filter" role="presentation">
-        <a (click)="updateUrl($event,relationType.filter)" ngbNavLink role="tab">
+        <a ngbNavLink role="tab">
           {{'item.page.relationships.' + relationType.label | translate}}
         </a>
         <ng-template ngbNavContent>
