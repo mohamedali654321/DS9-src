@@ -19,7 +19,7 @@
           <tr
             class="{{point.id}}-data">
             <th scope="row" data-test="statistics-label">
-              {{ point.label }}
+              {{ getLabel(point) | async }}
             </th>
             @for (header of headers; track header) {
               <td
