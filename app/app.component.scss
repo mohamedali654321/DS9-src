@@ -4141,6 +4141,10 @@
         }
 
 ::ng-deep html[dir="rtl"] {
+
+    // .dropdown{
+    //     inset: 0px 0px 0px 0px !important;
+    // }
     .citation-img {
         margin-top: -4px;
         margin-right: -2px;
@@ -4151,9 +4155,9 @@
         margin-right: 0 !important;
     }
 
-    .dso-edit-menu-dropdown {
-        transform: translate(230px, 0px);
-    }
+    // .dso-edit-menu-dropdown {
+    //     transform: translate(230px, 0px);
+    // }
 
 
 
