@@ -89,45 +89,28 @@ export class TabbedRelatedEntitiesSearchComponent implements OnInit {
    */
   ngOnInit(): void {
     this.activeTab$ = this.route.queryParams.pipe(map((params) => params.tab));
-    this.relationTypes.forEach((relationShip) => {
-      if (
-        this.item.firstMetadataValue("dspace.entity.type") === "Journal" &&
-        relationShip.filter.includes("Publication")
-      ) {
-        this.newRelationships.next(
-          this.newRelationships.getValue().concat([relationShip])
-        );
-      } else {
-        if (
-          (relationShip.label.includes("isPublicationOf") &&
-            this.getRelationsCounter("Publication") > 0) ||
-          (relationShip.label.includes("isPersonOf") &&
-            this.getRelationsCounter("Person") > 0) ||
-          (relationShip.label.includes("isOrgUnitOf") &&
-            this.getRelationsCounter("ArabicPublisher") +
-              this.getRelationsCounter("Publisher") >
-              0)
-        ) {
-          this.newRelationships.next(
-            this.newRelationships.getValue().concat([relationShip])
-          );
-        }
-        this.getRelationshipsCounterByFilter(relationShip.label)
-          .pipe(getFirstSucceededRemoteDataPayload())
-          .subscribe((data) => {
-            if (
-              data &&
-              data.totalElements > 0 &&
-              !relationShip.label.includes("isPersonOf") &&
-              !relationShip.label.includes("isPublicationOf")
-            ) {
-              this.newRelationships.next(
-                this.newRelationships.getValue().concat([relationShip])
-              );
-            }
-          });
+     this.relationTypes.forEach((relationShip)=>{
+      if(this.item.firstMetadataValue('dspace.entity.type') === 'Journal' && relationShip.filter.includes('Publication')){
+        this.newRelationships.next(this.newRelationships.getValue().concat([relationShip]))
+
       }
-    });
+      else{
+        if((relationShip.label.includes('isPublicationOf') && this.getRelationsCounter('Publication') > 0) 
+          || (relationShip.label.includes('isPersonOf') && this.getRelationsCounter('Person') > 0) ||
+          (relationShip.label.includes('isOrgUnitOf') && ((this.getRelationsCounter('ArabicPublisher') + this.getRelationsCounter('Publisher') > 2)))
+        ){
+            this.newRelationships.next(this.newRelationships.getValue().concat([relationShip]))
+          }
+          this.getRelationshipsCounterByFilter(relationShip.label).pipe(getFirstSucceededRemoteDataPayload()).subscribe((data)=>{
+            
+           if((data && data.totalElements > 2) && (!(relationShip.label.includes('isPersonOf')) && !(relationShip.label.includes('isPublicationOf')) )){
+           
+            this.newRelationships.next(this.newRelationships.getValue().concat([relationShip]))
+           }
+          })
+      }
+
+    })
   }
 
   getRelationshipsCounterByFilter(

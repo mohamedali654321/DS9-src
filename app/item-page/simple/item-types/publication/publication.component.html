@@ -1,16 +1,17 @@
 @if (showBackButton$ | async) {
-  <ds-results-back-button [back]="back"></ds-results-back-button>
-}
-@if (iiifEnabled) {
-  <div class="row">
-    <div class="col-12">
-      <ds-mirador-viewer  id="iiif-viewer"
-        [object]="object"
-        [searchable]="iiifSearchEnabled"
-        [query]="iiifQuery$ | async">
-      </ds-mirador-viewer>
-    </div>
+<ds-results-back-button [back]="back"></ds-results-back-button>
+} @if (iiifEnabled) {
+<div class="row">
+  <div class="col-12">
+    <ds-mirador-viewer
+      id="iiif-viewer"
+      [object]="object"
+      [searchable]="iiifSearchEnabled"
+      [query]="iiifQuery$ | async"
+    >
+    </ds-mirador-viewer>
   </div>
+</div>
 }
 <div class="d-flex flex-row">
   <ds-item-page-title-field [item]="object" class="mr-auto">
@@ -20,40 +21,47 @@
 <div class="row">
   <div class="col-xs-12 col-md-4">
     @if (!(mediaViewer.image || mediaViewer.video)) {
-      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-        <ds-thumbnail [thumbnail]="object?.thumbnail | async"></ds-thumbnail>
-      </ds-metadata-field-wrapper>
-    }
-    @if (mediaViewer.image || mediaViewer.video) {
-      <div class="mb-2">
-        <ds-media-viewer [item]="object"></ds-media-viewer>
-      </div>
+    <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+      <ds-thumbnail [thumbnail]="object?.thumbnail | async"></ds-thumbnail>
+    </ds-metadata-field-wrapper>
+    } @if (mediaViewer.image || mediaViewer.video) {
+    <div class="mb-2">
+      <ds-media-viewer [item]="object"></ds-media-viewer>
+    </div>
     }
     <ds-item-page-file-section [item]="object"></ds-item-page-file-section>
     <!-- <ds-item-page-date-field [item]="object"></ds-item-page-date-field> -->
-    <ds-metadata-representation-list class="ds-item-page-mixed-author-field"
+    <ds-metadata-representation-list
+      class="ds-item-page-mixed-author-field"
       [parentItem]="object"
       [itemType]="'Person'"
       [metadataFields]="['dc.contributor.author', 'dc.creator']"
-      [label]="'relationships.isAuthorOf' | translate">
+      [label]="'relationships.isAuthorOf' | translate"
+    >
     </ds-metadata-representation-list>
-    <ds-generic-item-page-field [item]="object"
+    <ds-generic-item-page-field
+      [item]="object"
       [fields]="['journal.title']"
-      [label]="'publication.page.journal-title'">
+      [label]="'publication.page.journal-title'"
+    >
     </ds-generic-item-page-field>
-    <ds-generic-item-page-field [item]="object"
+    <ds-generic-item-page-field
+      [item]="object"
       [fields]="['journal.identifier.issn']"
-      [label]="'publication.page.journal-issn'">
+      [label]="'publication.page.journal-issn'"
+    >
     </ds-generic-item-page-field>
-    <ds-generic-item-page-field [item]="object"
+    <ds-generic-item-page-field
+      [item]="object"
       [fields]="['journalvolume.identifier.name']"
-      [label]="'publication.page.volume-title'">
+      [label]="'publication.page.volume-title'"
+    >
     </ds-generic-item-page-field>
     <!-- <ds-generic-item-page-field [item]="object"
       [fields]="['dc.publisher']"
       [label]="'publication.page.publisher'">
     </ds-generic-item-page-field> -->
-     <ds-generic-item-page-field
+    <ds-generic-item-page-field
       [item]="object"
       [fields]="['dc.type.media']"
       [label]="'item.page.media'"
@@ -146,7 +154,6 @@
     >
     </ds-metadata-representation-list>
 
-
     <ds-metadata-representation-list
       class="ds-item-page-mixed-author-field"
       [parentItem]="object"
@@ -174,8 +181,6 @@
     >
     </ds-metadata-representation-list>
 
-
-
     <ds-generic-item-page-field
       [item]="object"
       [fields]="['dc.contributor.advisoralternative']"
@@ -190,7 +195,6 @@
       [label]="'item.page.member' | translate"
     >
     </ds-metadata-representation-list>
-
 
     <ds-generic-item-page-field
       [item]="object"
@@ -209,7 +213,6 @@
     >
     </ds-generic-item-page-field>
 
-
     <ds-metadata-representation-list
       [parentItem]="object"
       [itemType]="'OrgUnit'"
@@ -227,7 +230,6 @@
     </ds-metadata-representation-list>
   </div>
   <div class="col-xs-12 col-md-7">
- 
     <!-- <ds-related-items
       [parentItem]="object"
       [relationType]="'isProjectOfPublication'"
@@ -244,11 +246,13 @@
       [label]="'relationships.isJournalIssueOf' | translate">
     </ds-related-items> -->
     <ds-item-page-abstract-field [item]="object"></ds-item-page-abstract-field>
-    <ds-generic-item-page-field [item]="object"
+    <ds-generic-item-page-field
+      [item]="object"
       [fields]="['dc.description']"
-      [label]="'publication.page.description'">
+      [label]="'publication.page.description'"
+    >
     </ds-generic-item-page-field>
-        <ds-generic-item-page-field
+    <ds-generic-item-page-field
       [item]="object"
       [fields]="['dc.description.recommendations']"
       [label]="'publication.page.recommendations'"
@@ -261,8 +265,6 @@
       [label]="'item.page.language'"
     >
     </ds-generic-item-page-field>
-
-
 
     <ds-generic-item-page-field
       [item]="object"
@@ -313,15 +315,13 @@
     >
     </ds-generic-item-page-field>
 
-
-
-    <ds-metadata-representation-list
-    [parentItem]="object"
-    [itemType]="'OrgUnit'"
-    [metadataFields]="['dc.relation.department']"
-    [label]="'item.page.department' | translate"
-  >
-  </ds-metadata-representation-list>
+    <!-- <ds-metadata-representation-list
+      [parentItem]="object"
+      [itemType]="'OrgUnit'"
+      [metadataFields]="['dc.relation.department']"
+      [label]="'item.page.department' | translate"
+    >
+    </ds-metadata-representation-list> -->
 
     <ds-generic-item-page-field
       [item]="object"
@@ -414,7 +414,6 @@
     >
     </ds-generic-item-page-field>
 
- 
     <ds-generic-item-page-field
       [item]="object"
       [fields]="['time.era']"
@@ -436,7 +435,6 @@
     >
     </ds-generic-item-page-field>
 
-
     <ds-generic-item-page-field
       [item]="object"
       [fields]="['dc.contributor']"
@@ -457,7 +455,6 @@
       [label]="'item.page.ispartof'"
     >
     </ds-generic-item-page-field>
-
 
     <ds-generic-item-page-field
       [item]="object"
@@ -671,15 +668,14 @@
     </ds-metadata-representation-list>
 
     <ds-metadata-representation-list
-    class="ds-item-page-mixed-author-field"
-    [parentItem]="object"
-    [itemType]="'Subject'"
-    [metadataFields]="['dc.subject']"
-    [label]="'item.page.subject' | translate"
-  >
-  </ds-metadata-representation-list>
+      class="ds-item-page-mixed-author-field"
+      [parentItem]="object"
+      [itemType]="'Subject'"
+      [metadataFields]="['dc.subject']"
+      [label]="'item.page.subject' | translate"
+    >
+    </ds-metadata-representation-list>
 
- 
     <ds-generic-item-page-field
       [item]="object"
       [fields]="['dc.identifier.citation']"
@@ -714,45 +710,61 @@
       [label]="'item.page.uri'">
     </ds-item-page-uri-field> -->
     <ds-item-page-collections [item]="object"></ds-item-page-collections>
-    <ds-item-page-uri-field [item]="object"
+    <ds-item-page-uri-field
+      [item]="object"
       [fields]="['coar.notify.endorsedBy']"
-      [label]="'item.page.endorsement'">
+      [label]="'item.page.endorsement'"
+    >
     </ds-item-page-uri-field>
-    <ds-item-page-uri-field [item]="object"
+    <ds-item-page-uri-field
+      [item]="object"
       [fields]="['datacite.relation.isReviewedBy']"
-      [label]="'item.page.review'">
+      [label]="'item.page.review'"
+    >
     </ds-item-page-uri-field>
-    <ds-item-page-uri-field [item]="object"
+    <ds-item-page-uri-field
+      [item]="object"
       [fields]="['datacite.relation.isSupplementedBy']"
-      [label]="'item.page.supplemented'">
+      [label]="'item.page.supplemented'"
+    >
     </ds-item-page-uri-field>
-    <ds-item-page-uri-field [item]="object"
+    <ds-item-page-uri-field
+      [item]="object"
       [fields]="['datacite.relation.isReferencedBy']"
-      [label]="'item.page.referenced'">
+      [label]="'item.page.referenced'"
+    >
     </ds-item-page-uri-field>
     @if (geospatialItemPageFieldsEnabled) {
-      <ds-geospatial-item-page-field [item]="object"
-                                     [label]="'item.page.places'"
-                                     [pointFields]="['dcterms.spatial']"
-                                     [bboxFields]="['dcterms.spatial']"
-                                     [cluster]="true"
-      >
-      </ds-geospatial-item-page-field>
+    <ds-geospatial-item-page-field
+      [item]="object"
+      [label]="'item.page.places'"
+      [pointFields]="['dcterms.spatial']"
+      [bboxFields]="['dcterms.spatial']"
+      [cluster]="true"
+    >
+    </ds-geospatial-item-page-field>
     }
 
-        <!-- <ds-related-items
+    <ds-related-items
     [parentItem]="object"
-    [relationType]="'isPublicationLinkedTo'"
-    [label]="'relationships.isLinkedTo' | translate"
+    [relationType]="'isDepartmentOfPublication'"
+    [label]="'item.page.department' | translate"
   >
   </ds-related-items>
 
-  <ds-related-items
-  [parentItem]="object"
-  [relationType]="'isPublicationLinkingTo'"
-  [label]="'relationships.isLinkingTo' | translate"
->
-</ds-related-items>
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isPublicationLinkedTo'"
+      [label]="'relationships.isLinkedTo' | translate"
+    >
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isPublicationLinkingTo'"
+      [label]="'relationships.isLinkingTo' | translate"
+    >
+    </ds-related-items>
 
     <ds-related-items
       [parentItem]="object"
@@ -821,20 +833,24 @@
       [relationType]="'isJournalIssueOfPublication'"
       [label]="'relationships.isJournalIssueOf' | translate"
     >
-    </ds-related-items> -->
+    </ds-related-items>
     <div>
-      <a class="btn btn-outline-primary" role="button" [routerLink]="[itemPageRoute + '/full']">
-        <i class="fas fa-info-circle"></i> {{"item.page.link.full" | translate}}
+      <a
+        class="btn btn-outline-primary"
+        role="button"
+        [routerLink]="[itemPageRoute + '/full']"
+      >
+        <i class="fas fa-info-circle"></i>
+        {{ "item.page.link.full" | translate }}
       </a>
     </div>
-    
   </div>
 
-    <div class="mt-5 w-100">
+  <div class="mt-5 w-100">
     <ds-tabbed-related-entities-search
       [item]="object"
       [relationTypes]="[
-       {
+        {
           label: 'isPublicationLinkedTo',
           filter: 'isPublicationLinkedTo',
           configuration: 'default-relationships'

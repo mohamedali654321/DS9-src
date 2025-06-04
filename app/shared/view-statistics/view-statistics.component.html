@@ -1,0 +1,10 @@
+<!-- <div class="d-block clearfix ng-star-inserted">
+  <span [attr.title]="('views.counts' | translate)" style="background-color: #530a86 !important;" class="badge badge-info badge-metric mr-1 view ng-star-inserted"><span class="fa fa-eye">&nbsp;</span>{{TotalVisits | async}}</span>
+  <span [attr.title]="('downloads.counts' | translate)" style="background-color: #530a86 !important;" class="badge badge-info badge-metric download mr-1 ng-star-inserted"><span class="fa fa-download">&nbsp;</span>{{TotalDownloads | async}}</span>
+
+</div> -->
+<div class="d-block clearfix ng-star-inserted">
+  <span [attr.title]="('views.counts' | translate)" style="background-color: transparent !important;color: #6c757d !important;font-size: 75% !important;padding-top: 4px;" class="badge badge-info badge-metric mr-1 view ng-star-inserted"><span class="fa fa-eye">&nbsp;</span>{{(TotalVisits | async) | dsShortNumber}}</span>
+  <span [attr.title]="('downloads.counts' | translate)" style="background-color: transparent !important;color: #6c757d !important;font-size: 75% !important;" class="badge badge-info badge-metric download mr-1 ng-star-inserted"><span class="fa fa-download">&nbsp;</span>{{(TotalDownloads | async) | dsShortNumber}}</span>
+
+</div>

@@ -45,6 +45,7 @@ import { ListableObjectComponentLoaderComponent } from '../object-collection/sha
 import { PaginationComponent } from '../pagination/pagination.component';
 import { PaginationComponentOptions } from '../pagination/pagination-component-options.model';
 import { BrowserOnlyPipe } from '../utils/browser-only.pipe';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.Default,
@@ -190,7 +191,11 @@ export class ObjectGridComponent implements OnInit {
   data: any = {};
   columns$: Observable<ListableObject[][]>;
 
-  constructor(private hostWindow: HostWindowService) {
+
+    isSearch: boolean;
+  isBrowseSearch: boolean;
+
+  constructor(private hostWindow: HostWindowService,private route: ActivatedRoute,) {
     this._objects$ = new BehaviorSubject(undefined);
   }
 
@@ -198,12 +203,14 @@ export class ObjectGridComponent implements OnInit {
    * Initialize the instance variables
    */
   ngOnInit(): void {
+      this.route.data.subscribe(data=>{data.breadcrumbKey === 'search' ? this.isSearch = true : this.isSearch = false});
+    this.route.queryParams.subscribe(params => {params.source === 'browseCategory'? this.isBrowseSearch = true : this.isBrowseSearch = false})
     const nbColumns$ = this.hostWindow.widthCategory.pipe(
-      map((widthCat: WidthCategory) => {
+           map((widthCat: WidthCategory) => {
         switch (widthCat) {
           case WidthCategory.XL:
           case WidthCategory.LG: {
-            return 3;
+            return this.isSearch || this.isBrowseSearch ?  4 : 5;
           }
           case WidthCategory.MD:
           case WidthCategory.SM: {

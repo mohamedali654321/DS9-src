@@ -1,4 +1,4 @@
-import { AsyncPipe, isPlatformBrowser, NgClass } from "@angular/common";
+import { AsyncPipe, isPlatformBrowser, NgClass, NgIf } from "@angular/common";
 import {
   Component,
   ElementRef,
@@ -37,6 +37,7 @@ import { AbstractIncrementalListComponent } from "../abstract-incremental-list/a
     ThemedLoadingComponent,
     TranslateModule,
     VarDirective,
+    NgIf
   ],
 })
 /**

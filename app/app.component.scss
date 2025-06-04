@@ -4189,3 +4189,13 @@
     }
 
 }
+
+::ng-deep{
+.clamp-default-1 .content {
+    max-height: 1.5rem;
+    position: relative;
+    overflow: hidden;
+    line-height: 1.5;
+    overflow-wrap: break-word;
+}
+}

@@ -1,62 +1,165 @@
 <div class="card" [@focusShadow]="(isCollapsed$ | async)?'blur':'focus'">
-  <div class="position-absolute ms-1">
+    <!-- <div *ngIf="(dso?.version | async)?.payload?.version !== null">
+      <div  class="ribbon-2">{{('search.results.edition' | translate)+" "+(stringifyNumber((dso?.version | async)?.payload?.version))}}</div>
+    </div> -->
+    <div class="position-absolute ml-1">
+        <ng-content></ng-content>
+    </div>
+    <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'" rel="noopener noreferrer" [routerLink]="[itemPageRoute]"
+        class="card-img-top full-width" [attr.title]="'search.results.view-result' | translate">
+        <div>
+            <ds-thumbnail [thumbnail]="dso?.thumbnail | async"
+            
+             [limitWidth]="false">
+            </ds-thumbnail>
+        </div>
+    </a>
+    <span *ngIf="linkType == linkTypes.None" class="card-img-top full-width">
+        <div>
+            <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="false">
+            </ds-thumbnail>
+        </div>
+    </span>
+    <div class="card-body"[ngClass]="{'fixed-height':(isCollapsed() | async)}">
+      <div class="d-flex">
+        <div class="label_dage" >
+          <span class="badge badge-info" [attr.title]="'item.search.publishDate' | translate" style="background-color: #6aa3d5 !important;color: #FFF; margin-bottom: -2px;" *ngIf="dso.hasMetadata('dc.date.issued') || dso.hasMetadata('dc.date.issuedhijri')" >{{firstMetadataValue('dc.date.issued') ? firstMetadataValue('dc.date.issued') : firstMetadataValue('dc.date.issuedhijri') }}</span>
+  
+          <!-- <ds-type-badge  *ngIf="showLabel" [object]="dso"></ds-type-badge> -->
+          <span class="badge badge-info" style="background-color: #530a86  !important;color: #FFF; margin-bottom: -2px;" *ngIf="dso.hasMetadata('dc.type')" >{{firstMetadataValue('dc.type') | kwareTranslate}}</span>
+          <!-- <ds-access-status-badge [object]="dso" class="pl-1"></ds-access-status-badge> -->
+          <ds-badges *ngIf="showLabel" class="pl-1" [object]="dso" [context]="context" [showAccessStatus]="true"></ds-badges>
+  
+       </div>
+        
+        
+      </div>
+        <ds-truncatable [id]="dso.id">
+            <ds-truncatable-part [id]="dso.id" [minLines]="2" type="h4">
+
+                <h4 [ngStyle]="{'gap': localeEn ? '10px' : '0px'}" class="card-title d-flex " >
+                  <div>
+                    <a [routerLink]="[itemPageRoute]">{{(dsoTitle + (versionId === dso.id ? '*': '')) | kwareTranslate}}</a>
+  
+                  </div>
+                  <div>
+                    <a *ngIf="dso.hasMetadata('dc.identifier.doi')" href="{{firstMetadataValue('dc.identifier.doi')}}"><img style="width: 22px;    margin-right: 10px;" _ngcontent-dspace-angular-c659="" placement="top" alt="orcid-logo" src="/assets/images/DOI_logo.svg.png" class="orcid-icon ng-star-inserted"></a>
+  
+                  </div>
+  
+                 </h4>
+            </ds-truncatable-part>
+  
+  
+            <ds-truncatable-part *ngIf=" dso.hasMetadata('dc.contributor.author') " [id]="dso.id" [minLines]="1"   >
+              <p class="item-authors card-text author-section">
+  
+                <ds-metadata-representation-list class="ds-item-page-mixed-author-field"
+                [parentItem]="dso"
+                [itemType]="'Person'"
+                [metadataFields]="['dc.contributor.author', 'dc.creator']"
+                [label]="'relationships.isAuthorOf' | translate">
+                </ds-metadata-representation-list>   
+                <!-- <span *ngIf="dso.hasMetadata('dc.date.issued')" class="item-date">{{firstMetadataValue('dc.date.issued')}}</span>
+                <span *ngIf="dso.firstMetadataValue('dc.date.issued') && dso.firstMetadataValue('dc.date.issuedhijri') " class="item-list-date" [innerHTML]="regxColon()"></span>
+          <span *ngIf="dso.firstMetadataValue('dc.date.issuedhijri')" class="item-list-date" [innerHTML]="firstMetadataValue('dc.date.issuedhijri')"></span> -->
+                <!-- <span *ngFor="let author of dso.allMetadataValues('dc.contributor.author');let last=last;">
+                  <span [attr.title]="'item.search.author' | translate" ><i class="fa-regular fa-user">&nbsp;</i>{{convertComma(((author?.split(",")[0] | kwareTranslate) + ',' +  (author?.split(",")[1] | kwareTranslate)))}}</span>
+  
+                  <span *ngIf="!last">&nbsp;&nbsp;</span>
+              </span> -->
+            </p>
+            </ds-truncatable-part>
+  
+  
+            <ds-truncatable-part *ngIf=" dso.hasMetadata('dc.contributor.advisor') "   [id]="dso.id" [minLines]="1">
+  
+              <span class="item-authors card-text author-section">
+  
+                <ds-metadata-representation-list class="ds-item-page-mixed-author-field"
+                [parentItem]="dso"
+                [itemType]="'Person'"
+                [metadataFields]="['dc.contributor.advisor']"
+                [label]="'relationships.isAdvisorsOf' | translate">
+                </ds-metadata-representation-list>   
+                <!-- <span *ngFor="let advisor of dso.allMetadataValues('dc.contributor.advisor');let last=last;">
+                  <span [attr.title]="'item.search.advisor' | translate"><i class="fa-solid fa-user-tie">&nbsp;</i>{{convertComma(((advisor?.split(",")[0] | kwareTranslate) + ',' +  (advisor?.split(",")[1] | kwareTranslate)))}}</span>
+    
+                  <span *ngIf="!last">&nbsp;&nbsp;</span>
+              </span> -->
+              </span>
+            </ds-truncatable-part>
+            <ds-truncatable-part *ngIf=" dso.hasMetadata('dc.publisher') "   [id]="dso.id" [minLines]="1">
+              <span  class="item-abstract card-text publisher-section">
+                <ds-metadata-representation-list class="ds-item-page-mixed-author-field"
+                    [parentItem]="dso"
+                    [itemType]="'OrgUnit'"
+                    [metadataFields]="['dc.publisher']"
+                    [label]="'relationships.isOrgUnitOf' | translate">
+                </ds-metadata-representation-list>
+                  <!-- <span  style="color: #530a86;" [innerHTML]="dso.firstMetadataValue('dc.publisher') | kwareTranslate"></span> -->
+              </span>
+          </ds-truncatable-part>
+            <ds-truncatable-part *ngIf="dso.allMetadata(['publicationissue.title']).length > 0" [id]="dso.id" [minLines]="1"   >
+              <span style="font-size: 15px;"  [innerHtml]="(localeEn && firstMetadataValue('publicationissue.title'))? (firstMetadataValue('publicationissue.title') | kwareTranslate): (firstMetadataValue('publicationissue.title') | kwareTranslate)"></span>
+        
+            </ds-truncatable-part>
+  
+            <!-- kware-edit keywords show -->
+  
+            <ds-truncatable-part [id]="dso.id" [minLines]="1"   >
+              <div  *ngIf="dso.hasMetadata('dc.subject')"  >
+                <div class="keys-info  ">
+                  <span class=" badge-info"   *ngFor="let keyword of keywords;let last=last;"><a  style="white-space: -webkit-nowrap !important;"  href="/search?query=&f.subject={{keyword}},equals" title="{{keyword | kwareTranslate}}">{{keyword | kwareTranslate}}</a><span style="color:#207698; ;" *ngIf="!last"> • </span> </span>
+                </div>
+    
+    
+              </div>
+            </ds-truncatable-part>
+            <!-- <ds-truncatable-part *ngIf="dso.hasMetadata('dc.description.abstract')"   [id]="dso.id" [minLines]="3">
+                <p class="item-abstract card-text">
+          
+                    <span [innerHTML]=" removeMarkdown(abstract | kwareTranslate)"></span>
+                </p>
+            </ds-truncatable-part>
+  
+            <ds-truncatable-part *ngIf="!dso.hasMetadata('dc.description.abstract') && dso.hasMetadata('dc.description') "   [id]="dso.id" [minLines]="3">
+              <p class="item-abstract card-text">
+                  <span [innerHTML]="removeMarkdown(dso.firstMetadataValue('dc.description') | kwareTranslate)"></span>
+              </p>
+          </ds-truncatable-part> -->
+          <div [ngStyle]="{'-webkit-line-clamp':(dso.hasMetadata('dc.identifier.saveNumber') === true || dso.hasMetadata('publicationissue.title') === true) ? '4' : '5'}" class="card_text_abstract"  *ngIf="dso.hasMetadata('dc.description.abstract')">
+            <p class="item-abstract card-text">
+                <span [innerHTML]=" removeMarkdown(abstract | kwareTranslate)"></span>
+            </p>
+          </div>
+  
+        <div [ngStyle]="{'-webkit-line-clamp':(dso.hasMetadata('dc.identifier.saveNumber') === true || dso.hasMetadata('publicationissue.title') === true) ? '4' : '5'}" class="card_text_abstract" *ngIf="!dso.hasMetadata('dc.description.abstract') && dso.hasMetadata('dc.description') ">
+          <p class="item-abstract card-text">
+              <span [innerHTML]="removeMarkdown(dso.firstMetadataValue('dc.description') | kwareTranslate)"></span>
+          </p>
+        </div>
+  
+        </ds-truncatable>
+        
+        <ds-truncatable-part style="bottom: 2.5rem !important;" class="fixed-bottom-content" [id]="dso.id" [minLines]="1"   >
+          <div  *ngIf="dso.hasMetadata('dc.identifier.saveNumber')"  >
+            <div class="card-text">
+              <span class="text-muted">{{('item.page.saveNumber' | translate)+': '+ dso.firstMetadataValue('dc.identifier.saveNumber')}}</span>
+            </div>
+  
+  
+          </div>
+        </ds-truncatable-part>
+        <span  style="display:flex;justify-content: space-between;" [ngClass]="{'fixed-bottom-content':(isCollapsed() | async)}">
+          <small *ngIf="firstMetadataValue('dc.date.accessioned')" class="badge badge-pill badge-secondary align-self-center archived-items-lead" [attr.title]="('item.uploaded.on' | translate)">
+            <i class="fa-solid fa-upload"></i> {{' ' + (translateDate() !== null ? translateDate(): (firstMetadataValue('dc.date.accessioned').split('T')[0] |  date:'longDate'))}}
+          </small>
+        
+        <ds-view-statistics [object]="dso"></ds-view-statistics>
+
+      </span>
+    </div>
     <ng-content></ng-content>
   </div>
-  @if (linkType !== linkTypes.None) {
-    <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null" [routerLink]="[itemPageRoute]"
-      class="card-img-top full-width" tabindex="-1" [attr.title]="'search.results.view-result' | translate">
-      <div>
-        <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="false">
-        </ds-thumbnail>
-      </div>
-    </a>
-  }
-  @if (linkType === linkTypes.None) {
-    <span class="card-img-top full-width">
-      <div>
-        <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="false">
-        </ds-thumbnail>
-      </div>
-    </span>
-  }
-  <div class="card-body">
-    @if (showLabel) {
-      <ds-badges [object]="dso" [context]="context" [showAccessStatus]="true"></ds-badges>
-    }
-    <ds-truncatable [id]="dso.id">
-      <ds-truncatable-part [id]="dso.id" [minLines]="3" type="h4">
-        <h4 class="card-title" [innerHTML]="dsoTitle"></h4>
-      </ds-truncatable-part>
-      @if (dso.hasMetadata(['dc.contributor.author', 'dc.creator', 'dc.contributor.*'])) {
-        <ds-truncatable-part [id]="dso.id" [minLines]="1">
-          <p class="item-authors card-text text-muted">
-            @if (dso.hasMetadata('dc.date.issued')) {
-              <span class="item-date">{{firstMetadataValue('dc.date.issued')}}</span>
-            }
-            @for (author of allMetadataValues(['dc.contributor.author', 'dc.creator', 'dc.contributor.*']); track author) {
-              <span>,
-                <!-- <span [innerHTML]="author"></span> -->
-          <span [attr.title]="'item.search.author' | translate" ><i class="fa-regular fa-user">&nbsp;</i>{{((author?.split(",")[0] | kwareTranslate) + ',' +  (author?.split(",")[1] | kwareTranslate)) | KwareCommaConvert}}</span>
-
-              </span>
-            }
-          </p>
-        </ds-truncatable-part>
-      }
-      @if (dso.hasMetadata('dc.description.abstract')) {
-        <ds-truncatable-part [id]="dso.id" [minLines]="3">
-          <p class="item-abstract card-text">
-            <span [innerHTML]="firstMetadataValue('dc.description.abstract') | kwareTranslate"></span>
-          </p>
-        </ds-truncatable-part>
-      }
-    </ds-truncatable>
-    @if (linkType !== linkTypes.None) {
-      <div class="text-center">
-        <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'" [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null" [routerLink]="[itemPageRoute]"
-        class="lead btn btn-primary viewButton">{{ 'search.results.view-result' | translate}}</a>
-      </div>
-    }
-  </div>
-  <ng-content></ng-content>
-</div>
+  

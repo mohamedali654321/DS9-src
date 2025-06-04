@@ -49,6 +49,7 @@ import { ThemeService } from '../../../../../shared/theme-support/theme.service'
 import { TruncatableService } from '../../../../../shared/truncatable/truncatable.service';
 import { followLink } from '../../../../../shared/utils/follow-link-config.model';
 import { WorkspaceItemAdminWorkflowActionsComponent } from '../../actions/workspace-item/workspace-item-admin-workflow-actions.component';
+import { LocaleService } from 'src/app/core/locale/locale.service';
 
 @listableObjectComponent(WorkspaceItemSearchResult, ViewMode.GridElement, Context.AdminWorkflowSearch)
 @Component({
@@ -105,13 +106,15 @@ export class WorkspaceItemSearchResultAdminWorkflowGridElementComponent extends 
 
   constructor(
     public dsoNameService: DSONameService,
-    private linkService: LinkService,
+    protected linkService: LinkService,
     protected truncatableService: TruncatableService,
     private themeService: ThemeService,
     protected bitstreamDataService: BitstreamDataService,
     protected supervisionOrderDataService: SupervisionOrderDataService,
+        public localeService: LocaleService /* kware edit - call service from LocaleService */
+    
   ) {
-    super(dsoNameService, truncatableService, bitstreamDataService);
+    super(dsoNameService, truncatableService, bitstreamDataService,linkService,localeService);
   }
 
   /**

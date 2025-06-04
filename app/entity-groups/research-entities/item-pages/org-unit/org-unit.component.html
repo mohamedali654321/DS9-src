@@ -209,7 +209,7 @@
     >
     </ds-generic-item-page-field>
 
-    <!-- <ds-related-items
+    <ds-related-items
       [parentItem]="object"
       [relationType]="'isParentOrgUnitOf'"
       [label]="'relationships.isOrgUnitOfSubOrg' | translate"
@@ -284,7 +284,7 @@
       [relationType]="'isJournalOfPublisher'"
       [label]="'relationships.isSingleJournalOf' | translate"
     >
-    </ds-related-items> -->
+    </ds-related-items>
     <div>
       <a
         class="btn btn-outline-primary"
@@ -328,7 +328,7 @@
         {
           label: 'isJournalOfPublisher',
           filter: 'isOrgUnitOfJournal',
-          configuration: 'journal-relationships'
+          configuration: 'default-relationships'
         },
         {
           label: 'isPlaceOfOrgUnit',
