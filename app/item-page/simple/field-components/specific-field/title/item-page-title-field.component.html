@@ -1,8 +1,31 @@
-<h1 class="item-page-title-field">
+<!-- <h1 class="item-page-title-field">
   @if (item.firstMetadataValue('dspace.entity.type'); as type) {
     <div class="d-inline">
       {{ type.toLowerCase() + '.page.titleprefix' | translate }}
     </div>
   }
   <span class="dont-break-out">{{ dsoNameService.getName(item) }}</span>
+</h1> -->
+
+<h1 class="item-page-title-field">
+  
+  <div *ngIf="item.firstMetadataValue('dspace.entity.type') && (item.firstMetadataValue('dspace.entity.type') !== 'Publication' && item.firstMetadataValue('dspace.entity.type') !== 'OrgUnit' && item.firstMetadataValue('dspace.entity.type') !== 'Place' && item.firstMetadataValue('dspace.entity.type') !== 'Event')" class="d-inline">
+    {{  item.firstMetadataValue('dspace.entity.type').toLowerCase() + '.page.titleprefix' | translate }}
+  </div>
+  <div *ngIf="item.firstMetadataValue('dspace.entity.type')  && item.firstMetadataValue('dspace.entity.type') === 'Event'" class="d-inline">
+    {{ item.firstMetadataValue('event.mainType') ? (item.firstMetadataValue('event.mainType') | kwareTranslate)+':' : item.firstMetadataValue('dspace.entity.type').toLowerCase() + '.page.titleprefix' | translate }}
+  </div>
+  <div *ngIf="item.firstMetadataValue('dspace.entity.type')  && item.firstMetadataValue('dspace.entity.type') === 'Place'" class="d-inline">
+    {{ item.firstMetadataValue('place.type') ? ((item.firstMetadataValue('place.type') | kwareTranslate )+':') : item.firstMetadataValue('dspace.entity.type').toLowerCase() + '.page.titleprefix' | translate }}
+  </div>
+    <div *ngIf="item.firstMetadataValue('dspace.entity.type')  && item.firstMetadataValue('dspace.entity.type') === 'OrgUnit'" class="d-inline">
+    {{ item.firstMetadataValue('organization.child.type') ? ((item.firstMetadataValue('organization.child.type') | kwareTranslate )+':') : ((item.firstMetadataValue('organization.type') | kwareTranslate)+':') }}
+  </div>
+  <span class="dont-break-out">{{ dsoNameService.getName(item) }} 
+    <a *ngIf="item.hasMetadata('organization.identifier.ror')" target="_blank" href="{{item.firstMetadataValue('organization.identifier.ror')}}"><img style="width: 50px !important;" class="orcid-icon ng-star-inserted ror-img"  src="assets/images/ROR_logo.svg.png"/></a> 
+    <a *ngIf="item.hasMetadata('person.identifier.orcid')" target="_blank" href="https://sandbox.orcid.org/{{item.firstMetadataValue('person.identifier.orcid')}}"><img style="width: 30px !important;" class="orcid-icon ng-star-inserted orcid-img"  src="/assets/images/orcid.logo.icon.svg"/></a> 
+    <a *ngIf="item.hasMetadata('dc.identifier.doi')" target="_blank" href="{{item.firstMetadataValue('dc.identifier.doi')}}"><img style="width: 30px !important;" class="orcid-icon ng-star-inserted orcid-img"  src="/assets/images/DOI_logo.svg.png" /></a> 
+
+
+  </span>
 </h1>
