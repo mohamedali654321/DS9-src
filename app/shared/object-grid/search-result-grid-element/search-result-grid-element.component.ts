@@ -54,7 +54,7 @@ export class SearchResultGridElementComponent<
       this.dso = this.object.indexableObject;
       this.isCollapsed$ = this.isCollapsed();
     }
-    this.linkService.resolveLink<Item>(this.dso, followLink("thumbnail")); //kware-edit
+    // this.linkService.resolveLink<Item>(this.dso, followLink("thumbnail")); //kware-edit
     this.linkService.resolveLink<Item>(this.dso, followLink("version")); //kware-edit
   }
 

@@ -3,8 +3,10 @@
   <ds-my-dspace-status-badge [context]="context"></ds-my-dspace-status-badge>
 }
 <div>
+  @if (object.firstMetadataValue('dspace.entity.type') !== 'Publication') {
   <ds-type-badge class="pe-1" [object]="object"></ds-type-badge>
-  @if (showAccessStatus) {
+  }
+  @if (showAccessStatus  && object.firstMetadataValue('dspace.entity.type') === 'Publication') {
     <ds-access-status-badge [object]="object"></ds-access-status-badge>
   }
 </div>

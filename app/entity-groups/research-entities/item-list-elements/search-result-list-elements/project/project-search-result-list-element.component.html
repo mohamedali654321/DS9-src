@@ -1,54 +1,77 @@
 <div class="row">
-  @if (showThumbnails) {
-    <div class="col-3 col-md-2">
-      @if (linkType !== linkTypes.None) {
-        <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
-          [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
-          [routerLink]="[itemPageRoute]" class="dont-break-out" tabindex="-1">
+  <div *ngIf="showThumbnails" class="col-3 col-md-2">
+    <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'"
+       rel="noopener noreferrer"
+       [routerLink]="[itemPageRoute]" class="dont-break-out">
+           <ds-thumbnail [thumbnail]="dso?.thumbnail | async"
+                    [limitWidth]="true">
+      </ds-thumbnail>
+      <!-- <ds-thumbnail [thumbnail]="dso?.thumbnail | async"
+                    [defaultImage]="'assets/images/project-placeholder.svg'"
+                    [alt]="'thumbnail.project.alt'"
+                    [placeholder]="'thumbnail.project.placeholder'">
+      </ds-thumbnail> -->
+    </a>
+    <span *ngIf="linkType == linkTypes.None" class="dont-break-out">
           <ds-thumbnail [thumbnail]="dso?.thumbnail | async"
-            [defaultImage]="'assets/images/project-placeholder.svg'"
-            [alt]="'thumbnail.project.alt'"
-            [placeholder]="'thumbnail.project.placeholder'">
-          </ds-thumbnail>
-        </a>
-      }
-      @if (linkType === linkTypes.None) {
-        <span class="dont-break-out">
-          <ds-thumbnail [thumbnail]="dso?.thumbnail | async"
-            [defaultImage]="'assets/images/project-placeholder.svg'"
-            [alt]="'thumbnail.project.alt'"
-            [placeholder]="'thumbnail.project.placeholder'">
-          </ds-thumbnail>
-        </span>
-      }
-    </div>
-  }
+                    [limitWidth]="true">
+      </ds-thumbnail>
+      <!-- <ds-thumbnail [thumbnail]="dso?.thumbnail | async"
+                    [defaultImage]="'assets/images/project-placeholder.svg'"
+                    [alt]="'thumbnail.project.alt'"
+                    [placeholder]="'thumbnail.project.placeholder'">
+      </ds-thumbnail> -->
+    </span>
+  </div>
   <div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">
     <ds-truncatable [id]="dso.id">
-      @if (showLabel) {
-        <ds-badges [object]="dso" [context]="context"></ds-badges>
-      }
-      @if (linkType !== linkTypes.None) {
-        <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
-          [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
-          [routerLink]="[itemPageRoute]" class="lead item-list-title dont-break-out"
-        [innerHTML]="dsoTitle" role="link" tabindex="0"></a>
-      }
-      @if (linkType === linkTypes.None) {
-        <span
-          class="lead item-list-title dont-break-out"
-        [innerHTML]="dsoTitle | kwareTranslate"></span>
-      }
+      <div class="d-flex">
+        <div class="label_dage" >
+          <ds-badges *ngIf="showLabel" [object]="dso" [context]="context"></ds-badges>
+          <span class="badge badge-info" style="background-color: #e8ebf3 !important;color: #222;" *ngIf="dso.hasMetadata('project.type')" >{{firstMetadataValue('project.type') | kwareTranslate}}</span>
+  <!-- <ds-access-status-badge [object]="dso" class="pl-1"></ds-access-status-badge> -->
+       </div>
+      </div>
+      <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'"
+         rel="noopener noreferrer"
+         [routerLink]="[itemPageRoute]" class="lead item-list-title dont-break-out"
+         [innerHTML]="dsoTitle"></a>
+         <!-- kware-edit kwareTranslatePipe -->
+      <span *ngIf="linkType == linkTypes.None"
+            class="lead item-list-title dont-break-out"
+            [innerHTML]="dsoTitle | kwareTranslate"></span>
+            <!-- <ds-publictaion-count  [dso]="dso"></ds-publictaion-count> -->
       <!--<span class="text-muted">-->
       <!--<ds-truncatable-part [id]="dso.id" [minLines]="1">-->
       <!--<span *ngIf="dso.allMetadata(['project.identifier.status']).length > 0"-->
       <!--class="item-list-status">-->
       <!--<span *ngFor="let value of allMetadataValues(['project.identifier.status']); let last=last;">-->
-      <!--<span [innerHTML]="value"></span><span *ngIf="!last">; </span>-->
-    <!--</span>-->
-  <!--</span>-->
-<!--</ds-truncatable-part>-->
-<!--</span>-->
-</ds-truncatable>
-</div>
+      <!--<span [innerHTML]="value"><span [innerHTML]="value"></span></span>-->
+      <!--</span>-->
+      <!--</span>-->
+      <!--</ds-truncatable-part>-->
+      <!--</span>-->
+      <div *ngIf="dso.hasMetadata('dc.subject')">
+        <div class="keys-info ">
+          <span class=" badge-info" *ngFor="let keyword of keywords;let last=last;"><a
+              style="white-space: -webkit-nowrap !important;font-size:15px
+              ;font-weight: 600;" href="/search?query=&f.subject={{keyword}},equals"
+              title="{{keyword | kwareTranslate}}">{{keyword | kwareTranslate}}</a><span style="color:#530a86 ;"
+              *ngIf="!last"> • </span> </span>
+        </div>
+      </div>
+          <div *ngIf="dso.firstMetadataValue('dc.description')" class="item-list-abstract">
+            <!-- kware-edit kwareTranslatePipe -->
+            <ds-truncatable-part [id]="dso.id" [minLines]="3"><span
+              [innerHTML]="removeMarkdown(firstMetadataValue('dc.description') | kwareTranslate)"></span>
+            </ds-truncatable-part>
+          </div>
+    </ds-truncatable>
+    <span *ngIf="isRelationshipPage === false"  style="display:flex;justify-content: end;">
+      <small style="background-color:transparent !important;color: #6c757d !important;font-weight: 500;" *ngIf="firstMetadataValue('dc.date.accessioned')" class="badge badge-pill badge-secondary align-self-center archived-items-lead" [attr.title]="('item.uploaded.on' | translate)">
+        <i class="fa-solid fa-upload"></i> {{' ' + (translateDate() !== null ? translateDate(): (firstMetadataValue('dc.date.accessioned').split('T')[0] |  date:'longDate'))}}
+      </small>
+      <ds-view-statistics [object]="dso"></ds-view-statistics>
+    </span>
+  </div>
 </div>

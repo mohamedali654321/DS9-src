@@ -1,64 +1,218 @@
-<div class="card" [@focusShadow]="(isCollapsed$ | async)?'blur':'focus'">
+<div class="card" [@focusShadow]="(isCollapsed$ | async) ? 'blur' : 'focus'">
+  <!-- <ds-social-sharing></ds-social-sharing> -->
   <ds-truncatable [id]="dso.id">
-    <div class="position-absolute ms-1">
+    <div class="position-absolute ml-1">
       <ng-content></ng-content>
     </div>
-    @if (linkType !== linkTypes.None) {
-      <a
-        [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
-        [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null" [routerLink]="[itemPageRoute]"
-        class="card-img-top full-width" [attr.title]="'search.results.view-result' | translate" tabindex="-1">
-        <div>
-          <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="false">
-          </ds-thumbnail>
+    <a
+      *ngIf="linkType != linkTypes.None"
+      [target]="linkType == linkTypes.ExternalLink ? '_blank' : '_self'"
+      rel="noopener noreferrer"
+      [routerLink]="[itemPageRoute]"
+      class="card-img-top full-width"
+      [attr.title]="'search.results.view-result' | translate"
+    >
+      <div>
+        <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="false">
+        </ds-thumbnail>
+      </div>
+    </a>
+    <span *ngIf="linkType == linkTypes.None" class="card-img-top full-width">
+      <div>
+        <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="false">
+        </ds-thumbnail>
+      </div>
+    </span>
+    <div
+      class="card-body"
+      [ngClass]="{ 'fixed-height': (isCollapsed() | async) }"
+    >
+      <!-- <ds-type-badge *ngIf="showLabel" [object]="dso"></ds-type-badge> -->
+      <div class="d-flex" style="justify-content: space-between">
+        <div class="label_dage">
+          <!-- <ds-badges *ngIf="showLabel" [object]="dso" [context]="context"></ds-badges> -->
+          <!-- <ds-access-status-badge [object]="dso" class="pl-1"></ds-access-status-badge> -->
+          <span
+            class="badge badge-info"
+            style="
+              background-color: #530a86 !important;
+              color: #fff;
+              margin-bottom: -2px;
+            "
+            *ngIf="
+              dso.hasMetadata('organization.type') ||
+              dso.hasMetadata('organization.child.type')
+            "
+            >{{
+              dso.hasMetadata("organization.child.type")
+                ? (firstMetadataValue("organization.child.type")
+                  | kwareTranslate)
+                : (firstMetadataValue("organization.type") | kwareTranslate)
+            }}</span
+          >
+          <!-- <span class="badge badge-info" style="background-color: rgb(0 89 167)  !important;color: #FFF; margin-bottom: -2px;" *ngIf="dso.hasMetadata('organization.child.type')" >{{firstMetadataValue('organization.child.type') | kwareTranslate}}</span> -->
         </div>
-      </a>
-    }
-    @if (linkType === linkTypes.None) {
-      <span class="card-img-top full-width">
         <div>
-          <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="false">
-          </ds-thumbnail>
+          <!-- <ds-publictaion-count style="font-size: 16px !important;"  [dso]="dso"></ds-publictaion-count> -->
         </div>
-      </span>
-    }
-    <div class="card-body">
-      @if (showLabel) {
-        <ds-badges [object]="dso" [context]="context"></ds-badges>
-      }
-      <ds-truncatable-part [id]="dso.id" [minLines]="3" type="h4">
-        <h4 class="card-title" [innerHTML]="dsoTitle | kwareTranslate"></h4>
+      </div>
+      <ds-truncatable-part [id]="dso.id" [minLines]="2" type="h4">
+        <!-- kware-edit kwareTranslatePipe -->
+        <!-- <h4 class="card-title" [innerHTML]="dsoTitle | kwareTranslate"></h4> -->
+        <!-- <h4 class="card-title"><a [routerLink]="[itemPageRoute]">{{ dsoTitle  | kwareTranslate}}</a> 
+                </h4> -->
+        <h4
+          [ngStyle]="{ gap: localeEn ? '10px' : '0px' }"
+          class="card-title d-flex"
+        >
+          <a [routerLink]="[itemPageRoute]">{{ dsoTitle | kwareTranslate }}</a>
+
+          <a
+            *ngIf="dso.hasMetadata('organization.identifier.ror')"
+            href="{{ firstMetadataValue('organization.identifier.ror') }}"
+            ><img
+              style="width: 30px; margin-right: 10px"
+              _ngcontent-dspace-angular-c659=""
+              placement="top"
+              alt="orcid-logo"
+              src="assets/images/ROR_logo.svg-removebg-preview.png"
+              class="orcid-icon ng-star-inserted"
+          /></a>
+
+          <!-- <ds-publictaion-count style="font-size: 16px !important;"  [dso]="dso"></ds-publictaion-count> -->
+        </h4>
       </ds-truncatable-part>
-      @if (dso.hasMetadata('organization.foundingDate')) {
-        <p
-          class="item-date card-text text-muted">
-          <ds-truncatable-part [id]="dso.id" [minLines]="1">
-            <span [innerHTML]="firstMetadataValue('organization.foundingDate')"></span>
-          </ds-truncatable-part>
-        </p>
-      }
-      @if (dso.hasMetadata('organization.address.addressCountry')) {
-        <p
-          class="item-location card-text">
-          <ds-truncatable-part [id]="dso.id" [minLines]="3">
-            <span
-            class="item-country">{{firstMetadataValue('organization.address.addressCountry') | kwareTranslate}}</span>
-            @if (dso.hasMetadata('organization.address.addressLocality')) {
-              <span class="item-city">
-                <span>, </span>
-                {{firstMetadataValue('organization.address.addressLocality') | kwareTranslate}}
-              </span>
-            }
-          </ds-truncatable-part>
-        </p>
-      }
-      @if (linkType !== linkTypes.None) {
-        <div class="text-center">
-          <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
-            [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null" [routerLink]="[itemPageRoute]"
-          class="lead btn btn-primary viewButton" role="link" tabindex="0">{{ 'search.results.view-result' | translate}}</a>
+      <!-- <div *ngIf="dso.hasMetadata('organization.role')" class="item-jobtitle card-text">
+        <ds-truncatable-part [id]="dso.id" [minLines]="3" >
+         
+          <span [innerHTML]="firstMetadataValue('organization.role') | kwareTranslate"></span>
+        </ds-truncatable-part>
+     </div>
+      <div *ngIf="dso.allMetadata(['organization.relation.ispartof']).length > 0">
+        <span style="color:#530a86 !important ;font-size: 15px;font-weight: 600;" [innerHtml]="firstMetadataValue('organization.relation.ispartof') | kwareTranslate"></span>
+
+      </div> -->
+
+      <div *ngIf="dso.allMetadata(['organization.legalName.old']).length > 0">
+        <span
+          class="text-muted"
+          style="font-size: 15px; font-weight: 600"
+          [innerHtml]="
+            (firstMetadataValue('organization.legalName.old')
+              | kwareTranslate) +
+            ' ' +
+            ('suborgunit-previous-label' | translate)
+          "
+        ></span>
+      </div>
+      <div
+        *ngIf="dso.hasMetadata('organization.role')"
+        class="item-jobtitle card-text"
+      >
+        <ds-truncatable-part [id]="dso.id" [minLines]="1">
+          <!-- kware-edit kwareTranslatePipe -->
+          <span
+            [innerHTML]="
+              firstMetadataValue('organization.role') | kwareTranslate
+            "
+          ></span>
+        </ds-truncatable-part>
+      </div>
+
+      <div *ngIf="dso.allMetadata(['dc.relation.college']).length > 0">
+        <span
+          style="
+            color: #530a86 !important ;
+            font-size: 0.9rem;
+            font-weight: normal;
+          "
+          [innerHtml]="
+            firstMetadataValue('dc.relation.college') | kwareTranslate
+          "
+        ></span>
+      </div>
+      <ds-truncatable-part [id]="dso.id" [minLines]="1">
+        <div
+          *ngIf="
+            dso.allMetadata(['organization.chiefLegalName']).length > 0 ||
+            dso.allMetadata(['organization.legalName.alternative']).length > 0
+          "
+        >
+          <span class="item-abstract card-text publisher-section">
+            <ds-metadata-representation-list
+              class="ds-item-page-mixed-author-field"
+              [parentItem]="dso"
+              [itemType]="'OrgUnit'"
+              [metadataFields]="['organization.chiefLegalName']"
+              [label]="'relationships.isOrgUnitOf' | translate"
+            >
+            </ds-metadata-representation-list>
+          </span>
+          <!-- <span style="color:#530a86 !important ;font-size: .9rem;font-weight:normal;" [innerHtml]="(localeEn && firstMetadataValue('organization.legalName.alternative')) ? (firstMetadataValue('organization.legalName.alternative') | kwareTranslate) :  (firstMetadataValue('organization.legalName') | kwareTranslate)"></span> -->
         </div>
-      }
+      </ds-truncatable-part>
+      <!-- <div *ngIf="dso.hasMetadata('organization.foundingDate')"
+         class="item-date card-text text-muted">
+        <ds-truncatable-part [id]="dso.id" [minLines]="1" >
+          <span [innerHTML]="firstMetadataValue('organization.foundingDate')"></span>
+        </ds-truncatable-part>
+     </div> -->
+      <div
+        *ngIf="dso.hasMetadata('organization.address.addressCountry')"
+        class="item-location card-text"
+      >
+        <ds-truncatable-part [id]="dso.id" [minLines]="1">
+          <!-- kware-edit kwareTranslatePipe -->
+          <span class="item-country">{{
+            firstMetadataValue("organization.address.addressCountry")
+              | kwareTranslate
+          }}</span>
+          <span
+            *ngIf="dso.hasMetadata('organization.address.addressLocality')"
+            class="item-city"
+          >
+            <!-- kware-edit -->
+            <span>{{ regxComma() }}</span>
+            {{
+              firstMetadataValue("organization.address.addressLocality")
+                | kwareTranslate
+            }}
+          </span>
+        </ds-truncatable-part>
+      </div>
+
+      <div class="card_text_abstract" *ngIf="dso.hasMetadata('dc.description')">
+        <div class="item-abstract card-text">
+          <span
+            [innerHTML]="
+              removeMarkdown(
+                dso.firstMetadataValue('dc.description') | kwareTranslate
+              )
+            "
+          ></span>
+        </div>
+      </div>
+      <div
+        style="display: flex; justify-content: space-between"
+        class="container"
+        [ngClass]="{ 'fixed-bottom-content': (isCollapsed() | async) }"
+      >
+        <small
+          *ngIf="firstMetadataValue('dc.date.accessioned')"
+          class="badge badge-pill badge-secondary align-self-center archived-items-lead date-float"
+          [attr.title]="'item.uploaded.on' | translate"
+        >
+          <i class="fa-solid fa-upload"></i>
+          {{
+            " " +
+              (translateDate() !== null
+                ? translateDate()
+                : (firstMetadataValue("dc.date.accessioned").split("T")[0]
+                  | date : "longDate"))
+          }}
+        </small>
+        <ds-view-statistics [object]="dso"></ds-view-statistics>
+      </div>
     </div>
   </ds-truncatable>
   <ng-content></ng-content>

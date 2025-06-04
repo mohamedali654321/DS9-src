@@ -1,54 +1,106 @@
 <div class="row">
-  @if (showThumbnails) {
-    <div class="col-3 col-md-2">
-      @if (linkType !== linkTypes.None) {
-        <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
-          [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
-          [routerLink]="[itemPageRoute]" class="dont-break-out" tabindex="-1">
-          <ds-thumbnail [thumbnail]="dso?.thumbnail | async"
-            [defaultImage]="'assets/images/orgunit-placeholder.svg'"
-            [alt]="'thumbnail.orgunit.alt'"
-            [placeholder]="'thumbnail.orgunit.placeholder'">
-          </ds-thumbnail>
+    <div *ngIf="showThumbnails" class="col-3 col-md-2">
+        <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'"
+           rel="noopener noreferrer"
+           [routerLink]="[itemPageRoute]" class="dont-break-out">
+               <ds-thumbnail [thumbnail]="dso?.thumbnail | async"
+                    [limitWidth]="true">
+      </ds-thumbnail>
+            <!-- <ds-thumbnail [thumbnail]="dso?.thumbnail | async"
+                          [defaultImage]="'assets/images/orgunit-placeholder.svg'"
+                          [alt]="'thumbnail.orgunit.alt'"
+                          [placeholder]="'thumbnail.orgunit.placeholder'">
+            </ds-thumbnail> -->
         </a>
-      }
-      @if (linkType === linkTypes.None) {
-        <span class="dont-break-out">
-          <ds-thumbnail [thumbnail]="dso?.thumbnail | async"
-            [defaultImage]="'assets/images/orgunit-placeholder.svg'"
-            [alt]="'thumbnail.orgunit.alt'"
-            [placeholder]="'thumbnail.orgunit.placeholder'">
-          </ds-thumbnail>
+        <span *ngIf="linkType == linkTypes.None" class="dont-break-out">
+              <ds-thumbnail [thumbnail]="dso?.thumbnail | async"
+                    [limitWidth]="true">
+      </ds-thumbnail>
+            <!-- <ds-thumbnail [thumbnail]="dso?.thumbnail | async"
+                          [defaultImage]="'assets/images/orgunit-placeholder.svg'"
+                          [alt]="'thumbnail.orgunit.alt'"
+                          [placeholder]="'thumbnail.orgunit.placeholder'">
+            </ds-thumbnail> -->
         </span>
-      }
     </div>
-  }
-  <div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">
-    @if (showLabel) {
-      <ds-badges [object]="dso" [context]="context"></ds-badges>
-    }
-    <ds-truncatable [id]="dso.id">
-      @if (linkType !== linkTypes.None) {
-        <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
-          [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
-          [routerLink]="[itemPageRoute]" class="lead"
-        [innerHTML]="dsoTitle || ('orgunit.listelement.no-title' | translate)" role="link" tabindex="0"></a>
-      }
-      @if (linkType === linkTypes.None) {
-        <span
-          class="lead"
-        [innerHTML]="(dsoTitle | kwareTranslate) || ('orgunit.listelement.no-title' | translate)"></span>
-      }
-      <span class="text-muted">
-        @if (dso.allMetadata(['dc.description']).length > 0) {
-          <span
+    <div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">
+      <div class="d-flex" style="justify-content: space-between">
+        <div class="label_dage">
+            <!-- <ds-badges *ngIf="showLabel" [object]="dso" [context]="context"></ds-badges> -->
+            <!-- <ds-access-status-badge [object]="dso" class="pl-1"></ds-access-status-badge> -->    
+            <span class="badge badge-info" style="background-color: #530a86  !important;color: #FFF; margin-bottom: -2px;" *ngIf="dso.hasMetadata('organization.type') || dso.hasMetadata('organization.child.type')" >{{dso.hasMetadata('organization.child.type') ? (firstMetadataValue('organization.child.type') | kwareTranslate):(firstMetadataValue('organization.type') | kwareTranslate)}}</span>
+            <!-- <span class="badge badge-info" style="background-color: rgb(0 89 167)  !important;color: #FFF; margin-bottom: -2px;" *ngIf="dso.hasMetadata('organization.child.type')" >{{firstMetadataValue('organization.child.type') | kwareTranslate}}</span> -->
+  
+                  </div>
+        </div>
+   
+        <!-- <ds-type-badge *ngIf="showLabel" [object]="dso"></ds-type-badge> -->
+        <ds-truncatable [id]="dso.id">
+            <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'"
+               rel="noopener noreferrer"
+               [routerLink]="[itemPageRoute]" class="lead"
+               [innerHTML]="(dsoTitle | kwareTranslate) || ('orgunit.listelement.no-title' | translate)"></a>
+               <!-- kware-edit kwareTranslatePipe -->
+            <span *ngIf="linkType == linkTypes.None"
+                  class="lead"
+                  [innerHTML]="(dsoTitle | kwareTranslate)  || ('orgunit.listelement.no-title' | translate | kwareTranslate)"></span>
+                  <a *ngIf="dso.hasMetadata('organization.identifier.ror')" href="{{firstMetadataValue('organization.identifier.ror')}}"><img style="width: 30px;margin-right: 10px;" _ngcontent-dspace-angular-c659="" placement="top" alt="orcid-logo" src="assets/images/ROR_logo.svg-removebg-preview.png" class="orcid-icon ng-star-inserted"></a>
+
+                  <!-- <ds-publictaion-count  [dso]="dso"></ds-publictaion-count> -->
+
+                  <span class="text-muted">
+                    <ds-truncatable-part [id]="dso.id" [minLines]="1">
+                      <span *ngIf="dso.allMetadata(['organization.role']).length> 0"
+                        class="item-list-job-title">
+                        <span *ngFor="let value of allMetadataValues(['organization.role']);
+                          let last=last;">
+                          <!-- kware-edit kwareTranslatePipe -->
+                          <span [innerHTML]="value | kwareTranslate"><span
+                              [innerHTML]="value | kwareTranslate"></span></span>
+                        </span>
+                      </span>
+                    </ds-truncatable-part>
+            
+                  </span>
+
+
+                  <div *ngIf="dso.allMetadata(['dc.relation.college']).length > 0">
+                    <span style="color:#530a86!important ;font-size: 15px;font-weight: 600;" [innerHtml]="firstMetadataValue('dc.relation.college') | kwareTranslate"></span>
+  
+                  </div>
+  
+                  <div *ngIf="dso.allMetadata(['organization.chiefLegalName']).length > 0 ">
+                    <!-- <span style="color:#530a86!important ;font-size: 15px;font-weight: 600;" [innerHtml]="(virtualMetadataFieldsService.initVirtualProperties(dso,'organization.legalName') | async)"></span> -->
+                    <span class="item-abstract card-text publisher-section-admin">
+                      <ds-metadata-representation-list class="ds-item-page-mixed-author-field"
+                          [parentItem]="dso"
+                          [itemType]="'OrgUnit'"
+                          [metadataFields]="['organization.chiefLegalName']"
+                          [label]="'relationships.isOrgUnitOf' | translate">
+                      </ds-metadata-representation-list>
+                    </span>
+                  </div>
+                  
+                  
+                  <!-- <div *ngIf="dso.allMetadata(['organization.relation.ispartof']).length > 0">
+                    <span style="color:#530a86!important ;font-size: 15px;font-weight: 600;" [innerHtml]="firstMetadataValue('organization.relation.ispartof') | kwareTranslate"></span>
+
+                  </div> -->
+            <span class="text-muted">
+      <span *ngIf="dso.allMetadata(['dc.description']).length > 0"
             class="item-list-org-unit-description">
+            <!-- kware-edit kwareTranslatePipe -->
             <ds-truncatable-part [id]="dso.id" [minLines]="3"><span
-            [innerHTML]="firstMetadataValue('dc.description') | kwareTranslate"></span>
-          </ds-truncatable-part>
+                    [innerHTML]="removeMarkdown(firstMetadataValue('dc.description') | kwareTranslate)"></span>
+            </ds-truncatable-part>
+      </span>
+  </span>
+        </ds-truncatable>
+        <span *ngIf="isRelationshipPage === false"   style="display:flex;justify-content: end;">
+          <small style="background-color:transparent !important;color: #6c757d !important;font-weight: 500;" *ngIf="firstMetadataValue('dc.date.accessioned')" class="badge badge-pill badge-secondary align-self-center archived-items-lead" [attr.title]="('item.uploaded.on' | translate)">
+            <i class="fa-solid fa-upload"></i> {{' ' + (translateDate() !== null ? translateDate(): (firstMetadataValue('dc.date.accessioned').split('T')[0] |  date:'longDate'))}}
+          </small>
+          <ds-view-statistics [object]="dso"></ds-view-statistics>
         </span>
-      }
-    </span>
-  </ds-truncatable>
-</div>
+    </div>
 </div>

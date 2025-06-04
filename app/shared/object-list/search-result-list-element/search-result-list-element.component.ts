@@ -16,6 +16,7 @@ import { hasValue } from '../../empty.util';
 import { AbstractListableElementComponent } from '../../object-collection/shared/object-collection-element/abstract-listable-element.component';
 import { SearchResult } from '../../search/models/search-result.model';
 import { TruncatableService } from '../../truncatable/truncatable.service';
+import { LinkService } from 'src/app/core/cache/builders/link.service';
 
 @Component({
   selector: 'ds-search-result-list-element',
@@ -29,8 +30,20 @@ export class SearchResultListElementComponent<T extends SearchResult<K>, K exten
   dso: K;
   dsoTitle: string;
 
+
+    authors = [];
+  keywords = [];  //subject
+  publicationRelation=[];
+   //kware-edit check locale
+   localeAr: boolean;
+   localeEn: boolean;
+   arabicLang: boolean;
+   englishLang: boolean;
+    isRelationshipPage:boolean;
+
   public constructor(protected truncatableService: TruncatableService,
                      public dsoNameService: DSONameService,
+                     protected linkService: LinkService, //kware-edit
                      @Inject(APP_CONFIG) protected appConfig?: AppConfig) {
     super(dsoNameService);
   }
@@ -42,7 +55,21 @@ export class SearchResultListElementComponent<T extends SearchResult<K>, K exten
     if (hasValue(this.object)) {
       this.dso = this.object.indexableObject;
       this.dsoTitle = this.dsoNameService.getHitHighlights(this.object, this.dso);
+      this.isRelationshipPage= document.URL.includes('/edit/relationships') ? true:false;
+
     }
+
+         let  arabic = /[\u0600-\u06FF]/;
+         let english = /[a-zA-Z]/;
+         let arabicKeyswords = this.dso.allMetadataValues('dc.subject').filter(key=>arabic.test(key));
+         let englishKeywords = this.dso.allMetadataValues('dc.subject').filter(key=>english.test(key));
+         (typeof window === 'object' && hasValue(window.localStorage)) && window.localStorage.getItem('selectedLangCode')  === 'ar' ? this.keywords = arabicKeyswords : this.keywords = englishKeywords;
+         // kware-edit replace title ith alternative-title of items based on langugae
+    
+         this.localeAr = (typeof window === 'object' && hasValue(window.localStorage)) && window.localStorage.getItem('selectedLangCode')  === 'ar';
+         this.localeEn = (typeof window === 'object' && hasValue(window.localStorage)) && window.localStorage.getItem('selectedLangCode')  === 'en';
+         this.arabicLang = this.dso.firstMetadataValue('dc.language.iso') === 'Arabic | العربية';
+         this.englishLang = this.dso.firstMetadataValue('dc.language.iso') === 'English | الإنجليزية';
   }
 
   /**
@@ -80,5 +107,19 @@ export class SearchResultListElementComponent<T extends SearchResult<K>, K exten
   isCollapsed(): Observable<boolean> {
     return this.truncatableService.isCollapsed(this.dso.id);
   }
+
+    translateDate():any{
+    let date=new Date(this.dso.firstMetadataValue('dc.date.accessioned').split('T')[0]);
+   if(date && (typeof window === 'object' && hasValue(window.localStorage)) && window.localStorage.getItem('selectedLangCode')  === 'ar'){
+     var months = ["يناير", "فبراير", "مارس", "إبريل", "مايو", "يونيو",
+     "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"
+   ];
+   var delDateString =date.getDate() + ' ' + months[date.getMonth()] + '، ' + date.getFullYear(); 
+   
+   return delDateString;
+   }
+   else return null;
+   
+     }
 
 }

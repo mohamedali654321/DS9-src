@@ -135,6 +135,31 @@ import { EventItemMetadataListElementComponent } from 'src/app/entity-groups/res
 import { PlaceItemMetadataListElementComponent } from 'src/app/entity-groups/research-entities/metadata-representations/place/place-item-metadata-list-element.component';
 import { SeriesItemMetadataListElementComponent } from 'src/app/entity-groups/research-entities/metadata-representations/series/series-item-metadata-list-element.component';
 import { SubjectItemMetadataListElementComponent } from 'src/app/entity-groups/research-entities/metadata-representations/subject/subject-item-metadata-list-element.component';
+import { EraGridElementComponent } from 'src/app/entity-groups/research-entities/item-grid-elements/era/era-grid-element.component';
+import { EventGridElementComponent } from 'src/app/entity-groups/research-entities/item-grid-elements/event/event-grid-element.component';
+import { PlaceGridElementComponent } from 'src/app/entity-groups/research-entities/item-grid-elements/place/place-grid-element.component';
+import { EraSearchResultGridElementComponent } from 'src/app/entity-groups/research-entities/item-grid-elements/search-result-grid-elements/era/era-search-result-grid-element.component';
+import { EventSearchResultGridElementComponent } from 'src/app/entity-groups/research-entities/item-grid-elements/search-result-grid-elements/event/event-search-result-grid-element.component';
+import { PlaceSearchResultGridElementComponent } from 'src/app/entity-groups/research-entities/item-grid-elements/search-result-grid-elements/place/place-search-result-grid-element.component';
+import { SeriesSearchResultGridElementComponent } from 'src/app/entity-groups/research-entities/item-grid-elements/search-result-grid-elements/series/series-search-result-grid-element.component';
+import { SubjectSearchResultGridElementComponent } from 'src/app/entity-groups/research-entities/item-grid-elements/search-result-grid-elements/subject/subject-search-result-grid-element.component';
+import { SeriesGridElementComponent } from 'src/app/entity-groups/research-entities/item-grid-elements/series/series-grid-element.component';
+import { SubjectGridElementComponent } from 'src/app/entity-groups/research-entities/item-grid-elements/subject/subject-grid-element.component';
+import { EraListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/era/era-list-element.component';
+import { EventListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/event/event-list-element.component';
+import { PlaceListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/place/place-list-element.component';
+import { EraSearchResultListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/search-result-list-elements/era/era-search-result-list-element.component';
+import { EventSearchResultListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/search-result-list-elements/event/event-search-result-list-element.component';
+import { PlaceSearchResultListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/search-result-list-elements/place/place-search-result-list-element.component';
+import { SeriesSearchResultListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/search-result-list-elements/series/series-search-result-list-element.component';
+import { SubjectSearchResultListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/search-result-list-elements/subject/subject-search-result-list-element.component';
+import { SeriesListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/series/series-list-element.component';
+import { EraSidebarSearchListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/sidebar-search-list-elements/era/era-sidebar-search-list-element.component';
+import { EventSidebarSearchListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/sidebar-search-list-elements/event/event-sidebar-search-list-element.component';
+import { PlaceSidebarSearchListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/sidebar-search-list-elements/place/place-sidebar-search-list-element.component';
+import { SeriesSidebarSearchListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/sidebar-search-list-elements/series/series-sidebar-search-list-element.component';
+import { SubjectSidebarSearchListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/sidebar-search-list-elements/subject/subject-sidebar-search-list-element.component';
+import { SubjectListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/subject/subject-list-element.component';
 
 const ENTRY_COMPONENTS = [
   EraComponent,
@@ -151,6 +176,38 @@ const ENTRY_COMPONENTS = [
   JournalIssueItemMetadataListElementComponent,
   JournalItemMetadataListElementComponent,
   SubjectItemMetadataListElementComponent,
+
+  EraSearchResultGridElementComponent,
+  EventSearchResultGridElementComponent,
+  PlaceSearchResultGridElementComponent,
+  SeriesSearchResultGridElementComponent,
+  SubjectSearchResultGridElementComponent,
+
+  SubjectGridElementComponent,
+  SeriesGridElementComponent,
+  PlaceGridElementComponent,
+  EventGridElementComponent,
+  EraGridElementComponent,
+
+
+  SeriesSidebarSearchListElementComponent,
+  PlaceSidebarSearchListElementComponent,
+  EventSidebarSearchListElementComponent,
+  EraSidebarSearchListElementComponent,
+  SubjectSidebarSearchListElementComponent,
+
+  EraSearchResultListElementComponent,
+  EventSearchResultListElementComponent,
+  PlaceSearchResultListElementComponent,
+  SeriesSearchResultListElementComponent,
+  SubjectSearchResultListElementComponent,
+
+  SeriesListElementComponent,
+  PlaceListElementComponent,
+  EventListElementComponent,
+  EraListElementComponent,
+  SubjectListElementComponent,
+
 
   BitstreamListItemComponent,
   BrowseEntryListElementComponent,

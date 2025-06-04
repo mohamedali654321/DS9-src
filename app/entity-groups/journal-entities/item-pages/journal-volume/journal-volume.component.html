@@ -42,17 +42,15 @@
     >
     </ds-generic-item-page-field>
     <ds-related-items
-      [parentItem]="object"
-      [relationType]="'isJournalOfVolume'"
-      [label]="'item.page.journal' | translate"
-    >
-    </ds-related-items>
-    <ds-related-items
-      [parentItem]="object"
-      [relationType]="'isIssueOfJournalVolume'"
-      [label]="'item.page.journal-issues' | translate"
-    >
-    </ds-related-items>
+    [parentItem]="object"
+    [relationType]="'isJournalOfVolume'"
+    [label]="'relationships.isSingleJournalOf' | translate">
+  </ds-related-items>
+  <ds-related-items
+    [parentItem]="object"
+    [relationType]="'isIssueOfJournalVolume'"
+    [label]="'relationships.isIssueOf' | translate">
+  </ds-related-items>
 
     <div>
       <a

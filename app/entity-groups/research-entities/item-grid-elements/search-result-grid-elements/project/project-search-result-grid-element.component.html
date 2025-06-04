@@ -1,48 +1,87 @@
 <div class="card" [@focusShadow]="(isCollapsed$ | async)?'blur':'focus'">
+  <!-- <ds-social-sharing></ds-social-sharing> -->
   <ds-truncatable [id]="dso.id">
-    <div class="position-absolute ms-1">
+    <div class="position-absolute ml-1">
       <ng-content></ng-content>
     </div>
-    @if (linkType !== linkTypes.None) {
-      <a
-        [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
-        [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null" [routerLink]="[itemPageRoute]"
-        class="card-img-top full-width" [attr.title]="'search.results.view-result' | translate" tabindex="-1">
-        <div>
-          <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="false">
-          </ds-thumbnail>
-        </div>
-      </a>
-    }
-    @if (linkType === linkTypes.None) {
-      <span class="card-img-top full-width">
-        <div>
-          <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="false">
-          </ds-thumbnail>
-        </div>
-      </span>
-    }
-    <div class="card-body">
-      @if (showLabel) {
-        <ds-badges [object]="dso" [context]="context"></ds-badges>
-      }
-      <ds-truncatable-part [id]="dso.id" [minLines]="3" type="h4">
-        <h4 class="card-title" [innerHTML]="dsoTitle | kwareTranslate"></h4>
+    <a *ngIf="linkType != linkTypes.None"
+       [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'"
+       rel="noopener noreferrer" [routerLink]="[itemPageRoute]"
+       class="card-img-top full-width" [attr.title]="'search.results.view-result' | translate">
+      <div>
+        <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="false">
+        </ds-thumbnail>
+      </div>
+    </a>
+    <span *ngIf="linkType == linkTypes.None" class="card-img-top full-width">
+      <div>
+        <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="false">
+        </ds-thumbnail>
+      </div>
+    </span>
+    <div class="card-body" [ngClass]="{'fixed-height':(isCollapsed() | async)}">
+      <div class="d-flex" style="justify-content: space-between;">
+        <div class="label_dage" >
+          <ds-badges *ngIf="showLabel" [object]="dso" [context]="context"></ds-badges>
+  <!-- <ds-access-status-badge [object]="dso" class="pl-1"></ds-access-status-badge> -->
+       </div>
+       <div>
+        <!-- <ds-publictaion-count style="font-size: 16px !important;"  [dso]="dso"></ds-publictaion-count> -->
+       </div>     
+       
+      </div> 
+      <ds-truncatable-part [id]="dso.id" [minLines]="2" type="h4" >
+        <!-- <h4 class="card-title" [innerHTML]="dsoTitle | kwareTranslate"></h4> -->
+        <h4 class="card-title"><a [routerLink]="[itemPageRoute]">{{ dsoTitle  | kwareTranslate}}</a> 
+          <!-- <ds-publictaion-count style="font-size: 16px !important;"  [dso]="dso"></ds-publictaion-count> -->
+        </h4>
       </ds-truncatable-part>
-      @if (dso.hasMetadata('dc.description')) {
-        <p class="item-description card-text text-muted">
-          <ds-truncatable-part [id]="dso.id" [minLines]="3">
-            <span [innerHTML]="firstMetadataValue('dc.description') | kwareTranslate"></span>
-          </ds-truncatable-part>
-        </p>
-      }
-      @if (linkType !== linkTypes.None) {
-        <div class="text-center">
-          <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
-            [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null" [routerLink]="[itemPageRoute]"
-          class="lead btn btn-primary viewButton" role="link" tabindex="0">{{ 'search.results.view-result' | translate}}</a>
+      <!-- <div *ngIf="dso.hasMetadata('dc.subject')">
+        <div class="keys-info ">
+          <span class=" badge-info" *ngFor="let keyword of keywords;let
+            last=last;"><a style="white-space: -webkit-nowrap !important;"
+              href="/search?query=&f.subject={{keyword}},equals"
+              title="{{keyword | kwareTranslate}}">{{keyword | kwareTranslate}}</a><span style="color:#530a86 ;"
+              *ngIf="!last"> • </span> </span>
         </div>
-      }
+
+
+      </div> -->
+      <ds-truncatable-part [id]="dso.id" [minLines]="1"  >
+        <div  *ngIf="dso.hasMetadata('dc.subject')"  >
+          <div class="keys-info  ">
+            <span class=" badge-info"   *ngFor="let keyword of keywords;let last=last;"><a  style="white-space: -webkit-nowrap !important;"  href="/search?query=&f.subject={{keyword}},equals" title="{{keyword | kwareTranslate}}">{{keyword | kwareTranslate}}</a><span style="color:#530a86 ;" *ngIf="!last"> • </span> </span>
+          </div>
+    
+    
+        </div>
+      </ds-truncatable-part>
+      <!--<div *ngIf="dso.hasMetadata('dc.description')" class="item-description card-text ">
+        <ds-truncatable-part [id]="dso.id" [minLines]="3" >
+          <span [innerHTML]="removeMarkdown(firstMetadataValue('dc.description'))"></span>
+        </ds-truncatable-part>
+        
+     </div> -->
+      <div class="card_text_abstract" *ngIf="dso.hasMetadata('dc.description')">
+       <div class="item-abstract card-text">
+            <span [innerHTML]="removeMarkdown(dso.firstMetadataValue('dc.description') | kwareTranslate)"></span>
+       </div>
+      </div>
+      <div style="display:flex;justify-content: space-between;" class="container" [ngClass]="{'fixed-bottom-content':(isCollapsed() | async)}">
+        <small *ngIf="firstMetadataValue('dc.date.accessioned')" class="badge badge-pill badge-secondary align-self-center archived-items-lead date-float" [attr.title]="('item.uploaded.on' | translate)">
+          <i class="fa-solid fa-upload"></i> {{' ' + (translateDate() !== null ? translateDate(): (firstMetadataValue('dc.date.accessioned').split('T')[0] |  date:'longDate'))}}
+        </small>
+        <ds-view-statistics [object]="dso"></ds-view-statistics>
+      </div>
+      <!-- <small *ngIf="firstMetadataValue('dc.date.accessioned')" class="text-muted hidden-xs">
+        {{('item.uploaded.on' | translate)+' ' + (translateDate() !== null ? translateDate(): (firstMetadataValue('dc.date.accessioned').split('T')[0] |  date:'longDate'))}}
+      </small>
+      <ds-view-statistics [object]="dso"></ds-view-statistics>
+      <div *ngIf="linkType != linkTypes.None" class="text-center">
+        <a [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'"
+           rel="noopener noreferrer" [routerLink]="[itemPageRoute]"
+           class="lead btn btn-primary viewButton">{{ 'search.results.view-result' | translate}}</a>
+      </div> -->
     </div>
   </ds-truncatable>
   <ng-content></ng-content>

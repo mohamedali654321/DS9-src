@@ -222,7 +222,7 @@ export class ObjectGridComponent implements OnInit {
         }
       }),
       distinctUntilChanged(),
-    ).pipe(startWith(3));
+    ).pipe(startWith(this.isSearch || this.isBrowseSearch ?  4 : 5));
 
     this.columns$ = observableCombineLatest(
       nbColumns$,

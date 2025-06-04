@@ -118,7 +118,7 @@ export class PoolSearchResultListElementComponent extends SearchResultListElemen
     protected duplicateDataService: SubmissionDuplicateDataService,
     @Inject(APP_CONFIG) protected appConfig: AppConfig,
   ) {
-    super(truncatableService, dsoNameService, appConfig);
+    super(truncatableService, dsoNameService, linkService,appConfig);
   }
 
   /**

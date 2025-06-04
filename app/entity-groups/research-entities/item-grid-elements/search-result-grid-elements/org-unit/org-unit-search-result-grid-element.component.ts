@@ -1,4 +1,4 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, DatePipe, NgClass, NgIf, NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
@@ -12,6 +12,8 @@ import { TruncatableComponent } from '../../../../../shared/truncatable/truncata
 import { TruncatablePartComponent } from '../../../../../shared/truncatable/truncatable-part/truncatable-part.component';
 import { ThemedThumbnailComponent } from '../../../../../thumbnail/themed-thumbnail.component';
 import { KwareTranslatePipe } from "../../../../../shared/utils/kware-translate.pipe";
+import { ThemedMetadataRepresentationListComponent } from "../../../../../item-page/simple/metadata-representation-list/themed-metadata-representation-list.component";
+import { ViewStatisticsComponent } from "../../../../../shared/view-statistics/view-statistics.component";
 
 @listableObjectComponent('OrgUnitSearchResult', ViewMode.GridElement)
 @Component({
@@ -23,12 +25,18 @@ import { KwareTranslatePipe } from "../../../../../shared/utils/kware-translate.
   imports: [
     AsyncPipe,
     RouterLink,
-    ThemedBadgesComponent,
+    // ThemedBadgesComponent,
     ThemedThumbnailComponent,
     TranslateModule,
     TruncatableComponent,
     TruncatablePartComponent,
-    KwareTranslatePipe
+    KwareTranslatePipe,
+    ThemedMetadataRepresentationListComponent,
+    ViewStatisticsComponent,
+    NgIf,
+     NgStyle,
+     NgClass,
+     DatePipe,
 ],
 })
 /**

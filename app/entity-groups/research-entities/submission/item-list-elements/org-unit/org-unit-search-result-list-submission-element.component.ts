@@ -29,6 +29,7 @@ import { SelectableListService } from '../../../../../shared/object-list/selecta
 import { TruncatableService } from '../../../../../shared/truncatable/truncatable.service';
 import { NameVariantModalComponent } from '../../name-variant-modal/name-variant-modal.component';
 import { OrgUnitInputSuggestionsComponent } from './org-unit-suggestions/org-unit-input-suggestions.component';
+import { LinkService } from 'src/app/core/cache/builders/link.service';
 
 @listableObjectComponent('OrgUnitSearchResult', ViewMode.ListElement, Context.EntitySearchModal)
 @listableObjectComponent('OrgUnitSearchResult', ViewMode.ListElement, Context.EntitySearchModalWithNameVariants)
@@ -66,9 +67,10 @@ export class OrgUnitSearchResultListSubmissionElementComponent extends SearchRes
               private bitstreamDataService: BitstreamDataService,
               private selectableListService: SelectableListService,
               public dsoNameService: DSONameService,
+              protected linkService: LinkService,
               @Inject(APP_CONFIG) protected appConfig: AppConfig,
   ) {
-    super(truncatableService, dsoNameService, appConfig);
+    super(truncatableService, dsoNameService,linkService, appConfig);
   }
 
   ngOnInit() {

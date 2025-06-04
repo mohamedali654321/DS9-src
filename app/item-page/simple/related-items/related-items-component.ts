@@ -37,7 +37,7 @@ import { AbstractIncrementalListComponent } from "../abstract-incremental-list/a
     ThemedLoadingComponent,
     TranslateModule,
     VarDirective,
-    NgIf
+    // NgIf
   ],
 })
 /**

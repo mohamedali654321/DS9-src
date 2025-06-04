@@ -76,13 +76,13 @@ export class WorkspaceItemSearchResultAdminWorkflowListElementComponent extends 
    */
   public supervisionOrder$: BehaviorSubject<SupervisionOrder[]> = new BehaviorSubject<SupervisionOrder[]>([]);
 
-  constructor(private linkService: LinkService,
+  constructor(protected linkService: LinkService,
               public dsoNameService: DSONameService,
               protected supervisionOrderDataService: SupervisionOrderDataService,
               protected truncatableService: TruncatableService,
               @Inject(APP_CONFIG) protected appConfig: AppConfig,
   ) {
-    super(truncatableService, dsoNameService, appConfig);
+    super(truncatableService, dsoNameService,linkService, appConfig);
   }
 
   /**

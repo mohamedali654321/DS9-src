@@ -60,6 +60,14 @@ export class AccessStatusBadgeComponent implements OnDestroy, OnInit {
    */
   subs: Subscription[] = [];
 
+    accessStatusConfigs={
+    'access-status.unknown.listelement.badge':{ icon: 'fa-solid fa-question' , style:'background-color: #767676 !important;' },
+    'access-status.restricted.listelement.badge':{ icon: 'fa-solid fa-ban' , style:'background-color: #d33b36 !important;' },
+    'access-status.open.access.listelement.badge':{ icon: 'fa-solid fa-unlock' , style:'background-color: #3a833a !important;' },
+    'access-status.metadata.only.listelement.badge':{ icon: 'fa-solid fa-file-invoice' , style:'background-color: #2f6fa7  !important;' },
+    'access-status.embargo.listelement.badge':{ icon: 'fa-regular fa-clock' , style:'background-color: #eb9419 !important;' },
+  }
+
   /**
    * Initialize instance variables
    *

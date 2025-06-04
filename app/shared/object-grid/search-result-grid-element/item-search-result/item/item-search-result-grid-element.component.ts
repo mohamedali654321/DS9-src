@@ -108,7 +108,7 @@ export class ItemSearchResultGridElementComponent
     super.ngOnInit();
     this.itemPageRoute = getItemPageRoute(this.dso);
     this.dsoTitle = this.dsoNameService.getHitHighlights(this.object, this.dso);
-    this.linkService.resolveLink<Item>(this.dso, followLink("thumbnail")); //kware-edit
+    // this.linkService.resolveLink<Item>(this.dso, followLink("thumbnail")); //kware-edit
     this.linkService.resolveLink<Item>(this.dso, followLink("version")); //kware-edit
     this.currentVersion = document.URL.includes("/entities/publication/");
     if (this.currentVersion) {

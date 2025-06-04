@@ -97,13 +97,13 @@ export class TabbedRelatedEntitiesSearchComponent implements OnInit {
       else{
         if((relationShip.label.includes('isPublicationOf') && this.getRelationsCounter('Publication') > 0) 
           || (relationShip.label.includes('isPersonOf') && this.getRelationsCounter('Person') > 0) ||
-          (relationShip.label.includes('isOrgUnitOf') && ((this.getRelationsCounter('ArabicPublisher') + this.getRelationsCounter('Publisher') > 2)))
+          (relationShip.label.includes('isOrgUnitOf') && ((this.getRelationsCounter('ArabicPublisher') + this.getRelationsCounter('Publisher') >= 2)))
         ){
             this.newRelationships.next(this.newRelationships.getValue().concat([relationShip]))
           }
           this.getRelationshipsCounterByFilter(relationShip.label).pipe(getFirstSucceededRemoteDataPayload()).subscribe((data)=>{
             
-           if((data && data.totalElements > 2) && (!(relationShip.label.includes('isPersonOf')) && !(relationShip.label.includes('isPublicationOf')) )){
+           if((data && data.totalElements >= 2) && (!(relationShip.label.includes('isPersonOf')) && !(relationShip.label.includes('isPublicationOf')) )){
            
             this.newRelationships.next(this.newRelationships.getValue().concat([relationShip]))
            }

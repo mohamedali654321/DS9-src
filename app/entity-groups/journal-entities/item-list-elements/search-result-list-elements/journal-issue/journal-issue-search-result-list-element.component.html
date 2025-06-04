@@ -1,68 +1,100 @@
 <div class="row">
-  @if (showThumbnails) {
-    <div class="col-3 col-md-2">
-      @if (linkType !== linkTypes.None) {
-        <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
-          [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
-          [routerLink]="[itemPageRoute]" class="lead item-list-title dont-break-out" tabindex="-1">
-          <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="true">
-          </ds-thumbnail>
-        </a>
-      }
-      @if (linkType === linkTypes.None) {
-        <span class="lead item-list-title dont-break-out">
-          <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="true">
-          </ds-thumbnail>
-        </span>
-      }
-    </div>
-  }
-  <div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">
-    @if (showLabel) {
-      <ds-badges [object]="dso" [context]="context"></ds-badges>
-    }
-    <ds-truncatable [id]="dso.id">
-      @if (linkType !== linkTypes.None) {
-        <a [target]="(linkType === linkTypes.ExternalLink) ? '_blank' : '_self'"
-          [attr.rel]="(linkType === linkTypes.ExternalLink) ? 'noopener noreferrer' : null"
-          [routerLink]="[itemPageRoute]" class="lead item-list-title dont-break-out"
-        [innerHTML]="dsoTitle" role="link" tabindex="0"></a>
-      }
-      @if (linkType === linkTypes.None) {
-        <span
-          class="lead item-list-title dont-break-out"
-        [innerHTML]="dsoTitle | kwareTranslate"></span>
-      }
-      <span class="text-muted">
-        <ds-truncatable-part [id]="dso.id" [minLines]="1">
-          @if (dso.allMetadata(['publicationvolume.volumeNumber']).length > 0) {
-            <span
-              class="item-list-journal-issues">
-              @for (value of allMetadataValues(['publicationvolume.volumeNumber']); track value; let last = $last) {
-                <span>
-                  <span [innerHTML]="value | kwareTranslate"></span>@if (!last) {
-                  <span>; </span>
-                }
-              </span>
-            }
-            @if (dso.allMetadata(['publicationissue.issueNumber']).length > 0) {
-              <span
-                class="item-list-journal-issue-numbers">
-                @for (value of allMetadataValues(['publicationissue.issueNumber']); track value; let first = $first; let last = $last) {
-                  <span>
-                    @if (first) {
-                      <span> - </span>
-                      }<span [innerHTML]="value | kwareTranslate"></span>@if (!last) {
-                      <span>; </span>
-                    }
-                  </span>
-                }
-              </span>
-            }
-          </span>
-        }
-      </ds-truncatable-part>
+  <div *ngIf="showThumbnails" class="col-3 col-md-2">
+    <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'"
+      rel="noopener noreferrer" [routerLink]="[itemPageRoute]" class="lead item-list-title dont-break-out">
+      <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="true">
+      </ds-thumbnail>
+    </a>
+    <span *ngIf="linkType == linkTypes.None" class="lead item-list-title dont-break-out">
+      <ds-thumbnail [thumbnail]="dso?.thumbnail | async" [limitWidth]="true">
+      </ds-thumbnail>
     </span>
-  </ds-truncatable>
-</div>
+  </div>
+  <div [ngClass]="showThumbnails ? 'col-9' : 'col-md-12'">
+    <div class="d-flex">
+      <div class="label_dage" >
+        <span class="badge badge-info" [attr.title]="'item.search.publishDate' | translate" style="background-color: #6aa3d5 !important;color: #FFF; margin-bottom: -2px;" *ngIf="dso.hasMetadata('creativework.datePublished') || dso.hasMetadata('creativework.datePublished')" >{{firstMetadataValue('creativework.datePublished') ? (firstMetadataValue('creativework.datePublished') | kwareTranslate) : (firstMetadataValue('creativework.datePublished') | kwareTranslate) }}</span>
+        <ds-badges *ngIf="showLabel" [object]="dso" [context]="context"></ds-badges>
+        <!-- <ds-access-status-badge [object]="dso" class="pl-1"></ds-access-status-badge> -->
+    
+     </div>
+    </div>  
+    <ds-truncatable [id]="dso.id">
+      <!-- kware-edit kwareTranslatePipe -->
+      <a *ngIf="linkType != linkTypes.None" [target]="(linkType == linkTypes.ExternalLink) ? '_blank' : '_self'"
+        rel="noopener noreferrer" [routerLink]="[itemPageRoute]" class="lead item-list-title dont-break-out"
+        [innerHTML]="dsoTitle | kwareTranslate"></a>
+      <!-- kware-edit end  -->
+      <!-- kware-edit kwareTranslatePipe -->
+      <span *ngIf="linkType == linkTypes.None" class="lead item-list-title dont-break-out"
+        [innerHTML]="dsoTitle | kwareTranslate"></span>
+      <!-- kware-edit end  -->
+
+      <!-- <ds-publictaion-count  [dso]="dso"></ds-publictaion-count> -->
+
+
+      <div *ngIf="dso.allMetadata(['journalvolume.title']).length > 0">
+        <span style="color:#530a86!important ;font-size: 15px;"
+        [innerHtml]="(localeEn && firstMetadataValue('journalvolume.title.alternative'))? (firstMetadataValue('journalvolume.title.alternative') | kwareTranslate): (firstMetadataValue('journalvolume.title') | kwareTranslate)"></span>
+
+      </div>
+
+      <div *ngIf="dso.allMetadata(['journal.title']).length > 0">
+        <span style="color:#530a86!important ;font-size: 15px;"
+          [innerHtml]="(localeEn && firstMetadataValue('journal.title.alternative'))? (firstMetadataValue('journal.title.alternative') | kwareTranslate): (firstMetadataValue('journal.title') | kwareTranslate)">
+
+        </span>
+
+
+
+      </div>
+
+      <div style="font-size: 15px;font-weight: 400;" *ngIf="dso.allMetadata(['dc.description.frequancy']).length > 0" class="text-muted">{{firstMetadataValue('dc.description.frequancy') | kwareTranslate}}</div>
+
+      <span class="text-muted">
+        <ds-truncatable-part [id]="dso.id" [minLines]="2">
+          <span *ngIf="dso.allMetadata(['publicationvolume.volumeNumber']).length > 0" class="item-list-journal-issues">
+            <span *ngFor="let value of allMetadataValues(['publicationvolume.volumeNumber']); let last=last;">
+              <span [innerHTML]="value | kwareTranslate"><span [innerHTML]="value | kwareTranslate"></span></span>
+            </span>
+            
+            <span *ngIf="dso.allMetadata(['publicationissue.issueNumber']).length > 0"
+              class="item-list-journal-issue-numbers">
+              <span *ngFor="let value of allMetadataValues(['publicationissue.issueNumber']); let last=last;">
+                <span> - </span><span [innerHTML]="value | kwareTranslate"><span
+                    [innerHTML]="value | kwareTranslate"></span></span>
+              </span>
+            </span>
+          </span>
+          
+          <div >
+            <div class="item-abstract card-text" style="color: #207698;font-weight: 600;">
+              <span >{{dso.hasMetadata('publicationissue.title.theme')?(dso.firstMetadataValue('publicationissue.title.theme') | kwareTranslate):(dso.firstMetadataValue('publicationissue.title') | kwareTranslate)}}</span>
+            </div>
+          </div>
+
+          <div *ngIf="dso.firstMetadataValue('dc.description.abstract')" class="item-list-abstract">
+            <!-- kware-edit kwareTranslatePipe -->
+            <ds-truncatable-part [id]="dso.id" [minLines]="3"><span
+                [innerHTML]="firstMetadataValue('dc.description.abstract') | kwareTranslate"></span>
+            </ds-truncatable-part>
+          </div>
+
+          <div *ngIf="dso.firstMetadataValue('dc.description.tableofcontents')" class="item-list-abstract">
+            <!-- kware-edit kwareTranslatePipe -->
+            <ds-truncatable-part [id]="dso.id" [minLines]="3"><span
+                [innerHTML]="firstMetadataValue('dc.description.tableofcontents') | kwareTranslate"></span>
+            </ds-truncatable-part>
+          </div>
+        </ds-truncatable-part>
+
+      </span>
+    </ds-truncatable>
+    <span *ngIf="isRelationshipPage === false"  style="display:flex;justify-content: end;">
+      <small style="background-color:transparent !important;color: #6c757d !important;font-weight: 500;" *ngIf="firstMetadataValue('dc.date.accessioned')" class="badge badge-pill badge-secondary align-self-center archived-items-lead" [attr.title]="('item.uploaded.on' | translate)">
+        <i class="fa-solid fa-upload"></i> {{' ' + (translateDate() !== null ? translateDate(): (firstMetadataValue('dc.date.accessioned').split('T')[0] |  date:'longDate'))}}
+      </small>
+      <ds-view-statistics [object]="dso"></ds-view-statistics>
+    </span>
+  </div>
 </div>

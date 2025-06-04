@@ -7130,8 +7130,8 @@
   "submission.sections.describe.relationship-lookup.selection-tab.title.isAdvisorsOfPublication": "المشرفين المحددين",
   "submission.sections.describe.relationship-lookup.selection-tab.title.isOrgUnitOfPublication": " الموسسات المحددة ",
 
-  "person-relationships.search.results.head": "نتائج البحث عن أشخاص ذي علاقة",
-  "project-relationships.search.results.head": "نتائج البحث عن مشاريع ذي علاقة",
+  "person-relationships.search.results.head": "نتائج البحث عن أشخاص ذات علاقة",
+  "project-relationships.search.results.head": "نتائج البحث عن مشاريع ذات علاقة",
 
   "search.filters.filter.ispartof.head": "الادارة التابع لها المؤسسة",
   "search.filters.filter.ispartof.label": "بحث اسم الادارة التابع لها المؤسسة",
@@ -10088,7 +10088,7 @@
   "item.page.relationships.isJournalOfAdministration": "الدوريات",
   "journal-relationships.search.results.head": "نتائج البحث عن دوريات ذات علاقة",
   "item.page.relationships.isPlaceOfAdministration": "الأماكن",
-  "place-relationships.search.results.head": "نتائج البحث عن أماكن ذي علاقة",
+  "place-relationships.search.results.head": "نتائج البحث عن أماكن ذات علاقة",
   "item.page.relationships.isSiteOfAdministration": "المواقع",
   "site-relationships.search.results.head": "نتائج البحث عن مواقع",
   "item.page.relationships.isEventOfAdministration": "الأحداث",
