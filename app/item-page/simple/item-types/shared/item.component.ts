@@ -20,6 +20,8 @@ import {
   isIiifEnabled,
   isIiifSearchEnabled,
 } from './item-iiif-utils';
+import { KwareCitationComponent } from 'src/app/shared/kware-citation/kware-citation.component';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'ds-item',
@@ -80,8 +82,12 @@ export class ItemComponent implements OnInit {
    */
   geospatialItemPageFieldsEnabled = false;
 
+  modalRef: NgbModalRef;
+
   constructor(protected routeService: RouteService,
-              protected router: Router) {
+              protected router: Router,
+              protected modalService: NgbModal,
+            ) {
     this.mediaViewer = environment.mediaViewer;
     this.geospatialItemPageFieldsEnabled = environment.geospatialMapViewer.enableItemPageFields;
   }
@@ -114,4 +120,11 @@ export class ItemComponent implements OnInit {
       this.iiifQuery$ = getDSpaceQuery(this.object, this.routeService);
     }
   }
+  showModal() {
+  this.modalRef = this.modalService.open(KwareCitationComponent, {
+    size: 'lg',
+  });
+  const modalComp = this.modalRef.componentInstance;
+  modalComp.object = this.object;
+}
 }

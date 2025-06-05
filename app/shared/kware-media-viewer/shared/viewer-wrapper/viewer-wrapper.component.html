@@ -1,0 +1,44 @@
+<div #viewerWrapper class="viewer-wrapper">
+  <div #viewerToolbar class="viewer-toolbar">
+    <div class="toolbar-container">
+      <div class="toolbar-controls-group">
+        <button class="viewer-toolbar-btn" (click)="setViewerPanelStatus()">
+          <i
+            [ngClass]="
+              viewerPanelsStatus.isFilesMenuOpen
+                ? 'fa fa-angle-double-right'
+                : 'fa fa-bars fa-lg'
+            "
+            aria-hidden="true"
+          ></i>
+        </button>
+        <div class="divider-v"></div>
+        <ng-content *ngIf="!isMobile" select="[leftMenu]"></ng-content>
+      </div>
+      <div class="toolbar-center-controls-group">
+        <ng-content select="[centerMenu]"></ng-content>
+      </div>
+      <div class="toolbar-controls-group">
+        <ng-content *ngIf="!isMobile" select="[rightMenu]"></ng-content>
+        <button
+          *ngIf="enableFullScreen"
+          class="viewer-toolbar-btn"
+          (click)="isFullScreen ? exitFullscreen() : openFullscreen()"
+          dsStopContextMenu
+        >
+          <i [ngClass]="isFullScreen ? 'fas fa-compress' : 'fas fa-expand'"></i>
+        </button>
+        <div class="divider-v"></div>
+        <button class="viewer-toolbar-btn" (click)="closeViewer()">
+          <i class="fa fa-times fa-lg" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="isMobile" class="mobile-toolbar">
+    <ng-content select="[mobileToolbar]"></ng-content>
+  </div>
+  <div #viewerContent class="viewer-content">
+    <ng-content select="[viewerContent]"></ng-content>
+  </div>
+</div>

@@ -1,0 +1,134 @@
+<ds-viewer-wrapper
+  [isMobile]="isMobile"
+  [closeViewer]="closeViewer"
+  [viewerPanelsStatus]="viewerPanelsStatus"
+  [enableFullScreen]="enableFullScreen"
+>
+  <div leftMenu>
+    <div class="toolbar-controls-container">
+      <button
+        class="viewer-toolbar-btn"
+        (click)="downloadVideo()"
+        dsStopContextMenu
+      >
+        <em class="fas fa-download"></em>
+      </button>
+    </div>
+  </div>
+  <div centerMenu>{{ fileMeta?.name }}</div>
+  <div
+    #viewerContainer
+    class="video-player-container"
+    (mouseenter)="onCanvasMouseEnter()"
+    (mouseleave)="onCanvasMouseLeave()"
+    viewerContent
+  >
+    <canvas
+      #videoCanvas
+      class="video-canvas"
+      (click)="playPauseVideo()"
+    ></canvas>
+    <video
+      crossOrigin="anonymous"
+      (timeupdate)="updateProgressBar()"
+      #player
+      poster="../../../assets/images/dspace-logo.png"
+      src="{{ videoSrc }}"
+      hidden
+      (playing)="onVideoPlay()"
+      (pause)="onVideoPause()"
+      (ended)="onVideoEnded()"
+    ></video>
+    <div class="video-controls-container" #videoControlsContainer>
+      <div style="width: 100%">
+        <progress
+          (click)="onVideoSeek($event)"
+          min="0"
+          max="100"
+          value="0"
+          #progressBar
+          class="progress-bar"
+        ></progress>
+      </div>
+
+      <div
+        style="
+          width: 100%;
+          height: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
+        <div style="justify-content: center; align-items: center">
+          <button
+            *ngIf="!player.ended"
+            id="btnPlayPause"
+            accesskey="P"
+            (click)="playPauseVideo()"
+            #btnPlayPause
+          >
+            <i
+              title="{{ 'videoPlayer.pauseBtn' | translate }}"
+              *ngIf="isPlayed"
+              class="fas fa-pause fa-lg"
+            ></i>
+            <i
+              title="{{ 'videoPlayer.playBtn' | translate }}"
+              *ngIf="!isPlayed"
+              class="fas fa-play fa-lg"
+            ></i>
+          </button>
+          <button
+            *ngIf="player.ended"
+            id="btnReplay"
+            title="{{ 'videoPlayer.replayBtn' | translate }}"
+            accesskey="R"
+            (click)="replayVideo()"
+          >
+            <i class="fas fa-redo-alt fa-lg"></i>
+          </button>
+          <span style="color: white" *ngIf="player.duration"
+            >{{ player.currentTime | dsHandleDurationTime }} /
+            {{ player.duration | dsHandleDurationTime }}</span
+          >
+        </div>
+        <div
+          style="display: flex; justify-content: center; align-items: center"
+        >
+          <div class="volume-controle">
+            <button
+              id="btnMute"
+              title="{{ 'videoPlayer.muteBtn' | translate }}"
+              (click)="muteVolume()"
+              #btnMute
+            >
+              <i *ngIf="isMuted" class="fas fa-volume-mute fa-lg"></i>
+              <i *ngIf="!isMuted" class="fas fa-volume-up fa-lg"></i>
+            </button>
+            <input
+              type="range"
+              class="volume-bar"
+              (change)="setVolume()"
+              title="{{ 'videoPlayer.volumeBar' | translate }}"
+              min="0"
+              max="100"
+              step="0.1"
+              value="100"
+              #volumeBar
+            />
+          </div>
+          <button
+            id="btnStop"
+            title="{{ 'videoPlayer.stopBtn' | translate }}"
+            accesskey="X"
+            (click)="stopVideo()"
+            [disabled]="player.currentTime <= 0"
+          >
+            <i class="fas fa-stop fa-lg"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ds-viewer-wrapper>

@@ -1,0 +1,169 @@
+<!-- 
+<div id="metrics" aria-label="Metrics" class="ui segment rdm-sidebar sidebar-container">
+
+
+  <div class="ui tiny two statistics rel-mt-1">
+    
+    
+  
+    <div class="ui statistic">
+      <div style="font-size: 28px !important;" class="value">{{(TotalVisits | async) | dsShortNumber }}</div>
+      <div style="font-size: 14px !important;" class="label">
+        <i aria-hidden="true" class="fa fa-eye"></i>
+        {{'views.counts' | translate}}
+      </div>
+    </div>
+  
+    <div class="ui statistic" style="margin-top: -2px !important;">
+      <div style="font-size: 28px !important;" class="value">{{(TotalDownloads | async) | dsShortNumber}}</div>
+      <div style="font-size: 14px !important;" class="label">
+        <i aria-hidden="true" class="fa fa-download"></i>
+        {{'downloads.counts' | translate}}
+      </div>
+    </div>
+  </div>
+  
+
+  
+</div> -->
+
+<section
+  id="metrics"
+  aria-label="Metrics"
+  class="ui segment rdm-sidebar sidebar-container"
+>
+  <div class="ui tiny two statistics rel-mt-1">
+    <div class="ui statistic">
+      <div class="value">{{ TotalVisits | async | dsShortNumber }}</div>
+      <div class="label">
+        <i aria-hidden="true" class="fa fa-eye"></i>
+        {{ "views.counts" | translate }}
+      </div>
+    </div>
+
+    <div class="ui statistic">
+      <div class="value">{{ TotalDownloads | async | dsShortNumber }}</div>
+      <div class="label">
+        <i aria-hidden="true" class="fa fa-download"></i>
+        {{ "downloads.counts" | translate }}
+      </div>
+    </div>
+  </div>
+
+  <div class="ui accordion rel-mt-1 centered">
+    <div class="title">
+      <!-- <i class="fa-solid fa-caret-right" aria-hidden="true"></i> -->
+      <a
+      style="color: #000; text-decoration: none;"
+      (click)="onClickToDisplay()"
+        tabindex="0"
+        class="trigger"
+        data-open-text="Show more details"
+        data-close-text="Show less details"
+        aria-expanded="false"
+        >
+       <i *ngIf="(displayContent | async) === false" class="fa-solid fa-caret-right" aria-hidden="true"></i>
+       <i *ngIf="(displayContent | async) === true" class="fa-solid fa-caret-down" aria-hidden="true"></i>
+        &nbsp;&nbsp; {{ "statistics.Show.details" | translate }}
+        </a
+      >
+    </div>
+
+    <div *ngIf="(displayContent | async) === true" id="content" class="content" style="transition: all 0.5s ease-in-out;" >
+      <table
+        id="record-statistics"
+        class="ui definition table fluid transition hidden"
+      >
+        <thead>
+          <tr>
+            <th style="border-top: none;"></th>
+            <th class="right aligned">{{ "statistics.all.versions" | translate }}</th>
+            <th class="right aligned">{{ "statistics.this.version" | translate }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              {{ "views.counts" | translate }}
+              <i
+                tabindex="0"
+                role="button"
+                style="position: relative"
+                class="fa-solid fa-circle-question small"
+                aria-expanded="false"
+                aria-label="More info"
+                data-variation="mini inverted"
+                placement="top"  [ngbTooltip]="'statistics.tooltip.views'| translate"
+              >
+              </i>
+              <p
+                role="tooltip"
+                class="popup-content ui flowing popup transition hidden"
+              >
+                Total views
+              </p>
+            </td>
+            <td data-label="All versions" class="right aligned">{{ (TotalVisitsVersions | async) > 0 ? (TotalVisitsVersions | async | dsShortNumber) : (TotalVisits | async | dsShortNumber) }}</td>
+            <td data-label="This version" class="right aligned">{{ TotalVisits | async | dsShortNumber }}</td>
+          </tr>
+          <tr>
+            <td>
+              {{ "downloads.counts" | translate }}
+              <i
+                tabindex="0"
+                role="button"
+                style="position: relative"
+                class="fa-solid fa-circle-question small"
+                aria-expanded="false"
+                aria-label="More info"
+                data-variation="mini inverted"
+                placement="top"  [ngbTooltip]="'statistics.tooltip.downloads'| translate"
+              >
+              </i>
+              <p
+                role="tooltip"
+                class="popup-content ui flowing popup transition hidden"
+              >
+                Total downloads
+              </p>
+            </td>
+            <td data-label="All versions" class="right aligned">{{ (TotalDownloadsVersions | async) > 0 ? (TotalDownloadsVersions | async | dsShortNumber) : (TotalDownloads | async | dsShortNumber ) }}</td>
+            <td data-label="This version" class="right aligned">{{ TotalDownloads | async | dsShortNumber }}</td>
+          </tr>
+          <tr>
+            <td>
+              {{ "statistics.volume.counts" | translate }}  
+              <i
+                tabindex="0"
+                role="button"
+                style="position: relative"
+                class="fa-solid fa-circle-question small"
+                aria-expanded="false"
+                aria-label="More info"
+                data-variation="mini inverted"
+                placement="top"  [ngbTooltip]="'statistics.tooltip.volume'| translate"
+              >
+              </i>
+              <p
+                role="tooltip"
+                class="popup-content ui flowing popup transition hidden"
+              >
+                Total data volume
+              </p>
+            </td>
+
+            <td data-label="All versions" class="right aligned">{{(TotalDownloadsVersions | async ) > 0 ?  (formatBytes((dataVolumes$ | async)*(TotalDownloadsVersions | async ))) : (formatBytes((dataVolumes$ | async)*(TotalDownloads | async )))}}</td>
+            <td data-label="This version" class="right aligned">{{formatBytes((dataVolumes$ | async)*(TotalDownloads | async ))}}</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <p class="text-align-center rel-mt-1 transition hidden">
+        <small>
+          <a href="https://zenodo.org/help/statistics"
+            >More info on how stats are collected....</a
+          >
+        </small>
+      </p> -->
+    </div>
+  </div>
+</section>

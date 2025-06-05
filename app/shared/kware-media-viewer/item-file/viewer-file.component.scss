@@ -1,0 +1,41 @@
+.file-link-container {
+  background-color: unset;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+ // height: 60px;
+ height: auto;
+}
+
+.file-link-container-disabled {
+  background-color: unset;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 5px;
+  // height: 60px;
+  height: auto;
+  pointer-events: none;
+}
+
+.file-name {
+  text-justify: auto;
+  padding-inline-start: 10px;
+  white-space: break-spaces;
+  text-align: inherit;
+  width: 100%;
+}
+
+.no-perms {
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  color: brown;
+  width: 60px;
+  height: 60px;
+}

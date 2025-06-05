@@ -1,0 +1,249 @@
+<ds-viewer-wrapper
+  [isMobile]="isMobile"
+  [closeViewer]="closeViewer"
+  [viewerPanelsStatus]="viewerPanelsStatus"
+>
+  <div leftMenu>
+    <div class="toolbar-controls-container">
+      <button
+        class="viewer-toolbar-btn"
+        (click)="watermarkImage('print')"
+        dsStopContextMenu
+      >
+        <i class="fas fa-print"></i>
+      </button>
+      <div class="divider-v"></div>
+      <button
+        class="viewer-toolbar-btn matomo_download"
+        (click)="watermarkImage('download')"
+        dsStopContextMenu
+
+      >
+        <i class="fas fa-download"></i>
+      </button>
+
+      <div class="divider-v"></div>
+      <button
+        class="viewer-toolbar-btn"
+        (click)="increaseImageBrightness()"
+        [disabled]="currentBrightnessValue === maxBrightnessValue"
+        dsStopContextMenu
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          fill="currentColor"
+          class="bi bi-brightness-high-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
+          />
+        </svg>
+      </button>
+      <select
+        class="toolbar-option-menu"
+        name="brightnessValue"
+        [(ngModel)]="currentBrightnessValue"
+        (change)="changeBrightnessValue($event)"
+      >
+        <option
+          *ngFor="let filter of brightnessValues"
+          [(value)]="filter.value"
+        >
+          {{ filter.label | translate }}
+        </option>
+      </select>
+      <button
+        class="viewer-toolbar-btn"
+        (click)="decreaseImageBrightness()"
+        [disabled]="currentBrightnessValue === minBrightnessValue"
+        dsStopContextMenu
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="25"
+          fill="currentColor"
+          class="bi bi-brightness-low-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8.5 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707z"
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+  <div centerMenu>{{ fileMeta?.name }}</div>
+  <div rightMenu>
+    <div class="toolbar-controls-container">
+      <button class="viewer-toolbar-btn" (click)="imageRotate()">
+        <i class="fa fa-undo" aria-hidden="true"></i>
+      </button>
+      <div class="divider-v"></div>
+      <button class="viewer-toolbar-btn" (click)="setMagnifierMode()">
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </button>
+      <div class="divider-v"></div>
+      <button
+        class="viewer-toolbar-btn"
+        [disabled]="currentZoomValue === maxZoomValue"
+        (click)="imageZoomIn()"
+      >
+        <i class="fa fa-search-plus" aria-hidden="true"></i>
+      </button>
+      <select
+        class="toolbar-option-menu"
+        name="zoomValue"
+        [(ngModel)]="currentZoomValue"
+        (change)="changeZoomValue($event)"
+      >
+        <option *ngFor="let filter of zoomValues" [(value)]="filter.value">
+          {{ filter.label | translate }}
+        </option>
+      </select>
+      <button
+        class="viewer-toolbar-btn"
+        [disabled]="currentZoomValue === minZoomValue"
+        (click)="imageZoomOut()"
+      >
+        <i class="fa fa-search-minus" aria-hidden="true"></i>
+      </button>
+      <div class="divider-v"></div>
+    </div>
+  </div>
+  <div mobileToolbar>
+    <div class="toolbar-controls-container">
+      <button
+        class="viewer-toolbar-btn"
+        (click)="watermarkImage('print')"
+        dsStopContextMenu
+      >
+        <i class="fas fa-print"></i>
+      </button>
+      <button
+        class="viewer-toolbar-btn"
+        (click)="watermarkImage('download')"
+        dsStopContextMenu
+      >
+        <i class="fas fa-download"></i>
+      </button>
+
+      <div class="divider-v"></div>
+      <button
+        class="viewer-toolbar-btn"
+        (click)="increaseImageBrightness()"
+        [disabled]="currentBrightnessValue === maxBrightnessValue"
+        dsStopContextMenu
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          fill="currentColor"
+          class="bi bi-brightness-high-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"
+          />
+        </svg>
+      </button>
+      <select
+        class="toolbar-option-menu"
+        name="brightnessValue"
+        [(ngModel)]="currentBrightnessValue"
+        (change)="changeBrightnessValue($event)"
+      >
+        <option
+          *ngFor="let filter of brightnessValues"
+          [(value)]="filter.value"
+        >
+          {{ filter.label | translate }}
+        </option>
+      </select>
+      <button
+        class="viewer-toolbar-btn"
+        (click)="decreaseImageBrightness()"
+        [disabled]="currentBrightnessValue === minBrightnessValue"
+        dsStopContextMenu
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="25"
+          fill="currentColor"
+          class="bi bi-brightness-low-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8.5 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm0 11a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0zm5-5a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm-11 0a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1zm9.743-4.036a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm-7.779 7.779a.5.5 0 1 1-.707-.707.5.5 0 0 1 .707.707zm7.072 0a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707zM3.757 4.464a.5.5 0 1 1 .707-.707.5.5 0 0 1-.707.707z"
+          />
+        </svg>
+      </button>
+      <div class="divider-v"></div>
+
+      <button class="viewer-toolbar-btn" (click)="imageRotate()">
+        <i class="fa fa-undo" aria-hidden="true"></i>
+      </button>
+
+      <button
+        class="viewer-toolbar-btn"
+        [disabled]="true"
+        (click)="setMagnifierMode()"
+      >
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </button>
+
+      <div class="divider-v"></div>
+      <button
+        class="viewer-toolbar-btn"
+        [disabled]="currentZoomValue === maxZoomValue"
+        (click)="imageZoomIn()"
+      >
+        <i class="fa fa-search-plus" aria-hidden="true"></i>
+      </button>
+      <select
+        class="toolbar-option-menu"
+        name="zoomValue"
+        [(ngModel)]="currentZoomValue"
+        (change)="changeZoomValue($event)"
+      >
+        <option *ngFor="let filter of zoomValues" [(value)]="filter.value">
+          {{ filter.label | translate }}
+        </option>
+      </select>
+      <button
+        class="viewer-toolbar-btn"
+        [disabled]="currentZoomValue === minZoomValue"
+        (click)="imageZoomOut()"
+      >
+        <i class="fa fa-search-minus" aria-hidden="true"></i>
+      </button>
+    </div>
+  </div>
+  <div
+    #viewerContainer
+    style="
+      overflow: hidden;
+      position: relative;
+      align-items: center;
+      justify-content: center;
+    "
+    viewerContent
+  >
+    <canvas
+      #imageCanvas
+      (dblclick)="canvasDoubleClick($event)"
+      (mousemove)="canvasMouseMove($event)"
+      (mousedown)="canvasMouseDown($event)"
+      (contextmenu)="(false)"
+      (click)="canvasOnClick()"
+      class="image-canvas"
+      dsStopContextMenu
+    ></canvas>
+    <canvas #zoomCanvas style="z-index: 1"></canvas>
+  </div>
+</ds-viewer-wrapper>

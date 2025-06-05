@@ -1,0 +1,20 @@
+<ds-viewer-wrapper
+  [isMobile]="isMobile"
+  [closeViewer]="closeViewer"
+  [viewerPanelsStatus]="viewerPanelsStatus"
+  [enableFullScreen]="enableFullScreen"
+>
+  <div centerMenu>{{ fileMeta?.name }}</div>
+  <div #parentContainer class="parent-container" viewerContent>
+    <div class="downlaod-only">
+      <ds-loading
+      *ngIf="!isEmptyList"
+        message="{{ 'loading.default' | translate }}"
+        [showMessage]="true"
+      ></ds-loading>
+      <div *ngIf="isEmptyList">
+        {{ "kware.media.viewer.nofiles.msg" | translate }}
+      </div>
+    </div>
+  </div>
+</ds-viewer-wrapper>

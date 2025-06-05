@@ -26,6 +26,8 @@ import { ThemedMetadataRepresentationListComponent } from '../../metadata-repres
 import { RelatedItemsComponent } from '../../related-items/related-items-component';
 import { ItemComponent } from '../shared/item.component';
 import { TabbedRelatedEntitiesSearchComponent } from "../../related-entities/tabbed-related-entities-search/tabbed-related-entities-search.component";
+import { KwareMediaViewerComponent } from "../../../../shared/kware-media-viewer/kware-media-viewer.component";
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 /**
  * Component that represents a publication Item page
@@ -59,7 +61,9 @@ import { TabbedRelatedEntitiesSearchComponent } from "../../related-entities/tab
     ThemedThumbnailComponent,
     TranslateModule,
     NgIf,
-    TabbedRelatedEntitiesSearchComponent
+    TabbedRelatedEntitiesSearchComponent,
+    KwareMediaViewerComponent,
+    NgbTooltipModule,
 ],
 })
 export class PublicationComponent extends ItemComponent {

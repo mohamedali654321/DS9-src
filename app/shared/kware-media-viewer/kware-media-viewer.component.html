@@ -1,0 +1,42 @@
+<div *ngIf="!isViewerOpen">
+  <div class="row">
+    <div class="col-xs-12 col-md-3">
+      <button class="files-browse-btn" (click)="openViewer()">
+        <i class="fa fa-file fa-lg" aria-hidden="true"></i>
+        {{ "kware.media.viewer.browseFiles.btn" | translate }}
+      </button>
+    </div>
+  </div>
+</div>
+<div class="viewer-container" *ngIf="isViewerOpen">
+  <div
+    class="files-panel"
+    style="--filesMenuWidth:{{ filesMenuWidth }}"
+    *ngIf="viewerPanelsStatus.isFilesMenuOpen"
+  >
+    <ds-item-files-menu
+      [item]="item"
+      [bitstreams]="bitstreams$ | async"
+      [totalElements]="totalElements"
+      [isLoading]="isLoading"
+      [isEmptyList]="isEmptyList"
+      [isLastPage]="isLastPage"
+      [isMobile]="isMobile"
+      [viewerPanelsStatus]="viewerPanelsStatus"
+      (scrollingFinished)="onScrollingFinished()"
+    ></ds-item-files-menu>
+  </div>
+
+  <div class="viewer-panel" *ngIf="viewerPanelsStatus.isViewerPanelOpen">
+    <ds-viewer-panel
+      [closeViewer]="closeViewer"
+      [fileMeta]="fileMeta"
+      [isMobile]="isMobile"
+      [viewerPanelsStatus]="viewerPanelsStatus"
+      [fileUrl]="fileMeta.contentLink | async"
+      [localeCode]="localeCode"
+      [isLoading]="isLoading"
+      [isEmptyList]="isEmptyList"
+    ></ds-viewer-panel>
+  </div>
+</div>

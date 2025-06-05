@@ -1,0 +1,25 @@
+<ds-viewer-wrapper
+  [isMobile]="isMobile"
+  [closeViewer]="closeViewer"
+  [viewerPanelsStatus]="viewerPanelsStatus"
+>
+  <div centerMenu>{{ fileMeta?.name }}</div>
+  <div #parentContainer class="parent-container" viewerContent>
+    <div class="viewer-container">
+      <span style="color: brown">
+        <em class="fas fa-lock fa-3x"></em>
+      </span>
+      <span>{{ "kware.media.viewer.requestACopy.message" | translate }}</span>
+      <div>
+        <a
+          [routerLink]="(fileMeta.bitstreamPath | async)?.routerLink"
+          class="btn btn-primary request-copy-link"
+          [queryParams]="(fileMeta.bitstreamPath | async)?.queryParams"
+          target="_blank"
+        >
+          <span>{{ "kware.media.viewer.requestACopy.btn" | translate }}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</ds-viewer-wrapper>

@@ -27,6 +27,8 @@ import { listableObjectComponent } from '../../../../../../../app/shared/object-
 import { ThemedResultsBackButtonComponent } from '../../../../../../../app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/related-entities/tabbed-related-entities-search/tabbed-related-entities-search.component';
+import { KwareMediaViewerComponent } from 'src/app/shared/kware-media-viewer/kware-media-viewer.component';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 @listableObjectComponent('Publication', ViewMode.StandalonePage, Context.Any, 'custom')
 @Component({
@@ -58,7 +60,9 @@ import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/r
     ThemedThumbnailComponent,
     TranslateModule,
     NgIf,
-    TabbedRelatedEntitiesSearchComponent
+    TabbedRelatedEntitiesSearchComponent,
+    KwareMediaViewerComponent,
+    NgbTooltipModule
   ],
 })
 export class PublicationComponent extends BaseComponent {

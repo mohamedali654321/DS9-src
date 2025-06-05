@@ -1,0 +1,29 @@
+.viewer-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.toolbar-controls-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+button {
+  background-color: unset;
+  border: none;
+  cursor: pointer;
+}
+
+.divider-v {
+  position: relative;
+  margin: 0 3px;
+  width: 1px;
+  height: 20px;
+  border-left: 1px solid #ffffff;
+}

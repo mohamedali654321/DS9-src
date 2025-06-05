@@ -1,0 +1,62 @@
+<div  class="modal-header">
+  {{ "item.citation.modal.header" | translate }}
+  <button
+    type="button"
+    class="close"
+    (click)="onModalClose()"
+    aria-label="Close"
+  >
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="form-group">
+      <div *ngFor="let citation of getCitationOfPublication()">
+        <div class="card-citation">
+              <h5 class="citation-head">{{'citation.head.'+citation[0] | translate}} <a style="font-size: 14px;" target="_blank" [href]="getCitationLink(citation[0])">{{'citation.style.guide' | translate}}</a></h5>
+              <p>{{convertComma(citation[1]) }}</p>
+              <div style="text-align: end;">
+                <button (click)="copyToClipboard(citation[1])" [attr.title]="('copy.to.clipboard' | translate)"   class="ui basic icon button copy btn"><i aria-hidden="true" class="fa-solid fa-copy"></i></button>
+
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="modal-footer space-children-mr">
+  <button
+    class="btn btn-outline-secondary btn-sm ml-0"
+    type="button"
+    (click)="onModalClose()"
+
+  >
+    <i class="fas fa-times fa-fw"></i>
+    {{ "submission.sections.describe.relationship-lookup.close" | translate }}
+  </button>
+</div>
+
+
+<ng-template >
+<div class="modal-header">
+  {{ "item.qa.withdrawn.modal.submitted.header" | translate }}
+</div>
+<div class="modal-body">
+  <div class="d-flex justify-content-center">
+    <ds-loading [showMessage]="false"></ds-loading>
+  </div>
+</div>
+</ng-template>
+
+<ng-template >
+<div  class="modal-header">
+  {{ "item.qa.reinstate.modal.header" | translate }}
+  <button
+    type="button"
+    class="close"
+    (click)="onModalClose()"
+    aria-label="Close"
+  >
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+</ng-template>

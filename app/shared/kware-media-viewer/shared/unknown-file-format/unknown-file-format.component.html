@@ -1,0 +1,25 @@
+<ds-viewer-wrapper
+  [isMobile]="isMobile"
+  [closeViewer]="closeViewer"
+  [viewerPanelsStatus]="viewerPanelsStatus"
+  [enableFullScreen]="enableFullScreen"
+>
+  <div centerMenu>{{ fileMeta?.name }}</div>
+  <div #parentContainer class="parent-container" viewerContent>
+    <div class="downlaod-only">
+      <span *ngIf="fileMeta.format">{{
+        'fileSection.viewerSwitcher.downloadOnly.message' | translate
+      }}</span>
+      <button
+        *ngIf="fileMeta.format"
+        class="viewer-toolbar-btn"
+        (click)="downloadOtherFileFormat()"
+      >
+        <em class="fa fa-download"></em>
+        <span>{{
+          'fileSection.viewerSwitcher.downloadOnly.btn' | translate
+        }}</span>
+      </button>
+    </div>
+  </div>
+</ds-viewer-wrapper>

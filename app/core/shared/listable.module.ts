@@ -160,6 +160,8 @@ import { PlaceSidebarSearchListElementComponent } from 'src/app/entity-groups/re
 import { SeriesSidebarSearchListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/sidebar-search-list-elements/series/series-sidebar-search-list-element.component';
 import { SubjectSidebarSearchListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/sidebar-search-list-elements/subject/subject-sidebar-search-list-element.component';
 import { SubjectListElementComponent } from 'src/app/entity-groups/research-entities/item-list-elements/subject/subject-list-element.component';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { PdfJsViewerModule } from 'ng2-pdfjs-viewer';
 
 const ENTRY_COMPONENTS = [
   EraComponent,
@@ -300,6 +302,10 @@ const ENTRY_COMPONENTS = [
     CommonModule,
     RouterModule,
     TranslateModule,
+
+    PdfJsViewerModule,
+    ScrollingModule,
+
     ThemedLoadingComponent,
     TruncatableComponent,
     TruncatablePartComponent,

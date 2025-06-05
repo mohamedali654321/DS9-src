@@ -3101,7 +3101,7 @@
 
   "journalvolume.page.edit": "تحرير هذه المادة",
 
-  "journalvolume.page.issuedate": "تاريخ العدد",
+  "journalvolume.page.issuedate": "تاريخ المجلد",
 
   "journalvolume.page.titleprefix": "مجلد دورية: ",
 
@@ -10129,7 +10129,7 @@
   "item.page.relationships.isAdministrationOfPublication": "الإدارات",
   "item.page.relationships.isProjectOfPublication": "المشاريع",
   "item.page.relationships.isJournalIssueOfPublication": "أعداد الدوريات",
-  "journalIssue-relationships.search.results.head": "نتائج البحث عن أعداد الدوريات ذات علاقة",
+  "journalIssue-relationships.search.results.head": "نتائج البحث عن أعداد الدوريات ذات علاقة بهذا المجلد",
 
   "item.page.relationships.isPublicationOfPlace": "المنشورات",
   "item.page.relationships.isPersonOfPlace": "الأشخاص",

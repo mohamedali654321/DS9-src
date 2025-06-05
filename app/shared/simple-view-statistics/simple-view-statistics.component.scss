@@ -1,0 +1,10 @@
+@import '../../../styles/_kware_styles.scss';
+
+
+
+::ng-deep html[dir="rtl"]{
+    .fa-caret-right{
+        transform: scale(-1);
+    }  
+}
+

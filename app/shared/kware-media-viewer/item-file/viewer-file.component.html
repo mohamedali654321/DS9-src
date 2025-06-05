@@ -1,0 +1,19 @@
+<a
+  #selectedFileRef
+  (click)="emitMediaViewerSwitcher()"
+  [ngClass]="
+    bitstream?.format ? 'file-link-container matomo_download' : 'file-link-container-disabled matomo_download'
+  "
+  download="download"
+  target="_blank"
+  
+>
+  <ds-item-file-icon
+    *ngIf="(bitstream.canDownload | async) && bitstream?.format | async"
+    [fileFormat]="bitstream?.format | async"
+  ></ds-item-file-icon>
+  <span class="no-perms" *ngIf="!(bitstream.canDownload | async) && bitstream?.format | async"
+    ><em class="fas fa-lock fa-lg"></em
+  ></span>
+  <span class="file-name">{{ bitstream?.name }}</span>
+</a>

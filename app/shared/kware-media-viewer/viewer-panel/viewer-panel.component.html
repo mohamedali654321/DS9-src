@@ -1,0 +1,78 @@
+<ng-container *ngVar="fileMeta?.format | async as fileformat">
+  <ng-container *ngIf="fileformat">
+    <ds-kware-image-viewer
+      *ngIf="fileformat?.startsWith('image')"
+      [closeViewer]="closeViewer"
+      [fileMeta]="fileMeta"
+      [imageUrl]="fileUrl"
+      [fileformat]="fileformat"
+      [isMobile]="isMobile"
+      [viewerPanelsStatus]="viewerPanelsStatus"
+    ></ds-kware-image-viewer>
+    <ds-kware-pdf-viewer
+      *ngIf="(fileMeta.canDownload | async) && fileformat === 'application/pdf'"
+      [closeViewer]="closeViewer"
+      [fileMeta]="fileMeta"
+      [isMobile]="isMobile"
+      [viewerPanelsStatus]="viewerPanelsStatus"
+      [fileUrl]="fileUrl"
+      [fileformat]="fileformat"
+    ></ds-kware-pdf-viewer>
+    <ds-kware-document-viewer
+      *ngIf="
+        (fileMeta.canDownload | async) && msFilesFormats.includes(fileformat)
+      "
+      [docURL]="fileUrl"
+      [locale]="localeCode"
+      [closeViewer]="closeViewer"
+      [isMobile]="isMobile"
+      [viewerPanelsStatus]="viewerPanelsStatus"
+      [fileMeta]="fileMeta"
+    ></ds-kware-document-viewer>
+    <ds-kware-video-player
+      *ngIf="
+        (fileMeta.canDownload | async) &&
+        (fileformat.startsWith('video') || fileformat.startsWith('audio'))
+      "
+      [fileMeta]="fileMeta"
+      [src]="fileUrl"
+      [closeViewer]="closeViewer"
+      [isMobile]="isMobile"
+      [viewerPanelsStatus]="viewerPanelsStatus"
+      [locale]="localeCode"
+    ></ds-kware-video-player>
+    <ds-unknown-file-format
+      *ngIf="
+        !msFilesFormats.includes(fileformat) &&
+        !fileformat.startsWith('image') &&
+        !fileformat.startsWith('video') &&
+        !fileformat.startsWith('audio') &&
+        fileformat !== 'application/pdf' &&
+        fileUrl !== '' &&
+        (fileMeta.canDownload | async)
+      "
+      [closeViewer]="closeViewer"
+      [fileMeta]="fileMeta"
+      [isMobile]="isMobile"
+      [viewerPanelsStatus]="viewerPanelsStatus"
+    >
+    </ds-unknown-file-format>
+    <ds-request-a-copy
+      *ngIf="fileMeta.canRequestACopy | async"
+      [closeViewer]="closeViewer"
+      [fileMeta]="fileMeta"
+      [isMobile]="isMobile"
+      [viewerPanelsStatus]="viewerPanelsStatus"
+    >
+    </ds-request-a-copy>
+  </ng-container>
+  <ng-container *ngIf="!fileformat">
+    <ds-loading-file
+      [closeViewer]="closeViewer"
+      [fileMeta]="fileMeta"
+      [isMobile]="isMobile"
+      [viewerPanelsStatus]="viewerPanelsStatus"
+      [isEmptyList]="isEmptyList"
+    ></ds-loading-file>
+  </ng-container>
+</ng-container>

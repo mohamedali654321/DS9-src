@@ -3101,7 +3101,7 @@
 
   "journalvolume.page.edit": "Edit this item",
 
-  "journalvolume.page.issuedate": "Issue Date",
+  "journalvolume.page.issuedate": "Volume Date",
 
   "journalvolume.page.titleprefix": "Journal Volume: ",
 
@@ -9142,7 +9142,7 @@
   "item.page.relationships.isAdministrationOfPublication": "Administrations",
   "item.page.relationships.isProjectOfPublication": "Projects",
   "item.page.relationships.isJournalIssueOfPublication": "Journal Issues",
-  "journalIssue-relationships.search.results.head": "Search results for related Journal Issues",
+  "journalIssue-relationships.search.results.head": "Search results for related Journal Issues to this volume",
 
   "item.page.relationships.isPublicationOfPlace": "Publications",
   "item.page.relationships.isPersonOfPlace": "Persons",

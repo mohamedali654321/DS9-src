@@ -1,0 +1,82 @@
+button {
+  background-color: unset;
+  border: none;
+  cursor: pointer;
+}
+
+button i {
+  color: #fff;
+}
+
+.divider-v {
+  position: relative;
+  margin: 0 3px;
+  width: 1px;
+  height: 20px;
+  border-left: 1px solid #ffffff;
+}
+
+.video-player-container {
+  overflow: hidden;
+  position: relative;
+}
+
+.video-canvas {
+  display: flex;
+  width: 100%;
+  transition: all 0.3s;
+  position: absolute;
+  overflow: hidden;
+  z-index: 0;
+  background-color: black;
+}
+
+.video-controls-container {
+  width: 100%;
+  height: 5vh;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 15px;
+  padding: 0 10px;
+}
+
+.progress-bar {
+  background: #f0f0f0;
+  height: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.volume-controle {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.volume-bar {
+  background: #f0f0f0;
+  height: 5px;
+  width: 70px;
+  display: none;
+}
+
+.volume-controle:hover .volume-bar {
+  display: flex;
+}
+
+progress::-moz-progress-bar {
+  background-color: #ec3636;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #f0f0f0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: #ec3636;
+
+}
