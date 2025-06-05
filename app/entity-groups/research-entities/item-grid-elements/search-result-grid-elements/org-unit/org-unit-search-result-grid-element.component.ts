@@ -14,6 +14,7 @@ import { ThemedThumbnailComponent } from '../../../../../thumbnail/themed-thumbn
 import { KwareTranslatePipe } from "../../../../../shared/utils/kware-translate.pipe";
 import { ThemedMetadataRepresentationListComponent } from "../../../../../item-page/simple/metadata-representation-list/themed-metadata-representation-list.component";
 import { ViewStatisticsComponent } from "../../../../../shared/view-statistics/view-statistics.component";
+import { PublictaionCountComponent } from "../../../../../shared/publictaion-count/publictaion-count.component";
 
 @listableObjectComponent('OrgUnitSearchResult', ViewMode.GridElement)
 @Component({
@@ -34,9 +35,10 @@ import { ViewStatisticsComponent } from "../../../../../shared/view-statistics/v
     ThemedMetadataRepresentationListComponent,
     ViewStatisticsComponent,
     NgIf,
-     NgStyle,
-     NgClass,
-     DatePipe,
+    NgStyle,
+    NgClass,
+    DatePipe,
+    PublictaionCountComponent
 ],
 })
 /**

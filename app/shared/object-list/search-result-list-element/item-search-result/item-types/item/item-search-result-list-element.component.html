@@ -31,7 +31,7 @@
       <span *ngIf="linkType == linkTypes.None" class="lead item-list-title dont-break-out"
             [innerHTML]="dsoTitle"></span>
             <a *ngIf="dso.hasMetadata('dc.identifier.doi')" href="{{firstMetadataValue('dc.identifier.doi')}}"><img style="width: 22px;    margin-right: 10px;" _ngcontent-dspace-angular-c659="" placement="top" alt="orcid-logo" src="/assets/images/DOI_logo.svg.png" class="orcid-icon ng-star-inserted"></a>
-
+          <ds-publictaion-count  [dso]="dso"></ds-publictaion-count>
       <span class="" style="font-weight: 700;">
 
         <ds-truncatable-part [id]="dso.id" [minLines]="1">

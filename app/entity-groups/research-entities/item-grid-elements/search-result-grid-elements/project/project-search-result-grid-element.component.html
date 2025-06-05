@@ -33,7 +33,7 @@
       <ds-truncatable-part [id]="dso.id" [minLines]="2" type="h4" >
         <!-- <h4 class="card-title" [innerHTML]="dsoTitle | kwareTranslate"></h4> -->
         <h4 class="card-title"><a [routerLink]="[itemPageRoute]">{{ dsoTitle  | kwareTranslate}}</a> 
-          <!-- <ds-publictaion-count style="font-size: 16px !important;"  [dso]="dso"></ds-publictaion-count> -->
+          <ds-publictaion-count style="font-size: 16px !important;"  [dso]="dso"></ds-publictaion-count>
         </h4>
       </ds-truncatable-part>
       <!-- <div *ngIf="dso.hasMetadata('dc.subject')">

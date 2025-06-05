@@ -19,6 +19,7 @@ import { followLink } from "src/app/shared/utils/follow-link-config.model";
 import { hasValue } from "src/app/shared/empty.util";
 import { ThemedMetadataRepresentationListComponent } from "../../../../../../item-page/simple/metadata-representation-list/themed-metadata-representation-list.component";
 import { ViewStatisticsComponent } from "../../../../../view-statistics/view-statistics.component";
+import { PublictaionCountComponent } from "../../../../../publictaion-count/publictaion-count.component";
 
 @listableObjectComponent("PublicationSearchResult", ViewMode.ListElement)
 @listableObjectComponent(ItemSearchResult, ViewMode.ListElement)
@@ -44,7 +45,8 @@ import { ViewStatisticsComponent } from "../../../../../view-statistics/view-sta
     NgIf,
     NgClass,
     // NgStyle,
-    DatePipe
+    DatePipe,
+    PublictaionCountComponent
 ],
 })
 /**

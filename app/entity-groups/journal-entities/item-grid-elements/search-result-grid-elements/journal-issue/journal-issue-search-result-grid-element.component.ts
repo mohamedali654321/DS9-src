@@ -21,6 +21,7 @@ import { ThemedThumbnailComponent } from "../../../../../thumbnail/themed-thumbn
 import { KwareTranslatePipe } from "../../../../../shared/utils/kware-translate.pipe";
 import { ThemedMetadataRepresentationListComponent } from "src/app/item-page/simple/metadata-representation-list/themed-metadata-representation-list.component";
 import { ViewStatisticsComponent } from "src/app/shared/view-statistics/view-statistics.component";
+import { PublictaionCountComponent } from "../../../../../shared/publictaion-count/publictaion-count.component";
 
 @listableObjectComponent("JournalIssueSearchResult", ViewMode.GridElement)
 @Component({
@@ -45,7 +46,8 @@ import { ViewStatisticsComponent } from "src/app/shared/view-statistics/view-sta
     NgClass,
     NgStyle,
     DatePipe,
-  ],
+    PublictaionCountComponent
+],
 })
 /**
  * The component for displaying a grid element for an item search result of the type Journal Issue

@@ -34,7 +34,7 @@
             <span *ngIf="linkType == linkTypes.None"
                   class="lead"
                   [innerHTML]="(dsoTitle | kwareTranslate)  || ('place.listelement.no-title' | translate | kwareTranslate)"></span>
-                  <!-- <ds-publictaion-count  [dso]="dso"></ds-publictaion-count> -->
+                  <ds-publictaion-count  [dso]="dso"></ds-publictaion-count>
             
           <div *ngIf="dso.allMetadata(['subject.broader']).length > 0">
           <span  class="item-abstract card-text publisher-section">

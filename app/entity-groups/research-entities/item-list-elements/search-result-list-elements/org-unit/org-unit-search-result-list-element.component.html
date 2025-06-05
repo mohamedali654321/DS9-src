@@ -46,7 +46,8 @@
                   [innerHTML]="(dsoTitle | kwareTranslate)  || ('orgunit.listelement.no-title' | translate | kwareTranslate)"></span>
                   <a *ngIf="dso.hasMetadata('organization.identifier.ror')" href="{{firstMetadataValue('organization.identifier.ror')}}"><img style="width: 30px;margin-right: 10px;" _ngcontent-dspace-angular-c659="" placement="top" alt="orcid-logo" src="assets/images/ROR_logo.svg-removebg-preview.png" class="orcid-icon ng-star-inserted"></a>
 
-                  <!-- <ds-publictaion-count  [dso]="dso"></ds-publictaion-count> -->
+                  <ds-publictaion-count  [dso]="dso"></ds-publictaion-count>
+                  
 
                   <span class="text-muted">
                     <ds-truncatable-part [id]="dso.id" [minLines]="1">

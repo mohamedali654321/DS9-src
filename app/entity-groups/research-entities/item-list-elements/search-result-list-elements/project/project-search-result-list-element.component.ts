@@ -13,6 +13,7 @@ import { ThemedMetadataRepresentationListComponent } from "src/app/item-page/sim
 import { ViewStatisticsComponent } from "src/app/shared/view-statistics/view-statistics.component";
 import { TruncatablePartComponent } from "../../../../../shared/truncatable/truncatable-part/truncatable-part.component";
 import { TranslateModule } from "@ngx-translate/core";
+import { PublictaionCountComponent } from "../../../../../shared/publictaion-count/publictaion-count.component";
 
 @listableObjectComponent("ProjectSearchResult", ViewMode.ListElement)
 @Component({
@@ -35,6 +36,7 @@ import { TranslateModule } from "@ngx-translate/core";
     DatePipe,
     TruncatablePartComponent,
     TranslateModule,
+    PublictaionCountComponent
 ],
 })
 /**

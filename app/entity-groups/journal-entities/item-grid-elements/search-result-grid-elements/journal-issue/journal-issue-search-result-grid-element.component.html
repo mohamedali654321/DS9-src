@@ -37,7 +37,7 @@
                <h4 class="card-title"><a [routerLink]="[itemPageRoute]">{{ dsoTitle  | kwareTranslate}}</a> 
                 <span style="font-size: 15px;font-weight: 400;color: #207698;" *ngIf="dso.allMetadata(['dc.description.frequancy']).length > 0" class="">{{" "+'('+(firstMetadataValue('dc.description.frequancy') | kwareTranslate) + ')'}}</span>
 
-                <!-- <ds-publictaion-count style="font-size: 16px !important;"  [dso]="dso"></ds-publictaion-count> -->
+                <ds-publictaion-count style="font-size: 16px !important;"  [dso]="dso"></ds-publictaion-count>
               </h4>
         <!-- kware-edit end  -->
       </ds-truncatable-part>

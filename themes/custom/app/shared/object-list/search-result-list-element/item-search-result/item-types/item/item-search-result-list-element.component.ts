@@ -23,6 +23,7 @@ import { KwareCommaConvertPipe } from "src/app/shared/utils/kware-comma-convert.
 import { KwareTranslatePipe } from "src/app/shared/utils/kware-translate.pipe";
 import { ThemedMetadataRepresentationListComponent } from "src/app/item-page/simple/metadata-representation-list/themed-metadata-representation-list.component";
 import { ViewStatisticsComponent } from "src/app/shared/view-statistics/view-statistics.component";
+import { PublictaionCountComponent } from "src/app/shared/publictaion-count/publictaion-count.component";
 
 @listableObjectComponent(
   "PublicationSearchResult",
@@ -64,6 +65,7 @@ import { ViewStatisticsComponent } from "src/app/shared/view-statistics/view-sta
     NgClass,
     // NgStyle,
     DatePipe,
+    PublictaionCountComponent
   ],
 })
 export class ItemSearchResultListElementComponent extends BaseComponent {}

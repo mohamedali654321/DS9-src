@@ -15,6 +15,7 @@ import { KwareTranslatePipe } from "../../../../../shared/utils/kware-translate.
 import { KwareCommaConvertPipe } from "../../../../../shared/utils/kware-comma-convert.pipe";
 import { ThemedMetadataRepresentationListComponent } from "../../../../../item-page/simple/metadata-representation-list/themed-metadata-representation-list.component";
 import { ViewStatisticsComponent } from "../../../../../shared/view-statistics/view-statistics.component";
+import { PublictaionCountComponent } from "../../../../../shared/publictaion-count/publictaion-count.component";
 
 @listableObjectComponent("JournalSearchResult", ViewMode.GridElement)
 @Component({
@@ -39,8 +40,9 @@ import { ViewStatisticsComponent } from "../../../../../shared/view-statistics/v
     NgFor,
     NgClass,
     NgStyle,
-    DatePipe
-  ],
+    DatePipe,
+    PublictaionCountComponent
+],
 })
 /**
  * The component for displaying a grid element for an item search result of the type Journal

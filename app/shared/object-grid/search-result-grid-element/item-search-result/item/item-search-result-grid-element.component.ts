@@ -31,6 +31,7 @@ import { LocaleService } from "src/app/core/locale/locale.service";
 import { followLink } from "src/app/shared/utils/follow-link-config.model";
 import { ThemedMetadataRepresentationListComponent } from "../../../../../item-page/simple/metadata-representation-list/themed-metadata-representation-list.component";
 import { ViewStatisticsComponent } from "../../../../view-statistics/view-statistics.component";
+import { PublictaionCountComponent } from "../../../../publictaion-count/publictaion-count.component";
 
 @listableObjectComponent("PublicationSearchResult", ViewMode.GridElement)
 @listableObjectComponent(ItemSearchResult, ViewMode.GridElement)
@@ -57,7 +58,8 @@ import { ViewStatisticsComponent } from "../../../../view-statistics/view-statis
     NgClass,
     ThemedMetadataRepresentationListComponent,
     ViewStatisticsComponent,
-  ],
+    PublictaionCountComponent
+],
 })
 /**
  * The component for displaying a grid element for an item search result of the type Publication

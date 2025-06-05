@@ -20,6 +20,7 @@ import { TruncatableComponent } from "src/app/shared/truncatable/truncatable.com
 import { KwareTranslatePipe } from "src/app/shared/utils/kware-translate.pipe";
 import { ViewStatisticsComponent } from "src/app/shared/view-statistics/view-statistics.component";
 import { ThemedThumbnailComponent } from "src/app/thumbnail/themed-thumbnail.component";
+import { PublictaionCountComponent } from "../../../../../shared/publictaion-count/publictaion-count.component";
 
 @listableObjectComponent("EratSearchResult", ViewMode.ListElement)
 @Component({
@@ -42,9 +43,8 @@ import { ThemedThumbnailComponent } from "src/app/thumbnail/themed-thumbnail.com
     KwareTranslatePipe,
     // NgStyle,
     ViewStatisticsComponent,
-    // ThemedMetadataRepresentationListComponent,
-    // ThemedTypeBadgeComponent,
-  ],
+    PublictaionCountComponent
+],
 })
 /**
  * The component for displaying a list element for an item search result of the type Organisation Unit

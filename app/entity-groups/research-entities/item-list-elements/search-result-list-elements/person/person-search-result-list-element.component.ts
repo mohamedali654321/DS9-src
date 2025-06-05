@@ -21,6 +21,7 @@ import { LinkService } from "src/app/core/cache/builders/link.service";
 import { ThemedMetadataRepresentationListComponent } from "src/app/item-page/simple/metadata-representation-list/themed-metadata-representation-list.component";
 import { ViewStatisticsComponent } from "src/app/shared/view-statistics/view-statistics.component";
 import { LocaleService } from "src/app/core/locale/locale.service";
+import { PublictaionCountComponent } from "../../../../../shared/publictaion-count/publictaion-count.component";
 
 @listableObjectComponent("PersonSearchResult", ViewMode.ListElement)
 @Component({
@@ -43,7 +44,8 @@ import { LocaleService } from "src/app/core/locale/locale.service";
     NgIf,
     NgFor,
     DatePipe,
-  ],
+    PublictaionCountComponent
+],
 })
 /**
  * The component for displaying a list element for an item search result of the type Person

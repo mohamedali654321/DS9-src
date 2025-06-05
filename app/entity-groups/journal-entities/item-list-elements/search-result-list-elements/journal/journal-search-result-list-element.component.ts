@@ -20,6 +20,7 @@ import { KwareTranslatePipe } from "../../../../../shared/utils/kware-translate.
 import { ThemedMetadataRepresentationListComponent } from "src/app/item-page/simple/metadata-representation-list/themed-metadata-representation-list.component";
 import { ViewStatisticsComponent } from "src/app/shared/view-statistics/view-statistics.component";
 import { TranslateModule } from "@ngx-translate/core";
+import { PublictaionCountComponent } from "../../../../../shared/publictaion-count/publictaion-count.component";
 
 @listableObjectComponent("JournalSearchResult", ViewMode.ListElement)
 @Component({
@@ -43,8 +44,9 @@ import { TranslateModule } from "@ngx-translate/core";
     NgClass,
     NgStyle,
     DatePipe,
-    TranslateModule
-  ],
+    TranslateModule,
+    PublictaionCountComponent
+],
 })
 /**
  * The component for displaying a list element for an item search result of the type Journal

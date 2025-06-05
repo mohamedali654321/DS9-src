@@ -42,7 +42,7 @@
             <span *ngIf="linkType == linkTypes.None"
                   class="lead"
                   [innerHTML]="(dsoTitle | kwareTranslate)  || ('event.listelement.no-title' | translate | kwareTranslate)"></span>
-                  <!-- <ds-publictaion-count  [dso]="dso"></ds-publictaion-count> -->
+                  <ds-publictaion-count  [dso]="dso"></ds-publictaion-count>
                   <div *ngIf="dso.allMetadata(['event.chiefTitle']).length > 0 || dso.allMetadata(['event.title.alternative']).length > 0">
                     <span style="color:#530a86!important ;font-size: 15px;font-weight: 600;" [innerHtml]="(localeEn && firstMetadataValue('event.title.alternative'))?(firstMetadataValue('event.title.alternative') | kwareTranslate):(firstMetadataValue('event.chiefTitle') | kwareTranslate)"></span>
 

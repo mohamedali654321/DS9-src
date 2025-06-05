@@ -21,7 +21,7 @@
         </div>
     </span>
     <div class="card-body"[ngClass]="{'fixed-height':(isCollapsed() | async)}">
-      <div class="d-flex">
+      <div class="d-flex"style="justify-content: space-between">
         <div class="label_dage" >
           <span class="badge badge-info" [attr.title]="'item.search.publishDate' | translate" style="background-color: #6aa3d5 !important;color: #FFF; margin-bottom: -2px;" *ngIf="dso.hasMetadata('dc.date.issued') || dso.hasMetadata('dc.date.issuedhijri')" >{{firstMetadataValue('dc.date.issued') ? firstMetadataValue('dc.date.issued') : firstMetadataValue('dc.date.issuedhijri') }}</span>
   
@@ -29,10 +29,13 @@
           <span class="badge badge-info" style="background-color: #530a86  !important;color: #FFF; margin-bottom: -2px;" *ngIf="dso.hasMetadata('dc.type')" >{{firstMetadataValue('dc.type') | kwareTranslate}}</span>
           <!-- <ds-access-status-badge [object]="dso" class="pl-1"></ds-access-status-badge> -->
           <ds-badges *ngIf="showLabel" class="pl-1" [object]="dso" [context]="context" [showAccessStatus]="true"></ds-badges>
-  
+        
+          
        </div>
         
-        
+                        <div>
+          <ds-publictaion-count style="font-size: 16px !important;"  [dso]="dso"></ds-publictaion-count>
+        </div>
       </div>
         <ds-truncatable [id]="dso.id">
             <ds-truncatable-part [id]="dso.id" [minLines]="2" type="h4">
@@ -46,8 +49,11 @@
                     <a *ngIf="dso.hasMetadata('dc.identifier.doi')" href="{{firstMetadataValue('dc.identifier.doi')}}"><img style="width: 22px;    margin-right: 10px;" _ngcontent-dspace-angular-c659="" placement="top" alt="orcid-logo" src="/assets/images/DOI_logo.svg.png" class="orcid-icon ng-star-inserted"></a>
   
                   </div>
+
   
                  </h4>
+                 
+   
             </ds-truncatable-part>
   
   

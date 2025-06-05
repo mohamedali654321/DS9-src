@@ -13,6 +13,7 @@ import { ThemedThumbnailComponent } from "../../../../../thumbnail/themed-thumbn
 import { KwareTranslatePipe } from "../../../../../shared/utils/kware-translate.pipe";
 import { ViewStatisticsComponent } from "../../../../../shared/view-statistics/view-statistics.component";
 import { ThemedMetadataRepresentationListComponent } from "../../../../../item-page/simple/metadata-representation-list/themed-metadata-representation-list.component";
+import { PublictaionCountComponent } from "../../../../../shared/publictaion-count/publictaion-count.component";
 
 @listableObjectComponent("OrgUnitSearchResult", ViewMode.ListElement)
 @Component({
@@ -35,7 +36,8 @@ import { ThemedMetadataRepresentationListComponent } from "../../../../../item-p
     NgIf,
     NgFor,
     DatePipe,
-  ],
+    PublictaionCountComponent
+],
 })
 /**
  * The component for displaying a list element for an item search result of the type Organisation Unit
