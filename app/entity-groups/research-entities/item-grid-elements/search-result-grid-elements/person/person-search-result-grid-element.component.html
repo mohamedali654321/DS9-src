@@ -52,7 +52,7 @@
       >
         <!-- <h4 class="card-title" [innerHTML]="convertComma(dsoTitle)"></h4> -->
         <h4 [ngStyle]="{'gap': localeEn ? '10px' : '0px'}" class="card-title d-flex">
-          <a [routerLink]="[itemPageRoute]">{{ dsoTitle.split(' null')[0] | kwareTranslate }}</a>
+          <a [routerLink]="[itemPageRoute]">{{ dsoTitle?.split(' null')[0] | kwareTranslate }}</a>
         
             <a *ngIf="dso.hasMetadata('person.identifier.orcid')" href="https://sandbox.orcid.org/{{firstMetadataValue('person.identifier.orcid')}}"><img style="width: 22px;    margin-right: 10px;" _ngcontent-dspace-angular-c659="" placement="top" alt="orcid-logo" src="/assets/images/orcid.logo.icon.svg" class="orcid-icon ng-star-inserted"></a>
         

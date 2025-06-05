@@ -205,12 +205,13 @@ export class ObjectGridComponent implements OnInit {
   ngOnInit(): void {
       this.route.data.subscribe(data=>{data.breadcrumbKey === 'search' ? this.isSearch = true : this.isSearch = false});
     this.route.queryParams.subscribe(params => {params.source === 'browseCategory'? this.isBrowseSearch = true : this.isBrowseSearch = false})
+    
     const nbColumns$ = this.hostWindow.widthCategory.pipe(
            map((widthCat: WidthCategory) => {
         switch (widthCat) {
           case WidthCategory.XL:
           case WidthCategory.LG: {
-            return this.isSearch || this.isBrowseSearch ?  4 : 5;
+            return this.isSearch || this.isBrowseSearch || document.URL.includes('/communities/') || document.URL.includes('/collections/') ?  4 : 5;
           }
           case WidthCategory.MD:
           case WidthCategory.SM: {
@@ -222,7 +223,7 @@ export class ObjectGridComponent implements OnInit {
         }
       }),
       distinctUntilChanged(),
-    ).pipe(startWith(this.isSearch || this.isBrowseSearch ?  4 : 5));
+    ).pipe(startWith(this.isSearch || this.isBrowseSearch || document.URL.includes('/communities/') || document.URL.includes('/collections/') ?  4 : 5));
 
     this.columns$ = observableCombineLatest(
       nbColumns$,
