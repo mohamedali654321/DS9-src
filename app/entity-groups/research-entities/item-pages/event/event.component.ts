@@ -16,6 +16,7 @@ import { MetadataFieldWrapperComponent } from 'src/app/shared/metadata-field-wra
 import { ThemedResultsBackButtonComponent } from 'src/app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from 'src/app/thumbnail/themed-thumbnail.component';
 import { ThemedMetadataRepresentationListComponent } from 'src/app/item-page/simple/metadata-representation-list/themed-metadata-representation-list.component';
+import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
 
 @listableObjectComponent('Event', ViewMode.StandalonePage)
 @Component({
@@ -39,6 +40,7 @@ import { ThemedMetadataRepresentationListComponent } from 'src/app/item-page/sim
     ItemPageImgFieldComponent,
     ThemedMetadataRepresentationListComponent,
     ThemedMediaViewerComponent,
-  ],
+    SimpleViewStatisticsComponent
+],
 })
 export class EventComponent extends ItemComponent {}

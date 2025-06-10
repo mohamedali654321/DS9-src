@@ -15,6 +15,7 @@ import { listableObjectComponent } from '../../../../shared/object-collection/sh
 import { ThemedResultsBackButtonComponent } from '../../../../shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from '../../../../thumbnail/themed-thumbnail.component';
 import { ThemedMediaViewerComponent } from "../../../../item-page/media-viewer/themed-media-viewer.component";
+import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
 
 @listableObjectComponent('Person', ViewMode.StandalonePage)
 @Component({
@@ -35,7 +36,8 @@ import { ThemedMediaViewerComponent } from "../../../../item-page/media-viewer/t
     ThemedThumbnailComponent,
     TranslateModule,
     NgIf,
-    ThemedMediaViewerComponent
+    ThemedMediaViewerComponent,
+    SimpleViewStatisticsComponent
 ],
 })
 /**

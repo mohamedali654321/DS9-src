@@ -1,0 +1,93 @@
+.btn:not(:disabled):not(.disabled) {
+  cursor: pointer;
+}
+.btn {
+  letter-spacing: .78px;
+  text-transform: uppercase;
+}
+.btn-outline-secondary {
+  color: #787878 !important;
+  border-color: #787878 !important;
+}
+.btn {
+  display: inline-block;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  user-select: none;
+  background-color: #0000;
+  border: 1px solid rgba(0, 0, 0, 0);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0;
+  transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+.fa-black[_ngcontent-dspace-angular-c421] {
+  color: #000;
+}
+
+.fa, .fa-classic, .fa-sharp, .fas, .fa-solid, .far, .fa-regular, .fab, .fa-brands {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  display: var(--fa-display, inline-block);
+  font-style: normal;
+  font-feature-settings: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-rendering: auto;
+}
+
+
+.btn-x-twitter[_ngcontent-dspace-angular-c421] {
+  background-color: #000 ;
+}
+
+
+@media (min-width: 480px) {
+  .social-btn[_ngcontent-dspace-angular-c421] {
+      // min-width: 90px;
+      height: 37px;
+      line-height: 21px;
+      border-radius: 2px;
+      margin-left: 8px;
+      padding: 8px 15px 8px 13px;
+  }
+}
+
+.social-btn[_ngcontent-dspace-angular-c421] {
+  border-radius: 0;
+  border: 0;
+}
+
+.btn-facebook[_ngcontent-dspace-angular-c421] {
+  background-color: #3b5998;
+}
+
+.btn-whatsapp[_ngcontent-dspace-angular-c421] {
+  background-color: #25d366;
+}
+
+
+.btn-linkedin[_ngcontent-dspace-angular-c421] {
+  background-color: #007bb6;
+}
+.social-icons{
+  .d-flex {
+    gap: 5px;
+  }
+}
+
+::ng-deep html[dir="rtl"]{
+  .print-mail-area{
+    gap: 4px;
+  }
+}
+
+.fab{
+  font-size: x-large;
+}

@@ -114,7 +114,7 @@
     >
     </ds-metadata-representation-list>
 
-        <ds-metadata-representation-list
+    <ds-metadata-representation-list
       class="ds-item-page-mixed-author-field"
       [parentItem]="object"
       [itemType]="'OrgUnit'"
@@ -140,6 +140,9 @@
     </ds-generic-item-page-field>
   </div>
   <div class="col-xs-12 col-md-6">
+    <br />
+    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
+    <br />
     <ds-generic-item-page-field
       class="item-page-fields"
       [item]="object"

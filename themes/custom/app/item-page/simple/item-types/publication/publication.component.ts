@@ -29,6 +29,7 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
 import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/related-entities/tabbed-related-entities-search/tabbed-related-entities-search.component';
 import { KwareMediaViewerComponent } from 'src/app/shared/kware-media-viewer/kware-media-viewer.component';
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { SimpleViewStatisticsComponent } from 'src/app/shared/simple-view-statistics/simple-view-statistics.component';
 
 @listableObjectComponent('Publication', ViewMode.StandalonePage, Context.Any, 'custom')
 @Component({
@@ -62,7 +63,8 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
     NgIf,
     TabbedRelatedEntitiesSearchComponent,
     KwareMediaViewerComponent,
-    NgbTooltipModule
+    NgbTooltipModule,
+    SimpleViewStatisticsComponent
   ],
 })
 export class PublicationComponent extends BaseComponent {

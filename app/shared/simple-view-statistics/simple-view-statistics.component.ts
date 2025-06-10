@@ -15,7 +15,6 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ShortNumberPipe } from '../utils/short-number.pipe';
 import { LinkService } from 'src/app/core/cache/builders/link.service';
 import { followLink } from '../utils/follow-link-config.model';
-import { SharedVariableService } from 'src/app/core/services/share-variable.service';
 import { VersionHistoryDataService } from 'src/app/core/data/version-history-data.service';
 import { VersionDataService } from 'src/app/core/data/version-data.service';
 import { VersionHistory } from 'src/app/core/shared/version-history.model';
@@ -87,7 +86,6 @@ export class SimpleViewStatisticsComponent {
   constructor(private httpClient: HttpClient,
     public relationshipService: RelationshipDataService,
     protected linkService: LinkService,
-    private sharedVariableService :SharedVariableService,
     private versionHistoryService: VersionHistoryDataService,
     private versionService: VersionDataService,
     private paginationService: PaginationService,

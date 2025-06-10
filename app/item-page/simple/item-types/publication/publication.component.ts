@@ -28,6 +28,7 @@ import { ItemComponent } from '../shared/item.component';
 import { TabbedRelatedEntitiesSearchComponent } from "../../related-entities/tabbed-related-entities-search/tabbed-related-entities-search.component";
 import { KwareMediaViewerComponent } from "../../../../shared/kware-media-viewer/kware-media-viewer.component";
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
 
 /**
  * Component that represents a publication Item page
@@ -64,6 +65,7 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
     TabbedRelatedEntitiesSearchComponent,
     KwareMediaViewerComponent,
     NgbTooltipModule,
+    SimpleViewStatisticsComponent
 ],
 })
 export class PublicationComponent extends ItemComponent {

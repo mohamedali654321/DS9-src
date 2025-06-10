@@ -16,6 +16,7 @@ import { ThemedResultsBackButtonComponent } from '../../../../shared/results-bac
 import { ThemedThumbnailComponent } from '../../../../thumbnail/themed-thumbnail.component';
 import { ThemedMetadataRepresentationListComponent } from 'src/app/item-page/simple/metadata-representation-list/themed-metadata-representation-list.component';
 import { ThemedMediaViewerComponent } from "../../../../item-page/media-viewer/themed-media-viewer.component";
+import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
 
 @listableObjectComponent('Journal', ViewMode.StandalonePage)
 @Component({
@@ -36,7 +37,8 @@ import { ThemedMediaViewerComponent } from "../../../../item-page/media-viewer/t
     ThemedThumbnailComponent,
     TranslateModule,
     ThemedMetadataRepresentationListComponent,
-    ThemedMediaViewerComponent
+    ThemedMediaViewerComponent,
+    SimpleViewStatisticsComponent
 ],
 })
 /**

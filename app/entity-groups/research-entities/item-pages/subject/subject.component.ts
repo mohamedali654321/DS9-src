@@ -18,6 +18,7 @@ import { ThemedThumbnailComponent } from 'src/app/thumbnail/themed-thumbnail.com
 import { ThemedMetadataRepresentationListComponent } from 'src/app/item-page/simple/metadata-representation-list/themed-metadata-representation-list.component';
 import { ItemPageUriFieldComponent } from 'src/app/item-page/simple/field-components/specific-field/uri/item-page-uri-field.component';
 import { CollectionsComponent } from 'src/app/item-page/field-components/collections/collections.component';
+import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
 
 
 @listableObjectComponent('Subject', ViewMode.StandalonePage)
@@ -44,7 +45,7 @@ import { CollectionsComponent } from 'src/app/item-page/field-components/collect
     TranslateModule,
     ItemPageImgFieldComponent,
     ThemedMediaViewerComponent,
-
-  ],
+    SimpleViewStatisticsComponent
+],
 })
 export class SubjectComponent extends ItemComponent {}

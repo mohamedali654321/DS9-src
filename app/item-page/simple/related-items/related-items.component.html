@@ -1,4 +1,4 @@
-@if(parentItem.firstMetadataValue('dspace.entity.type') === 'Journal'?  (RelationshipsCounter | async) > 0:(RelationshipsCounter | async) < 2 ){
+@if((RelationshipsCounter | async) < 2 ){
 <ds-metadata-field-wrapper [label]="label" [ngClass]="placeholderFontClass">
   @for (objectPage of objects; track objectPage; let i = $index) {
     <ng-container *ngVar="(objectPage | async) as itemsRD">

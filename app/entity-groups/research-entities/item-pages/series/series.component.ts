@@ -15,6 +15,7 @@ import { DsoEditMenuComponent } from 'src/app/shared/dso-page/dso-edit-menu/dso-
 import { MetadataFieldWrapperComponent } from 'src/app/shared/metadata-field-wrapper/metadata-field-wrapper.component';
 import { ThemedResultsBackButtonComponent } from 'src/app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from 'src/app/thumbnail/themed-thumbnail.component';
+import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
 
 @listableObjectComponent('Series', ViewMode.StandalonePage)
 @Component({
@@ -37,8 +38,8 @@ import { ThemedThumbnailComponent } from 'src/app/thumbnail/themed-thumbnail.com
     TranslateModule,
     ItemPageImgFieldComponent,
     ThemedMediaViewerComponent,
-
-  ],
+    SimpleViewStatisticsComponent
+],
 })
 /**
  * The component for displaying metadata and relations of an item of the type Organisation Unit

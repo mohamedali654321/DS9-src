@@ -35,6 +35,9 @@
     </ds-generic-item-page-field>
   </div>
   <div class="col-xs-12 col-md-6">
+    <br />
+    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
+    <br />
     <ds-generic-item-page-field
       [item]="object"
       [fields]="['dc.description']"
@@ -42,15 +45,17 @@
     >
     </ds-generic-item-page-field>
     <ds-related-items
-    [parentItem]="object"
-    [relationType]="'isJournalOfVolume'"
-    [label]="'relationships.isSingleJournalOf' | translate">
-  </ds-related-items>
-  <ds-related-items
-    [parentItem]="object"
-    [relationType]="'isIssueOfJournalVolume'"
-    [label]="'relationships.isIssueOf' | translate">
-  </ds-related-items>
+      [parentItem]="object"
+      [relationType]="'isJournalOfVolume'"
+      [label]="'relationships.isSingleJournalOf' | translate"
+    >
+    </ds-related-items>
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isIssueOfJournalVolume'"
+      [label]="'relationships.isIssueOf' | translate"
+    >
+    </ds-related-items>
 
     <div>
       <a

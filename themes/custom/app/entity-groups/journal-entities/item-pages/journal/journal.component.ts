@@ -17,6 +17,7 @@ import { ThemedResultsBackButtonComponent } from '../../../../../../../app/share
 import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/themed-thumbnail.component';
 import { ThemedMetadataRepresentationListComponent } from 'src/app/item-page/simple/metadata-representation-list/themed-metadata-representation-list.component';
 import { ThemedMediaViewerComponent } from 'src/app/item-page/media-viewer/themed-media-viewer.component';
+import { SimpleViewStatisticsComponent } from 'src/app/shared/simple-view-statistics/simple-view-statistics.component';
 
 @listableObjectComponent('Journal', ViewMode.StandalonePage, Context.Any, 'custom')
 @Component({
@@ -39,7 +40,8 @@ import { ThemedMediaViewerComponent } from 'src/app/item-page/media-viewer/theme
     ThemedThumbnailComponent,
     TranslateModule,
     ThemedMetadataRepresentationListComponent,
-    ThemedMediaViewerComponent
+    ThemedMediaViewerComponent,
+    SimpleViewStatisticsComponent
   ],
 })
 export class JournalComponent extends BaseComponent {
