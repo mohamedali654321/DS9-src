@@ -48,6 +48,7 @@ import { FacetValue } from '../../../models/facet-value.model';
 import { FacetValues } from '../../../models/facet-values.model';
 import { SearchFilterConfig } from '../../../models/search-filter-config.model';
 import { SearchOptions } from '../../../models/search-options.model';
+import { LocaleService } from 'src/app/core/locale/locale.service';
 
 /**
  * The operators the {@link AppliedFilter} should have in order to be shown in the facets
@@ -149,6 +150,7 @@ export class SearchFacetFilterComponent implements OnInit, OnDestroy {
               protected filterService: SearchFilterService,
               protected rdbs: RemoteDataBuildService,
               protected router: Router,
+              protected localeService: LocaleService,
               @Inject(SEARCH_CONFIG_SERVICE) public searchConfigService: SearchConfigurationService,
   ) {
   }
@@ -282,7 +284,13 @@ export class SearchFacetFilterComponent implements OnInit, OnDestroy {
       }));
     }
   }
-
+  
+    isArabic(text) {
+    var arabic = /[\u0600-\u06FF]/;
+    let result;
+    result = arabic.test(text);
+    return result;
+    }
   /**
    * Retrieves all the filter value suggestion pages that need to be displayed in the facet and combines it into one
    * list.
@@ -292,6 +300,19 @@ export class SearchFacetFilterComponent implements OnInit, OnDestroy {
       switchMap(([options, page]: [SearchOptions, number]) => this.searchService.getFacetValuesFor(this.filterConfig, page, options).pipe(
         getFirstSucceededRemoteDataPayload(),
         tap((facetValues: FacetValues) => {
+                if(this.filterConfig.name === 'subject' && this.localeService.getCurrentLanguageCode() === 'ar')
+            {
+              facetValues.page =facetValues.page.filter(page=>{
+               return this.isArabic(page.label) === true                  
+               })
+            }
+  
+            if(this.filterConfig.name === 'subject' && this.localeService.getCurrentLanguageCode() === 'en')
+              {
+                facetValues.page =facetValues.page.filter(page=>{
+                 return this.isArabic(page.label) === false                  
+                 })
+              }
           this.isLastPage$.next(hasNoValue(facetValues?.next));
           const hasLimitFacets =  facetValues?.page?.length < facetValues?.facetLimit;
           this.isAvailableForShowSearchText.next(hasLimitFacets && hasNoValue(facetValues?.next));

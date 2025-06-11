@@ -131,6 +131,7 @@ export class SearchRangeFilterComponent extends SearchFacetFilterComponent imple
       filterService,
       rdbs,
       router,
+      localeService,
       searchConfigService,
     );
   }
