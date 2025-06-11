@@ -95,8 +95,8 @@ export class TabbedRelatedEntitiesSearchComponent implements OnInit {
 
       }
       else{
-        if((relationShip.label.includes('isPublicationOf') && this.getRelationsCounter('Publication') > 0) 
-          || (relationShip.label.includes('isPersonOf') && this.getRelationsCounter('Person') > 0) ||
+        if((relationShip.label.includes('isPublicationOf') && this.getRelationsCounter('Publication') >= 2) 
+          || (relationShip.label.includes('isPersonOf') && this.getRelationsCounter('Person') >= 2) ||
           (relationShip.label.includes('isOrgUnitOf') && ((this.getRelationsCounter('ArabicPublisher') + this.getRelationsCounter('Publisher') >= 2)))
         ){
             this.newRelationships.next(this.newRelationships.getValue().concat([relationShip]))

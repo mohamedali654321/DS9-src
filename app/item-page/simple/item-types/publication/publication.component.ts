@@ -1,4 +1,4 @@
-import { AsyncPipe, NgIf } from '@angular/common';
+import { AsyncPipe, NgIf, NgStyle } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -29,6 +29,7 @@ import { TabbedRelatedEntitiesSearchComponent } from "../../related-entities/tab
 import { KwareMediaViewerComponent } from "../../../../shared/kware-media-viewer/kware-media-viewer.component";
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
+import { KwareTranslatePipe } from "../../../../shared/utils/kware-translate.pipe";
 
 /**
  * Component that represents a publication Item page
@@ -65,7 +66,9 @@ import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-st
     TabbedRelatedEntitiesSearchComponent,
     KwareMediaViewerComponent,
     NgbTooltipModule,
-    SimpleViewStatisticsComponent
+    SimpleViewStatisticsComponent,
+    KwareTranslatePipe,
+    NgStyle
 ],
 })
 export class PublicationComponent extends ItemComponent {

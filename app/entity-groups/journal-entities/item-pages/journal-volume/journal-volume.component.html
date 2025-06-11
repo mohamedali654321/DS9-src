@@ -7,7 +7,7 @@
   <ds-dso-edit-menu></ds-dso-edit-menu>
 </div>
 <div class="row">
-  <div class="col-xs-12 col-md-4">
+  <div class="col-xs-12 col-md-6">
     @if (!(mediaViewer.image || mediaViewer.video)) {
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail [thumbnail]="object?.thumbnail | async"></ds-thumbnail>
@@ -17,10 +17,13 @@
       <ds-media-viewer [item]="object"></ds-media-viewer>
     </div>
     }
-    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-      <ds-thumbnail [thumbnail]="object?.thumbnail | async"></ds-thumbnail>
-    </ds-metadata-field-wrapper> -->
 
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.description']"
+      [label]="'journalvolume.page.description'"
+    >
+    </ds-generic-item-page-field>
     <ds-generic-item-page-field
       [item]="object"
       [fields]="['publicationvolume.volumeNumber']"
@@ -31,17 +34,6 @@
       [item]="object"
       [fields]="['creativework.datePublished']"
       [label]="'journalvolume.page.issuedate'"
-    >
-    </ds-generic-item-page-field>
-  </div>
-  <div class="col-xs-12 col-md-6">
-    <br />
-    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
-    <br />
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.description']"
-      [label]="'journalvolume.page.description'"
     >
     </ds-generic-item-page-field>
     <ds-related-items
@@ -68,6 +60,17 @@
       </a>
     </div>
   </div>
+  <div class="col-xs-12 col-md-4">
+    <br />
+    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
+    <br />
+    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+      <ds-thumbnail [thumbnail]="object?.thumbnail | async"></ds-thumbnail>
+    </ds-metadata-field-wrapper> -->
+
+    <ds-item-page-collections [item]="object"></ds-item-page-collections>
+  </div>
+
   <div class="mt-5 w-100">
     <ds-tabbed-related-entities-search
       [item]="object"

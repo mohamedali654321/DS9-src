@@ -13,19 +13,95 @@
   </div>
 </div>
 }
+
+<div
+  class="d-flex flex-row simple-view-badge"
+  style="justify-content: space-between; margin-top: 20px; margin-bottom: 20px"
+  [ngStyle]="{ 'flex-direction': lang ? 'row-reverse !important;' : 'row' }"
+>
+  <div>
+    <span
+      class="badge badge-pill badge-info"
+      [attr.title]="'item.search.publishDate' | translate"
+      style="
+        background-color: #6aa3d5 !important;
+        color: #fff;
+        margin-bottom: -2px;
+      "
+      *ngIf="
+        object.hasMetadata('dc.date.issued') ||
+        object.hasMetadata('dc.date.issuedhijri')
+      "
+      >{{ ("item.page.publish" | translate) + " " }}
+      {{
+        object.firstMetadataValue("dc.date.issued")
+          ? object.firstMetadataValue("dc.date.issued")
+          : object.firstMetadataValue("dc.date.issuedhijri")
+      }}</span
+    >
+  </div>
+
+  <div class="d-flex">
+    <div class="label_dage" style="gap: 15px !important">
+      <span
+        class="badge badge-pill badge-info"
+        style="
+          background-color: rgb(83, 10, 134) !important;
+          color: #fff;
+          margin-bottom: -2px;
+        "
+        *ngIf="object.hasMetadata('dc.type')"
+        >{{ object.firstMetadataValue("dc.type") | kwareTranslate }}</span
+      >
+      <div>
+        <ng-container *ngIf="(object.accessStatus | async)">
+          <span *ngIf="(object.accessStatus | async)?.payload?.status as accessStatus">
+            <span
+              class="badge badge-secondary"
+              [style]="accessStatusConfigs['access-status.'+accessStatus.toLowerCase()+'.listelement.badge']?.style || ''"
+            >
+              {{ 'access-status.'+accessStatus.toLowerCase()+'.listelement.badge' | translate }}&nbsp;
+              <i
+                [class]="accessStatusConfigs['access-status.'+accessStatus.toLowerCase()+'.listelement.badge']?.icon || ''"
+                aria-hidden="true"
+              ></i>
+            </span>
+          </span>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="d-flex flex-row">
   <ds-item-page-title-field [item]="object" class="mr-auto">
   </ds-item-page-title-field>
 
-    <button placement="top"  [ngbTooltip]="'show.citation.btn'| translate" style="width: 35.5px;height: 31px;padding: 4px 4px;" (click)="showModal()" class="btn btn-primary btn-sm mb-2 ng-tns-c242-28 citation-btn">
-    <img class="citation-img"  src="assets/images/download30x30_white_no_bg.png"/>
-
+  <button
+    placement="top"
+    [ngbTooltip]="'show.citation.btn' | translate"
+    style="width: 35.5px; height: 31px; padding: 4px 4px"
+    (click)="showModal()"
+    class="btn btn-primary btn-sm mb-2 ng-tns-c242-28 citation-btn"
+  >
+    <img
+      class="citation-img"
+      src="assets/images/download30x30_white_no_bg.png"
+    />
   </button>
   <ds-dso-edit-menu></ds-dso-edit-menu>
 </div>
+<ds-metadata-representation-list
+  class="ds-item-page-mixed-author-field"
+  [parentItem]="object"
+  [itemType]="'Person'"
+  [metadataFields]="['dc.contributor.author', 'dc.creator']"
+  [label]="'relationships.isAuthorOf' | translate"
+>
+</ds-metadata-representation-list>
+
 <div class="row">
-    <div class="col-xs-12 col-md-8">
-      <ds-kware-media-viewer [item]="object"></ds-kware-media-viewer>
+  <div class="col-xs-12 col-md-8">
+    <ds-kware-media-viewer [item]="object"></ds-kware-media-viewer>
     <!-- <ds-related-items
       [parentItem]="object"
       [relationType]="'isProjectOfPublication'"
@@ -52,6 +128,84 @@
       [item]="object"
       [fields]="['dc.description.recommendations']"
       [label]="'publication.page.recommendations'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-metadata-representation-list
+      class="ds-item-page-mixed-author-field"
+      [parentItem]="object"
+      [itemType]="'Person'"
+      [metadataFields]="['dc.contributor.advisor']"
+      [label]="'item.page.advisor' | translate"
+    >
+    </ds-metadata-representation-list>
+
+    <ds-metadata-representation-list
+      class="ds-item-page-mixed-author-field"
+      [parentItem]="object"
+      [itemType]="'Person'"
+      [metadataFields]="['dc.contributor.translator']"
+      [label]="'item.page.translator' | translate"
+    >
+    </ds-metadata-representation-list>
+
+    <ds-metadata-representation-list
+      class="ds-item-page-mixed-author-field"
+      [parentItem]="object"
+      [itemType]="'Person'"
+      [metadataFields]="['dc.contributor.reviewer']"
+      [label]="'item.page.reviewer' | translate"
+    >
+    </ds-metadata-representation-list>
+
+    <ds-metadata-representation-list
+      class="ds-item-page-mixed-author-field"
+      [parentItem]="object"
+      [itemType]="'Person'"
+      [metadataFields]="['dc.contributor.presenter']"
+      [label]="'item.page.presenter' | translate"
+    >
+    </ds-metadata-representation-list>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.contributor.advisoralternative']"
+      [label]="'item.page.advisoralternative'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-metadata-representation-list
+      [parentItem]="object"
+      [itemType]="'Person'"
+      [metadataFields]="['dc.contributor.member']"
+      [label]="'item.page.member' | translate"
+    >
+    </ds-metadata-representation-list>
+
+    <ds-metadata-representation-list
+      [parentItem]="object"
+      [itemType]="'OrgUnit'"
+      [metadataFields]="['dc.publisher']"
+      [label]="'publication.page.publisher' | translate"
+    >
+    </ds-metadata-representation-list>
+
+    <ds-metadata-representation-list
+      [parentItem]="object"
+      [itemType]="'OrgUnit'"
+      [metadataFields]="['dc.publisher.arabicedition']"
+      [label]="'publication.page.publisherArabicEdition' | translate"
+    >
+    </ds-metadata-representation-list>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.source']"
+      [label]="
+        object && object.firstMetadataValue('dc.type') === 'Manuscript | مخطوطة'
+          ? 'publication.page.source'
+          : 'item.page.source'
+      "
     >
     </ds-generic-item-page-field>
 
@@ -179,6 +333,29 @@
       [item]="object"
       [fields]="['dc.identifier.saveNumber']"
       [label]="'item.page.saveNumber'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.date.defense']"
+      [label]="'item.page.defense'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.date.issuedhijri']"
+      [label]="'item.page.issuedhijri'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.date.registration']"
+      [label]="'item.page.registration'"
     >
     </ds-generic-item-page-field>
 
@@ -478,19 +655,6 @@
       [label]="'item.page.citation'"
     >
     </ds-generic-item-page-field>
-    <ds-item-page-uri-field
-      [item]="object"
-      [fields]="['dc.identifier.uri']"
-      [label]="'item.page.uri'"
-    >
-    </ds-item-page-uri-field>
-
-    <ds-item-page-uri-field
-      [item]="object"
-      [fields]="['dc.identifier.doi']"
-      [label]="'item.page.doi'"
-    >
-    </ds-item-page-uri-field>
 
     <!-- <ds-generic-item-page-field [item]="object"
       [fields]="['dc.subject']"
@@ -505,7 +669,6 @@
       [fields]="['dc.identifier.uri']"
       [label]="'item.page.uri'">
     </ds-item-page-uri-field> -->
-    <ds-item-page-collections [item]="object"></ds-item-page-collections>
     <ds-item-page-uri-field
       [item]="object"
       [fields]="['coar.notify.endorsedBy']"
@@ -542,11 +705,11 @@
     }
 
     <ds-related-items
-    [parentItem]="object"
-    [relationType]="'isDepartmentOfPublication'"
-    [label]="'item.page.department' | translate"
-  >
-  </ds-related-items>
+      [parentItem]="object"
+      [relationType]="'isDepartmentOfPublication'"
+      [label]="'item.page.department' | translate"
+    >
+    </ds-related-items>
 
     <ds-related-items
       [parentItem]="object"
@@ -643,9 +806,9 @@
   </div>
 
   <div class="col-xs-12 col-md-4">
-    <br>
+    <br />
     <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
-     <br>
+    <br />
     <!-- @if (!(mediaViewer.image || mediaViewer.video)) {
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail [thumbnail]="object?.thumbnail | async"></ds-thumbnail>
@@ -657,14 +820,7 @@
     } -->
     <!-- <ds-item-page-file-section [item]="object"></ds-item-page-file-section> -->
     <!-- <ds-item-page-date-field [item]="object"></ds-item-page-date-field> -->
-    <ds-metadata-representation-list
-      class="ds-item-page-mixed-author-field"
-      [parentItem]="object"
-      [itemType]="'Person'"
-      [metadataFields]="['dc.contributor.author', 'dc.creator']"
-      [label]="'relationships.isAuthorOf' | translate"
-    >
-    </ds-metadata-representation-list>
+
     <ds-generic-item-page-field
       [item]="object"
       [fields]="['journal.title']"
@@ -683,6 +839,20 @@
       [label]="'publication.page.volume-title'"
     >
     </ds-generic-item-page-field>
+
+    <ds-item-page-uri-field
+      [item]="object"
+      [fields]="['dc.identifier.uri']"
+      [label]="'item.page.uri'"
+    >
+    </ds-item-page-uri-field>
+
+    <ds-item-page-uri-field
+      [item]="object"
+      [fields]="['dc.identifier.doi']"
+      [label]="'item.page.doi'"
+    >
+    </ds-item-page-uri-field>
     <!-- <ds-generic-item-page-field [item]="object"
       [fields]="['dc.publisher']"
       [label]="'publication.page.publisher'">
@@ -735,27 +905,6 @@
       [label]="'item.page.itemquality'"
     >
     </ds-generic-item-page-field>
-    <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.date.issuedhijri']"
-      [label]="'item.page.issuedhijri'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.date.registration']"
-      [label]="'item.page.registration'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.date.defense']"
-      [label]="'item.page.defense'"
-    >
-    </ds-generic-item-page-field>
 
     <ds-generic-item-page-field
       [item]="object"
@@ -771,89 +920,14 @@
     >
     </ds-generic-item-page-field>
 
-    <ds-metadata-representation-list
-      class="ds-item-page-mixed-author-field"
-      [parentItem]="object"
-      [itemType]="'Person'"
-      [metadataFields]="['dc.contributor.advisor']"
-      [label]="'item.page.advisor' | translate"
-    >
-    </ds-metadata-representation-list>
-
-    <ds-metadata-representation-list
-      class="ds-item-page-mixed-author-field"
-      [parentItem]="object"
-      [itemType]="'Person'"
-      [metadataFields]="['dc.contributor.translator']"
-      [label]="'item.page.translator' | translate"
-    >
-    </ds-metadata-representation-list>
-
-    <ds-metadata-representation-list
-      class="ds-item-page-mixed-author-field"
-      [parentItem]="object"
-      [itemType]="'Person'"
-      [metadataFields]="['dc.contributor.reviewer']"
-      [label]="'item.page.reviewer' | translate"
-    >
-    </ds-metadata-representation-list>
-
-    <ds-metadata-representation-list
-      class="ds-item-page-mixed-author-field"
-      [parentItem]="object"
-      [itemType]="'Person'"
-      [metadataFields]="['dc.contributor.presenter']"
-      [label]="'item.page.presenter' | translate"
-    >
-    </ds-metadata-representation-list>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.contributor.advisoralternative']"
-      [label]="'item.page.advisoralternative'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-metadata-representation-list
-      [parentItem]="object"
-      [itemType]="'Person'"
-      [metadataFields]="['dc.contributor.member']"
-      [label]="'item.page.member' | translate"
-    >
-    </ds-metadata-representation-list>
-
     <ds-generic-item-page-field
       [item]="object"
       [fields]="['dc.identifier.isbn']"
       [label]="'item.page.isbn'"
     >
     </ds-generic-item-page-field>
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.source']"
-      [label]="
-        object && object.firstMetadataValue('dc.type') === 'Manuscript | مخطوطة'
-          ? 'publication.page.source'
-          : 'item.page.source'
-      "
-    >
-    </ds-generic-item-page-field>
 
-    <ds-metadata-representation-list
-      [parentItem]="object"
-      [itemType]="'OrgUnit'"
-      [metadataFields]="['dc.publisher']"
-      [label]="'publication.page.publisher' | translate"
-    >
-    </ds-metadata-representation-list>
-
-    <ds-metadata-representation-list
-      [parentItem]="object"
-      [itemType]="'OrgUnit'"
-      [metadataFields]="['dc.publisher.arabicedition']"
-      [label]="'publication.page.publisherArabicEdition' | translate"
-    >
-    </ds-metadata-representation-list>
+    <ds-item-page-collections [item]="object"></ds-item-page-collections>
   </div>
 
   <div class="mt-5 w-100">

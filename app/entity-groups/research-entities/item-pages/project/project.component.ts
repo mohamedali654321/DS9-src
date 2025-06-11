@@ -17,6 +17,7 @@ import { ThemedThumbnailComponent } from '../../../../thumbnail/themed-thumbnail
 import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/related-entities/tabbed-related-entities-search/tabbed-related-entities-search.component';
 import { ThemedMediaViewerComponent } from "../../../../item-page/media-viewer/themed-media-viewer.component";
 import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
+import { CollectionsComponent } from "../../../../item-page/field-components/collections/collections.component";
 
 @listableObjectComponent('Project', ViewMode.StandalonePage)
 @Component({
@@ -38,7 +39,8 @@ import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-st
     TranslateModule,
     TabbedRelatedEntitiesSearchComponent,
     ThemedMediaViewerComponent,
-    SimpleViewStatisticsComponent
+    SimpleViewStatisticsComponent,
+    CollectionsComponent
 ],
 })
 /**

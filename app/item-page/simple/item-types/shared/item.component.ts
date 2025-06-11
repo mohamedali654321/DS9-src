@@ -22,6 +22,7 @@ import {
 } from './item-iiif-utils';
 import { KwareCitationComponent } from 'src/app/shared/kware-citation/kware-citation.component';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { hasValue } from 'src/app/shared/empty.util';
 
 @Component({
   selector: 'ds-item',
@@ -84,6 +85,19 @@ export class ItemComponent implements OnInit {
 
   modalRef: NgbModalRef;
 
+
+    accessStatusConfigs={
+    'access-status.unknown.listelement.badge':{ icon: 'fa-solid fa-question' , style:'background-color: #767676 !important;' },
+    'access-status.restricted.listelement.badge':{ icon: 'fa-solid fa-ban' , style:'background-color: #d33b36 !important;' },
+    'access-status.open.access.listelement.badge':{ icon: 'fa-solid fa-unlock' , style:'background-color: #3a833a !important;' },
+    'access-status.metadata.only.listelement.badge':{ icon: 'fa-solid fa-file-invoice' , style:'background-color: #2f6fa7  !important;' },
+    'access-status.embargo.listelement.badge':{ icon: 'fa-regular fa-clock' , style:'background-color: #eb9419 !important;' },
+  }
+
+    locale:any;  //kware-edit
+
+  lang:boolean  //kware-edit
+
   constructor(protected routeService: RouteService,
               protected router: Router,
               protected modalService: NgbModal,
@@ -106,7 +120,11 @@ export class ItemComponent implements OnInit {
   };
 
   ngOnInit(): void {
-
+      if (typeof window === 'object' && hasValue(window.localStorage)) {
+      this.locale = window.localStorage.getItem('selectedLangCode');
+     }
+     //kware-edit
+     this.lang =this.locale ==='ar'? true : false;
     this.itemPageRoute = getItemPageRoute(this.object);
     // hide/show the back button
     this.showBackButton$ = this.routeService.getPreviousUrl().pipe(

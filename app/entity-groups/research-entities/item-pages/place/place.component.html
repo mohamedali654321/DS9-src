@@ -11,22 +11,7 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-12 col-md-4">
-    <!-- <ng-container *ngIf="!mediaViewer.image">
-      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-        <ds-thumbnail
-          [thumbnail]="object?.thumbnail | async"
-          [defaultImage]="'assets/images/place-placehplder.svg'"
-          [alt]="'thumbnail.orgunit.alt'"
-          [placeholder]="'thumbnail.orgunit.placeholder'"
-        >
-        </ds-thumbnail>
-      </ds-metadata-field-wrapper>
-    </ng-container>
-    <ng-container *ngIf="mediaViewer.image">
-      <ds-media-viewer [item]="object"></ds-media-viewer>
-    </ng-container> -->
-
+  <div class="col-xs-12 col-md-8">
     @if (!(mediaViewer.image || mediaViewer.video)) {
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail
@@ -43,48 +28,17 @@
     </div>
     }
 
-    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-      <ds-thumbnail
-        [thumbnail]="object?.thumbnail | async"
-        [defaultImage]="'assets/images/place-placehplder.svg'"
-        [alt]="'thumbnail.place.alt'"
-        [placeholder]="'thumbnail.place.placeholder'"
-      >
-      </ds-thumbnail>
-    </ds-metadata-field-wrapper> -->
-
     <ds-generic-item-page-field
       [item]="object"
-      [fields]="['place.oldName']"
-      [label]="'place.page.oldName'"
+      [fields]="['dc.description']"
+      [label]="'place.page.description'"
     >
     </ds-generic-item-page-field>
 
     <ds-generic-item-page-field
       [item]="object"
-      [fields]="['place.globalLocationNumber']"
-      [label]="'place.page.globalLocationNumber'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['place.zipCode']"
-      [label]="'place.page.zipCode'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['place.branchCode']"
-      [label]="'place.page.branchCode'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['place.telephone']"
-      [label]="'place.page.telephone'"
+      [fields]="['place.type']"
+      [label]="'place.page.placeType'"
     >
     </ds-generic-item-page-field>
 
@@ -103,38 +57,6 @@
 
     <ds-generic-item-page-field
       [item]="object"
-      [fields]="['place.address']"
-      [label]="'place.page.address'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.identifier.wikipedia']"
-      [label]="'person.page.wikipedia'"
-    >
-    </ds-generic-item-page-field>
-  </div>
-  <div class="col-xs-12 col-md-8">
-    <br />
-    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
-    <br />
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.description']"
-      [label]="'place.page.description'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['place.type']"
-      [label]="'place.page.placeType'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
       [fields]="['place.latitude']"
       [label]="'place.page.latitude'"
     >
@@ -144,27 +66,6 @@
       [item]="object"
       [fields]="['place.longitude']"
       [label]="'place.page.longitude'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['place.openingHoursSpecification']"
-      [label]="'place.page.openingHoursSpecification'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['place.publicAccess']"
-      [label]="'place.page.publicAccess'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['place.slogan']"
-      [label]="'orgunit.page.slogan'"
     >
     </ds-generic-item-page-field>
 
@@ -201,6 +102,20 @@
       [parentItem]="object"
       [relationType]="'isPlaceLinkedTo'"
       [label]="'relationships.isPlaceLinkedTo' | translate"
+    >
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isPublicationOfPlace'"
+      [label]="'relationships.isPublicationOf' | translate"
+    >
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isPersonOfPlace'"
+      [label]="'relationships.isPersonOf' | translate"
     >
     </ds-related-items>
 
@@ -262,6 +177,107 @@
       </a>
     </div>
   </div>
+  <div class="col-xs-12 col-md-4">
+    <br />
+    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
+    <br />
+    <!-- <ng-container *ngIf="!mediaViewer.image">
+      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+        <ds-thumbnail
+          [thumbnail]="object?.thumbnail | async"
+          [defaultImage]="'assets/images/place-placehplder.svg'"
+          [alt]="'thumbnail.orgunit.alt'"
+          [placeholder]="'thumbnail.orgunit.placeholder'"
+        >
+        </ds-thumbnail>
+      </ds-metadata-field-wrapper>
+    </ng-container>
+    <ng-container *ngIf="mediaViewer.image">
+      <ds-media-viewer [item]="object"></ds-media-viewer>
+    </ng-container> -->
+
+    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+      <ds-thumbnail
+        [thumbnail]="object?.thumbnail | async"
+        [defaultImage]="'assets/images/place-placehplder.svg'"
+        [alt]="'thumbnail.place.alt'"
+        [placeholder]="'thumbnail.place.placeholder'"
+      >
+      </ds-thumbnail>
+    </ds-metadata-field-wrapper> -->
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['place.oldName']"
+      [label]="'place.page.oldName'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['place.globalLocationNumber']"
+      [label]="'place.page.globalLocationNumber'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['place.openingHoursSpecification']"
+      [label]="'place.page.openingHoursSpecification'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['place.publicAccess']"
+      [label]="'place.page.publicAccess'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['place.slogan']"
+      [label]="'orgunit.page.slogan'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['place.zipCode']"
+      [label]="'place.page.zipCode'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['place.branchCode']"
+      [label]="'place.page.branchCode'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['place.telephone']"
+      [label]="'place.page.telephone'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['place.address']"
+      [label]="'place.page.address'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.wikipedia']"
+      [label]="'person.page.wikipedia'"
+    >
+    </ds-generic-item-page-field>
+    <ds-item-page-collections [item]="object"></ds-item-page-collections>
+  </div>
+
   <div class="mt-5 w-100">
     <ds-tabbed-related-entities-search
       [item]="object"

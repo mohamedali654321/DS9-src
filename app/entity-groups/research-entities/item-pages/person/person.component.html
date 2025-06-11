@@ -7,7 +7,7 @@
   <ds-dso-edit-menu></ds-dso-edit-menu>
 </div>
 <div class="row">
-  <div class="col-xs-12 col-md-4">
+  <div class="col-xs-12 col-md-7">
     @if (!(mediaViewer.image || mediaViewer.video)) {
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail
@@ -23,102 +23,7 @@
       <ds-media-viewer [item]="object"></ds-media-viewer>
     </div>
     }
-    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-      <ds-thumbnail
-        [thumbnail]="object?.thumbnail | async"
-        [defaultImage]="'assets/images/person-placeholder.svg'"
-        [alt]="'thumbnail.person.alt'"
-        [placeholder]="'thumbnail.person.placeholder'"
-      >
-      </ds-thumbnail>
-    </ds-metadata-field-wrapper> -->
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.email']"
-      [label]="'person.page.email'"
-    >
-    </ds-generic-item-page-field>
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.telephone']"
-      [label]="'person.page.telephone'"
-    >
-    </ds-generic-item-page-field>
 
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.address']"
-      [label]="'person.page.address'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.identifier.wikipedia']"
-      [label]="'person.page.wikipedia'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.identifier.linkedIn']"
-      [label]="'person.page.linkedIn'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.identifier.facebook']"
-      [label]="'person.page.facebook'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.identifier.twitter']"
-      [label]="'person.page.twitter'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.identifier.profile']"
-      [label]="'person.page.profile'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.birthDate']"
-      [label]="'person.page.birthDate'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.birthDate.hijri']"
-      [label]="'person.page.birthDateHijri'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.deathDate']"
-      [label]="'person.page.deathDate'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.deathDate.hijri']"
-      [label]="'person.page.deathDateHijri'"
-    >
-    </ds-generic-item-page-field>
-  </div>
-  <div class="col-xs-12 col-md-7">
-    <br />
-    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
-    <br />
     <ds-generic-item-page-field
       [item]="object"
       [fields]="['person.description.biography']"
@@ -144,13 +49,6 @@
       [item]="object"
       [fields]="['person.religion']"
       [label]="'person.page.religion'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.salutation']"
-      [label]="'person.page.salutation'"
     >
     </ds-generic-item-page-field>
 
@@ -183,36 +81,8 @@
 
     <ds-generic-item-page-field
       [item]="object"
-      [fields]="['person.title']"
-      [label]="'person.page.title'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.nickname']"
-      [label]="'person.page.nickname'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.nationality']"
-      [label]="'person.page.nationality'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
       [fields]="['person.birthPlace']"
       [label]="'person.page.birthPlace'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.era']"
-      [label]="'person.page.era'"
     >
     </ds-generic-item-page-field>
 
@@ -252,10 +122,32 @@
       [label]="'person.page.affiliationName'"
     >
     </ds-generic-item-page-field>
+
     <ds-generic-item-page-field
       [item]="object"
-      [fields]="['person.identifier.orcid']"
-      [label]="'person.page.identifierOrcid'"
+      [fields]="['person.birthDate']"
+      [label]="'person.page.birthDate'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.birthDate.hijri']"
+      [label]="'person.page.birthDateHijri'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.deathDate']"
+      [label]="'person.page.deathDate'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.deathDate.hijri']"
+      [label]="'person.page.deathDateHijri'"
     >
     </ds-generic-item-page-field>
 
@@ -268,8 +160,29 @@
 
     <ds-related-items
       [parentItem]="object"
-      [relationType]="'isPersonLinkingTo'"
-      [label]="'isPersonLinkingTo' | translate"
+      [relationType]="'isPublicationOfAuthor'"
+      [label]="'relationships.isPublicationOf' | translate"
+    >
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isPublicationOfAdvisors'"
+      [label]="'relationships.isPublicationOf' | translate"
+    >
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isPublicationOfPerson'"
+      [label]="'relationships.isPublicationOf' | translate"
+    >
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isProjectOfPerson'"
+      [label]="'relationships.isProjectOf' | translate"
     >
     </ds-related-items>
 
@@ -338,6 +251,119 @@
       </a>
     </div>
   </div>
+  <div class="col-xs-12 col-md-4">
+    <br />
+    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
+    <br />
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.identifier.orcid']"
+      [label]="'person.page.identifierOrcid'"
+    >
+    </ds-generic-item-page-field>
+    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+      <ds-thumbnail
+        [thumbnail]="object?.thumbnail | async"
+        [defaultImage]="'assets/images/person-placeholder.svg'"
+        [alt]="'thumbnail.person.alt'"
+        [placeholder]="'thumbnail.person.placeholder'"
+      >
+      </ds-thumbnail>
+    </ds-metadata-field-wrapper> -->
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.title']"
+      [label]="'person.page.title'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.nationality']"
+      [label]="'person.page.nationality'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.nickname']"
+      [label]="'person.page.nickname'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.salutation']"
+      [label]="'person.page.salutation'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.era']"
+      [label]="'person.page.era'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.email']"
+      [label]="'person.page.email'"
+    >
+    </ds-generic-item-page-field>
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.telephone']"
+      [label]="'person.page.telephone'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.address']"
+      [label]="'person.page.address'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.wikipedia']"
+      [label]="'person.page.wikipedia'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.linkedIn']"
+      [label]="'person.page.linkedIn'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.identifier.facebook']"
+      [label]="'person.page.facebook'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.twitter']"
+      [label]="'person.page.twitter'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.profile']"
+      [label]="'person.page.profile'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-item-page-collections [item]="object"></ds-item-page-collections>
+  </div>
+
   <div class="mt-5 w-100">
     <ds-tabbed-related-entities-search
       [item]="object"

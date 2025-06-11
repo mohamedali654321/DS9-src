@@ -1,8 +1,21 @@
-<div class="simple-view-element" [class.d-none]="hideIfNoTextContent && content.textContent.trim().length === 0">
+<!-- <div class="simple-view-element" [class.d-none]="hideIfNoTextContent && content.textContent.trim().length === 0">
   @if (label) {
     <h2 class="simple-view-element-header">{{ label | kwareTranslate}}</h2>
   }
   <div #content class="simple-view-element-body">
     <ng-content></ng-content>
   </div>
+</div> -->
+
+
+<div  class="simple-view-element" [class.d-none]="hideIfNoTextContent && content.textContent.trim().length === 0">
+
+  <h5 class="simple-view-element-header" *ngIf="(!(label?.includes('المؤلفين') || label?.includes('Authors') || label?.includes('Authors/Researchers')) )">  {{ label | kwareTranslate }}</h5>
+
+<div #content class="simple-view-element-body " >
+  <div [ngClass]="{'author-flex':(label?.includes('المؤلفين') || label?.includes('Authors') ||  label?.includes('Authors/Researchers') || label?.includes('People') || label?.includes('الأشخاص') ),'container':(label?.includes('المؤلفين') || label?.includes('Authors/Researchers') || label?.includes('Authors') || label?.includes('People') || label?.includes('الأشخاص') )}" >
+    <ng-content></ng-content>
+  </div>
+
+</div>
 </div>

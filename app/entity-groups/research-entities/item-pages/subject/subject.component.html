@@ -7,18 +7,11 @@
 <div class="d-flex flex-row">
   <ds-item-page-title-field [item]="object" class="mr-auto">
   </ds-item-page-title-field>
+  <ds-dso-edit-menu></ds-dso-edit-menu>
 </div>
 
 <div class="row">
-  <div class="col-xs-12 col-md-4">
-    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-      <ds-thumbnail
-        [thumbnail]="object?.thumbnail | async"
-        [alt]="'thumbnail.subject.alt'"
-        [placeholder]="'thumbnail.subject.placeholder'"
-      >
-      </ds-thumbnail>
-    </ds-metadata-field-wrapper> -->
+  <div class="col-xs-12 col-md-8">
     @if (!(mediaViewer.image || mediaViewer.video)) {
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail
@@ -35,26 +28,6 @@
     </div>
     }
 
-    <!-- <ng-container *ngIf="!(mediaViewer.image || mediaViewer.video)">
-        <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-          <ds-thumbnail [thumbnail]="object?.thumbnail | async"></ds-thumbnail>
-        </ds-metadata-field-wrapper>
-      </ng-container>
-      <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
-        <ds-media-viewer [item]="object"></ds-media-viewer>
-      </div> -->
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.identifier.deway']"
-      [label]="'item.page.deway'"
-    >
-    </ds-generic-item-page-field>
-  </div>
-  <div class="col-xs-12 col-md-8">
-    <br />
-    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
-    <br />
     <ds-metadata-representation-list
       class="ds-item-page-mixed-author-field"
       [parentItem]="object"
@@ -140,6 +113,13 @@
     >
     </ds-generic-item-page-field>
 
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isPublicationOfSubject'"
+      [label]="'relationships.isPublicationOf' | translate"
+    >
+    </ds-related-items>
+
     <!-- <ds-related-items
       [parentItem]="object"
       [relationType]="'isBroaderSubjectOf'"
@@ -183,6 +163,38 @@
       </a>
     </div>
   </div>
+  <div class="col-xs-12 col-md-4">
+    <br />
+    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
+    <br />
+    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+      <ds-thumbnail
+        [thumbnail]="object?.thumbnail | async"
+        [alt]="'thumbnail.subject.alt'"
+        [placeholder]="'thumbnail.subject.placeholder'"
+      >
+      </ds-thumbnail>
+    </ds-metadata-field-wrapper> -->
+
+    <!-- <ng-container *ngIf="!(mediaViewer.image || mediaViewer.video)">
+        <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+          <ds-thumbnail [thumbnail]="object?.thumbnail | async"></ds-thumbnail>
+        </ds-metadata-field-wrapper>
+      </ng-container>
+      <div *ngIf="mediaViewer.image || mediaViewer.video" class="mb-2">
+        <ds-media-viewer [item]="object"></ds-media-viewer>
+      </div> -->
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.deway']"
+      [label]="'item.page.deway'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-item-page-collections [item]="object"></ds-item-page-collections>
+  </div>
+
   <div class="mt-5 w-100">
     <ds-tabbed-related-entities-search
       [item]="object"

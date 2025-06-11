@@ -17,6 +17,7 @@ import { ThemedResultsBackButtonComponent } from 'src/app/shared/results-back-bu
 import { ThemedThumbnailComponent } from 'src/app/thumbnail/themed-thumbnail.component';
 import { ThemedMetadataRepresentationListComponent } from 'src/app/item-page/simple/metadata-representation-list/themed-metadata-representation-list.component';
 import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
+import { CollectionsComponent } from "../../../../item-page/field-components/collections/collections.component";
 
 @listableObjectComponent('Event', ViewMode.StandalonePage)
 @Component({
@@ -40,7 +41,8 @@ import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-st
     ItemPageImgFieldComponent,
     ThemedMetadataRepresentationListComponent,
     ThemedMediaViewerComponent,
-    SimpleViewStatisticsComponent
+    SimpleViewStatisticsComponent,
+    CollectionsComponent
 ],
 })
 export class EventComponent extends ItemComponent {}

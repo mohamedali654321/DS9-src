@@ -16,32 +16,7 @@
     </div> -->
 
 <div class="row">
-  <div class="col-xs-12 col-md-4">
-    <!-- <ng-container *ngIf="!mediaViewer.image">
-      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-        <ds-thumbnail
-          [thumbnail]="object?.thumbnail | async"
-          [defaultImage]="'assets/images/series.webp'"
-          [alt]="'thumbnail.series.alt'"
-          [placeholder]="'thumbnail.series.placeholder'"
-        >
-        </ds-thumbnail>
-      </ds-metadata-field-wrapper>
-    </ng-container>
-    <ng-container *ngIf="mediaViewer.image">
-      <ds-media-viewer [item]="object"></ds-media-viewer>
-    </ng-container> -->
-
-    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-      <ds-thumbnail
-        [thumbnail]="object?.thumbnail | async"
-        [defaultImage]="'assets/images/series.webp'"
-        [alt]="'thumbnail.series.alt'"
-        [placeholder]="'thumbnail.series.placeholder'"
-      >
-      </ds-thumbnail>
-    </ds-metadata-field-wrapper> -->
-
+  <div class="col-xs-12 col-md-8">
     @if (!(mediaViewer.image || mediaViewer.video)) {
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail
@@ -60,8 +35,8 @@
 
     <ds-generic-item-page-field
       [item]="object"
-      [fields]="['series.identifier']"
-      [label]="'series.page.identifier'"
+      [fields]="['dc.description']"
+      [label]="'orgunit.page.description'"
     >
     </ds-generic-item-page-field>
 
@@ -83,59 +58,6 @@
       [item]="object"
       [fields]="['dc.publisher.country']"
       [label]="'series.page.country'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.identifier.telephone']"
-      [label]="'place.page.telephone'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.identifier.website']"
-      [label]="'event.page.profile'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.identifier.linkedIn']"
-      [label]="'person.page.linkedIn'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.identifier.facebook']"
-      [label]="'person.page.facebook'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.identifier.twitter']"
-      [label]="'person.page.twitter'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.identifier.youtube']"
-      [label]="'series.page.youtube'"
-    >
-    </ds-generic-item-page-field>
-  </div>
-  <div class="col-xs-12 col-md-8">
-    <br />
-    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
-    <br />
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.description']"
-      [label]="'orgunit.page.description'"
     >
     </ds-generic-item-page-field>
 
@@ -174,6 +96,20 @@
       [label]="'item.page.subject'"
     >
     </ds-generic-item-page-field>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isPublicationOfSeries'"
+      [label]="'relationships.isPublicationOf' | translate"
+    >
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isPersonOfSeries'"
+      [label]="'relationships.isPersonOf' | translate"
+    >
+    </ds-related-items>
 
     <ds-related-items
       [parentItem]="object"
@@ -233,6 +169,86 @@
       </a>
     </div>
   </div>
+  <div class="col-xs-12 col-md-4">
+    <br />
+    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
+    <br />
+    <!-- <ng-container *ngIf="!mediaViewer.image">
+      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+        <ds-thumbnail
+          [thumbnail]="object?.thumbnail | async"
+          [defaultImage]="'assets/images/series.webp'"
+          [alt]="'thumbnail.series.alt'"
+          [placeholder]="'thumbnail.series.placeholder'"
+        >
+        </ds-thumbnail>
+      </ds-metadata-field-wrapper>
+    </ng-container>
+    <ng-container *ngIf="mediaViewer.image">
+      <ds-media-viewer [item]="object"></ds-media-viewer>
+    </ng-container> -->
+
+    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+      <ds-thumbnail
+        [thumbnail]="object?.thumbnail | async"
+        [defaultImage]="'assets/images/series.webp'"
+        [alt]="'thumbnail.series.alt'"
+        [placeholder]="'thumbnail.series.placeholder'"
+      >
+      </ds-thumbnail>
+    </ds-metadata-field-wrapper> -->
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['series.identifier']"
+      [label]="'series.page.identifier'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.telephone']"
+      [label]="'place.page.telephone'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.website']"
+      [label]="'event.page.profile'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.linkedIn']"
+      [label]="'person.page.linkedIn'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.facebook']"
+      [label]="'person.page.facebook'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.twitter']"
+      [label]="'person.page.twitter'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.youtube']"
+      [label]="'series.page.youtube'"
+    >
+    </ds-generic-item-page-field>
+    <ds-item-page-collections [item]="object"></ds-item-page-collections>
+  </div>
+
   <div class="mt-5 w-100">
     <ds-tabbed-related-entities-search
       [item]="object"

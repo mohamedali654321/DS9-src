@@ -7066,6 +7066,7 @@
 
 "cookies.consent.app.description.accessibility": "مطلوب لحفظ إعدادات إمكانية الوصول محليًا",
 "footer.link.accessibility": "إعدادات إمكانية الوصول",
+"person.page.affiliationName":"الانتساب الرئيسي",
   // DS 9
   "401.help": "غير مصرح لك بالوصول إلى هذه الصفحة. يمكنك استخدام الزر أدناه للعودة إلى الصفحة الرئيسية.",
 

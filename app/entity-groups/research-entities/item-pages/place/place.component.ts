@@ -16,6 +16,7 @@ import { MetadataFieldWrapperComponent } from 'src/app/shared/metadata-field-wra
 import { ThemedResultsBackButtonComponent } from 'src/app/shared/results-back-button/themed-results-back-button.component';
 import { ThemedThumbnailComponent } from 'src/app/thumbnail/themed-thumbnail.component';
 import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
+import { CollectionsComponent } from "../../../../item-page/field-components/collections/collections.component";
 
 @listableObjectComponent('Place', ViewMode.StandalonePage)
 @Component({
@@ -38,7 +39,8 @@ import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-st
     TranslateModule,
     ItemPageImgFieldComponent,
     ThemedMediaViewerComponent,
-    SimpleViewStatisticsComponent
+    SimpleViewStatisticsComponent,
+    CollectionsComponent
 ],
 })
 export class PlaceComponent extends ItemComponent {}

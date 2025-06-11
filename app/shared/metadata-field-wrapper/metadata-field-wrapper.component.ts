@@ -4,6 +4,7 @@ import {
   Input,
 } from '@angular/core';
 import { KwareTranslatePipe } from "../utils/kware-translate.pipe";
+import { NgClass, NgIf } from '@angular/common';
 
 /**
  * This component renders any content inside this wrapper.
@@ -14,7 +15,7 @@ import { KwareTranslatePipe } from "../utils/kware-translate.pipe";
   styleUrls: ['./metadata-field-wrapper.component.scss'],
   templateUrl: './metadata-field-wrapper.component.html',
   standalone: true,
-  imports: [KwareTranslatePipe],
+  imports: [KwareTranslatePipe,NgClass,NgIf],
 })
 export class MetadataFieldWrapperComponent {
 

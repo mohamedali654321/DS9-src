@@ -10,31 +10,7 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-12 col-md-4">
-    <!-- <ng-container *ngIf="!mediaViewer.image">
-      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-        <ds-thumbnail
-          [thumbnail]="object?.thumbnail | async"
-          [defaultImage]="'assets/images/events.png'"
-          [alt]="'thumbnail.event.alt'"
-          [placeholder]="'thumbnail.event.placeholder'"
-        >
-        </ds-thumbnail>
-      </ds-metadata-field-wrapper>
-    </ng-container>
-    <ng-container *ngIf="mediaViewer.image">
-      <ds-media-viewer [item]="object"></ds-media-viewer>
-    </ng-container> -->
-    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-      <ds-thumbnail
-        [thumbnail]="object?.thumbnail | async"
-        [defaultImage]="'assets/images/events.png'"
-        [alt]="'thumbnail.event.alt'"
-        [placeholder]="'thumbnail.event.placeholder'"
-      >
-      </ds-thumbnail>
-    </ds-metadata-field-wrapper> -->
-
+  <div class="col-xs-12 col-md-8">
     @if (!(mediaViewer.image || mediaViewer.video)) {
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail
@@ -50,6 +26,21 @@
       <ds-media-viewer [item]="object"></ds-media-viewer>
     </div>
     }
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['event.about']"
+      [label]="'event.page.about'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.description']"
+      [label]="'event.page.description'"
+    >
+    </ds-generic-item-page-field>
+
     <ds-generic-item-page-field
       [item]="object"
       [fields]="['event.startDate']"
@@ -150,96 +141,8 @@
 
     <ds-generic-item-page-field
       [item]="object"
-      [fields]="['person.identifier.facebook']"
-      [label]="'person.page.facebook'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.identifier.twitter']"
-      [label]="'person.page.twitter'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.identifier.profile']"
-      [label]="'event.page.profile'"
-    >
-    </ds-generic-item-page-field>
-  </div>
-  <div class="col-xs-12 col-md-8">
-    <br />
-    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
-    <br />
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['event.duration']"
-      [label]="'event.page.duration'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['event.audience']"
-      [label]="'event.page.audience'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['event.about']"
-      [label]="'event.page.about'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.description']"
-      [label]="'event.page.description'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['event.slogan']"
-      [label]="'orgunit.page.slogan'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
       [fields]="['event.mainType']"
       [label]="'event.page.eventMainType'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['event.attendee.number']"
-      [label]="'event.page.attendeeNumber'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['event.audience.type']"
-      [label]="'event.page.audienceType'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['event.type']"
-      [label]="'event.page.type'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['event.type.status']"
-      [label]="'event.page.status'"
     >
     </ds-generic-item-page-field>
 
@@ -290,6 +193,20 @@
       [parentItem]="object"
       [relationType]="'isEventLinkedTo'"
       [label]="'relationships.isEventLinkedTo' | translate"
+    >
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isPublicationOfEvent'"
+      [label]="'relationships.isPublicationOf' | translate"
+    >
+    </ds-related-items>
+
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isPersonOfEvent'"
+      [label]="'relationships.isPersonOf' | translate"
     >
     </ds-related-items>
 
@@ -351,6 +268,107 @@
       </a>
     </div>
   </div>
+  <div class="col-xs-12 col-md-4">
+    <br />
+    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
+    <br />
+    <!-- <ng-container *ngIf="!mediaViewer.image">
+      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+        <ds-thumbnail
+          [thumbnail]="object?.thumbnail | async"
+          [defaultImage]="'assets/images/events.png'"
+          [alt]="'thumbnail.event.alt'"
+          [placeholder]="'thumbnail.event.placeholder'"
+        >
+        </ds-thumbnail>
+      </ds-metadata-field-wrapper>
+    </ng-container>
+    <ng-container *ngIf="mediaViewer.image">
+      <ds-media-viewer [item]="object"></ds-media-viewer>
+    </ng-container> -->
+    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+      <ds-thumbnail
+        [thumbnail]="object?.thumbnail | async"
+        [defaultImage]="'assets/images/events.png'"
+        [alt]="'thumbnail.event.alt'"
+        [placeholder]="'thumbnail.event.placeholder'"
+      >
+      </ds-thumbnail>
+    </ds-metadata-field-wrapper> -->
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['event.duration']"
+      [label]="'event.page.duration'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['event.audience']"
+      [label]="'event.page.audience'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['event.slogan']"
+      [label]="'orgunit.page.slogan'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['event.attendee.number']"
+      [label]="'event.page.attendeeNumber'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['event.audience.type']"
+      [label]="'event.page.audienceType'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['event.type']"
+      [label]="'event.page.type'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['event.type.status']"
+      [label]="'event.page.status'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.identifier.facebook']"
+      [label]="'person.page.facebook'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.twitter']"
+      [label]="'person.page.twitter'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.identifier.profile']"
+      [label]="'event.page.profile'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-item-page-collections [item]="object"></ds-item-page-collections>
+  </div>
+
   <div class="mt-5 w-100">
     <ds-tabbed-related-entities-search
       [item]="object"

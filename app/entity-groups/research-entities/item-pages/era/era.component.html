@@ -10,32 +10,7 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-12 col-md-4">
-    <!-- <ng-container *ngIf="!mediaViewer.image">
-      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-        <ds-thumbnail
-          [thumbnail]="object?.thumbnail | async"
-          [defaultImage]="'assets/images/events.png'"
-          [alt]="'thumbnail.event.alt'"
-          [placeholder]="'thumbnail.event.placeholder'"
-        >
-        </ds-thumbnail>
-      </ds-metadata-field-wrapper>
-    </ng-container>
-    <ng-container *ngIf="mediaViewer.image">
-      <ds-media-viewer [item]="object"></ds-media-viewer>
-    </ng-container> -->
-
-    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
-      <ds-thumbnail
-        [thumbnail]="object?.thumbnail | async"
-        [defaultImage]="'assets/images/events.png'"
-        [alt]="'thumbnail.event.alt'"
-        [placeholder]="'thumbnail.event.placeholder'"
-      >
-      </ds-thumbnail>
-    </ds-metadata-field-wrapper> -->
-
+  <div class="col-xs-12 col-md-8">
     @if (!(mediaViewer.image || mediaViewer.video)) {
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail
@@ -53,6 +28,15 @@
     }
 
     <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.description']"
+      [label]="'item.page.description'"
+    >
+    </ds-generic-item-page-field>
+
+
+
+      <ds-generic-item-page-field
       [item]="object"
       [fields]="['era.startDate']"
       [label]="'event.page.startDate'"
@@ -93,46 +77,20 @@
       [label]="'event.page.endTime'"
     >
     </ds-generic-item-page-field>
-  </div>
-  <div class="col-xs-12 col-md-8">
-    <br />
-    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
-    <br />
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.description']"
-      [label]="'item.page.description'"
-    >
-    </ds-generic-item-page-field>
 
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['era.century']"
-      [label]="'era.page.century'"
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isPublicationOfEra'"
+      [label]="'relationships.isPublicationOf' | translate"
     >
-    </ds-generic-item-page-field>
+    </ds-related-items>
 
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['era.decade']"
-      [label]="'era.page.decade'"
+    <ds-related-items
+      [parentItem]="object"
+      [relationType]="'isPersonOfEra'"
+      [label]="'relationships.isPersonOf' | translate"
     >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['era.yearOccurrence']"
-      [label]="'era.page.year'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.subject']"
-      [separator]="','"
-      [label]="'item.page.subject'"
-    >
-    </ds-generic-item-page-field>
+    </ds-related-items>
 
     <ds-related-items
       [parentItem]="object"
@@ -192,6 +150,67 @@
       </a>
     </div>
   </div>
+  <div class="col-xs-12 col-md-4">
+    <br />
+    <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
+    <br />
+    <!-- <ng-container *ngIf="!mediaViewer.image">
+      <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+        <ds-thumbnail
+          [thumbnail]="object?.thumbnail | async"
+          [defaultImage]="'assets/images/events.png'"
+          [alt]="'thumbnail.event.alt'"
+          [placeholder]="'thumbnail.event.placeholder'"
+        >
+        </ds-thumbnail>
+      </ds-metadata-field-wrapper>
+    </ng-container>
+    <ng-container *ngIf="mediaViewer.image">
+      <ds-media-viewer [item]="object"></ds-media-viewer>
+    </ng-container> -->
+
+    <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
+      <ds-thumbnail
+        [thumbnail]="object?.thumbnail | async"
+        [defaultImage]="'assets/images/events.png'"
+        [alt]="'thumbnail.event.alt'"
+        [placeholder]="'thumbnail.event.placeholder'"
+      >
+      </ds-thumbnail>
+    </ds-metadata-field-wrapper> -->
+    
+        <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['era.century']"
+      [label]="'era.page.century'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['era.decade']"
+      [label]="'era.page.decade'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['era.yearOccurrence']"
+      [label]="'era.page.year'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.subject']"
+      [separator]="','"
+      [label]="'item.page.subject'"
+    >
+    </ds-generic-item-page-field>
+  
+    <ds-item-page-collections [item]="object"></ds-item-page-collections>
+  </div>
+
   <div class="mt-5 w-100">
     <ds-tabbed-related-entities-search
       [item]="object"

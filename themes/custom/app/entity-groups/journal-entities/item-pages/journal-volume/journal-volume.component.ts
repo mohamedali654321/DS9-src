@@ -17,6 +17,7 @@ import { ThemedThumbnailComponent } from '../../../../../../../app/thumbnail/the
 import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/related-entities/tabbed-related-entities-search/tabbed-related-entities-search.component';
 import { ThemedMediaViewerComponent } from 'src/app/item-page/media-viewer/themed-media-viewer.component';
 import { SimpleViewStatisticsComponent } from 'src/app/shared/simple-view-statistics/simple-view-statistics.component';
+import { CollectionsComponent } from 'src/app/item-page/field-components/collections/collections.component';
 
 @listableObjectComponent('JournalVolume', ViewMode.StandalonePage, Context.Any, 'custom')
 @Component({
@@ -39,7 +40,8 @@ import { SimpleViewStatisticsComponent } from 'src/app/shared/simple-view-statis
     TranslateModule,
     TabbedRelatedEntitiesSearchComponent,
     ThemedMediaViewerComponent,
-    SimpleViewStatisticsComponent
+    SimpleViewStatisticsComponent,
+    CollectionsComponent
   ],
 })
 export class JournalVolumeComponent extends BaseComponent {

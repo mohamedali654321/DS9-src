@@ -17,6 +17,7 @@ import { PersonComponent as BaseComponent } from '../../../../../../../app/entit
 import { listableObjectComponent } from '../../../../../../../app/shared/object-collection/shared/listable-object/listable-object.decorator';
 import { ThemedMediaViewerComponent } from 'src/app/item-page/media-viewer/themed-media-viewer.component';
 import { SimpleViewStatisticsComponent } from 'src/app/shared/simple-view-statistics/simple-view-statistics.component';
+import { CollectionsComponent } from 'src/app/item-page/field-components/collections/collections.component';
 
 @listableObjectComponent('Person', ViewMode.StandalonePage, Context.Any, 'custom')
 @Component({
@@ -40,7 +41,8 @@ import { SimpleViewStatisticsComponent } from 'src/app/shared/simple-view-statis
     TranslateModule,
     NgIf,
     ThemedMediaViewerComponent,
-    SimpleViewStatisticsComponent
+    SimpleViewStatisticsComponent,
+    CollectionsComponent
   ],
 })
 export class PersonComponent extends BaseComponent {
