@@ -18,6 +18,7 @@ import { ThemedThumbnailComponent } from 'src/app/thumbnail/themed-thumbnail.com
 import { ThemedMetadataRepresentationListComponent } from 'src/app/item-page/simple/metadata-representation-list/themed-metadata-representation-list.component';
 import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
 import { CollectionsComponent } from "../../../../item-page/field-components/collections/collections.component";
+import { KwareSocialSharingComponent } from "../../../../shared/kware-social-sharing/kware-social-sharing.component";
 
 @listableObjectComponent('Event', ViewMode.StandalonePage)
 @Component({
@@ -42,7 +43,8 @@ import { CollectionsComponent } from "../../../../item-page/field-components/col
     ThemedMetadataRepresentationListComponent,
     ThemedMediaViewerComponent,
     SimpleViewStatisticsComponent,
-    CollectionsComponent
+    CollectionsComponent,
+    KwareSocialSharingComponent
 ],
 })
 export class EventComponent extends ItemComponent {}

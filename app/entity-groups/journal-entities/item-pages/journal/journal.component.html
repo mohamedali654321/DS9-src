@@ -8,6 +8,8 @@
 </div>
 <div class="row">
   <div class="col-xs-12 col-md-6">
+    <ds-kware-social-sharing [item]="object"></ds-kware-social-sharing>
+    <br />
     @if (!(mediaViewer.image || mediaViewer.video)) {
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail [thumbnail]="object?.thumbnail | async"></ds-thumbnail>
@@ -127,20 +129,9 @@
       [fields]="['dc.description']"
       [label]="'journal.page.description'">
     </ds-generic-item-page-field> -->
-    <div>
-      <a
-        class="btn btn-outline-primary"
-        [routerLink]="[itemPageRoute + '/full']"
-        role="button"
-        tabindex="0"
-      >
-        {{ "item.page.link.full" | translate }}
-      </a>
-    </div>
   </div>
 
   <div class="col-xs-12 col-md-4">
-    <br />
     <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
     <br />
 
@@ -203,6 +194,16 @@
     </ds-generic-item-page-field>
 
     <ds-item-page-collections [item]="object"></ds-item-page-collections>
+    <div>
+      <a
+        class="btn btn-outline-primary"
+        [routerLink]="[itemPageRoute + '/full']"
+        role="button"
+        tabindex="0"
+      >
+        {{ "item.page.link.full" | translate }}
+      </a>
+    </div>
   </div>
 
   <div class="mt-5 w-100 px-0">

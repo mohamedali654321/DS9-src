@@ -17,6 +17,7 @@ import { TabbedRelatedEntitiesSearchComponent } from "../../../../item-page/simp
 import { ThemedMediaViewerComponent } from "../../../../item-page/media-viewer/themed-media-viewer.component";
 import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
 import { CollectionsComponent } from "../../../../item-page/field-components/collections/collections.component";
+import { KwareSocialSharingComponent } from "../../../../shared/kware-social-sharing/kware-social-sharing.component";
 
 @listableObjectComponent('JournalVolume', ViewMode.StandalonePage)
 @Component({
@@ -38,7 +39,8 @@ import { CollectionsComponent } from "../../../../item-page/field-components/col
     TabbedRelatedEntitiesSearchComponent,
     ThemedMediaViewerComponent,
     SimpleViewStatisticsComponent,
-    CollectionsComponent
+    CollectionsComponent,
+    KwareSocialSharingComponent
 ],
 })
 /**

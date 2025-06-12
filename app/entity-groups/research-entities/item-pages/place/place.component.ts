@@ -17,6 +17,7 @@ import { ThemedResultsBackButtonComponent } from 'src/app/shared/results-back-bu
 import { ThemedThumbnailComponent } from 'src/app/thumbnail/themed-thumbnail.component';
 import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
 import { CollectionsComponent } from "../../../../item-page/field-components/collections/collections.component";
+import { KwareSocialSharingComponent } from "../../../../shared/kware-social-sharing/kware-social-sharing.component";
 
 @listableObjectComponent('Place', ViewMode.StandalonePage)
 @Component({
@@ -40,7 +41,8 @@ import { CollectionsComponent } from "../../../../item-page/field-components/col
     ItemPageImgFieldComponent,
     ThemedMediaViewerComponent,
     SimpleViewStatisticsComponent,
-    CollectionsComponent
+    CollectionsComponent,
+    KwareSocialSharingComponent
 ],
 })
 export class PlaceComponent extends ItemComponent {}

@@ -30,6 +30,7 @@ import { KwareMediaViewerComponent } from "../../../../shared/kware-media-viewer
 import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
 import { KwareTranslatePipe } from "../../../../shared/utils/kware-translate.pipe";
+import { KwareSocialSharingComponent } from "../../../../shared/kware-social-sharing/kware-social-sharing.component";
 
 /**
  * Component that represents a publication Item page
@@ -68,7 +69,8 @@ import { KwareTranslatePipe } from "../../../../shared/utils/kware-translate.pip
     NgbTooltipModule,
     SimpleViewStatisticsComponent,
     KwareTranslatePipe,
-    NgStyle
+    NgStyle,
+    KwareSocialSharingComponent
 ],
 })
 export class PublicationComponent extends ItemComponent {

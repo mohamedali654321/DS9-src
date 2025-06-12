@@ -211,7 +211,7 @@ export class ObjectGridComponent implements OnInit {
         switch (widthCat) {
           case WidthCategory.XL:
           case WidthCategory.LG: {
-            return this.isSearch || this.isBrowseSearch || document.URL.includes('/communities/') || document.URL.includes('/collections/') ?  4 : 5;
+            return this.isSearch || this.isBrowseSearch || document.URL.includes('/communities/') || document.URL.includes('/collections/') || document.URL.includes('/entities/') ?  4 : 5;
           }
           case WidthCategory.MD:
           case WidthCategory.SM: {
@@ -223,7 +223,7 @@ export class ObjectGridComponent implements OnInit {
         }
       }),
       distinctUntilChanged(),
-    ).pipe(startWith(this.isSearch || this.isBrowseSearch || document.URL.includes('/communities/') || document.URL.includes('/collections/') ?  4 : 5));
+    ).pipe(startWith(this.isSearch || this.isBrowseSearch || document.URL.includes('/communities/') || document.URL.includes('/collections/') || document.URL.includes('/entities/') ?  4 : 5));
 
     this.columns$ = observableCombineLatest(
       nbColumns$,

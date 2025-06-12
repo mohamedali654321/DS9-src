@@ -8,6 +8,8 @@
 </div>
 <div class="row">
   <div class="col-xs-12 col-md-7">
+    <ds-kware-social-sharing [item]="object"></ds-kware-social-sharing>
+    <br />
     @if (!(mediaViewer.image || mediaViewer.video)) {
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail
@@ -240,27 +242,18 @@
       [label]="'relationships.isEraOf' | translate"
     >
     </ds-related-items>
-    <div>
-      <a
-        class="btn btn-outline-primary"
-        [routerLink]="[itemPageRoute + '/full']"
-        role="button"
-        tabindex="0"
-      >
-        {{ "item.page.link.full" | translate }}
-      </a>
-    </div>
   </div>
   <div class="col-xs-12 col-md-4">
-    <br />
     <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
     <br />
+
     <ds-generic-item-page-field
       [item]="object"
-      [fields]="['person.identifier.orcid']"
-      [label]="'person.page.identifierOrcid'"
+      [fields]="['person.salutation']"
+      [label]="'person.page.salutation'"
     >
     </ds-generic-item-page-field>
+
     <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail
         [thumbnail]="object?.thumbnail | async"
@@ -294,15 +287,15 @@
 
     <ds-generic-item-page-field
       [item]="object"
-      [fields]="['person.salutation']"
-      [label]="'person.page.salutation'"
+      [fields]="['person.era']"
+      [label]="'person.page.era'"
     >
     </ds-generic-item-page-field>
 
     <ds-generic-item-page-field
       [item]="object"
-      [fields]="['person.era']"
-      [label]="'person.page.era'"
+      [fields]="['person.identifier.orcid']"
+      [label]="'person.page.identifierOrcid'"
     >
     </ds-generic-item-page-field>
 
@@ -362,6 +355,16 @@
     </ds-generic-item-page-field>
 
     <ds-item-page-collections [item]="object"></ds-item-page-collections>
+    <div>
+      <a
+        class="btn btn-outline-primary"
+        [routerLink]="[itemPageRoute + '/full']"
+        role="button"
+        tabindex="0"
+      >
+        {{ "item.page.link.full" | translate }}
+      </a>
+    </div>
   </div>
 
   <div class="mt-5 w-100">

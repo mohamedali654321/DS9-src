@@ -11,6 +11,8 @@
 
 <div class="row">
   <div class="col-xs-12 col-md-8">
+    <ds-kware-social-sharing [item]="object"></ds-kware-social-sharing>
+    <br />
     @if (!(mediaViewer.image || mediaViewer.video)) {
     <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail
@@ -34,9 +36,7 @@
     >
     </ds-generic-item-page-field>
 
-
-
-      <ds-generic-item-page-field
+    <ds-generic-item-page-field
       [item]="object"
       [fields]="['era.startDate']"
       [label]="'event.page.startDate'"
@@ -140,18 +140,8 @@
       [label]="'relationships.isActivityOf' | translate"
     >
     </ds-related-items>
-
-    <div>
-      <a
-        class="btn btn-outline-primary"
-        [routerLink]="[itemPageRoute + '/full']"
-      >
-        {{ "item.page.link.full" | translate }}
-      </a>
-    </div>
   </div>
   <div class="col-xs-12 col-md-4">
-    <br />
     <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
     <br />
     <!-- <ng-container *ngIf="!mediaViewer.image">
@@ -178,8 +168,8 @@
       >
       </ds-thumbnail>
     </ds-metadata-field-wrapper> -->
-    
-        <ds-generic-item-page-field
+
+    <ds-generic-item-page-field
       [item]="object"
       [fields]="['era.century']"
       [label]="'era.page.century'"
@@ -207,8 +197,17 @@
       [label]="'item.page.subject'"
     >
     </ds-generic-item-page-field>
-  
+
     <ds-item-page-collections [item]="object"></ds-item-page-collections>
+
+    <div>
+      <a
+        class="btn btn-outline-primary"
+        [routerLink]="[itemPageRoute + '/full']"
+      >
+        {{ "item.page.link.full" | translate }}
+      </a>
+    </div>
   </div>
 
   <div class="mt-5 w-100">

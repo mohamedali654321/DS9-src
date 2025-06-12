@@ -18,6 +18,7 @@ import { listableObjectComponent } from '../../../../../../../app/shared/object-
 import { ThemedMediaViewerComponent } from 'src/app/item-page/media-viewer/themed-media-viewer.component';
 import { SimpleViewStatisticsComponent } from 'src/app/shared/simple-view-statistics/simple-view-statistics.component';
 import { CollectionsComponent } from 'src/app/item-page/field-components/collections/collections.component';
+import { KwareSocialSharingComponent } from 'src/app/shared/kware-social-sharing/kware-social-sharing.component';
 
 @listableObjectComponent('Person', ViewMode.StandalonePage, Context.Any, 'custom')
 @Component({
@@ -42,7 +43,8 @@ import { CollectionsComponent } from 'src/app/item-page/field-components/collect
     NgIf,
     ThemedMediaViewerComponent,
     SimpleViewStatisticsComponent,
-    CollectionsComponent
+    CollectionsComponent,
+    KwareSocialSharingComponent
   ],
 })
 export class PersonComponent extends BaseComponent {

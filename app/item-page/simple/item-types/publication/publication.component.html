@@ -54,15 +54,35 @@
         >{{ object.firstMetadataValue("dc.type") | kwareTranslate }}</span
       >
       <div>
-        <ng-container *ngIf="(object.accessStatus | async)">
-          <span *ngIf="(object.accessStatus | async)?.payload?.status as accessStatus">
+        <ng-container *ngIf="object.accessStatus | async">
+          <span
+            *ngIf="
+              (object.accessStatus | async)?.payload?.status as accessStatus
+            "
+          >
             <span
               class="badge badge-secondary"
-              [style]="accessStatusConfigs['access-status.'+accessStatus.toLowerCase()+'.listelement.badge']?.style || ''"
+              [style]="
+                accessStatusConfigs[
+                  'access-status.' +
+                    accessStatus.toLowerCase() +
+                    '.listelement.badge'
+                ]?.style || ''
+              "
             >
-              {{ 'access-status.'+accessStatus.toLowerCase()+'.listelement.badge' | translate }}&nbsp;
+              {{
+                "access-status." +
+                  accessStatus.toLowerCase() +
+                  ".listelement.badge" | translate
+              }}&nbsp;
               <i
-                [class]="accessStatusConfigs['access-status.'+accessStatus.toLowerCase()+'.listelement.badge']?.icon || ''"
+                [class]="
+                  accessStatusConfigs[
+                    'access-status.' +
+                      accessStatus.toLowerCase() +
+                      '.listelement.badge'
+                  ]?.icon || ''
+                "
                 aria-hidden="true"
               ></i>
             </span>
@@ -101,6 +121,8 @@
 
 <div class="row">
   <div class="col-xs-12 col-md-8">
+    <ds-kware-social-sharing [item]="object"></ds-kware-social-sharing>
+    <br />
     <ds-kware-media-viewer [item]="object"></ds-kware-media-viewer>
     <!-- <ds-related-items
       [parentItem]="object"
@@ -181,6 +203,29 @@
       [label]="'item.page.member' | translate"
     >
     </ds-metadata-representation-list>
+
+    <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.date.defense']"
+      [label]="'item.page.defense'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.date.issuedhijri']"
+      [label]="'item.page.issuedhijri'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.date.registration']"
+      [label]="'item.page.registration'"
+    >
+    </ds-generic-item-page-field>
 
     <ds-metadata-representation-list
       [parentItem]="object"
@@ -333,29 +378,6 @@
       [item]="object"
       [fields]="['dc.identifier.saveNumber']"
       [label]="'item.page.saveNumber'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-item-page-date-field [item]="object"></ds-item-page-date-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.date.defense']"
-      [label]="'item.page.defense'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.date.issuedhijri']"
-      [label]="'item.page.issuedhijri'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.date.registration']"
-      [label]="'item.page.registration'"
     >
     </ds-generic-item-page-field>
 
@@ -793,20 +815,10 @@
       [label]="'relationships.isJournalIssueOf' | translate"
     >
     </ds-related-items>
-    <div>
-      <a
-        class="btn btn-outline-primary"
-        role="button"
-        [routerLink]="[itemPageRoute + '/full']"
-      >
-        <i class="fas fa-info-circle"></i>
-        {{ "item.page.link.full" | translate }}
-      </a>
-    </div>
   </div>
 
   <div class="col-xs-12 col-md-4">
-    <br />
+   
     <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
     <br />
     <!-- @if (!(mediaViewer.image || mediaViewer.video)) {
@@ -840,19 +852,6 @@
     >
     </ds-generic-item-page-field>
 
-    <ds-item-page-uri-field
-      [item]="object"
-      [fields]="['dc.identifier.uri']"
-      [label]="'item.page.uri'"
-    >
-    </ds-item-page-uri-field>
-
-    <ds-item-page-uri-field
-      [item]="object"
-      [fields]="['dc.identifier.doi']"
-      [label]="'item.page.doi'"
-    >
-    </ds-item-page-uri-field>
     <!-- <ds-generic-item-page-field [item]="object"
       [fields]="['dc.publisher']"
       [label]="'publication.page.publisher'">
@@ -927,7 +926,32 @@
     >
     </ds-generic-item-page-field>
 
+    <ds-item-page-uri-field
+      [item]="object"
+      [fields]="['dc.identifier.uri']"
+      [label]="'item.page.uri'"
+    >
+    </ds-item-page-uri-field>
+
+    <ds-item-page-uri-field
+      [item]="object"
+      [fields]="['dc.identifier.doi']"
+      [label]="'item.page.doi'"
+    >
+    </ds-item-page-uri-field>
+
     <ds-item-page-collections [item]="object"></ds-item-page-collections>
+
+    <div>
+      <a
+        class="btn btn-outline-primary"
+        role="button"
+        [routerLink]="[itemPageRoute + '/full']"
+      >
+        <i class="fas fa-info-circle"></i>
+        {{ "item.page.link.full" | translate }}
+      </a>
+    </div>
   </div>
 
   <div class="mt-5 w-100">

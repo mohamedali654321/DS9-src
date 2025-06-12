@@ -18,6 +18,7 @@ import { TabbedRelatedEntitiesSearchComponent } from 'src/app/item-page/simple/r
 import { ThemedMediaViewerComponent } from "../../../../item-page/media-viewer/themed-media-viewer.component";
 import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
 import { CollectionsComponent } from "../../../../item-page/field-components/collections/collections.component";
+import { KwareSocialSharingComponent } from "../../../../shared/kware-social-sharing/kware-social-sharing.component";
 
 @listableObjectComponent('Project', ViewMode.StandalonePage)
 @Component({
@@ -40,7 +41,8 @@ import { CollectionsComponent } from "../../../../item-page/field-components/col
     TabbedRelatedEntitiesSearchComponent,
     ThemedMediaViewerComponent,
     SimpleViewStatisticsComponent,
-    CollectionsComponent
+    CollectionsComponent,
+    KwareSocialSharingComponent
 ],
 })
 /**

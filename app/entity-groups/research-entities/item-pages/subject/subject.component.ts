@@ -19,6 +19,7 @@ import { ThemedMetadataRepresentationListComponent } from 'src/app/item-page/sim
 import { ItemPageUriFieldComponent } from 'src/app/item-page/simple/field-components/specific-field/uri/item-page-uri-field.component';
 import { CollectionsComponent } from 'src/app/item-page/field-components/collections/collections.component';
 import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
+import { KwareSocialSharingComponent } from "../../../../shared/kware-social-sharing/kware-social-sharing.component";
 
 
 @listableObjectComponent('Subject', ViewMode.StandalonePage)
@@ -45,7 +46,8 @@ import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-st
     TranslateModule,
     ItemPageImgFieldComponent,
     ThemedMediaViewerComponent,
-    SimpleViewStatisticsComponent
+    SimpleViewStatisticsComponent,
+    KwareSocialSharingComponent
 ],
 })
 export class SubjectComponent extends ItemComponent {}
