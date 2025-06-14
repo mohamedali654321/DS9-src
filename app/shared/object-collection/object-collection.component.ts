@@ -43,6 +43,7 @@ import { PaginationComponentOptions } from '../pagination/pagination-component-o
 import { setPlaceHolderAttributes } from '../utils/object-list-utils';
 import { CollectionElementLinkType } from './collection-element-link.type';
 import { ListableObject } from './shared/listable-object.model';
+import { NavigationItemsService } from '../kware-navigate-items/service/services/navigation-items.service';
 
 /**
  * Component that can render a list of listable objects in different view modes
@@ -224,10 +225,15 @@ export class ObjectCollectionComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private elementRef: ElementRef,
+    protected navigationItemsService: NavigationItemsService,
     @Inject(PLATFORM_ID) private platformId: any) {
   }
 
   ngOnInit(): void {
+        if(this.route['_routerState']?.snapshot?.url.includes('/search') || this.route['_routerState']?.snapshot?.url.includes('/browse') ){
+
+      this.navigationItemsService.setResultRoute((this.route['_routerState']?.snapshot?.url))
+   }
     this.currentMode$ = this.route
       .queryParams
       .pipe(

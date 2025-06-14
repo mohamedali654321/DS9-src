@@ -29,6 +29,7 @@ import { NgbTooltipModule } from "@ng-bootstrap/ng-bootstrap";
 import { SimpleViewStatisticsComponent } from "src/app/shared/simple-view-statistics/simple-view-statistics.component";
 import { KwareTranslatePipe } from "src/app/shared/utils/kware-translate.pipe";
 import { KwareSocialSharingComponent } from "src/app/shared/kware-social-sharing/kware-social-sharing.component";
+import { KwareNavigateItemsComponent } from "src/app/shared/kware-navigate-items/kware-navigate-items.component";
 
 @listableObjectComponent(
   "Publication",
@@ -74,7 +75,8 @@ import { KwareSocialSharingComponent } from "src/app/shared/kware-social-sharing
     SimpleViewStatisticsComponent,
     KwareTranslatePipe,
     NgStyle,
-    KwareSocialSharingComponent
+    KwareSocialSharingComponent,
+    KwareNavigateItemsComponent
   ],
 })
 export class PublicationComponent extends BaseComponent {}

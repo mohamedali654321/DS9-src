@@ -5,14 +5,19 @@
     margin-top: var(--ds-wrapper-grid-spacing);
     margin-bottom: var(--ds-wrapper-grid-spacing);
 
-    div.thumbnail > .thumbnail-content {
-      height: var(--ds-card-thumbnail-height);
+    div.thumbnail>.thumbnail-content {
+      // height: var(--ds-card-thumbnail-height);
+      // width: 100%;
+      // display: block;
+      // min-width: 100%;
+      // min-height: 100%;
+      // object-fit: cover;
+      // object-position: 50% 15%;
+      height: 300px;
       width: 100%;
       display: block;
       min-width: 100%;
       min-height: 100%;
-      object-fit: cover;
-      object-position: 50% 15%;
     }
   }
 }

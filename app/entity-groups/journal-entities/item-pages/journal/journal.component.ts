@@ -19,6 +19,7 @@ import { ThemedMediaViewerComponent } from "../../../../item-page/media-viewer/t
 import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
 import { CollectionsComponent } from "../../../../item-page/field-components/collections/collections.component";
 import { KwareSocialSharingComponent } from "../../../../shared/kware-social-sharing/kware-social-sharing.component";
+import { KwareNavigateItemsComponent } from "../../../../shared/kware-navigate-items/kware-navigate-items.component";
 
 @listableObjectComponent('Journal', ViewMode.StandalonePage)
 @Component({
@@ -42,7 +43,8 @@ import { KwareSocialSharingComponent } from "../../../../shared/kware-social-sha
     ThemedMediaViewerComponent,
     SimpleViewStatisticsComponent,
     CollectionsComponent,
-    KwareSocialSharingComponent
+    KwareSocialSharingComponent,
+    KwareNavigateItemsComponent
 ],
 })
 /**

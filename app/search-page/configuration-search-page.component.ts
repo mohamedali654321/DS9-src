@@ -29,6 +29,7 @@ import { ThemedSearchFormComponent } from '../shared/search-form/themed-search-f
 import { PageWithSidebarComponent } from '../shared/sidebar/page-with-sidebar.component';
 import { SidebarService } from '../shared/sidebar/sidebar.service';
 import { ViewModeSwitchComponent } from '../shared/view-mode-switch/view-mode-switch.component';
+import { NavigationItemsService } from '../shared/kware-navigate-items/service/services/navigation-items.service';
 
 /**
  * This component renders a search page using a configuration as input.
@@ -66,9 +67,10 @@ export class ConfigurationSearchPageComponent extends SearchComponent {
               @Inject(SEARCH_CONFIG_SERVICE) public searchConfigService: SearchConfigurationService,
               protected routeService: RouteService,
               protected router: Router,
+              protected navigationItemsService: NavigationItemsService,
               @Inject(APP_CONFIG) protected appConfig: AppConfig,
               @Inject(PLATFORM_ID) public platformId: any,
   ) {
-    super(service, sidebarService, windowService, searchConfigService, routeService, router, appConfig, platformId);
+    super(service, sidebarService, windowService, searchConfigService, routeService, router,navigationItemsService, appConfig, platformId);
   }
 }

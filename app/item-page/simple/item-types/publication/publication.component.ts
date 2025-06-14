@@ -31,6 +31,7 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
 import { KwareTranslatePipe } from "../../../../shared/utils/kware-translate.pipe";
 import { KwareSocialSharingComponent } from "../../../../shared/kware-social-sharing/kware-social-sharing.component";
+import { KwareNavigateItemsComponent } from "../../../../shared/kware-navigate-items/kware-navigate-items.component";
 
 /**
  * Component that represents a publication Item page
@@ -70,7 +71,8 @@ import { KwareSocialSharingComponent } from "../../../../shared/kware-social-sha
     SimpleViewStatisticsComponent,
     KwareTranslatePipe,
     NgStyle,
-    KwareSocialSharingComponent
+    KwareSocialSharingComponent,
+    KwareNavigateItemsComponent
 ],
 })
 export class PublicationComponent extends ItemComponent {

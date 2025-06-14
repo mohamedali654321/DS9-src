@@ -20,6 +20,7 @@ import { ThemedMediaViewerComponent } from 'src/app/item-page/media-viewer/theme
 import { SimpleViewStatisticsComponent } from 'src/app/shared/simple-view-statistics/simple-view-statistics.component';
 import { CollectionsComponent } from 'src/app/item-page/field-components/collections/collections.component';
 import { KwareSocialSharingComponent } from 'src/app/shared/kware-social-sharing/kware-social-sharing.component';
+import { KwareNavigateItemsComponent } from 'src/app/shared/kware-navigate-items/kware-navigate-items.component';
 
 @listableObjectComponent('Journal', ViewMode.StandalonePage, Context.Any, 'custom')
 @Component({
@@ -45,7 +46,8 @@ import { KwareSocialSharingComponent } from 'src/app/shared/kware-social-sharing
     ThemedMediaViewerComponent,
     SimpleViewStatisticsComponent,
     CollectionsComponent,
-    KwareSocialSharingComponent
+    KwareSocialSharingComponent,
+    KwareNavigateItemsComponent
   ],
 })
 export class JournalComponent extends BaseComponent {

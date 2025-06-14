@@ -1,139 +1,213 @@
-
-
-
-
-
-<div style="background-color:#424242e0  !important ;color:#fff;padding-bottom: 10px; padding-top: 10px;" class="content-container  container-fluid">
+<div
+  style="
+    background-color: #424242e0 !important ;
+    color: #fff;
+    padding-bottom: 10px;
+    padding-top: 10px;
+  "
+  class="content-container container-fluid"
+>
   <div>
-    <div class=" col-12 " >
+    <div class="col-12">
+      <h5 style="text-align: center !important" class="mt-0 mb-2 pt-1 pb-1">
+        {{ "footer.top.content6" | translate }}
+      </h5>
+      <div
+        style="color: #fff; text-align: center !important"
+        class="font-12 mb-1"
+      >
+        {{ "footer.top.content2" | translate }}
+      </div>
+      <ul
+        style="text-align: center !important"
+        class="list-inline font-16 mb-2 social-list"
+      >
+        <li class="list-inline-item m-0">
+          <a
+            id="lnkfacebook"
+            class="facebookIcon"
+            href="https://www.facebook.com/KnowledgewareTech/"
+            target="_blank"
+          >
+            <span class="fa-stack">
+              <i class="fas fa-circle fa-stack-2x"></i>
+              <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i> </span
+          ></a>
+        </li>
+        <li class="list-inline-item m-0">
+          <a
+            id="lnktwitter"
+            class="twitterIcon"
+            href="https://twitter.com/KnowledgewareT"
+            target="_blank"
+          >
+            <span class="fa-stack">
+              <i class="fas fa-circle fa-stack-2x"></i>
+              <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
+            </span>
+          </a>
+        </li>
+        <li class="list-inline-item m-0">
+          <a
+            id="lnklinkedIn"
+            class="linkedinIcon"
+            href="https://www.linkedin.com/company/knowledgeware-technologies-inc/"
+            target="_blank"
+          >
+            <span class="fa-stack">
+              <i class="fas fa-circle fa-stack-2x"></i>
+              <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
+            </span>
+          </a>
+        </li>
 
-    <h5 style="text-align: center !important;" class="mt-0 mb-2 pt-1 pb-1">
-      {{'footer.top.content6' | translate}}        </h5>
-   <div style="color: #fff;text-align: center !important;" class=" font-12 mb-1">
-    {{'footer.top.content2' | translate}}</div>
-    <ul  style="text-align: center !important;" class="list-inline font-16 mb-2 social-list">
-     <li class="list-inline-item m-0">
-         <a id="lnkfacebook" class="facebookIcon" href="https://www.facebook.com/KnowledgewareTech/" target="_blank">
-              <span class="fa-stack">
-                 <i class="fas fa-circle fa-stack-2x"></i>
-                 <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
-               </span></a>
-
-     </li>
-     <li class="list-inline-item m-0">
-       <a id="lnktwitter" class="twitterIcon" href="https://twitter.com/KnowledgewareT" target="_blank">
-               <span class="fa-stack">
-                 <i class="fas fa-circle fa-stack-2x"></i>
-                 <i class="fab fa-twitter fa-stack-1x fa-inverse"></i>
-               </span>
-         </a>
-     </li>
-     <li class="list-inline-item m-0">
-         <a id="lnklinkedIn" class="linkedinIcon" href="https://www.linkedin.com/company/knowledgeware-technologies-inc/" target="_blank">
-               <span class="fa-stack">
-                 <i class="fas fa-circle fa-stack-2x"></i>
-                 <i class="fab fa-linkedin-in fa-stack-1x fa-inverse"></i>
-               </span>
-         </a>
-     </li>
-
-     <li class="list-inline-item m-0">
-      <a id="lnklinkedIn" class="linkedinIcon" href="https://youtube.com/channel/UCWzTZ01CmXFYz48ogIBaHUg" target="_blank">
+        <li class="list-inline-item m-0">
+          <a
+            id="lnklinkedIn"
+            class="linkedinIcon"
+            href="https://youtube.com/channel/UCWzTZ01CmXFYz48ogIBaHUg"
+            target="_blank"
+          >
             <span class="fa-stack">
               <i class="fas fa-circle fa-stack-2x"></i>
               <i class="fab fa-youtube fa-stack-1x fa-inverse"></i>
             </span>
-      </a>
-  </li>
+          </a>
+        </li>
+      </ul>
 
-
-
-
-   </ul>
-
-
-
-        <div *ngIf="showSendFeedback$ | async" style="color: #fff;text-align: center !important;" class="font-14 mt-1 mb-1 ">
-          {{'footer.top.content3' | translate}} <a class="text-white"
-            routerLink="info/feedback">{{ 'footer.link.feedback' | translate}}</a>!</div>
+      <div
+        *ngIf="showSendFeedback$ | async"
+        style="color: #fff; text-align: center !important"
+        class="font-14 mt-1 mb-1"
+      >
+        {{ "footer.top.content3" | translate }}
+        <a class="text-white" routerLink="info/feedback">{{
+          "footer.link.feedback" | translate
+        }}</a
+        >!
+      </div>
+    </div>
   </div>
-
-  </div>
-
 
   <div>
-    <div class=" col-12 " >
-
-    <h5 style="text-align: center !important;" class="widget-title mt-0 mb-2 pt-1 pb-1">
-      {{'footer.top.communities' | translate}}
-          </h5>
-   <!-- <div style="color: #fff;" class=" font-12 mb-1">
+    <div class="col-12">
+      <h5
+        style="text-align: center !important"
+        class="widget-title mt-0 mb-2 pt-1 pb-1"
+      >
+        {{ "footer.top.communities" | translate }}
+      </h5>
+      <!-- <div style="color: #fff;" class=" font-12 mb-1">
     At 4Science we believe in collaboration and sharing.
   </div> -->
-    <ul style="text-align: center !important;" class="list-inline font-16  social-list">
+      <ul
+        style="text-align: center !important"
+        class="list-inline font-16 social-list"
+      >
+              <li class="list-inline-item m-0">
+          <a
+            id="lnktwitter"
+            class="twitterIcon"
+            href="https://openalex.org/"
+            target="_blank"
+          >
+            <!-- <img style="height: 30px;" src="assets/images/DataCite-Logo_secondary-bicolor-light.png"> -->
+            &nbsp;&nbsp;
+            <img
+              style="height: 37px; margin-top: -3px;filter: invert(1);"
+              src="assets/images/logo-full-small.a21c0984-removebg-preview.png"
+            />
+          </a>
+        </li>
 
-      <li class="list-inline-item m-0">
-        
-        <a id="lnktwitter" class="twitterIcon" href="https://www.openaire.eu/" target="_blank">
-          <!-- <img style="height: 30px;" src="assets/images/DataCite-Logo_secondary-bicolor-light.png"> -->
+        <li class="list-inline-item m-0">
+          <a
+            id="lnktwitter"
+            class="twitterIcon"
+            href="https://www.openaire.eu/"
+            target="_blank"
+          >
+            <!-- <img style="height: 30px;" src="assets/images/DataCite-Logo_secondary-bicolor-light.png"> -->
+            &nbsp;&nbsp;
+            <img
+              style="height: 37px; margin-top: -3px"
+              src="assets/images/Logo_Horizontal-27555593.webp"
+            />
+          </a>
+        </li>
+
+        <li class="list-inline-item m-0">
+          <a
+            id="lnktwitter"
+            class="twitterIcon"
+            href="https://coar-repositories.org/what-we-do/notify/"
+            target="_blank"
+          >
+            <!-- <img style="height: 30px;" src="assets/images/DataCite-Logo_secondary-bicolor-light.png"> -->
+            &nbsp;&nbsp;
+            <img
+              style="height: 37px; margin-top: -3px"
+              src="assets/images/coar-removebg-preview.png"
+            />
+          </a>
+        </li>
+
+        <li class="list-inline-item m-0">
+          <a id="lnkfacebook" class="facebookIcon" href="https://ror.org/">
+            &nbsp;&nbsp;
+            <img
+              style="height: 45px"
+              src="assets/images/ROR_logo.svg-removebg-preview.png"
+            />
+          </a>
+        </li>
+
+        <li class="list-inline-item m-0">
           &nbsp;&nbsp;
-          <img style="height: 37px;     margin-top: -3px;
-" src="assets/images/Logo_Horizontal-27555593.webp">
-           </a>
-       </li>
-
-
-      <li class="list-inline-item m-0">
-        
-        <a id="lnktwitter" class="twitterIcon" href="https://coar-repositories.org/what-we-do/notify/" target="_blank">
-          <!-- <img style="height: 30px;" src="assets/images/DataCite-Logo_secondary-bicolor-light.png"> -->
+          <a
+            id="lnktwitter"
+            class="twitterIcon"
+            href="https://orcid.org/"
+            target="_blank"
+          >
+            <img
+              style="height: 90px"
+              src="assets/images/ORCID-LT-removebg-preview.png"
+            />
+          </a>
+        </li>
+        <li class="list-inline-item m-0">
           &nbsp;&nbsp;
-          <img style="height: 37px;     margin-top: -3px;
-" src="assets/images/coar-removebg-preview.png">
-           </a>
-       </li>
-
-     <li class="list-inline-item m-0">
-         <a id="lnkfacebook" class="facebookIcon" href="https://ror.org/">
-          &nbsp;&nbsp;
-          <img style="height:45px;" src="assets/images/ROR_logo.svg-removebg-preview.png">
-              </a>
-
-     </li>
-     
-     
-     <li class="list-inline-item m-0">
-      &nbsp;&nbsp;
-      <a id="lnktwitter" class="twitterIcon" href="https://orcid.org/" target="_blank">
-        <img style="height: 90px;" src="assets/images/ORCID-LT-removebg-preview.png">
-
-         </a>
-     </li>
-     <li class="list-inline-item m-0">
-      &nbsp;&nbsp;
-      <a id="lnktwitter" class="twitterIcon" href="https://datacite.org/" target="_blank">
-        <!-- <img style="height: 30px;" src="assets/images/DataCite-Logo_secondary-bicolor-light.png"> -->
-        <img style="height: 25px;" src="assets/images/DataCite-Logo_secondary-bicolor-light.png">
-         </a>
-     </li>
-
-
-
-
-
-
-   </ul>
-
-
-
+          <a
+            id="lnktwitter"
+            class="twitterIcon"
+            href="https://datacite.org/"
+            target="_blank"
+          >
+            <!-- <img style="height: 30px;" src="assets/images/DataCite-Logo_secondary-bicolor-light.png"> -->
+            <img
+              style="height: 25px"
+              src="assets/images/DataCite-Logo_secondary-bicolor-light.png"
+            />
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 
-  </div>
-
-  <div  class="col-lg-3 col-md-6 col-xs-6 footer-widget">
-    <h5 style="text-align: center !important;" class="widget-title mt-0 mb-2 pt-1 pb-1">{{'footer.top.content1' | translate}}</h5>
-    <p style="font-size:13px ;text-align: center !important;" class="text-white">
-      {{'footer.top.content4' | translate}}
+  <div class="col-lg-3 col-md-6 col-xs-6 footer-widget">
+    <h5
+      style="text-align: center !important"
+      class="widget-title mt-0 mb-2 pt-1 pb-1"
+    >
+      {{ "footer.top.content1" | translate }}
+    </h5>
+    <p
+      style="font-size: 13px; text-align: center !important"
+      class="text-white"
+    >
+      {{ "footer.top.content4" | translate }}
       <!-- {{'footer.top.content5' | translate}} -->
     </p>
   </div>
@@ -143,79 +217,115 @@
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d927755.0518986706!2d47.3830222627902!3d24.725398100648313!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d489399%3A0xba974d1c98e79fd5!2z2KfZhNix2YrYp9i2INin2YTYs9i52YjYr9mK2Kk!5e0!3m2!1sar!2seg!4v1458859566194" width="300px" height="200px" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 
   </div> -->
-
-
-
-  </div>
-  <footer class="text-lg-start" style="background-color: #424242 !important;">
-
-
-    <!-- Copyright -->
-    <div class="bottom-footer p-1 d-flex justify-content-center align-items-center text-white">
-      <div class="content-container  container-fluid">
-
-        <div>
-          <ul class="footer-info list-unstyled small d-flex justify-content-center mb-0">
-             @if (showCookieSettings) {
-        <li>
-          <button class="btn btn-link text-white" type="button" (click)="openCookieSettings()" role="button" tabindex="0">
-            {{ 'footer.link.cookies' | translate}}
-          </button>
-        </li>
-        }
-        <li>
-          <a class="btn text-white"
-             routerLink="info/accessibility" role="link" tabindex="0">{{ 'footer.link.accessibility' | translate }}</a>
-        </li>
-        @if (showPrivacyPolicy) {
+</div>
+<footer class="text-lg-start" style="background-color: #424242 !important">
+  <!-- Copyright -->
+  <div
+    class="bottom-footer p-1 d-flex justify-content-center align-items-center text-white"
+  >
+    <div class="content-container container-fluid">
+      <div>
+        <ul
+          class="footer-info list-unstyled small d-flex justify-content-center mb-0"
+        >
+          @if (showCookieSettings) {
           <li>
-            <a class="btn text-white"
-            routerLink="info/privacy" role="link" tabindex="0">{{ 'footer.link.privacy-policy' | translate}}</a>
+            <button
+              class="btn btn-link text-white"
+              type="button"
+              (click)="openCookieSettings()"
+              role="button"
+              tabindex="0"
+            >
+              {{ "footer.link.cookies" | translate }}
+            </button>
           </li>
-        }
-        @if (showEndUserAgreement) {
+          }
           <li>
-            <a class="btn text-white"
-            routerLink="info/end-user-agreement" role="link" tabindex="0">{{ 'footer.link.end-user-agreement' | translate}}</a>
+            <a
+              class="btn text-white"
+              routerLink="info/accessibility"
+              role="link"
+              tabindex="0"
+              >{{ "footer.link.accessibility" | translate }}</a
+            >
           </li>
-        }
-        @if (showSendFeedback$ | async) {
+          @if (showPrivacyPolicy) {
           <li>
-            <a class="btn text-white"
-            routerLink="info/feedback" role="link" tabindex="0">{{ 'footer.link.feedback' | translate}}</a>
+            <a
+              class="btn text-white"
+              routerLink="info/privacy"
+              role="link"
+              tabindex="0"
+              >{{ "footer.link.privacy-policy" | translate }}</a
+            >
           </li>
-        }
-             <li>
-              <div  class="notify-enabled text-white">
-                <a class="coar-notify-support-route" routerLink="info/coar-notify-support">
-                  <img class="n-coar" src="assets/images/n-coar.svg" [attr.alt]="'menu.header.image.logo' | translate" />
-                  {{ 'footer.link.coar-notify-support' | translate }}
-                </a>
-              </div>
-            </li>
-          </ul>
-        </div>
+          } @if (showEndUserAgreement) {
+          <li>
+            <a
+              class="btn text-white"
+              routerLink="info/end-user-agreement"
+              role="link"
+              tabindex="0"
+              >{{ "footer.link.end-user-agreement" | translate }}</a
+            >
+          </li>
+          } @if (showSendFeedback$ | async) {
+          <li>
+            <a
+              class="btn text-white"
+              routerLink="info/feedback"
+              role="link"
+              tabindex="0"
+              >{{ "footer.link.feedback" | translate }}</a
+            >
+          </li>
+          }
+          <li>
+            <div class="notify-enabled text-white">
+              <a
+                class="coar-notify-support-route"
+                routerLink="info/coar-notify-support"
+              >
+                <img
+                  class="n-coar"
+                  src="assets/images/n-coar.svg"
+                  [attr.alt]="'menu.header.image.logo' | translate"
+                />
+                {{ "footer.link.coar-notify-support" | translate }}
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
 
-          <div>
-            <p class="bottom-footer  d-flex justify-content-center align-items-center rights" >{{'footer.link.copyrights' | translate}}</p>
-          </div>
-
+      <div>
+        <p
+          class="bottom-footer d-flex justify-content-center align-items-center rights"
+        >
+          {{ "footer.link.copyrights" | translate }}
+        </p>
+      </div>
 
       <div>
         <p class="m-0">
-          <a class="text-white"
-             href="http://www.dspace.org/">{{ 'footer.link.dspace' | translate}}</a>
-          {{ 'footer.copyright' | translate:{year: dateObj | date:'y'} }}
-          <a class="text-white"
-             href="https://www.lyrasis.org/">{{ 'footer.link.lyrasis' | translate}}</a>
-            {{ 'footer.link.arabizationsBy' | translate}}
-          <a class="text-white" target="_blank"
-             href="http://kwareict.com/ar"> <img style="width: 130px; height: 30px;" src="assets/images/kware_logo_ar.png" />
-            </a>      </p>
-
-          </div>
-
+          <a class="text-white" href="http://www.dspace.org/">{{
+            "footer.link.dspace" | translate
+          }}</a>
+          {{ "footer.copyright" | translate : { year: dateObj | date : "y" } }}
+          <a class="text-white" href="https://www.lyrasis.org/">{{
+            "footer.link.lyrasis" | translate
+          }}</a>
+          {{ "footer.link.arabizationsBy" | translate }}
+          <a class="text-white" target="_blank" href="http://kwareict.com/ar">
+            <img
+              style="width: 130px; height: 30px"
+              src="assets/images/kware_logo_ar.png"
+            />
+          </a>
+        </p>
       </div>
     </div>
-    <!-- Copyright -->
-  </footer>
+  </div>
+  <!-- Copyright -->
+</footer>

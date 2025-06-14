@@ -1,0 +1,24 @@
+<div *ngIf="(items$ | async) ">
+<div *ngVar="(items$ | async) as items" class="navigation">
+    <a   *ngVar="( itemsID$ | async) as itemsID"  [routerLink]="[onPrevious(items[itemsID -1]?.indexableObject)]"  placement="top"  [ngbTooltip]="'item.navigation.previous.desc'| translate"   class="btn btn-secondary btn-sm mb-2 ng-tns-c242-28 browse-prev" (click)="onPrevious(items[itemsID -1].indexableObject)" [ngClass]="{'disabled': itemsID <= 0 || onPrevious(items[itemsID -1]?.indexableObject)?.includes('undefined')}" >
+      <i _ngcontent-dspace-angular-c242="" class="fa-solid fa-right-long ng-tns-c242-3"></i>
+      <!-- {{'item.navigation.previous' | translate}} -->
+    </a>
+    <a *ngIf="!(navigationItemsService.currentResultRoute$ | async) ||(navigationItemsService.currentResultRoute$ | async)?.length <= 0" placement="top"  [ngbTooltip]="'item.navigation.results'| translate" class="btn btn-secondary btn-sm mb-2 ng-tns-c242-28 results-btn" [routerLink]="[(back$ | async)]">
+      <i _ngcontent-dspace-angular-c242="" class="fa-solid fa-list ng-tns-c242-3"></i>
+      <!-- {{'item.navigation.results' | translate}} -->
+    </a>
+
+    <a *ngIf="(navigationItemsService.currentResultRoute$ | async) && (navigationItemsService.currentResultRoute$ | async)?.length > 0" placement="top"  [ngbTooltip]="'item.navigation.results'| translate" class="btn btn-secondary btn-sm mb-2 ng-tns-c242-28 results-btn"  [href]="[(back$ | async)]">
+      <i _ngcontent-dspace-angular-c242="" class="fa-solid fa-list ng-tns-c242-3"></i>
+      <!-- {{'item.navigation.results' | translate}} -->
+    </a>
+
+    <a *ngVar="( itemsID$ | async) as itemsID" [routerLink]="[onPrevious(items[itemsID +1]?.indexableObject)]" placement="top"   [ngbTooltip]="'item.navigation.next.desc'| translate"   class="btn btn-secondary btn-sm mb-2 ng-tns-c242-28 browse-next" (click)="onNext(items[itemsID +1].indexableObject)" [ngClass]="{'disabled': itemsID >= items.length -1}">
+      <!-- {{'item.navigation.next' | translate}} -->
+      <i _ngcontent-dspace-angular-c242="" class="fa-solid fa-left-long ng-tns-c242-3"></i>
+
+    </a>
+
+  </div>
+</div>

@@ -4,6 +4,7 @@
 <div class="d-flex flex-row">
   <ds-item-page-title-field class="mr-auto" [item]="object">
   </ds-item-page-title-field>
+    <ds-kware-navigate-items [item]="object"></ds-kware-navigate-items>
   <ds-dso-edit-menu></ds-dso-edit-menu>
 </div>
 <div class="row">
@@ -28,43 +29,8 @@
 
     <ds-generic-item-page-field
       [item]="object"
-      [fields]="['person.description.biography']"
-      [label]="'person.page.biography'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.description']"
-      [label]="'person.page.description'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.description.abstract']"
-      [label]="'person.page.abstract'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.religion']"
-      [label]="'person.page.religion'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.jobTitle']"
-      [label]="'person.page.jobTitle'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.jobTitle.description']"
-      [label]="'person.page.jobTitleDescription'"
+      [fields]="['person.salutation']"
+      [label]="'person.page.salutation'"
     >
     </ds-generic-item-page-field>
 
@@ -80,28 +46,6 @@
       [label]="'person.page.givenName'"
     >
     </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.birthPlace']"
-      [label]="'person.page.birthPlace'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['dc.language.iso']"
-      [label]="'item.page.language'"
-    >
-    </ds-generic-item-page-field>
-
-    <!-- <div *ngIf=" !object?.firstMetadata('person.familyName') &&
-    !object?.firstMetadata('person.givenName') && !object?.firstMetadata('dspace.object.owner')">
-    <ds-generic-item-page-field [item]="object"
-      [fields]="['dc.title']"
-      [label]="'person.page.name'">
-    </ds-generic-item-page-field>
-  </div> -->
 
     <div
       *ngIf="
@@ -120,8 +64,22 @@
 
     <ds-generic-item-page-field
       [item]="object"
-      [fields]="['person.affiliation.name']"
-      [label]="'person.page.affiliationName'"
+      [fields]="['person.jobTitle']"
+      [label]="'person.page.jobTitle'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.religion']"
+      [label]="'person.page.religion'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.nationality']"
+      [label]="'person.page.nationality'"
     >
     </ds-generic-item-page-field>
 
@@ -150,6 +108,63 @@
       [item]="object"
       [fields]="['person.deathDate.hijri']"
       [label]="'person.page.deathDateHijri'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.description.biography']"
+      [label]="'person.page.biography'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.description']"
+      [label]="'person.page.description'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.description.abstract']"
+      [label]="'person.page.abstract'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.jobTitle.description']"
+      [label]="'person.page.jobTitleDescription'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.birthPlace']"
+      [label]="'person.page.birthPlace'"
+    >
+    </ds-generic-item-page-field>
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['dc.language.iso']"
+      [label]="'item.page.language'"
+    >
+    </ds-generic-item-page-field>
+
+    <!-- <div *ngIf=" !object?.firstMetadata('person.familyName') &&
+    !object?.firstMetadata('person.givenName') && !object?.firstMetadata('dspace.object.owner')">
+    <ds-generic-item-page-field [item]="object"
+      [fields]="['dc.title']"
+      [label]="'person.page.name'">
+    </ds-generic-item-page-field>
+  </div> -->
+
+    <ds-generic-item-page-field
+      [item]="object"
+      [fields]="['person.affiliation.name']"
+      [label]="'person.page.affiliationName'"
     >
     </ds-generic-item-page-field>
 
@@ -247,13 +262,6 @@
     <ds-simple-view-statistics [object]="object"></ds-simple-view-statistics>
     <br />
 
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.salutation']"
-      [label]="'person.page.salutation'"
-    >
-    </ds-generic-item-page-field>
-
     <!-- <ds-metadata-field-wrapper [hideIfNoTextContent]="false">
       <ds-thumbnail
         [thumbnail]="object?.thumbnail | async"
@@ -268,13 +276,6 @@
       [item]="object"
       [fields]="['person.title']"
       [label]="'person.page.title'"
-    >
-    </ds-generic-item-page-field>
-
-    <ds-generic-item-page-field
-      [item]="object"
-      [fields]="['person.nationality']"
-      [label]="'person.page.nationality'"
     >
     </ds-generic-item-page-field>
 

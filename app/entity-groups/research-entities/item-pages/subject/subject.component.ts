@@ -20,6 +20,7 @@ import { ItemPageUriFieldComponent } from 'src/app/item-page/simple/field-compon
 import { CollectionsComponent } from 'src/app/item-page/field-components/collections/collections.component';
 import { SimpleViewStatisticsComponent } from "../../../../shared/simple-view-statistics/simple-view-statistics.component";
 import { KwareSocialSharingComponent } from "../../../../shared/kware-social-sharing/kware-social-sharing.component";
+import { KwareNavigateItemsComponent } from "../../../../shared/kware-navigate-items/kware-navigate-items.component";
 
 
 @listableObjectComponent('Subject', ViewMode.StandalonePage)
@@ -47,7 +48,8 @@ import { KwareSocialSharingComponent } from "../../../../shared/kware-social-sha
     ItemPageImgFieldComponent,
     ThemedMediaViewerComponent,
     SimpleViewStatisticsComponent,
-    KwareSocialSharingComponent
+    KwareSocialSharingComponent,
+    KwareNavigateItemsComponent
 ],
 })
 export class SubjectComponent extends ItemComponent {}
