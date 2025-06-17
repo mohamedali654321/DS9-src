@@ -683,47 +683,48 @@ export class SearchComponent implements OnDestroy, OnInit {
           }
         }
         this.resultsRD$.next(results);
-         if(this.isSearchRoute || this.isSearchPage){
- let pages= results.payload.pageInfo.totalElements >  500 ? 50 : results.payload.pageInfo.totalPages;
-  for (let page = 1; page <= pages; page++) {
+
+//          if(this.isSearchRoute || this.isSearchPage){
+//  let pages= results.payload.pageInfo.totalElements >  500 ? 20 : results.payload.pageInfo.totalPages;
+//   for (let page = 1; page <= pages; page++) {
          
-    this.service.search(
-       new PaginatedSearchOptions(
-              {
-                pagination: Object.assign(new PaginationComponentOptions(), {
-                                    id: 'hp',
-                                    pageSize: 5,
-                                    currentPage: page,
-                                    maxSize: 1,
-                                  }),
-                dsoTypes: searchOptionsWithHidden.dsoTypes,
-                scope:searchOptionsWithHidden.scope,
-                sort: searchOptionsWithHidden.sort,
-                query: searchOptionsWithHidden.query,
-                filters:searchOptionsWithHidden.filters,
-                fixedFilter: searchOptionsWithHidden.fixedFilter,
-                configuration:searchOptionsWithHidden.configuration
-              }
-            ),
-            undefined,
-            undefined,
-            undefined
-    ).subscribe(res=>{
-      this.items$.next(
-        this.items$.getValue().concat(res?.payload?.page)
-      );
+//     this.service.search(
+//        new PaginatedSearchOptions(
+//               {
+//                 pagination: Object.assign(new PaginationComponentOptions(), {
+//                                     id: 'hp',
+//                                     pageSize: 100,
+//                                     currentPage: page,
+//                                     maxSize: 1,
+//                                   }),
+//                 dsoTypes: searchOptionsWithHidden.dsoTypes,
+//                 scope:searchOptionsWithHidden.scope,
+//                 sort: searchOptionsWithHidden.sort,
+//                 query: searchOptionsWithHidden.query,
+//                 filters:searchOptionsWithHidden.filters,
+//                 fixedFilter: searchOptionsWithHidden.fixedFilter,
+//                 configuration:searchOptionsWithHidden.configuration
+//               }
+//             ),
+//             undefined,
+//             undefined,
+//             undefined
+//     ).subscribe(res=>{
+//       this.items$.next(
+//         this.items$.getValue().concat(res?.payload?.page)
+//       );
       
 
     
-    })
+//     })
 
-  }
+//   }
   
-  this.items$.subscribe(res=>{
-    this.navigationItemsService.setResultsRDNavigation(res)
-  })
+//   this.items$.subscribe(res=>{
+//     this.navigationItemsService.setResultsRDNavigation(res)
+//   })
    
- }
+//  }
 
       });
   }

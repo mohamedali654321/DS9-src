@@ -639,9 +639,9 @@
 }
 
 // space between label and checkbox in ds-dynamic-form-control-container component
-::ng-deep html[dir="rtl"] ds-dynamic-form-control-container label>span {
-    margin-right: 20px !important;
-}
+// ::ng-deep html[dir="rtl"] ds-dynamic-form-control-container label>span {
+//     margin-right: 20px !important;
+// }
 
 // space between brosew all and search form in Add sub-group , Epeople
 ::ng-deep html[dir="rtl"] ds-subgroups-list .float-right {
@@ -4198,4 +4198,15 @@
     line-height: 1.5;
     overflow-wrap: break-word;
 }
+}
+
+
+::ng-deep html[dir="rtl"] .flex-grow-1 {
+    flex-grow: 0 !important ;
+    float: right !important;
+}
+
+
+::ng-deep ds-dynamic-list .row>[class*=col-] {
+    display: flex !important;
 }

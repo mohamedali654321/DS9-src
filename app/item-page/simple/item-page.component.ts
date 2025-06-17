@@ -152,6 +152,8 @@ export class ItemPageComponent implements OnInit, OnDestroy {
    * Initialize instance variables
    */
   ngOnInit(): void {
+     let counter=0;
+    console.log(counter++)
     this.itemRD$ = this.route.data.pipe(
       map((data) => data.dso as RemoteData<Item>),
     );

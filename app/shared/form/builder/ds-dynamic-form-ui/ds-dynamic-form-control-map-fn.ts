@@ -68,8 +68,12 @@ export function dsDynamicFormControlMapFn(model: DynamicFormControlModel): Type<
     case DYNAMIC_FORM_CONTROL_TYPE_GROUP:
       return DsDynamicFormGroupComponent;
 
-    case DYNAMIC_FORM_CONTROL_TYPE_INPUT:
-      return DynamicNGBootstrapInputComponent;
+      case DYNAMIC_FORM_CONTROL_TYPE_INPUT:
+        return model.id === 'dc_publisher_city' ||
+        model.id === 'dc_publisher_country' || model.id === 'dc_relation_college' 
+        ? DsDynamicOneboxComponent
+        : DynamicNGBootstrapInputComponent;
+  
 
     case DYNAMIC_FORM_CONTROL_TYPE_RADIO_GROUP:
       return (model instanceof DynamicListRadioGroupModel) ? DsDynamicListComponent : DynamicNGBootstrapRadioGroupComponent;

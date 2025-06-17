@@ -14,7 +14,7 @@
       <!-- {{'item.navigation.results' | translate}} -->
     </a>
 
-    <a *ngVar="( itemsID$ | async) as itemsID" [routerLink]="[onPrevious(items[itemsID +1]?.indexableObject)]" placement="top"   [ngbTooltip]="'item.navigation.next.desc'| translate"   class="btn btn-secondary btn-sm mb-2 ng-tns-c242-28 browse-next" (click)="onNext(items[itemsID +1].indexableObject)" [ngClass]="{'disabled': itemsID >= items.length -1}">
+    <a *ngVar="( itemsID$ | async) as itemsID" [routerLink]="[onPrevious(items[itemsID +1]?.indexableObject)]" placement="top"   [ngbTooltip]="'item.navigation.next.desc'| translate"   class="btn btn-secondary btn-sm mb-2 ng-tns-c242-28 browse-next" (click)="onNext(items[itemsID +1].indexableObject)" [ngClass]="{'disabled': itemsID >= items.length -1 || onPrevious(items[itemsID -1]?.indexableObject)?.includes('undefined')}">
       <!-- {{'item.navigation.next' | translate}} -->
       <i _ngcontent-dspace-angular-c242="" class="fa-solid fa-left-long ng-tns-c242-3"></i>
 

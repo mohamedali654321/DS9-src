@@ -32,3 +32,18 @@
 .toggle-icon {
   padding: 0.7rem 0.7rem 0 0.7rem;
 }
+
+
+::ng-deep html[dir="rtl"] {
+  .form-check-input{
+    float: right;
+  }
+    .dropdown-menu {
+        transform: translate(-1px, 35px) !important;
+    }
+
+    i {
+        left: 0 !important;
+        right: unset !important;
+    }
+}
